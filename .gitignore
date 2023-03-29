@@ -1,3 +1,5 @@
-_bin
-.vscode
-assets
+_bin/*
+.vscode/*
+assets/*
+assets/sketchs/Fond_B2B.tif
+
