@@ -1,0 +1,14 @@
+/**
+    Utilisé dans la fiche article
+**/
+.container .breadcrumb {
+	padding: 0;
+	background: none;
+
+	& > li + li:before {
+		content: '\f054';
+		font-family: FontAwesome;
+		color: var(--global__color__grey50);
+		font-weight: var(--global_font-weight__bold);
+	}
+}

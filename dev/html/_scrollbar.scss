@@ -1,0 +1,54 @@
+* {
+	// FIREFOX
+	scrollbar-color: var(--global__color__accent) transparent;
+	scrollbar-width: thin;
+
+	// CHROME
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+
+		/*Appliquer des modifications sur le fond de la zone de l'ascenseur.*/
+		&-track {
+			background-color: transparent; // var(--global__background-color);
+		}
+		/*Cible l'ascenseur lui-même.*/
+		&-thumb {
+			background-color: var(--global__color__accent);
+			border-radius: 100vmax;
+		}
+		/* Concerne seulement des éléments qui peuvent être redimensionnés, comme les .*/
+		&-corner {
+			//background-color: blue;
+		}
+		/*Boutons en général. Par « bouton », cela sous-entend les flèches à cliquer pour défiler.*/
+		&-button:single-button {
+			/*Barre verticale*/
+			&:vertical {
+				/* bouton pour remonter */
+				&:decrement {
+					&:hover {
+					}
+				}
+				/* bouton pour descendre.*/
+				&increment {
+					&:hover {
+					}
+				}
+			}
+			/*Barre horizontale*/
+			&:horizontal {
+				/* bouton pour aller à droite.*/
+				&decrement {
+					&:hover {
+					}
+				}
+				/* bouton pour aller à droite.*/
+				&:increment {
+					&:hover {
+					}
+				}
+			}
+		}
+	}
+}

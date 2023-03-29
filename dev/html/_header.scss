@@ -1,0 +1,43 @@
+@use './../utils/breakpoints' as *;
+//
+/**
+	Container parent de la navbar utilisateur.
+	Ne contient qu'un élément : la navbar Bootstrap
+**/
+
+// Quelque soit le thème /////////////////////////////////////////////////////////////
+:root {
+	--header__height: 10rem;
+	--header__padding: 0;
+	--header__background-color: var(--global__background-color);
+}
+////////////////////////////////////////////////////////////////////////////////////////
+
+header {
+	// Ne possède qu'un enfant, permet l'étirement de ce dernier
+	display: flex;
+
+	// Attachement au top
+	position: fixed;
+	top: 0;
+	z-index: 2000;
+
+	// Hauteur et animation
+	width: 100%;
+	height: var(--header__height);
+
+	// Divers
+	padding: var(--header__padding);
+	transition: var(--global__transition--all);
+	background-color: var(--header__background-color);
+	//
+	// Les position aux scrolls
+	// prettier-ignore
+	.scroll-down & { top: -100%; }
+	// prettier-ignore
+	.scroll-up & { top: 0; }
+
+	//@include for-tablet {
+	// background-color: var(--header__background-color--before) !important;
+	//}
+}

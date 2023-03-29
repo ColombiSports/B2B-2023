@@ -1,0 +1,156 @@
+@use '../utils/breakpoints' as *;
+@use '../html/heading' as *;
+
+// Concerne les 3 pages précedent le B2B ///////////////////////////////////////
+
+// Les ID, associés au BODY
+#security_login,
+#security_forgot_password,
+#security_inscription {
+	// prettier-ignore
+	footer{display: none;} // Ne colle pas correctement au bas de d'écran.
+
+	display: grid;
+	place-content: center;
+	// justify-items: center;
+	// align-items: start;
+	// align-content: space-between;
+	// min-height: 100vh;
+	//
+	@include for-tablet {
+		padding: 0 3rem;
+	}
+
+	///
+	// HEADER //////////////////////////////////////////////////////////////
+	// Ne garder que le logo animé
+	// Annulation des élement jusqu'au logo
+	header,
+	header nav,
+	header nav div {
+		display: contents;
+	}
+	// Annulation du dégradé sous le header
+	header::before,
+	header::after {
+		content: unset;
+	}
+	header .navbar-logo {
+		margin: 2rem auto 2rem auto;
+	}
+	// Masquage du boutton "Menu"
+	#btn_toggle_navbar {
+		display: none;
+	}
+
+	// PAGE ////////////////////////////////////////////////////////////////
+	// Annulation des container inutiles
+	.container,
+	.login-container {
+		display: contents;
+	}
+	//
+	// Le container des infos
+	.login-page {
+		position: relative;
+		display: flex;
+		margin: auto;
+		width: clamp(270px, 50vw, 550px);
+		height: auto;
+
+		.login-box {
+			width: 100%;
+			padding: 2rem;
+			margin: 0;
+
+			border: none;
+			background: none;
+			box-shadow: none;
+
+			// Le TITRE
+			& > h3 {
+				text-transform: uppercase;
+				font-size: var(--global__font-size__lg);
+			}
+			// Le FORMULAIRE et sont BOUTON
+			form {
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				align-items: flex-end;
+				//
+				button {
+					margin: 3rem 0;
+				}
+			}
+
+			a {
+				display: block;
+				width: max-content;
+				margin-bottom: 2rem;
+			}
+
+			.alert-danger {
+				margin: 2rem 0;
+				height: fit-content;
+				align-self: flex-end;
+			}
+		}
+	}
+}
+
+#security_login {
+	.login-page .login-box {
+		input[type='text'] {
+			margin-bottom: 2rem; // Ajoute une marge entre les 2 champs
+		}
+		.inscription {
+			display: contents; // Anulation du container du 2ème lien (Pas encore inscrit)
+			//
+			a::after {
+				content: ' ?'; // Ajoutee le point oublié (Pas encore inscrit ?)
+			}
+		}
+	}
+}
+
+#security_inscription .login-page {
+	width: clamp(270px, 80vw, 1050px);
+
+	.login-box form {
+		.form-group {
+			margin-bottom: 0;
+		}
+		input {
+			margin-bottom: 0;
+		}
+		#inscription {
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 3rem;
+
+			.required::after {
+				content: ' *';
+				color: red;
+				font-size: 1em;
+			}
+		}
+	}
+
+	// Vu que tous les champs sont obligatoires
+	.obligatory-text {
+		display: block;
+		font-size: 1rem;
+		color: var(--global__color__grey50);
+		align-self: flex-start;
+		margin: -5rem 0 3rem 0;
+
+		// prettier-ignore
+		sup {color: var(--global__color__danger);}
+	}
+
+	.help-block {
+		color: var(--global__color__danger) !important ;
+	}
+}

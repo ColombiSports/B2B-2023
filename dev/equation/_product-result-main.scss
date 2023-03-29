@@ -1,0 +1,313 @@
+@use './../abstract/Typo' as *;
+@use './../utils/breakpoints' as *;
+
+/**
+	Partie gauche du wrapper de résultat de recherche. Contient : 
+		- Le titre et des options d'affichage (HEADER)
+		- Le container du parent de la grille de résultat (CONTENT)
+		- Les options de pagination (FOOTER)
+**/
+#product_result_main {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+
+	grid-area: main;
+	width: auto;
+	left: unset;
+	position: initial;
+	padding: 0;
+	margin: 0;
+
+	// Le titre et des options d'affichage --------------------------------
+	&_header {
+		display: grid;
+		grid-template-areas:
+			'title title'
+			'views sort';
+		grid-template-columns: 1fr max-content max-content;
+		align-content: center;
+		align-items: center;
+		margin-bottom: 5rem;
+
+		@include for-tablet {
+			grid-template-columns: 1fr;
+			grid-template-areas:
+				'title'
+				'views'
+				'sort';
+		}
+
+		// prettier-ignore
+		.row-display, .col-display, .col-sort, .row { display: contents; }
+		// Pour que les éléments ci-après soient des enfants directs
+
+		// Le parent directe des options d'affichage  //////////////////////
+		// Les parents ayant été annulé jusqu'au header
+		.result-display {
+			grid-area: views;
+			display: flex;
+			flex-direction: row;
+			align-items: flex-end;
+			margin: 0;
+			gap: 2rem;
+
+			// prettier-ignore
+			@include for-tablet { justify-content: space-around; }
+
+			// Les icones de LISTE et de GRILLE ---------------------------
+			label {
+				// Par defaut
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				align-items: center;
+				margin: 0;
+
+				// L'aspect du texte de description sous l'icone
+				&:after {
+					font-weight: var(--global__font-weight__regular);
+					font-size: var(--global__font-size__xs);
+				}
+				// La couleur au survol
+				&:hover {
+					color: var(--global__color__accent);
+				}
+				// prettier-ignore
+				&[for*='display_list']::after { content: 'LIGNES'; }
+				// prettier-ignore
+				&[for*='display_block']:after { content: 'GRILLE'; }
+				// Les labels de chaque icone
+
+				// Couleur NON SÉLECTIONNÉ
+				color: var(--global__UI__unselected-item);
+			}
+			// Couleur SÉLECTIONNÉ
+			input[type='radio']:checked + label {
+				color: var(--global__foreground-color) !important ;
+			}
+
+			// Le bouton des indisponibles --------------------------------------
+			#btn_toggle_unavailable {
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				align-items: center;
+				margin: 0;
+				padding: 0;
+
+				// Par defaut "masquer les indisponibles" est inactif
+				font-size: var(--global__font-size__xs);
+
+				--color: var(--global__foreground-color) !important ;
+				--color--hover: var(--global__color__accent);
+
+				outline: none !important;
+				background: none !important;
+				border: none !important;
+
+				// Ajoute d'un icon de type "toggle off" avant le texte
+				&:before {
+					content: '\f205';
+					margin-right: 0.25em;
+					font-family: FontAwesome;
+					font-size: 2.5em;
+				}
+
+				// Option "masquer les indisponibles" est active
+				&.select {
+					--color: var(--global__UI__unselected-item) !important ;
+
+					// prettier-ignore
+					&:before { content: '\f204';}
+					// Modifie l'icone avant le texte en "toggle on"
+				}
+			}
+
+			// Renvoi aux filtres (visible uniquement en  mode tablette ) ------
+			.result-filter-anchor a {
+				// l'un au dessus de l'autre
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				align-items: center;
+				// Sans bordure
+				border: none;
+				text-decoration: none;
+				color: var(--global__UI__unselected-item);
+				font-size: var(--global__font-size__md);
+
+				&:after {
+					content: 'FILTRES';
+					font-size: var(--global__font-size__xs);
+					padding: 0;
+				}
+				&:hover {
+					color: var(--global__color__accent);
+				}
+			}
+		}
+
+		// les options de tri ///////////////////////////////////////////////
+		// prettier-ignore
+		.col-sort-label { display: none; }
+		// Supprime le parent et son label, car mal taggé' : utilise span au lieu label
+
+		.result-sort {
+			grid-area: sort;
+
+			// prettier-ignore
+			@include for-tablet { margin: 2rem 0 3rem 0 ; }
+
+			// Créé un pseudo label au dessus
+			&::before {
+				content: 'Trier par :';
+				width: 100%;
+				text-align: right;
+				display: inline-block;
+				color: var(--global__color__grey50);
+				font-size: var(--global__font-size__xs);
+
+				// prettier-ignore
+				@include for-tablet { text-align: left; }
+			}
+		}
+
+		// La page de titre (déplacée en premier ) ////////////////////////
+		#page_title {
+			grid-area: title;
+			display: flex;
+			flex-direction: column;
+			border-bottom: dotted solid var(--global__color__accent);
+
+			// prettier-ignore
+			a{ width: max-content ;}
+
+			// prettier-ignore
+			.text-muted{ display: none }
+			// Suppression de la barre oblique
+
+			@extend .abstract-H2;
+			padding-bottom: 1rem;
+			border-bottom: var(--global__UI__border-style);
+		}
+
+		// L'affichage de la recherche ////////////////////////////////////
+		.result-keyword {
+			grid-area: title;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+
+			// prettier-ignore
+			& > div { display:  contents ;}
+			// Annule tous les div parents inutiles "col-xs" etc...
+
+			// Le label "mots clefs" --------------------------------------
+			.form-control-static.pull-right {
+				position: absolute;
+				margin-top: -3rem;
+			}
+			// Le tag des mots recherche ----------------------------------
+			.form-control.keyword {
+				width: auto;
+				background: var(--global__UI__unselected-item);
+				border-radius: var(--global__UI__border-radius--input);
+				border: none;
+				color: var(--global__background-color);
+				font-size: var(--global__font-size__md);
+				padding: 0 2rem;
+				margin: 0 0.5rem 0 0;
+				height: auto;
+			}
+			// La croix de fermeture ---------------------------------------
+			// prettier-ignore
+			.form-control-static.pull-left { display: contents; }
+			// Annule le parent de la croix pour l'alignement flex
+
+			#product_result_clear_keyword {
+				border: none;
+				color: var(--global__color__accent);
+				transform: scale(1.25);
+			}
+		}
+	}
+
+	// Le container du parent de la grille de résultat -------------------
+	&_content {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-items: stretch;
+	}
+
+	// Les options de pagination -----------------------------------------
+	&_footer {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: flex-end;
+
+		// prettier-ignore
+		.row{ display:  contents ;}
+		// Enfant unique du footer qui nous fait bien chier...
+
+		// prettier-ignore
+		.form-control-static, .col-result-number.hidden-xs, .clearfix { display: none; }
+		// Masque les containers inutiles
+
+		// Ajouter le before directement a "OPTION" ne semble pas fonctionner
+		// Le .result-number précédent étant masqué par son parent (voir containers inutiles)
+		.result-number {
+			&::before {
+				content: 'Résultats par page:';
+				width: 100%;
+				text-align: right;
+				display: inline-block;
+				color: var(--global__color__grey50);
+				font-size: var(--global__font-size__xs);
+			}
+		}
+		// La pagination Bootstrap
+		.pagination {
+			width: auto;
+			flex-grow: 1;
+			display: flex;
+			gap: 0.75rem;
+
+			// INACTIF : pas besoin d'évènement souris
+			& > li.disabled > a {
+				border-color: transparent;
+				color: var(--global__UI__unselected-item);
+				pointer-events: none;
+			}
+			// ACTIF : pas besoin d'évènement souris
+			& > li.active > a {
+				background-color: var(--global__foreground-color);
+				border-color: var(--global__foreground-color);
+				color: var(--global__background-color);
+				pointer-events: none;
+			}
+			// PAR DEFAULT : Paramétrer le survol
+			& > li > a,
+			& > li > span {
+				border-color: transparent; //var(--global__UI__border-style);
+				border-radius: var(--global__UI__border-radius--input);
+				color: var(--global__color__accent);
+				background: none;
+				padding: 0;
+				margin: 0;
+				width: 3rem;
+				height: 3rem;
+				display: grid;
+				place-content: center;
+
+				&:hover {
+					color: white;
+					background-color: var(--global__color__accent);
+				}
+			}
+		}
+	}
+}

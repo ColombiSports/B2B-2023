@@ -1,0 +1,46 @@
+@use "sass:map";
+
+@mixin breakpoint($screen, $type: min) {
+	$breakpoints: (
+		"watch": 288px,
+		"phone": 576px,
+		"tablet": 768px,
+		"laptop": 992px,
+		"desktop": 1200px,
+		"TV": 1800px,
+	);
+	// Du plus grand au plus petir
+	@media only screen and ( #{$type}-width: map.get($breakpoints, $screen) ) {
+		@content;
+	}
+}
+@mixin for-watch {
+	@include breakpoint("watch", max) {
+		@content;
+	}
+}
+@mixin for-phone {
+	@include breakpoint("phone", max) {
+		@content;
+	}
+}
+@mixin for-tablet {
+	@include breakpoint("tablet", max) {
+		@content;
+	}
+}
+@mixin for-laptop {
+	@include breakpoint("laptop", max) {
+		@content;
+	}
+}
+@mixin for-desktop {
+	@include breakpoint("desktop", max) {
+		@content;
+	}
+}
+@mixin for-TV {
+	@include breakpoint("TV", max) {
+		@content;
+	}
+}

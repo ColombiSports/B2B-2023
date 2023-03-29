@@ -1,0 +1,15 @@
+.h1 {
+	font-family: var(--global__font-family__title);
+	font-size: var(--global__font-size__md);
+	color: var(--global__color__accent);
+}
+
+// prettier-ignore
+h1, h2, h3, h4, h5, h6{
+	color: var(--global__color__accent) ;
+	font-family: var(--global__font-family__title);
+	font-weight: var(--global__font-weight__bold);
+	letter-spacing: -0.025em ;
+	margin-bottom: 1em ;
+	
+}

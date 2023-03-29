@@ -1,0 +1,145 @@
+@use './../abstract/Product';
+
+/**
+	LES MINIATURES ARTICLES ///////////////////////////////////////////
+
+	Est une extention de la class abstraite "Product" sensée définir
+	tous les éléments globaux d'une article: couleur, fonte...
+
+	Ne gère pas l'aspect des INDISPONIBLES (cf product-wrapper)
+**/
+
+.product-thumbnail {
+	position: relative;
+	border: none !important ;
+	border-radius: var(--global__UI__border-radius--card);
+	background-color: var(--global__background-color);
+
+	padding: 2rem;
+
+	@extend .abstract-Product;
+
+	// Définit les couleurs de la carte avant survol.
+	--product-button__color: var(--global__color__accent);
+	--product-icon__color: var(--global__foreground-color);
+
+	//filter: var(--unvalaible-filter);
+
+	&:hover {
+		//--product-price__color: white;
+		--product-code__color: white;
+		--product-rga__color: white;
+		--product-libelle__color: white;
+		--product-border__color: white;
+		--product-button__color: white;
+		--product-icon__color: var(--product-menu__color);
+
+		//--unvalaible-filter: none;
+
+		background-color: var(--product-menu__color);
+		box-shadow: none;
+	}
+
+	.product-caption {
+		&:hover {
+			--input__opacity: 1;
+			--input__transform: translate(0);
+		}
+		& > div {
+			padding: 0;
+
+			&.product-code {
+				::before {
+					left: -2rem;
+				}
+			}
+			&.product-libelle {
+				height: 4em;
+				overflow: hidden;
+			}
+
+			&.product-prix {
+			}
+		}
+	}
+
+	form {
+		display: contents;
+	}
+
+	.product-panier {
+		&-wrapper {
+			--input__opacity: 1;
+			--input__transform: translate(100%);
+
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-items: flex-end;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			margin: 0;
+			transition: var(--global__transition--all);
+
+			&:hover,
+			&:focus-within {
+				//background-color: bisque;
+
+				--input__opacity: 1;
+				--input__transform: translate(0);
+			}
+		}
+		// prettier-ignore
+		&-col-text { display: none; }
+
+		// prettier-ignore
+		&-col-input .label {display: none; }
+
+		&-col-input {
+			width: 100%;
+			margin: 0;
+			flex: unset;
+			opacity: var(--input__opacity);
+			transform: var(--input__transform);
+
+			input {
+				background: none;
+				border: none !important ;
+				border-radius: 0 !important ;
+				border-bottom: var(--global__UI__border-style) !important ;
+				font-weight: var(--global__font-weight__bold) !important;
+				font-size: var(--global__font-size__lg) !important ;
+				text-align: right;
+				padding: 0 1rem !important;
+				margin: 0 !important ;
+			}
+		}
+
+		&-col-button .btn-add-cart {
+			// BOUTON AJOUTER AU PANIER //////////////////////////////////////////////
+
+			display: grid;
+			place-content: center;
+			width: 8rem;
+			height: 8rem;
+
+			//--product-button__color: red; // var(--global__background-color);
+			color: var(--product-icon__color) !important;
+			border-color: var(--product-button__color) !important;
+			background-color: var(--product-button__color) !important;
+
+			&:hover {
+				.fa-shopping-cart:before {
+					content: '\f217';
+				}
+			}
+			.fa-shopping-cart {
+				font-size: var(--global__font-size__xl);
+			}
+			span {
+				display: none;
+			}
+		}
+	}
+}

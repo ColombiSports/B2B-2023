@@ -1,0 +1,47 @@
+.abstract-P {
+	font-family: var(--global__font-family__text);
+	font-size: var(--global__font-size__sm);
+	font-weight: var(--global__font-weight__regular);
+}
+
+.abstract-H {
+	font-family: var(--global__font-family__title);
+	color: var(--global__color__accent);
+	font-weight: var(--global__font-weight__bold);
+	letter-spacing: -0.0125em;
+	margin-bottom: 1em;
+}
+.abstract-H1,
+h1 {
+	@extend .abstract-H;
+	font-size: var(--global__font-size__xl);
+}
+.abstract-H2,
+h2 {
+	@extend .abstract-H;
+	font-size: var(--global__font-size__lg);
+}
+
+.abstract-H3,
+h3 {
+	@extend .abstract-H;
+	font-size: var(--global__font-size__md);
+}
+
+.abstract-H4,
+h4 {
+	@extend .abstract-H;
+	font-size: var(--global__font-size__sm);
+}
+
+.abstract-H5,
+h5 {
+	@extend .abstract-H;
+	font-size: var(--global__font-size__xm);
+}
+
+// prettier-ignore
+h1, h2, h3, h4, h5, h6{
+	color: var(--global__color__accent) ;
+	font-family: var(--global__font-family__title);
+}
