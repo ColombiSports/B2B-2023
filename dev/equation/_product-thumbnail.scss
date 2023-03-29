@@ -1,4 +1,4 @@
-@use './../abstract/Product';
+@use "./../abstract/Product";
 
 /**
 	LES MINIATURES ARTICLES ///////////////////////////////////////////
@@ -113,6 +113,7 @@
 				text-align: right;
 				padding: 0 1rem !important;
 				margin: 0 !important ;
+				display: none;
 			}
 		}
 
@@ -131,7 +132,7 @@
 
 			&:hover {
 				.fa-shopping-cart:before {
-					content: '\f217';
+					content: "\f217";
 				}
 			}
 			.fa-shopping-cart {
