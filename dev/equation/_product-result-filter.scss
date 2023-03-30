@@ -1,0 +1,198 @@
+@use "./../abstract/Typo" as *;
+@use "./../utils/breakpoints" as *;
+
+/**
+	Partie droite du wrapper de résultat de recherche. Contient : 
+		- Une liste de filtres retriés
+		- Un bouton de retour en haut (en mode tablette)
+**/
+#product_result_filter {
+	overflow-x: hidden; // Sans cela génère des bugs sur les barres "navbar"
+	grid-area: filters;
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	gap: 4rem;
+
+	width: auto;
+	left: unset;
+	padding: 0 0 0 0.5rem;
+	inset: unset;
+	float: none;
+
+	// Définit une boîte de filtre ---------------------------------------
+	.filter-box {
+		margin: 0; // Laisse la colonne parente choisir l'espace entre chaque
+
+		// Le bouton d'entête de la boîte, ouvrant et fermant les filtres
+		// Inverse les flêches Equation car elles sont à l'envers
+		a.toggle-filter {
+			// Le nom du filtre
+			h5 {
+				font-size: var(--global__font-size__lg);
+				color: var(--global__color__grey50);
+			}
+			// Etat ouvert du filtre --------------------------------
+			border: none; // Le bord passe en bas du UL
+
+			// On fait pointer la flêche vers le bas
+			&::before {
+				color: var(--global__color__accent);
+				transform: rotate(90deg);
+				transform-origin: 25% 50%;
+				margin-right: 0;
+				font-size: 1em;
+				width: 1.5rem;
+			}
+
+			// Etat fermé du filtre ---------------------------------
+			&.collapse {
+				// prettier-ignore
+				&::before{ transform: rotate(0deg); }
+				// On fait pointer la flêche à droite
+
+				// prettier-ignore
+				& + ul.list-filter,   & ~ a  { display: none; }
+				// On masque la liste et le bouton "+ de choix"
+
+				// On remet la bordure puisque plus de liste
+				border-bottom: var(--global__UI__border-style);
+				padding-bottom: 1rem;
+			}
+		}
+
+		// La liste des filtres possibles --------------------------------
+
+		// Mode affichage "min" : l'affichage par defaut...
+		ul.list-filter {
+			// Dispostion
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			align-items: flex-end;
+			// Taille
+			height: auto;
+			max-height: 170px;
+			overflow: hidden;
+			padding: 0 0 1rem 2rem; // Aligne les radios boutons sous le titre
+			overflow-y: scroll;
+			border-bottom: var(--global__UI__border-style);
+			margin-bottom: 1rem;
+
+			// Met la scrollbar à gauche ------------------------------
+			&::-webkit-scrollbar {
+				width: 2px;
+				height: 2px;
+			}
+			// prettier-ignore
+			direction: rtl;
+			// prettier-ignore
+			& li { direction: ltr; }
+
+			.filter-text {
+				font-weight: var(--global__font-weight__regular);
+
+				&::before {
+					border-color: var(--global__color__grey50);
+					border-radius: 100vmax;
+					transition: var(--global__transtion--all);
+				}
+			}
+
+			// Le filtre avec le radio bouton --------------------------
+			input[type="checkbox"] {
+				// Assure que l'épaisseur du label
+				& + .filter-text {
+					font-weight: var(--global__font-weight__regular);
+
+					// Définit le pseudo radio button
+					&::before {
+						border: solid 1px var(--global__color__grey50);
+						background-color: transparent;
+						border-radius: 100vmax;
+					}
+				}
+
+				// En mode sélectionné
+				&:checked {
+					// Passe le label en gras plus contrasté
+					& + .filter-text {
+						color: var(--global__foreground-color);
+						font-weight: var(--global__font-weight__bold);
+
+						// Affiche une coche
+						&::before {
+							border-color: var(--global__color__accent);
+							background-color: var(--global__color__accent);
+							border-radius: 100vmax;
+						}
+					}
+				}
+			}
+
+			// Le nombre d'article par filtre --------------------------
+			.filter-count {
+				color: var(--global__color__grey50);
+				font-weight: var(--global__font-weight__light);
+			}
+		}
+
+		// Le bouton de fin de liste ------------------------------------
+		a[data-action="search#moreFilter"] {
+			font-size: 0;
+			&:before {
+				content: "[ agrandir ]";
+				font-size: 1.2rem;
+			}
+		}
+
+		// Mode filtre étendue //////////////////////////////////////////
+
+		&.expanded {
+			// On change le texte du bouton
+			a[data-action="search#moreFilter"]:before {
+				content: "[ réduire ]";
+			}
+			// On agrandit la liste au maximun
+			ul.list-filter {
+				display: flex;
+				max-height: unset;
+				height: auto;
+				overflow-y: hidden;
+				margin-left: 2px; // Evite un effet de décalage dû à la dispariton de la scrollbar
+			}
+		}
+	}
+
+	// Redéfinit l'ordre des filtres  -----------------------------------
+	div {
+		// prettier-ignore
+		&:nth-child(1) { order: 2; } // La division
+		// prettier-ignore
+		&:nth-child(2) { order: 1; } // La marque
+		// prettier-ignore
+		&:nth-child(3) { order: 3; } // Les familles
+		// prettier-ignore
+		&:nth-child(4) { order: 4; } // Les catégories
+		// prettier-ignore
+		&:nth-child(5) { order: 5; } // Le "backtop"
+	}
+
+	// Le bouton retour en haut ---------------------------------------
+	.backtop {
+		border: none !important;
+		background: none impr !important;
+
+		a {
+			border: none !important ;
+			color: var(--global__color__grey50);
+
+			// prettier-ignore
+			&:hover {color: var(--global__color__accent); }
+		}
+	}
+}

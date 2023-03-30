@@ -1,0 +1,20 @@
+.has-error {
+	color: var(--global__color__danger) !important ;
+
+	input,
+	.checkbox,
+	.checkbox-inline,
+	.control-label,
+	.help-block,
+	.radio,
+	.radio-inline {
+		// prettier-ignore
+		color: var(--global__color__danger) !important ;
+		// prettier-ignore
+		label { color: var(--global__color__danger) !important ; }
+	}
+}
+
+.help-block {
+	color: var(--global__color__danger) !important ;
+}

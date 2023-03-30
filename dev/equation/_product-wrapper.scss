@@ -1,0 +1,45 @@
+@mixin setGrid($width, $gap) {
+	position: relative;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax($width, 1fr));
+	gap: $gap;
+}
+/******************************************************************************
+
+	GRILLE DES MINIATURES ARTICLE
+	Gère les grilles de miniatures articles et le "masquage" des indisponibles.
+
+*******************************************************************************/
+
+// Gestion de l'affichage des indisponibles pour les 2 modes affichages des miniatures
+.product-inline-wrapper,
+.product-thumbnail-wrapper {
+	& > .hidden {
+		// Surécrit la classe Bootsrap ".hidden" masquant les indisponibles
+		display: block !important;
+		padding: 0;
+		margin: 0;
+		width: auto;
+
+		// Applique le filtre définit globalement et le retire au survol
+		// prettier-ignore
+		filter: var(--global__filter__unavailable) ;
+		// prettier-ignore
+		&:hover { filter: none ; }
+	}
+}
+// --------------------------------------------------------------------------------
+
+.product-inline-wrapper {
+	// prettier-ignore
+	.col-inline{  display: contents ;}
+
+	@include setGrid(500px, 5rem);
+}
+
+.product-thumbnail-wrapper {
+	// prettier-ignore
+	.col-thumbnail{ display: contents ;}
+
+	@include setGrid(250px, 5rem);
+}

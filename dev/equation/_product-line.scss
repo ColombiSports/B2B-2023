@@ -1,0 +1,6 @@
+@use './../abstract/Product';
+
+.container .product-line {
+	border: none !important ;
+	@extend .abstract-Product;
+}

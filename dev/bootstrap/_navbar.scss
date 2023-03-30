@@ -1,0 +1,229 @@
+﻿@use './../bootstrap/dropdown';
+@use './../utils/breakpoints' as *;
+@use './../abstract/Typo';
+@use './../abstract/Logo';
+@use './../abstract/Button';
+
+/********************************************************
+*
+* LA BARRE PRINCIPALE DU HAUT 
+* celle contenant le panier et le compte client
+*
+**********************************************************/
+
+.navbar-default.navbar-main {
+	// prettier-ignore
+	.container-fluid { display: contents ;}
+	// Annulation du container fluide et des séparateurs
+
+	flex-grow: 1; //Etirement par le parent flex "header"
+	margin: 0;
+
+	/** Etire le menu-right sur la largeur restante
+	en block, permet l'alignement des 3 points à droite **/
+	display: flex;
+	flex-direction: row;
+	//
+	// prettier-ignore
+	@include for-tablet { display: block; }
+
+	// Le container gauche (celui du logo et du hamburger boutton )
+	.navbar-header {
+		// Etire l'élément jusqu'à remplir le parent "navbar" de header
+		// Ainsi le bouton reste collé à droite
+		//flex-grow: 1;
+		min-height: var(--header__height);
+		margin: 0 1rem;
+
+		// Place le logo à gauche et le hambutton à droite
+		display: flex;
+		flex-direction: row-reverse;
+		flex-wrap: nowrap;
+		justify-content: space-between;
+		align-items: center;
+		//
+		// Le logo animé
+		.navbar-logo {
+			@extend .abstract-Logo;
+			@include for-tablet {
+				--logo--scale: 0.6;
+			}
+		}
+		// Masquage du logo par Equation
+		a.navbar-logo > img {
+			display: none;
+		}
+	}
+
+	// Le container du menu passant de droite à dessous
+	.navbar-collapse {
+		border: solid 1px orange;
+		position: absolute;
+		right: 0;
+		width: auto;
+
+		// prettier-ignore
+		@include breakpoint('tablet', min) { display: contents !important ; }
+		/** Annule le container parent du menu navbar-right inutile en mode étendu.
+		En mode compact est définit via bootstrap, et est la cible du toggle de visibilité
+		via l'ajout de la classe ".in" **/
+
+		// Mode compacté, menu déplié
+		&.in {
+			left: 0;
+			height: calc(100vh - var(--header__height)) !important;
+			background-color: var(--header__background-color);
+			margin: 0;
+			border: none;
+			box-shadow: none;
+			width: 100vw;
+			padding: 0 2rem 2rem 2rem;
+			position: absolute;
+		}
+
+		.navbar-right {
+			// Permet l'étirement dans le "pseudo" parent
+			flex-grow: 1;
+			margin-right: 3rem;
+			//;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: flex-end;
+			gap: 0.75rem;
+
+			// Aligne horizontalement les élément du menu right étiré
+			align-items: center;
+
+			// En mode compacté
+			@include for-tablet {
+				margin-right: 0rem;
+				flex-direction: column;
+				align-items: stretch; // Etire sur l'axe horizontal
+				justify-content: flex-start;
+				padding: 2rem;
+				gap: 2rem;
+			}
+
+			// Incrustation des Dropdowns
+			.dropdown {
+				@extend .dropdown;
+				--toggle__color: var(--global__color__grey50);
+				--toggle__color--hover: var(--global__foreground-color);
+				--toggle__color--active: var(--global__color__accent);
+
+				--dropdown-menu__border-left: unset;
+				--dropdown-menu__border-right: var(--global__UI__border-style);
+				--dropdown-menu__align-items: flex-end;
+				--dropdown-menu__inner: unset 0 unset unset;
+
+				@include for-tablet {
+					--dropdown-menu__margin: 0 0 0 1rem;
+					--dropdown-menu__inner: unset unset unset 0rem;
+					--dropdown-menu__border-left: var(--global__UI__border-style);
+					--dropdown-menu__border-right: none;
+					--dropdown-menu__align-items: flex-start;
+				}
+			}
+
+			// prettier-ignore
+			a { @extend .abstract-ButtonText;
+				border: none; }
+			// Redéfinit TOUS les liens du menu droits
+			// en plus de ceux des dropdown
+
+			// prettier-ignore
+			& > li > a { padding: 1rem; }
+			// Concerne uniquement le bouton "article"
+		}
+
+		// Ajoute le mot langue au menu
+		.fa-globe::after {
+			content: ' Langue';
+			@extend .abstract-P;
+		}
+	}
+
+	// Le formulaire du champ de recherche "Quick Search"
+	.navbar-form {
+		box-shadow: none;
+		border: none;
+		position: relative;
+		margin: 0;
+		padding: 0;
+		//
+		// Le champ d'entrée
+		input {
+			z-index: 1;
+			width: 16rem;
+			transition: width var(--global__transition);
+			//
+			// Au focus agrandir
+			&:focus {
+				width: 25vw;
+			}
+			// En tablette, pleine largeur
+			@include for-tablet {
+				width: 100% !important ;
+			}
+		}
+		// prettier-ignore
+		.form-group label{display: none ;}
+
+		// Le groupe du bouton LOUPE
+		.input-group {
+			display: flex !important;
+			flex-direction: row !important;
+			align-items: center !important;
+			align-content: center !important;
+
+			&-btn {
+				display: contents; // Le bouton loupe
+				&:last-child > .btn {
+					@extend .abstract-Button;
+
+					position: absolute;
+					border-radius: var(--global__UI__border-radius--input);
+					z-index: 1; // Le passe au dessus champ
+					right: 8px;
+				}
+			}
+		}
+	}
+}
+
+// Le boutton bascule ////////////////////////////////////////////
+$dot: 0.75rem;
+#btn_toggle_navbar {
+	// Aligne les 3 points à droite
+	@include for-tablet {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		align-items: flex-end;
+	}
+	// Supprime la bordure orginale
+	border: none !important;
+	background: none !important;
+	margin: 0 2rem 0 0;
+	width: 5rem;
+	&:hover {
+		background: none;
+		& .icon-bar {
+			background-color: var(--global__color__accent);
+		}
+	}
+
+	&:focus,
+	&.focus {
+		background: none;
+		border-color: var(--global__color__accent);
+	}
+
+	& .icon-bar {
+		background-color: var(--global__color__grey50);
+		border-radius: $dot;
+		height: $dot;
+		width: $dot;
+	}
+}

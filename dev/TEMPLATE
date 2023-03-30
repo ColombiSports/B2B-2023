@@ -1,0 +1,14 @@
+// Quelque soit le thème /////////////////////////////////////////////////////////////
+:root {
+}
+// Pour les utilsateurs à thème clair ------------------------------------------------
+@media (prefers-color-scheme: light) {
+	:root {
+	}
+}
+// Pour les utilsateurs à thème ombre -------------------------------------------------
+@media (prefers-color-scheme: dark) {
+	:root {
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////
