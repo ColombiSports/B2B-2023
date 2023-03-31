@@ -68,6 +68,9 @@
 	--product-libelle__color: var(--global__foreground-color);
 	--product-border__color: var(--product-menu__color);
 
+	border-radius: var(--global__UI__border-radius--card);
+	background-color: var(--global__background-color);
+
 	/** 
 
 	**/
@@ -216,7 +219,7 @@
 			font-size: var(--global__font-size__lg);
 			font-weight: var(--global__font-weight__bold);
 
-			margin-bottom: -0.33em;
+			margin-bottom: 0.33em;
 
 			// Ajoute un icone et un texte au prix
 

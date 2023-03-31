@@ -1,0 +1,75 @@
+/**
+      Etendre à la classe ".ribbon-rop-right"
+
+      Toutes les règles sont là pour quelque chose :
+            - Définir la valeur
+            - Surécrire une valeur Equation
+**/
+.abstract-Promotion {
+	//
+	// prettier-ignore
+	.show-prix-public & { display: none !important ; }
+	// MASQUE LA PROMO POUR LES CLIENTS DE L'ARUMURIER
+
+	// Surécriture Equation ---------------------------------------------
+	background: var(--global__color__promo);
+	width: auto;
+	height: auto;
+	top: 0px;
+	right: 0px;
+	overflow: unset;
+	position: absolute;
+	z-index: 1;
+
+	// Affiché au centre du block
+	display: grid;
+	place-content: center;
+	padding: 0.5rem 2rem 1rem 2rem;
+	border-radius: 0 var(--global__UI__border-radius--card) 0 0;
+
+	// La valeur de la promotion sous Equation -------------------------
+	span {
+		// Surécriture Equation
+		width: unset;
+		height: unset;
+		top: unset;
+		left: unset;
+		right: unset;
+		position: relative;
+		transform: rotate(0);
+		box-shadow: none;
+
+		// Le fond est renvoyé au parent
+		background: none;
+		color: var(--global__color__promo--text);
+		font-size: var(--global__font-size__lg);
+		font-weight: 900;
+		line-height: 0.6em;
+
+		// Alignement à droite
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+
+		// Ajoute le label de la promo
+		&::before {
+			content: "PROMO SPÉCIALE";
+			font-size: var(--global__font-size__xs);
+			font-weight: var(--global__font-weight__regular);
+			display: block;
+			border: none;
+		}
+		// Non utlisé : le content est vide
+		&::after {
+			content: unset;
+			// border: solid 10px transparent;
+			// border-left-color: black;
+			// position: absolute;
+			// position: absolute;
+			// right: -9px;
+			// bottom: -9px;
+			// z-index: -1;
+			// transform: skewy(-45deg);
+		}
+	}
+}

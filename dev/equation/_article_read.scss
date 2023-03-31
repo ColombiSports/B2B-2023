@@ -1,11 +1,11 @@
-@use './../abstract/Product';
+@use "./../abstract/Product";
 
 #article_read {
 	.product-info {
 		// prettier-ignore
 		hr{display: none ; } // Masquage des séparateurs
 
-		@extend .abstract-Product;
+		// @extend .abstract-Product;
 
 		display: flex;
 		flex-direction: column;

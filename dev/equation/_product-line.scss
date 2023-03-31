@@ -1,6 +1,7 @@
-@use './../abstract/Product';
+@use "./../abstract/Product";
 
 .container .product-line {
 	border: none !important ;
+	padding: 2rem;
 	@extend .abstract-Product;
 }

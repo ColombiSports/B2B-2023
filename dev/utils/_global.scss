@@ -50,6 +50,7 @@
 	--global__color__preco: #12a59e;
 	--global__color__nouveau: #06c;
 	--global__color__promo: #c00;
+	--global__color__promo--text: white;
 	--global__color__step-todo: #666;
 	--global__color__step-current: var(--global__color__vert);
 	--global__color__step-validate: var(--global__color__bleu);
@@ -88,6 +89,8 @@
 		--global__color__accent--hover: #f72;
 		--global__filter__unavailable: grayscale(1) contrast(0.1) brightness(1.7);
 
+		--global__color__promo: #c00;
+
 		--global__UI__unselected-item: var(--global__color__grey33);
 	}
 }
@@ -101,6 +104,8 @@
 
 		--global__color__accent--hover: #c30;
 		--global__filter__unavailable: grayscale(1) contrast(0.3) brightness(0.3);
+
+		--promo__backgrou: #c00;
 
 		--global__UI__unselected-item: var(--global__color__grey66);
 	}
