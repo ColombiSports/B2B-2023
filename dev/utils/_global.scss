@@ -1,11 +1,11 @@
-﻿@use 'sass:color';
+﻿@use "sass:color";
 //
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500&family=Montserrat:wght@300;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500&family=Montserrat:wght@300;500;700&display=swap");
 
 :root {
 	// Les polices
-	--global__font-family__title: 'Barlow Semi Condensed', sans-serif;
-	--global__font-family__text: 'Montserrat', sans-serif;
+	--global__font-family__title: "Barlow Semi Condensed", sans-serif;
+	--global__font-family__text: "Montserrat", sans-serif;
 
 	// Uniformisation des tailles
 	--global__font-size__xs: 0.9rem;
@@ -48,6 +48,8 @@
 	--global__color__info: #00ccff;
 	--global__color__danger: #d00;
 	--global__color__preco: #12a59e;
+	--global__color__nouveau: #06c;
+	--global__color__promo: #c00;
 	--global__color__step-todo: #666;
 	--global__color__step-current: var(--global__color__vert);
 	--global__color__step-validate: var(--global__color__bleu);

@@ -1,4 +1,4 @@
-﻿@use 'sass:string';
+﻿@use "sass:string";
 
 /* --------------------------------
    LES LOGOS DES MARQUES DU B2B
@@ -120,11 +120,20 @@ $logos :
 	"WSD" "WSD";
 
 @each $ID, $file in $logos {
-	.product-info,
-	.product-thumbnail {
-		&[class*='marque-#{$ID}'] {
-			--URL__logo-color: url('https://colombisports.com/b2b/img/logos-color/#{$file}.png');
-			--URL__logo-white: url('https://colombisports.com/b2b/img/logos-white/#{$file}.png');
+	@media (prefers-color-scheme: light) {
+		.product-info,
+		.product-thumbnail {
+			&[class*="marque-#{$ID}"] {
+				--marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/#{$file}.png");
+			}
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		.product-info,
+		.product-thumbnail {
+			&[class*="marque-#{$ID}"] {
+				--marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/#{$file}.png");
+			}
 		}
 	}
 }

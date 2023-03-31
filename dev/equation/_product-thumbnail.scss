@@ -1,4 +1,5 @@
 @use "./../abstract/Product";
+@use "./ribbon-top-right";
 
 /**
 	LES MINIATURES ARTICLES ///////////////////////////////////////////
@@ -15,13 +16,14 @@
 	border-radius: var(--global__UI__border-radius--card);
 	background-color: var(--global__background-color);
 
-	padding: 2rem;
+	padding: 6rem 2rem 2rem 2rem;
 
 	@extend .abstract-Product;
 
 	// Définit les couleurs de la carte avant survol.
 	--product-button__color: var(--global__color__accent);
 	--product-icon__color: var(--global__foreground-color);
+	--product-ribbon__color: var(--product-menu__color);
 
 	//filter: var(--unvalaible-filter);
 
@@ -33,11 +35,58 @@
 		--product-border__color: white;
 		--product-button__color: white;
 		--product-icon__color: var(--product-menu__color);
+		--product-ribbon__color: black;
 
 		//--unvalaible-filter: none;
 
 		background-color: var(--product-menu__color);
 		box-shadow: none;
+	}
+
+	// LE LOGO DE LA MARQUE
+	&::before {
+		content: "";
+		position: absolute;
+		height: 3rem;
+		aspect-ratio: 3 / 1;
+		margin-top: -4.5rem;
+		margin-left: 0rem;
+		background: var(--marque__logo-url);
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
+	}
+	&.statut-PRECO::after,
+	&.statut-NOUVEAU::after {
+		color: white;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-radius: 0 var(--global__UI__border-radius--card) 0 var(--global__UI__border-radius--card);
+		display: grid;
+		place-content: center;
+		font-size: var(--global__font-size__md);
+		font-weight: var(--global__font-weight__bold);
+		letter-spacing: -0.05em;
+		transform: translate3D(0.5rem, -0.5rem, 0);
+		padding: 0.5em 1em;
+		box-shadow: -0.5rem 0.5rem 0.5rem 0rem #0003 !important;
+	}
+
+	&.statut-NOUVEAU::after {
+		content: "NOUVEAU";
+		background-color: var(--global__color__nouveau);
+	}
+	&.statut-PRECO::after {
+		content: "PRECOMMANDE";
+		background-color: var(--global__color__preco);
+	}
+
+	.product-promotion.ribbon-top-right {
+		@extend .ribbon-top-right;
+	}
+
+	.product-caption {
 	}
 
 	.product-caption {
@@ -50,7 +99,7 @@
 
 			&.product-code {
 				::before {
-					left: -2rem;
+					padding: calc(var(--card__padding) * -1rem);
 				}
 			}
 			&.product-libelle {
@@ -116,13 +165,11 @@
 				display: none;
 			}
 		}
-
-		&-col-button .btn-add-cart {
+		g &-col-button .btn-add-cart {
 			// BOUTON AJOUTER AU PANIER //////////////////////////////////////////////
 
 			display: grid;
 			place-content: center;
-			width: 8rem;
 			height: 8rem;
 
 			//--product-button__color: red; // var(--global__background-color);
