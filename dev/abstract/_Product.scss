@@ -1,43 +1,202 @@
 @use "./Typo";
 
 /**
-    Classe commune au miniature en forme de "carte" ou de "ligne", par conséquent
-    définir ici toutes les caractéritiques communes aux "produits": couleur, fontes, etc...
-    Les différences se gérant dans les fichiers spécifiques.
+    CLASSE COMMUNE AU MINIATURE EN FORME DE "CARTE" OU DE "LIGNE" //////////////
+
+    Par conséquent définir à partir d'ici toutes les caractéritiques communes
+    aux articles : couleur, fontes, etc. Les différences se gérant dans des
+    fichiers spécifiques.
 **/
 
-// PRIX PUBLIC //////////////////////////////////////////////////////////
-:root .show-prix-public {
-	--product__price__color: yellow;
-}
-// PRIX TARIF HT ////////////////////////////////////////////////////////
-:root {
-	--product-code__color: var(--global__foreground-color);
-	--product-rga__color: var(--label__color);
-	--product-border__color: var(--product-menu__color);
-}
-
-.stock-danger {
-	//--product-price__color: var(--global__color__grey50); //var(--global__color__danger);
-	--stock-opacity: 0.33;
-	--stock-content: "\f00d"; //  X
-	--stock-color: var(--global__color__danger);
-}
-.stock-success {
-	//--product-price__color: var(--label__color); // var(--global__color__success);
-	--stock-opacity: 0.66;
-	--stock-content: "\f00c"; //  |/
-	--stock-color: var(--global__color__success);
-}
-.stock-danger,
-.stock-success {
-	&:hover {
-		--stock-opacity: 1;
-	}
-}
-
-// Classe à appliquer aux "articles"
+// Classe à appliquer aux "PRODUCT" (article)
 .abstract-Product {
+	// Les variables par défaut --------------------------------------------
+	--product__code__color: var(--global__foreground-color);
+	--product__rga__color: var(--label__color);
+	--product__libelle__color: var(--global__foreground-color);
+	--product__price__color: var(--global__foreground-color);
+	--product__border-color: var(--colormap__product-color); // Voir fichier "utils/colormap.scss"
+	--product__cat-color: var(--global__foreground-color); // En attente de la classe Equation
+
+	// FONCTIONNNE
+	// .show-prix-public & {
+	// 	background-color: brown;
+	// }
+
+	/**
+		TOUTES VERSIONS ///////////////////////////////////////////////////
+		NE PAS INCRUSTRER LES SÉLECTEURS CI-DESSOUS !
+	**/
+
+	/** 
+		LE LOGO DE LA MARQUE -------------------------------------------
+		Car ils peuvent être sur fond noir ou blanc
+	**/
+	// Le containeur du logo quand est définit dans l'Admin
+	.product-marque-image {
+		width: 40%;
+		height: auto;
+		padding: 0;
+		text-align: center;
+		position: absolute;
+		z-index: 5;
+		mix-blend-mode: multiply;
+		top: 2rem;
+		left: 2rem;
+		background-color: red;
+		img {
+			max-height: 40px;
+			max-width: 100%;
+			width: auto;
+		}
+	}
+	// LE LOGO DE LA MARQUE SELON L'ANCIENNE METHODE
+	&::before {
+		content: "";
+		position: absolute;
+		height: 5rem;
+		aspect-ratio: 3 / 1;
+		// margin-top: -4.5rem;
+		// margin-right: 0rem;
+		background: var(--marque__logo-url);
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
+		// top: 0;
+		// right: 0;
+	}
+
+	/**
+		L'IMAGE PRODUIT --------------------------------------------------
+		".image img" pour les thumbnails
+		".left picture "pour les inlines
+	**/
+	// prettier-ignore
+	.image, .left {
+		// prettier-ignore
+		img, picture { mix-blend-mode: multiply; }
+
+		box-shadow: inset 0 0 5rem #00000022;
+		background: #fff;
+		border-radius: calc(var(--global__UI__border-radius--card) * 0.25);
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1 / 1;
+		display: grid;
+		place-content: center;
+		margin: 0;
+		padding: 1rem;
+	}
+
+	/**
+		LE CODE ARTICLE ----------------------------------------------------
+	**/
+	.product-code {
+		position: relative;
+		font-family: var(--global__font-family__text) !important;
+		font-size: var(--global__font-size__sm) !important;
+		font-weight: var(--global__font-weight__light) !important;
+		color: var(--product__code__color) !important;
+		padding: 0;
+
+		// Le soulignement
+		&::before {
+			content: "";
+			position: absolute;
+			width: 3em;
+			height: 0.15em;
+			background-color: var(--product__border-color, #666);
+			bottom: -0.5rem;
+		}
+	}
+
+	/**
+		LE RGA ARTICLE ----------------------------------------------------
+		Ingénieusement mis dans le code article 😅
+	**/
+	.product-rga {
+		color: var(--product__rga__color) !important;
+		font-size: var(--global__font-size__xs) !important;
+	}
+
+	/**
+		LA DESIGNATION ARTICLE ---------------------------------------------
+	**/
+	.product-libelle {
+		color: var(--product__libelle__color);
+		font-family: var(--global__font-family__title);
+		font-size: var(--global__font-size__md);
+		font-weight: var(--global__font-weight__bold);
+		line-height: 1.15em;
+	}
+
+	.product-description {
+		font-family: var(--global__font-family__text);
+		font-size: var(--global__font-size__sm);
+		font-weight: var(--global__font-weight__regular);
+		line-height: 2em;
+
+		@media (prefers-color-scheme: light) {
+			& {
+				color: var(--global__color__grey66);
+			}
+		}
+		@media (prefers-color-scheme: dark) {
+			& {
+				color: var(--global__color__grey33);
+			}
+		}
+	}
+
+	// Uniquement fiche article
+	.product-cat {
+		// prettier-ignore
+		&.cat-B{ --product__cat-color: var(--global__color__cat-B );}
+		// prettier-ignore
+		&.cat-C{ --product__cat-color: var(--global__color__cat-C );}
+		// prettier-ignore
+		&.cat-D{ --product__cat-color: var(--global__color__cat-D );}
+
+		color: white;
+		background-color: var(--product__cat-color);
+		border-radius: calc(var(--global__UI__border-radius--card) * 0.25);
+
+		font-family: var(--global__font-family__title);
+		font-weight: var(--global__font-weight__bold);
+		font-size: 4rem;
+		padding: 1.3rem 0.2em 1.4rem 1.4rem;
+
+		&:before {
+			content: "Catégorie ";
+			font-family: var(--global__font-family__text);
+			font-weight: var(--global__font-weight__bold);
+			font-size: 0.6rem;
+			transform: translate(-3px, 17px) rotate(-90deg);
+			transform-origin: left center;
+			position: absolute;
+		}
+	}
+
+	// Les valeurs en mode article dispo -----------------------------------
+
+	.product-stock {
+		display: none;
+	}
+	&.stock-danger {
+		--product__stock__opacity: 0.33; // L'opacité de stock
+		--stock-content: "\f00d"; //  X  l'icone accompagnant le label
+		--stock-color: var(--global__color__danger); // La couleur de l'icone
+	}
+	&.stock-success {
+		--product__stock__opacity: 0.66;
+		--stock-content: "\f00c"; //  |/
+		--stock-color: var(--global__color__success);
+	}
+	// Déplacer dans la classe abstraite ".abstract-Product--card"
+	// &.stock-danger:hover,
+	// &.stock-success:hover {
+	// 	--product__stock__opacity: 1;
+	// }
 	/**
 		VERSION PUBLIC /////////////////////////////////////////////////
 		
@@ -63,202 +222,95 @@
 		}
 	}
 
-	--product-code__color: var(--global__foreground-color);
-	--product-rga__color: var(--label__color);
-	--product-libelle__color: var(--global__foreground-color);
-	--product-border__color: var(--product-menu__color);
-
-	border-radius: var(--global__UI__border-radius--card);
-	background-color: var(--global__background-color);
-
-	/** 
-
-	**/
-	.product-marque-image {
-		width: 40%;
-		height: auto;
-		padding: 0;
-		text-align: center;
-		position: absolute;
-		z-index: 5;
-		mix-blend-mode: multiply;
-		top: 2rem;
-		left: 2rem;
-		img {
-			max-height: 40px;
-			max-width: 100%;
-			width: auto;
-		}
-	}
-	.image {
-		img {
-			mix-blend-mode: multiply;
-		}
-		box-shadow: inset 0 0 5rem #00000022;
-		background: #fff;
-		border-radius: calc(var(--global__UI__border-radius--card) * 0.25);
-		width: 100%;
-		height: auto;
-		aspect-ratio: 1 / 1;
-		display: grid;
-		place-content: center;
-		margin: 0;
-		padding: 1rem;
-	}
-
-	.product-caption {
-		background: none;
-		border: none;
-		padding: 2rem 0 0 0; // car padding de la carte
-		position: relative;
-	}
-
-	.product-code {
-		position: relative;
-		font-size: var(--global__font-size__sm) !important;
-		font-weight: var(--global__font-weight__light) !important;
-		color: var(--product-code__color) !important;
-		padding: 0;
-
-		@extend .abstract-P;
-
-		&::before {
-			content: "";
-			position: absolute;
-			width: 3em;
-			height: 0.15em;
-			background-color: var(--product-border__color, red);
-			bottom: -0.5rem;
-		}
-	}
-
-	.product-rga {
-		color: var(--product-rga__color) !important;
-		font-size: var(--global__font-size__xs) !important;
-	}
-
-	.product-libelle {
-		color: var(--product-libelle__color);
-		@extend .abstract-H2;
-		font-size: var(--global__font-size__md);
-		line-height: 1.15em;
-	}
-
-	.product-cat {
-		color: green;
-	}
-
-	.product-stock {
-		display: none;
-		span.label-stock {
-			font-size: 0;
-
-			&::before {
-				content: "";
-				font-size: var(--global__font-size__sm);
-				font-family: FontAwesome;
-				margin-top: -0.5em;
-			}
-		}
-		span.label-success::before {
-			content: "\f00c"; //  |/
-			color: var(--global__color__success) !important;
-		}
-		span.label-danger::before {
-			content: "\f00d"; //  X
-			color: var(--global__color__danger) !important;
-		}
-	}
 	.product-prix {
-		color: var(--global__foreground-color);
+		opacity: var(--product__stock__opacity);
+		color: var(--product__price__color);
 		font-family: var(--global__font-family__text);
 		position: relative;
-		opacity: var(--stock-opacity);
 		padding: 0 !important;
 		margin: 0 0 -0.5rem 0 !important;
 
-		// Le label des prix ////////////////////////////////////////////
+		// Le label des prix -------------------------------------------
 
-		// Ajout d'un icone avant et d'un texte après
-		&[data-toggle="prix-tarif"] .desc-label {
+		.desc-label {
+			font-size: var(--global__font-size__xs);
+			font-size: 0;
+		}
+
+		&[data-toggle="prix-tarif"] {
 			.desc-label {
-				display: none;
+			}
+			.desc-value {
 			}
 		}
 		//
-		&[data-toggle="prix-public"] .desc-label {
-			font-size: 0;
-			display: flex;
-			align-items: center;
-			position: relative;
-			//
-			// Ajoute un icone de disponibilite de la couleur du stock
-			&::before,
-			&::after {
-				font-weight: var(--global__font-weight__bold);
+		&[data-toggle="prix-public"] {
+			.desc-label {
+				font-size: 0;
+				display: flex;
+				align-items: center;
+				position: relative;
+				//
+				// Ajoute un icone de disponibilite de la couleur du stock
+				&::before,
+				&::after {
+					font-weight: var(--global__font-weight__bold);
+				}
+				&::before {
+					content: var(--stock-content);
+					color: var(--stock-color);
+					font-size: var(--global__font-size__md);
+					font-family: FontAwesome;
+				}
+				// MODIFIER EN AMONT
+				&:after {
+					content: "PVC";
+					font-size: var(--global__font-size__xs);
+					margin-left: 0.5em;
+				}
 			}
-			&::before {
-				content: var(--stock-content);
-				color: var(--stock-color);
-				font-size: var(--global__font-size__md);
-				font-family: FontAwesome;
-			}
-			// MODIFIER EN AMONT
-			&:after {
-				content: "PVC";
-				font-size: var(--global__font-size__xs);
-				margin-left: 0.5em;
+			.desc-value {
 			}
 		}
 
 		.desc-value {
 			display: flex;
-			flex-direction: --PVC__flex-direction;
+			flex-direction: var(--PVC__flex-direction);
 
 			color: var(--product-price__color) !important ;
 			font-size: var(--global__font-size__lg);
 			font-weight: var(--global__font-weight__bold);
 
 			margin-bottom: 0.33em;
-
-			// Ajoute un icone et un texte au prix
-
-			//// Ajoute un icone de disponibilite de la couleur du stock
-			//&::before,
-			//&::after {
-			//	color: var(--stock-color);
-			//	font-size: var(--global__font-size__sm);
-			//	font-weight: var(--global__font-weight__bold);
-			//	display: block;
-			//	position: absolute;
-			//}
-			//&::before {
-			//	content: var(--stock-content);
-			//	font-family: FontAwesome;
-			//	bottom: -1.25em;
-			//}
-			//// Ajoute un texte du type de prix de la couleur du stock
-			//&:after {
-			//	font-size: 0.5em;
-			//	left: 1.25em;
-			//	bottom: -1.4em;
-			//}
 		}
-
-		//&[data-toggle='prix-tarif'] {
-		//	display: block;
-		//	.desc-value:after {
-		//		content: 'PRIX TARIF HT';
-		//	}
-		//}
-		//&[data-toggle='prix-public'] {
-		//	display: block;
-		//	.desc-value:after {
-		//		content: 'PRIX PUBLIC TTC';
-		//	}
-		//}
 	}
+}
 
+.abstract-Product--card {
+	border-radius: var(--global__UI__border-radius--card);
+	background-color: var(--global__background-color);
 	transition: var(--global__transition--all);
 	box-shadow: none;
+	@extend .abstract-Product;
+
+	// Les variables au survol ---------------------------------------------
+	&:hover {
+		//--product-price__color: white;
+		--product__code__color: white;
+		--product__rga__color: white;
+		--product__libelle__color: white;
+		--product__border-color: white;
+		--product__button__color: white;
+		--product__icon__color: var(--colormap__product-color);
+		--product__ribbon__color: black;
+
+		//--unvalaible-filter: none;
+
+		background-color: var(--colormap__product-color);
+		box-shadow: none;
+	}
+	&.stock-danger:hover,
+	&.stock-success:hover {
+		--product__stock__opacity: 1;
+	}
 }

@@ -1,7 +1,25 @@
 @use "./../abstract/Product";
 
 .container .product-line {
-	border: none !important ;
+	border: none !important;
 	padding: 2rem;
-	@extend .abstract-Product;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	align-items: stretch;
+	justify-content: space-between;
+
+	@extend .abstract-Product--card;
+
+	.center {
+		// background-color: yellow;
+	}
+	.right {
+		background-color: bisque;
+	}
+
+	.left {
+		flex: 0 0 100px;
+	}
 }

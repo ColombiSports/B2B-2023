@@ -45,7 +45,7 @@ div {
   --global__font-weight__bold: 700;
   --global__color__marques: var(--global__background-color);
   --global__color__armes: #ff7700;
-  --global__color__defense: #957375;
+  --global__color__defense: #816363;
   --global__color__munitions: #0569b3;
   --global__color__rechargement: red;
   --global__color__optique: #1c3661;
@@ -60,9 +60,9 @@ div {
   --global__color__grey50: hsl(0, 0%, 50%);
   --global__color__grey66: hsl(0, 0%, 33%);
   --global__color__grey75: hsl(0, 0%, 25%);
-  --global__color__cat-B: #1d71b8;
-  --global__color__cat-C: #f39200;
-  --global__color__cat-D: #95c11f;
+  --global__color__cat-B: #3e6484;
+  --global__color__cat-C: #97764e;
+  --global__color__cat-D: #6d9158;
   --global__color__success: #669900;
   --global__color__warning: #ff9900;
   --global__color__info: #00ccff;
@@ -120,26 +120,26 @@ div {
 	ne servent qu'à la lisibilité et compréhension.
 **/
 .division-chasse.famille-1000, .division-chasse.categorie-1285, .division-chasse.categorie-1285, .division-chasse.categorie-1290, .division-chasse.categorie-1285, .division-chasse.categorie-1305, .division-chasse.categorie-1307, .division-chasse.categorie-1320, .division-chasse.categorie-1330, .division-chasse.categorie-1340, .division-chasse.categorie-1745, .division-chasse.categorie-1746, .division-chasse.categorie-1747, .division-chasse.categorie-1750, .division-chasse.categorie-1760, .division-chasse.categorie-1760, .division-chasse.famille-1200, .division-chasse.categorie-2727, .division-chasse.categorie-1290, .division-chasse.categorie-1301, .division-chasse.categorie-1320, .division-chasse.categorie-2490, .division-chasse.categorie-1430, .division-chasse.categorie-1745, .division-chasse.categorie-1200, .division-chasse.famille-1252, .division-chasse.categorie-1300, .division-chasse.categorie-1301, .division-chasse.categorie-1330, .division-chasse.categorie-2500, .division-chasse.categorie-2730, .division-chasse.famille-3100, .division-chasse.categorie-2720, .division-chasse.categorie-1010, .division-chasse.categorie-2110, .division-chasse.categorie-1430:not(.famille-2300) {
-  --product-menu__color: var(--global__color__armes);
+  --colormap__product-color: var(--global__color__armes);
 }
 .division-chasse.famille-1255, .division-chasse.categorie-2610, .division-chasse.categorie-2740, .division-chasse.categorie-2620, .division-chasse.categorie-2750, .division-chasse.categorie-2780, .division-chasse.categorie-2050, .division-chasse.categorie-2650, .division-chasse.categorie-2052, .division-chasse.categorie-1265 {
-  --product-menu__color: var(--global__color__defense);
+  --colormap__product-color: var(--global__color__defense);
 }
 .division-chasse.famille-1700, .division-chasse.categorie-2300, .division-chasse.categorie-2305, .division-chasse.categorie-2145, .division-chasse.categorie-2120, .division-chasse.categorie-2210, .division-chasse.categorie-1775, .division-chasse.categorie-2710, .division-chasse.categorie-2230, .division-chasse.categorie-1252, .division-chasse.categorie-2710, .division-chasse.categorie-1012, .division-chasse.categorie-1020, .division-chasse.categorie-1250, .division-chasse.categorie-1940 {
-  --product-menu__color: var(--global__color__munitions);
+  --colormap__product-color: var(--global__color__munitions);
 }
 .division-chasse.famille-1600, .division-chasse.categorie-2025, .division-chasse.categorie-2020, .division-chasse.categorie-2660, .division-chasse.categorie-1950, .division-chasse.categorie-2860, .division-chasse.categorie-2015, .division-chasse.categorie-2820, .division-chasse.categorie-2062, .division-chasse.categorie-1970 {
-  --product-menu__color: var(--global__color__optique);
+  --colormap__product-color: var(--global__color__optique);
 }
 .division-chasse.famille-1900, .division-chasse.categorie-1120, .division-chasse.categorie-1210, .division-chasse.categorie-1240, .division-chasse.categorie-1267, .division-chasse.categorie-1350, .division-chasse.categorie-1640, .division-chasse.categorie-1650, .division-chasse.categorie-1780, .division-chasse.categorie-1820, .division-chasse.categorie-2450, .division-chasse.categorie-2640, .division-chasse.categorie-2760, .division-chasse.famille-2000, .division-chasse.categorie-1262, .division-chasse.categorie-1410, .division-chasse.categorie-1610, .division-chasse.categorie-1730, .division-chasse.categorie-2027, .division-chasse.famille-1800, .division-chasse.categorie-1500, .division-chasse.categorie-1625, .division-chasse.categorie-1710, .division-chasse.categorie-1740, .division-chasse.categorie-2040, .division-chasse.categorie-2060, .division-chasse.categorie-2320, .division-chasse.categorie-2630, .division-chasse.categorie-2767, .division-chasse.categorie-2783, .division-chasse.categorie-2840, .division-chasse.categorie-1920, .division-chasse.famille-3100:not(.categorie-2720), .division-chasse.famille-1800, .division-chasse.categorie-1268, .division-chasse.categorie-1680, .division-chasse.categorie-1692, .division-chasse.categorie-1720, .division-chasse.categorie-1830, .division-chasse.categorie-1930, .division-chasse.categorie-2306, .division-chasse.categorie-2400, .division-chasse.categorie-2787, .division-chasse.famille-2300, .division-chasse.categorie-1261 {
-  --product-menu__color: var(--global__color__accessoires);
+  --colormap__product-color: var(--global__color__accessoires);
 }
 .division-chasse.famille-1900, .division-chasse.categorie-1263, .division-chasse.categorie-1266, .division-chasse.categorie-1420, .division-chasse.categorie-1450, .division-chasse.categorie-1670, .division-chasse.categorie-1770, .division-chasse.categorie-2307, .division-chasse.categorie-2308, .division-chasse.categorie-2700, .division-chasse.categorie-2701, .division-chasse.categorie-2810, .division-chasse.categorie-2850, .division-chasse.categorie-1220, .division-chasse.categorie-1230, .division-chasse.categorie-1281, .division-chasse.categorie-2010, .division-chasse.categorie-2880 {
-  --product-menu__color: var(--global__color__outdoor);
+  --colormap__product-color: var(--global__color__outdoor);
 }
 
 .division-airsoft.famille-2670, .division-airsoft.famille-2680, .division-airsoft.famille-2700, .division-airsoft.categorie-2787, .division-airsoft.categorie-1775, .division-airsoft.categorie-2210, .division-airsoft.categorie-1680, .division-airsoft.categorie-1830, .division-airsoft.categorie-1266, .division-airsoft.categorie-1360, .division-airsoft.categorie-1410, .division-airsoft.categorie-1420, .division-airsoft.categorie-1425, .division-airsoft.categorie-1633, .division-airsoft.categorie-1650, .division-airsoft.categorie-1730, .division-airsoft.categorie-1740, .division-airsoft.categorie-1770, .division-airsoft.categorie-1780, .division-airsoft.categorie-1790, .division-airsoft.categorie-1920, .division-airsoft.categorie-1927, .division-airsoft.categorie-2040, .division-airsoft.categorie-2045, .division-airsoft.categorie-2055, .division-airsoft.categorie-2060, .division-airsoft.categorie-2309, .division-airsoft.categorie-2760, .division-airsoft.categorie-2763, .division-airsoft.categorie-2810, .division-airsoft.categorie-2850, .division-airsoft.categorie-1610, .division-airsoft.categorie-2365, .division-airsoft.categorie-2880:not(.marque-TAURUS), .division-airsoft.categorie-1261, .division-airsoft:not(.division-airsoft.famille-1700), .division-airsoft:not(.division-airsoft.famille-1600), .division-airsoft:not(.division-airsoft.famille-2700), .division-airsoft:not(.division-airsoft.famille-2680), .division-airsoft.categorie-1280, .division-airsoft.categorie-1636, .division-airsoft.categorie-1645, .division-airsoft.categorie-1715, .division-airsoft.categorie-1910, .division-airsoft.categorie-1923, .division-airsoft.categorie-2070, .division-airsoft.categorie-2460, .division-airsoft.categorie-2470, .division-airsoft.categorie-2725, .division-airsoft.categorie-2767, .division-airsoft.categorie-2755, .division-airsoft.categorie-9999, .division-airsoft.categorie-2071, .division-airsoft.categorie-2072, .division-airsoft.categorie-2073, .division-airsoft.categorie-2320, .division-airsoft.categorie-2660, .division-airsoft.categorie-2020, .division-airsoft.categorie-2015, .division-airsoft.categorie-2062, .division-airsoft.categorie-2025 {
-  --product-menu__color: var(--global__color__airsoft);
+  --colormap__product-color: var(--global__color__airsoft);
 }
 
 /*******************************************************************
@@ -174,6 +174,7 @@ Surcharge des éléments bootstrap
 
 .row {
   margin: 0;
+  display: flex;
 }
 
 #apple-password-autofill-list {
@@ -219,7 +220,7 @@ body > .container {
   margin-bottom: 10rem;
 }
 
-.abstract-P, .abstract-Product .product-code, .product-thumbnail .product-code, .container .product-line .product-code, .navbar-default.navbar-main .navbar-collapse .fa-globe::after, .abstract-ButtonText, .navbar-default.navbar-main .navbar-collapse .navbar-right a, .dropdown a, .navbar-default.navbar-main .navbar-collapse .navbar-right .dropdown a {
+.abstract-P, .navbar-default.navbar-main .navbar-collapse .fa-globe::after, .abstract-ButtonText, .navbar-default.navbar-main .navbar-collapse .navbar-right a, .dropdown a, .navbar-default.navbar-main .navbar-collapse .navbar-right .dropdown a {
   font-family: var(--global__font-family__text);
   font-size: var(--global__font-size__sm);
   font-weight: var(--global__font-weight__regular);
@@ -228,7 +229,7 @@ body > .container {
 .abstract-H, .abstract-H5,
 h5, .abstract-H4,
 h4, .abstract-H3,
-h3, .abstract-H2, #product_result_main_header #page_title, .abstract-Product .product-libelle, .product-thumbnail .product-libelle, .container .product-line .product-libelle,
+h3, .abstract-H2, #product_result_main_header #page_title,
 h2, .abstract-H1,
 h1 {
   font-family: var(--global__font-family__title);
@@ -243,7 +244,7 @@ h1 {
   font-size: var(--global__font-size__xl);
 }
 
-.abstract-H2, #product_result_main_header #page_title, .abstract-Product .product-libelle, .product-thumbnail .product-libelle, .container .product-line .product-libelle,
+.abstract-H2, #product_result_main_header #page_title,
 h2 {
   font-size: var(--global__font-size__lg);
 }
@@ -1149,70 +1150,50 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
-    Classe commune au miniature en forme de "carte" ou de "ligne", par conséquent
-    définir ici toutes les caractéritiques communes aux "produits": couleur, fontes, etc...
-    Les différences se gérant dans les fichiers spécifiques.
+    CLASSE COMMUNE AU MINIATURE EN FORME DE "CARTE" OU DE "LIGNE" //////////////
+
+    Par conséquent définir à partir d'ici toutes les caractéritiques communes
+    aux articles : couleur, fontes, etc. Les différences se gérant dans des
+    fichiers spécifiques.
 **/
-:root .show-prix-public {
-  --product__price__color: yellow;
-}
-
-:root {
-  --product-code__color: var(--global__foreground-color);
-  --product-rga__color: var(--label__color);
-  --product-border__color: var(--product-menu__color);
-}
-
-.stock-danger {
-  --stock-opacity: 0.33;
-  --stock-content: "";
-  --stock-color: var(--global__color__danger);
-}
-
-.stock-success {
-  --stock-opacity: 0.66;
-  --stock-content: "";
-  --stock-color: var(--global__color__success);
-}
-
-.stock-danger:hover,
-.stock-success:hover {
-  --stock-opacity: 1;
-}
-
-.abstract-Product, .product-thumbnail, .container .product-line {
+.abstract-Product, #article_read .product-info, .abstract-Product--card, .product-thumbnail, .container .product-line {
+  --product__code__color: var(--global__foreground-color);
+  --product__rga__color: var(--label__color);
+  --product__libelle__color: var(--global__foreground-color);
+  --product__price__color: var(--global__foreground-color);
+  --product__border-color: var(--colormap__product-color);
+  --product__cat-color: var(--global__foreground-color);
+  /**
+  	TOUTES VERSIONS ///////////////////////////////////////////////////
+  	NE PAS INCRUSTRER LES SÉLECTEURS CI-DESSOUS !
+  **/
+  /** 
+  	LE LOGO DE LA MARQUE -------------------------------------------
+  	Car ils peuvent être sur fond noir ou blanc
+  **/
+  /**
+  	L'IMAGE PRODUIT --------------------------------------------------
+  	".image img" pour les thumbnails
+  	".left picture "pour les inlines
+  **/
+  /**
+  	LE CODE ARTICLE ----------------------------------------------------
+  **/
+  /**
+  	LE RGA ARTICLE ----------------------------------------------------
+  	Ingénieusement mis dans le code article 😅
+  **/
+  /**
+  	LA DESIGNATION ARTICLE ---------------------------------------------
+  **/
   /**
   	VERSION PUBLIC /////////////////////////////////////////////////
 
   	Le & faisant référence à ".abstract-Product"
   	Permet ainsi l'incrustation dans la règle et par conséquent l'héritage lors des @extends
   **/
-  --product-code__color: var(--global__foreground-color);
-  --product-rga__color: var(--label__color);
-  --product-libelle__color: var(--global__foreground-color);
-  --product-border__color: var(--product-menu__color);
-  border-radius: var(--global__UI__border-radius--card);
-  background-color: var(--global__background-color);
-  /** 
-
-  **/
-  transition: var(--global__transition--all);
-  box-shadow: none;
 }
-.show-prix-public .abstract-Product .product-prix[data-toggle=prix-tarif], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-tarif], .show-prix-public .container .product-line .product-prix[data-toggle=prix-tarif], .container .show-prix-public .product-line .product-prix[data-toggle=prix-tarif] {
-  display: none;
-  --PVC__flex-direction: column-reverse;
-  --PVC__price__font-size: var(--global__font-size__sm);
-}
-.show-prix-public .abstract-Product .product-prix[data-toggle=prix-public], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-public], .show-prix-public .container .product-line .product-prix[data-toggle=prix-public], .container .show-prix-public .product-line .product-prix[data-toggle=prix-public] {
-  display: flex;
-  flex-direction: column-reverse;
-  font-size: var(--global__font-size__lg);
-}
-.show-prix-public .abstract-Product .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public .container .product-line .product-prix[data-toggle=prix-public] .desc-label:after, .container .show-prix-public .product-line .product-prix[data-toggle=prix-public] .desc-label:after {
-  content: "PRIX PUBLIC TTC";
-}
-.abstract-Product .product-marque-image, .product-thumbnail .product-marque-image, .container .product-line .product-marque-image {
+.abstract-Product .product-marque-image, #article_read .product-info .product-marque-image, .abstract-Product--card .product-marque-image, .product-thumbnail .product-marque-image, .container .product-line .product-marque-image {
   width: 40%;
   height: auto;
   padding: 0;
@@ -1222,13 +1203,24 @@ h1, h2, h3, h4, h5, h6 {
   mix-blend-mode: multiply;
   top: 2rem;
   left: 2rem;
+  background-color: red;
 }
-.abstract-Product .product-marque-image img, .product-thumbnail .product-marque-image img, .container .product-line .product-marque-image img {
+.abstract-Product .product-marque-image img, #article_read .product-info .product-marque-image img, .abstract-Product--card .product-marque-image img, .product-thumbnail .product-marque-image img, .container .product-line .product-marque-image img {
   max-height: 40px;
   max-width: 100%;
   width: auto;
 }
-.abstract-Product .image, .product-thumbnail .image, .container .product-line .image {
+.abstract-Product::before, #article_read .product-info::before, .abstract-Product--card::before, .product-thumbnail::before, .container .product-line::before {
+  content: "";
+  position: absolute;
+  height: 5rem;
+  aspect-ratio: 3/1;
+  background: var(--marque__logo-url);
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
+}
+.abstract-Product .image, #article_read .product-info .image, .abstract-Product--card .image, .product-thumbnail .image, .container .product-line .image, .abstract-Product .left, #article_read .product-info .left, .abstract-Product--card .left, .product-thumbnail .left, .container .product-line .left {
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.1333333333);
   background: #fff;
   border-radius: calc(var(--global__UI__border-radius--card) * 0.25);
@@ -1240,105 +1232,182 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 1rem;
 }
-.abstract-Product .image img, .product-thumbnail .image img, .container .product-line .image img {
+.abstract-Product .image img, #article_read .product-info .image img, .abstract-Product--card .image img, .product-thumbnail .image img, .container .product-line .image img, .abstract-Product .image picture, #article_read .product-info .image picture, .abstract-Product--card .image picture, .product-thumbnail .image picture, .container .product-line .image picture, .abstract-Product .left img, #article_read .product-info .left img, .abstract-Product--card .left img, .product-thumbnail .left img, .container .product-line .left img, .abstract-Product .left picture, #article_read .product-info .left picture, .abstract-Product--card .left picture, .product-thumbnail .left picture, .container .product-line .left picture {
   mix-blend-mode: multiply;
 }
-.abstract-Product .product-caption, .product-thumbnail .product-caption, .container .product-line .product-caption {
-  background: none;
-  border: none;
-  padding: 2rem 0 0 0;
+.abstract-Product .product-code, #article_read .product-info .product-code, .abstract-Product--card .product-code, .product-thumbnail .product-code, .container .product-line .product-code {
   position: relative;
-}
-.abstract-Product .product-code, .product-thumbnail .product-code, .container .product-line .product-code {
-  position: relative;
+  font-family: var(--global__font-family__text) !important;
   font-size: var(--global__font-size__sm) !important;
   font-weight: var(--global__font-weight__light) !important;
-  color: var(--product-code__color) !important;
+  color: var(--product__code__color) !important;
   padding: 0;
 }
-.abstract-Product .product-code::before, .product-thumbnail .product-code::before, .container .product-line .product-code::before {
+.abstract-Product .product-code::before, #article_read .product-info .product-code::before, .abstract-Product--card .product-code::before, .product-thumbnail .product-code::before, .container .product-line .product-code::before {
   content: "";
   position: absolute;
   width: 3em;
   height: 0.15em;
-  background-color: var(--product-border__color, red);
+  background-color: var(--product__border-color, #666);
   bottom: -0.5rem;
 }
-.abstract-Product .product-rga, .product-thumbnail .product-rga, .container .product-line .product-rga {
-  color: var(--product-rga__color) !important;
+.abstract-Product .product-rga, #article_read .product-info .product-rga, .abstract-Product--card .product-rga, .product-thumbnail .product-rga, .container .product-line .product-rga {
+  color: var(--product__rga__color) !important;
   font-size: var(--global__font-size__xs) !important;
 }
-.abstract-Product .product-libelle, .product-thumbnail .product-libelle, .container .product-line .product-libelle {
-  color: var(--product-libelle__color);
+.abstract-Product .product-libelle, #article_read .product-info .product-libelle, .abstract-Product--card .product-libelle, .product-thumbnail .product-libelle, .container .product-line .product-libelle {
+  color: var(--product__libelle__color);
+  font-family: var(--global__font-family__title);
   font-size: var(--global__font-size__md);
+  font-weight: var(--global__font-weight__bold);
   line-height: 1.15em;
 }
-.abstract-Product .product-cat, .product-thumbnail .product-cat, .container .product-line .product-cat {
-  color: green;
+.abstract-Product .product-description, #article_read .product-info .product-description, .abstract-Product--card .product-description, .product-thumbnail .product-description, .container .product-line .product-description {
+  font-family: var(--global__font-family__text);
+  font-size: var(--global__font-size__sm);
+  font-weight: var(--global__font-weight__regular);
+  line-height: 2em;
 }
-.abstract-Product .product-stock, .product-thumbnail .product-stock, .container .product-line .product-stock {
+@media (prefers-color-scheme: light) {
+  .abstract-Product .product-description, #article_read .product-info .product-description, .abstract-Product--card .product-description, .product-thumbnail .product-description, .container .product-line .product-description {
+    color: var(--global__color__grey66);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .abstract-Product .product-description, #article_read .product-info .product-description, .abstract-Product--card .product-description, .product-thumbnail .product-description, .container .product-line .product-description {
+    color: var(--global__color__grey33);
+  }
+}
+.abstract-Product .product-cat, #article_read .product-info .product-cat, .abstract-Product--card .product-cat, .product-thumbnail .product-cat, .container .product-line .product-cat {
+  color: white;
+  background-color: var(--product__cat-color);
+  border-radius: calc(var(--global__UI__border-radius--card) * 0.25);
+  font-family: var(--global__font-family__title);
+  font-weight: var(--global__font-weight__bold);
+  font-size: 4rem;
+  padding: 1.3rem 0.2em 1.4rem 1.4rem;
+}
+.abstract-Product .product-cat.cat-B, #article_read .product-info .product-cat.cat-B, .abstract-Product--card .product-cat.cat-B, .product-thumbnail .product-cat.cat-B, .container .product-line .product-cat.cat-B {
+  --product__cat-color: var(--global__color__cat-B );
+}
+.abstract-Product .product-cat.cat-C, #article_read .product-info .product-cat.cat-C, .abstract-Product--card .product-cat.cat-C, .product-thumbnail .product-cat.cat-C, .container .product-line .product-cat.cat-C {
+  --product__cat-color: var(--global__color__cat-C );
+}
+.abstract-Product .product-cat.cat-D, #article_read .product-info .product-cat.cat-D, .abstract-Product--card .product-cat.cat-D, .product-thumbnail .product-cat.cat-D, .container .product-line .product-cat.cat-D {
+  --product__cat-color: var(--global__color__cat-D );
+}
+.abstract-Product .product-cat:before, #article_read .product-info .product-cat:before, .abstract-Product--card .product-cat:before, .product-thumbnail .product-cat:before, .container .product-line .product-cat:before {
+  content: "Catégorie ";
+  font-family: var(--global__font-family__text);
+  font-weight: var(--global__font-weight__bold);
+  font-size: 0.6rem;
+  transform: translate(-3px, 17px) rotate(-90deg);
+  transform-origin: left center;
+  position: absolute;
+}
+.abstract-Product .product-stock, #article_read .product-info .product-stock, .abstract-Product--card .product-stock, .product-thumbnail .product-stock, .container .product-line .product-stock {
   display: none;
 }
-.abstract-Product .product-stock span.label-stock, .product-thumbnail .product-stock span.label-stock, .container .product-line .product-stock span.label-stock {
-  font-size: 0;
+.abstract-Product.stock-danger, #article_read .stock-danger.product-info, .stock-danger.abstract-Product--card, .stock-danger.product-thumbnail, .container .stock-danger.product-line {
+  --product__stock__opacity: 0.33;
+  --stock-content: "";
+  --stock-color: var(--global__color__danger);
 }
-.abstract-Product .product-stock span.label-stock::before, .product-thumbnail .product-stock span.label-stock::before, .container .product-line .product-stock span.label-stock::before {
-  content: "";
-  font-size: var(--global__font-size__sm);
-  font-family: FontAwesome;
-  margin-top: -0.5em;
+.abstract-Product.stock-success, #article_read .stock-success.product-info, .stock-success.abstract-Product--card, .stock-success.product-thumbnail, .container .stock-success.product-line {
+  --product__stock__opacity: 0.66;
+  --stock-content: "";
+  --stock-color: var(--global__color__success);
 }
-.abstract-Product .product-stock span.label-success::before, .product-thumbnail .product-stock span.label-success::before, .container .product-line .product-stock span.label-success::before {
-  content: "\f00c";
-  color: var(--global__color__success) !important;
+.show-prix-public .abstract-Product .product-prix[data-toggle=prix-tarif], .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-tarif], #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-tarif], .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-tarif], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-tarif], .show-prix-public .container .product-line .product-prix[data-toggle=prix-tarif], .container .show-prix-public .product-line .product-prix[data-toggle=prix-tarif] {
+  display: none;
+  --PVC__flex-direction: column-reverse;
+  --PVC__price__font-size: var(--global__font-size__sm);
 }
-.abstract-Product .product-stock span.label-danger::before, .product-thumbnail .product-stock span.label-danger::before, .container .product-line .product-stock span.label-danger::before {
-  content: "\f00d";
-  color: var(--global__color__danger) !important;
+.show-prix-public .abstract-Product .product-prix[data-toggle=prix-public], .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-public], #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-public], .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-public], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-public], .show-prix-public .container .product-line .product-prix[data-toggle=prix-public], .container .show-prix-public .product-line .product-prix[data-toggle=prix-public] {
+  display: flex;
+  flex-direction: column-reverse;
+  font-size: var(--global__font-size__lg);
 }
-.abstract-Product .product-prix, .product-thumbnail .product-prix, .container .product-line .product-prix {
-  color: var(--global__foreground-color);
+.show-prix-public .abstract-Product .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label:after, #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public .container .product-line .product-prix[data-toggle=prix-public] .desc-label:after, .container .show-prix-public .product-line .product-prix[data-toggle=prix-public] .desc-label:after {
+  content: "PRIX PUBLIC TTC";
+}
+.abstract-Product .product-prix, #article_read .product-info .product-prix, .abstract-Product--card .product-prix, .product-thumbnail .product-prix, .container .product-line .product-prix {
+  opacity: var(--product__stock__opacity);
+  color: var(--product__price__color);
   font-family: var(--global__font-family__text);
   position: relative;
-  opacity: var(--stock-opacity);
   padding: 0 !important;
   margin: 0 0 -0.5rem 0 !important;
 }
-.abstract-Product .product-prix[data-toggle=prix-tarif] .desc-label .desc-label, .product-thumbnail .product-prix[data-toggle=prix-tarif] .desc-label .desc-label, .container .product-line .product-prix[data-toggle=prix-tarif] .desc-label .desc-label {
-  display: none;
+.abstract-Product .product-prix .desc-label, #article_read .product-info .product-prix .desc-label, .abstract-Product--card .product-prix .desc-label, .product-thumbnail .product-prix .desc-label, .container .product-line .product-prix .desc-label {
+  font-size: var(--global__font-size__xs);
+  font-size: 0;
 }
-.abstract-Product .product-prix[data-toggle=prix-public] .desc-label, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label, .container .product-line .product-prix[data-toggle=prix-public] .desc-label {
+.abstract-Product .product-prix[data-toggle=prix-public] .desc-label, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label, .container .product-line .product-prix[data-toggle=prix-public] .desc-label {
   font-size: 0;
   display: flex;
   align-items: center;
   position: relative;
 }
-.abstract-Product .product-prix[data-toggle=prix-public] .desc-label::before, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label::before, .container .product-line .product-prix[data-toggle=prix-public] .desc-label::before, .abstract-Product .product-prix[data-toggle=prix-public] .desc-label::after, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label::after, .container .product-line .product-prix[data-toggle=prix-public] .desc-label::after {
+.abstract-Product .product-prix[data-toggle=prix-public] .desc-label::before, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label::before, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label::before, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label::before, .container .product-line .product-prix[data-toggle=prix-public] .desc-label::before, .abstract-Product .product-prix[data-toggle=prix-public] .desc-label::after, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label::after, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label::after, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label::after, .container .product-line .product-prix[data-toggle=prix-public] .desc-label::after {
   font-weight: var(--global__font-weight__bold);
 }
-.abstract-Product .product-prix[data-toggle=prix-public] .desc-label::before, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label::before, .container .product-line .product-prix[data-toggle=prix-public] .desc-label::before {
+.abstract-Product .product-prix[data-toggle=prix-public] .desc-label::before, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label::before, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label::before, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label::before, .container .product-line .product-prix[data-toggle=prix-public] .desc-label::before {
   content: var(--stock-content);
   color: var(--stock-color);
   font-size: var(--global__font-size__md);
   font-family: FontAwesome;
 }
-.abstract-Product .product-prix[data-toggle=prix-public] .desc-label:after, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label:after, .container .product-line .product-prix[data-toggle=prix-public] .desc-label:after {
+.abstract-Product .product-prix[data-toggle=prix-public] .desc-label:after, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label:after, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label:after, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label:after, .container .product-line .product-prix[data-toggle=prix-public] .desc-label:after {
   content: "PVC";
   font-size: var(--global__font-size__xs);
   margin-left: 0.5em;
 }
-.abstract-Product .product-prix .desc-value, .product-thumbnail .product-prix .desc-value, .container .product-line .product-prix .desc-value {
+.abstract-Product .product-prix .desc-value, #article_read .product-info .product-prix .desc-value, .abstract-Product--card .product-prix .desc-value, .product-thumbnail .product-prix .desc-value, .container .product-line .product-prix .desc-value {
   display: flex;
-  flex-direction: --PVC__flex-direction;
+  flex-direction: var(--PVC__flex-direction);
   color: var(--product-price__color) !important;
   font-size: var(--global__font-size__lg);
   font-weight: var(--global__font-weight__bold);
   margin-bottom: 0.33em;
 }
 
+.abstract-Product--card, .product-thumbnail, .container .product-line {
+  border-radius: var(--global__UI__border-radius--card);
+  background-color: var(--global__background-color);
+  transition: var(--global__transition--all);
+  box-shadow: none;
+}
+.abstract-Product--card:hover, .product-thumbnail:hover, .container .product-line:hover {
+  --product__code__color: white;
+  --product__rga__color: white;
+  --product__libelle__color: white;
+  --product__border-color: white;
+  --product__button__color: white;
+  --product__icon__color: var(--colormap__product-color);
+  --product__ribbon__color: black;
+  background-color: var(--colormap__product-color);
+  box-shadow: none;
+}
+.abstract-Product--card.stock-danger:hover, .stock-danger.product-thumbnail:hover, .container .stock-danger.product-line:hover, .abstract-Product--card.stock-success:hover, .stock-success.product-thumbnail:hover, .container .stock-success.product-line:hover {
+  --product__stock__opacity: 1;
+}
+
 .container .product-line {
   border: none !important;
   padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.container .product-line .right {
+  background-color: bisque;
+}
+.container .product-line .left {
+  flex: 0 0 100px;
 }
 
 /**
@@ -1410,7 +1479,11 @@ h1, h2, h3, h4, h5, h6 {
   padding: 6rem 2rem 2rem 2rem;
   --product-button__color: var(--global__color__accent);
   --product-icon__color: var(--global__foreground-color);
-  --product-ribbon__color: var(--product-menu__color);
+  --product-ribbon__color: var(--colormap__product-color);
+  /**
+  	LE PARENT DES INFOS PRODUITS ----------------------------------------
+  	Celui à ne pas utiliser dans l'incustre
+  **/
 }
 .product-thumbnail:hover {
   --product-code__color: white;
@@ -1418,22 +1491,17 @@ h1, h2, h3, h4, h5, h6 {
   --product-libelle__color: white;
   --product-border__color: white;
   --product-button__color: white;
-  --product-icon__color: var(--product-menu__color);
+  --product-icon__color: var(--colormap__product-color);
   --product-ribbon__color: black;
-  background-color: var(--product-menu__color);
+  background-color: var(--colormap__product-color);
   box-shadow: none;
 }
 .product-thumbnail::before {
   content: "";
   position: absolute;
   height: 3rem;
-  aspect-ratio: 3/1;
   margin-top: -4.5rem;
   margin-left: 0rem;
-  background: var(--marque__logo-url);
-  background-size: contain;
-  background-position: left center;
-  background-repeat: no-repeat;
 }
 .product-thumbnail.statut-PRECO::after, .product-thumbnail.statut-NOUVEAU::after {
   color: white;
@@ -1447,6 +1515,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--global__font-weight__bold);
   padding: 0.25em 1em;
   z-index: -1;
+  box-shadow: inset 0 -15px 5px -10px rgba(0, 0, 0, 0.6);
 }
 .product-thumbnail.statut-NOUVEAU::after {
   content: "NOUVEAU";
@@ -1455,6 +1524,19 @@ h1, h2, h3, h4, h5, h6 {
 .product-thumbnail.statut-PRECO::after {
   content: "PRECOMMANDE";
   background-color: var(--global__color__preco);
+}
+.product-thumbnail .product-caption {
+  background: none;
+  border: none;
+  padding: 2rem 0 0 0;
+  position: relative;
+  display: grid;
+}
+.product-thumbnail .product-caption div[data-toggle=prix-public] {
+  order: 5;
+}
+.product-thumbnail .product-caption div[data-toggle=prix-tarif] {
+  order: 4;
 }
 .product-thumbnail .product-caption:hover {
   --input__opacity: 1;
@@ -1555,7 +1637,7 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 .product-inline-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
   gap: 5rem;
 }
 .product-inline-wrapper .col-inline {
@@ -1978,6 +2060,51 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
     grid-template-areas: "main" "filters";
   }
 }
+#article_read .product-image {
+  --image--gap: 3rem;
+}
+#article_read .product-image-wrapper {
+  width: 40vw;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+#article_read .product-image-wrapper .product-image-container {
+  background-color: white;
+  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2666666667);
+  border-radius: var(--global__UI__border-radius--card);
+  aspect-ratio: 1/1;
+  height: auto;
+  margin: 0;
+}
+#article_read .product-image-wrapper .product-gallery {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 2rem;
+}
+#article_read .product-image-wrapper .product-gallery > a {
+  overflow: hidden;
+  border-radius: 0.8rem;
+  border: none;
+  margin: 0;
+  transition: var(--global__transition--all);
+  border: solid 5px transparent;
+  opacity: 0.75;
+}
+#article_read .product-image-wrapper .product-gallery > a.active {
+  opacity: 1;
+  border-color: var(--global__color__accent);
+}
+#article_read .product-image-wrapper .product-gallery > a img {
+  border-radius: 0 !important;
+}
 #article_read .product-info {
   display: flex;
   flex-direction: column;
@@ -2000,6 +2127,9 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   border-radius: 0.5rem;
   padding: 2rem;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+}
+#article_read .product-info .product-libelle {
+  font-size: var(--global__font-size__xl);
 }
 #article_read .product-info .breadcrumb {
   order: -1;

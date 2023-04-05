@@ -1,32 +1,33 @@
-﻿@use './utils/reset'; // Reset HTML
-@use './utils/global'; // Les valeurs sans fichier
-@use './utils/colormap'; // Mappage Article/Couleur
+﻿@use "./utils/reset"; // Reset HTML
+@use "./utils/global"; // Les valeurs sans fichier
+@use "./utils/colormap"; // Mappage Article/Couleur
 
-@use './bootstrap/reset' as *; // Reset Bootstrap
-@use './bootstrap/container';
-@use './bootstrap/dropdown';
-@use './bootstrap/navbar';
-@use './bootstrap/navbar-menu';
-@use './bootstrap/alert';
-@use './bootstrap/error';
-@use './bootstrap/breadcrumb';
+@use "./bootstrap/reset" as *; // Reset Bootstrap
+@use "./bootstrap/container";
+@use "./bootstrap/dropdown";
+@use "./bootstrap/navbar";
+@use "./bootstrap/navbar-menu";
+@use "./bootstrap/alert";
+@use "./bootstrap/error";
+@use "./bootstrap/breadcrumb";
 
-@use './equation/security'; // Authentification, Mot de passe oublié, Inscription
-@use './equation/product-line'; // Article en mode "ligne"
-@use './equation/product-thumbnail'; // Article en mode "vignette"
-@use './equation/product-wrapper'; // Grille d'article
-@use './equation/product-result'; // Résultat de recherche
-@use './equation/article_read'; // Page article
-@use './equation/article-search-loading'; // Le spinner personnalisé
+@use "./equation/security"; // Authentification, Mot de passe oublié, Inscription
+@use "./equation/product-line"; // Article en mode "ligne"
+@use "./equation/product-thumbnail"; // Article en mode "vignette"
+@use "./equation/product-wrapper"; // Grille d'article
+@use "./equation/product-result"; // Résultat de recherche
+@use "./equation/product-image"; // Résultat de recherche
+@use "./equation/article_read"; // Page article
+@use "./equation/article-search-loading"; // Le spinner personnalisé
 
 //@use './html/html';
-@use './html/body';
-@use './html/header';
-@use './html/footer';
-@use './html/a';
-@use './html/heading';
-@use './html/button';
-@use './html/input';
-@use './html/scrollbar';
+@use "./html/body";
+@use "./html/header";
+@use "./html/footer";
+@use "./html/a";
+@use "./html/heading";
+@use "./html/button";
+@use "./html/input";
+@use "./html/scrollbar";
 
-@use './colombi/marques';
+@use "./colombi/marques";
