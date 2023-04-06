@@ -50,6 +50,10 @@
 		height: 3rem;
 		margin-top: -4.5rem;
 		margin-left: 0rem;
+		background: var(--marque__logo-url);
+		background-size: contain;
+		background-position: left center;
+		background-repeat: no-repeat;
 	}
 	&.statut-PRECO::after,
 	&.statut-NOUVEAU::after {

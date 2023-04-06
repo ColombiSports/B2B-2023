@@ -1,10 +1,24 @@
 @use "./../abstract/Product";
 
 #article_read {
+	.container {
+		// Evite que le container soit trop court en bas de page : impossible de généraliser...
+		display: flex;
+
+		// Inverse la gallerie d'image avec la colonne de texte
+		& > div.row:first-of-type {
+			display: flex;
+			flex-direction: row-reverse;
+		}
+	}
+
+	// APPAREANCE
 	.product-image {
 		--image--gap: 3rem;
 		//
 		&-wrapper {
+			position: sticky;
+			top: 400px;
 			width: calc(40vw);
 			display: flex;
 			flex-flow: column nowrap;

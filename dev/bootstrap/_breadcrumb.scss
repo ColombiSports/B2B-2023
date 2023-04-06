@@ -5,10 +5,15 @@
 	padding: 0;
 	background: none;
 
+	a {
+		font-size: var(--global__font-size__xs);
+	}
+
 	& > li + li:before {
-		content: '\f054';
+		content: "\f054";
 		font-family: FontAwesome;
 		color: var(--global__color__grey50);
 		font-weight: var(--global_font-weight__bold);
+		font-size: var(--global__font-size__xs);
 	}
 }

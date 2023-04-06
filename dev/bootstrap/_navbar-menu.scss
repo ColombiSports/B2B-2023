@@ -20,6 +20,10 @@
 }
 // -----------------------------------------------------------
 
+:root {
+	--navbar__height: 6rem;
+}
+
 // Enfant direct du container principal (body > .container)
 .navbar-menu {
 	// prettier-ignore
@@ -40,9 +44,11 @@
 
 	// Position et taille de l'élément
 	position: fixed;
+	width: 100%;
+	height: var(--navbar__height);
 	top: var(--top__scroll-up);
 	left: -2px;
-	width: 100%;
+
 	z-index: 1000;
 	margin: 0;
 

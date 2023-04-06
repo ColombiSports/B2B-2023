@@ -147,15 +147,6 @@ div {
 Surcharge des éléments bootstrap
 
 ******************************************************************/
-.container {
-  width: 100%;
-  min-height: 100vh;
-}
-.container-fluid {
-  margin: 0;
-  padding: 0;
-}
-
 .navbar-default,
 .navbar-default.navbar-main {
   background: none;
@@ -174,7 +165,6 @@ Surcharge des éléments bootstrap
 
 .row {
   margin: 0;
-  display: flex;
 }
 
 #apple-password-autofill-list {
@@ -209,9 +199,9 @@ Surcharge des éléments bootstrap
   position: relative;
 }
 .container-fluid {
-  margin-left: 0 !important;
+  margin: 0 !important;
   margin-right: 0 !important;
-  padding-left: 0rem;
+  padding: 0rem;
   padding-right: 0rem;
 }
 
@@ -673,6 +663,10 @@ au dessous de tout et surtout la barre des familles.
 	car en dessous, passe en mode compacte et doit rester aligner à gauche
 	et au dessus de se suppose que le drop-menu ne sort pas de l'écran à droite...
 **/
+:root {
+  --navbar__height: 6rem;
+}
+
 .navbar-menu {
   --background-color: var(--global__foreground-color);
   --categorie__font-size: 2.2rem;
@@ -681,9 +675,10 @@ au dessous de tout et surtout la barre des familles.
   --top__scroll-up: var(--header__height);
   --top__scroll-down: 0;
   position: fixed;
+  width: 100%;
+  height: var(--navbar__height);
   top: var(--top__scroll-up);
   left: -2px;
-  width: 100%;
   z-index: 1000;
   margin: 0;
   /**
@@ -974,11 +969,15 @@ au dessous de tout et surtout la barre des familles.
   padding: 0;
   background: none;
 }
+.container .breadcrumb a {
+  font-size: var(--global__font-size__xs);
+}
 .container .breadcrumb > li + li:before {
   content: "\f054";
   font-family: FontAwesome;
   color: var(--global__color__grey50);
   font-weight: var(--global_font-weight__bold);
+  font-size: var(--global__font-size__xs);
 }
 
 .h1 {
@@ -1163,6 +1162,8 @@ h1, h2, h3, h4, h5, h6 {
   --product__price__color: var(--global__foreground-color);
   --product__border-color: var(--colormap__product-color);
   --product__cat-color: var(--global__foreground-color);
+  --product__marque__height: 5rem;
+  --product__marque__aspect-ratio: 3 / 1;
   /**
   	TOUTES VERSIONS ///////////////////////////////////////////////////
   	NE PAS INCRUSTRER LES SÉLECTEURS CI-DESSOUS !
@@ -1193,28 +1194,17 @@ h1, h2, h3, h4, h5, h6 {
   	Permet ainsi l'incrustation dans la règle et par conséquent l'héritage lors des @extends
   **/
 }
-.abstract-Product .product-marque-image, #article_read .product-info .product-marque-image, .abstract-Product--card .product-marque-image, .product-thumbnail .product-marque-image, .container .product-line .product-marque-image {
-  width: 40%;
-  height: auto;
-  padding: 0;
-  text-align: center;
-  position: absolute;
-  z-index: 5;
-  mix-blend-mode: multiply;
-  top: 2rem;
-  left: 2rem;
-  background-color: red;
+.abstract-Product .product-Marque, #article_read .product-info .product-Marque, .abstract-Product--card .product-Marque, .product-thumbnail .product-Marque, .container .product-line .product-Marque {
+  height: var(--product__marque__height);
+  aspect-ratio: var(--product__marque__aspect-ratio);
+  border: none;
+  position: relative;
 }
-.abstract-Product .product-marque-image img, #article_read .product-info .product-marque-image img, .abstract-Product--card .product-marque-image img, .product-thumbnail .product-marque-image img, .container .product-line .product-marque-image img {
-  max-height: 40px;
-  max-width: 100%;
-  width: auto;
-}
-.abstract-Product::before, #article_read .product-info::before, .abstract-Product--card::before, .product-thumbnail::before, .container .product-line::before {
+.abstract-Product .product-Marque::before, #article_read .product-info .product-Marque::before, .abstract-Product--card .product-Marque::before, .product-thumbnail .product-Marque::before, .container .product-line .product-Marque::before {
   content: "";
   position: absolute;
-  height: 5rem;
-  aspect-ratio: 3/1;
+  width: 100%;
+  height: 100%;
   background: var(--marque__logo-url);
   background-size: contain;
   background-position: left center;
@@ -1265,17 +1255,17 @@ h1, h2, h3, h4, h5, h6 {
 .abstract-Product .product-description, #article_read .product-info .product-description, .abstract-Product--card .product-description, .product-thumbnail .product-description, .container .product-line .product-description {
   font-family: var(--global__font-family__text);
   font-size: var(--global__font-size__sm);
-  font-weight: var(--global__font-weight__regular);
+  font-weight: var(--global__font-weight__light);
   line-height: 2em;
 }
 @media (prefers-color-scheme: light) {
   .abstract-Product .product-description, #article_read .product-info .product-description, .abstract-Product--card .product-description, .product-thumbnail .product-description, .container .product-line .product-description {
-    color: var(--global__color__grey66);
+    color: var(--global__color__grey75);
   }
 }
 @media (prefers-color-scheme: dark) {
   .abstract-Product .product-description, #article_read .product-info .product-description, .abstract-Product--card .product-description, .product-thumbnail .product-description, .container .product-line .product-description {
-    color: var(--global__color__grey33);
+    color: var(--global__color__grey25);
   }
 }
 .abstract-Product .product-cat, #article_read .product-info .product-cat, .abstract-Product--card .product-cat, .product-thumbnail .product-cat, .container .product-line .product-cat {
@@ -1502,6 +1492,10 @@ h1, h2, h3, h4, h5, h6 {
   height: 3rem;
   margin-top: -4.5rem;
   margin-left: 0rem;
+  background: var(--marque__logo-url);
+  background-size: contain;
+  background-position: left center;
+  background-repeat: no-repeat;
 }
 .product-thumbnail.statut-PRECO::after, .product-thumbnail.statut-NOUVEAU::after {
   color: white;
@@ -2060,10 +2054,19 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
     grid-template-areas: "main" "filters";
   }
 }
+#article_read .container {
+  display: flex;
+}
+#article_read .container > div.row:first-of-type {
+  display: flex;
+  flex-direction: row-reverse;
+}
 #article_read .product-image {
   --image--gap: 3rem;
 }
 #article_read .product-image-wrapper {
+  position: sticky;
+  top: 400px;
   width: 40vw;
   display: flex;
   flex-flow: column nowrap;

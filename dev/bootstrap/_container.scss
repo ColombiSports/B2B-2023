@@ -1,6 +1,4 @@
-﻿// @use "../glassy" as *;
-// @use "../utils/breakpoints" as *;
-.container {
+﻿.container {
 	margin: auto;
 	padding: var(--global__container__padding);
 	width: var(--global__container__width);
@@ -9,9 +7,9 @@
 	position: relative;
 
 	&-fluid {
-		margin-left: 0 !important;
+		margin: 0 !important;
 		margin-right: 0 !important ;
-		padding-left: 0rem; // var(--padding-container );
+		padding: 0rem; // var(--padding-container );
 		padding-right: 0rem; // var(--padding-container );
 	}
 }
