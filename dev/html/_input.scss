@@ -1,14 +1,22 @@
+:root {
+	--input__border-color: var(--global__color__grey50);
+	--input__background-color: transparent !important ;
+	--input__place-holder: var(--global__color__grey50);
+	--input__place-holder--focus: var(--global__color__grey50);
+	--outline__border-color: black;
+}
 // Pour les utilsateurs à thème clair --------------------------------------------------
+
 @media (prefers-color-scheme: light) {
 	:root {
 		--label__color: var(--global__color__grey75);
 
 		--input__color: black; // var(--global__color__grey75);
 		--input__color--focus: black;
-		--input__border-color: var(--global__color__grey25);
+		//--input__border-color: var(--global__color__grey25);
 		--input__background-color: transparent !important ;
-		--input__place-holder: var(--global__color__grey25);
-		--input__place-holder--focus: var(--global__color__grey50);
+		//--input__place-holder: var(--global__color__grey25);
+		--input__place-holder--focus: var(--global__color__grey25);
 		--outline__border-color: black;
 	}
 }
@@ -19,9 +27,9 @@
 
 		--input__color: white; //var(--global__color__grey25);
 		--input__color--focus: white;
-		--input__border-color: var(--global__color__grey75);
-		--input__place-holder: var(--global__color__grey75);
-		--input__place-holder--focus: var(--global__color__grey50);
+		//--input__border-color: var(--global__color__grey75);
+		//--input__place-holder: var(--global__color__grey75);
+		--input__place-holder--focus: var(--global__color__grey75);
 		--outline__border-color: white;
 	}
 }

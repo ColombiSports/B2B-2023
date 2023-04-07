@@ -24,10 +24,12 @@ div {
 }
 
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 *::after, *::before {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
   content: initial;
   display: initial;
 }
@@ -185,7 +187,8 @@ Surcharge des éléments bootstrap
 
 .navbar-collapse {
   border: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   overflow-x: visible;
   padding: 0;
 }
@@ -296,8 +299,10 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: no-repeat;
   background-size: 200%;
   background-position-x: -100%;
+  -webkit-transition: var(--global__transition--all);
   transition: var(--global__transition--all);
   padding: 0.5rem 1rem;
+  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }
@@ -356,9 +361,15 @@ h1, h2, h3, h4, h5, h6 {
   --dropdown-menu__border-left: var(--global__UI__border-style);
   --dropdown-menu__border-right: var(--global__UI__border-style);
   --dropdown-menu__align-items: flex-start;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 .dropdown .divider, .navbar-default.navbar-main .navbar-collapse .navbar-right .dropdown .divider {
   display: contents;
@@ -389,9 +400,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 .dropdown .dropdown-menu, .navbar-default.navbar-main .navbar-collapse .navbar-right .dropdown .dropdown-menu {
   display: none;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: var(--dropdown-menu__align-items);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: var(--dropdown-menu__align-items);
+      -ms-flex-align: var(--dropdown-menu__align-items);
+          align-items: var(--dropdown-menu__align-items);
   gap: var(--dropdown-menu__gap);
   margin: var(--dropdown-menu__margin);
   border-radius: 0.25rem;
@@ -399,7 +416,8 @@ h1, h2, h3, h4, h5, h6 {
   border: none;
   border-left: var(--dropdown-menu__border-left);
   border-right: var(--dropdown-menu__border-right);
-  box-shadow: 0 0 0 1rem var(--dropdown-menu__background-color), 0 1rem 1rem 1rem rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 0 1rem var(--dropdown-menu__background-color), 0 1rem 1rem 1rem rgba(0, 0, 0, 0.4);
+          box-shadow: 0 0 0 1rem var(--dropdown-menu__background-color), 0 1rem 1rem 1rem rgba(0, 0, 0, 0.4);
   min-width: 100px;
 }
 .dropdown .dropdown-menu li > a:hover, .navbar-default.navbar-main .navbar-collapse .navbar-right .dropdown .dropdown-menu li > a:hover,
@@ -409,6 +427,8 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--toggle__color--hover);
 }
 .dropdown.open .dropdown-menu, .navbar-default.navbar-main .navbar-collapse .navbar-right .open.dropdown .dropdown-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 /**
@@ -446,17 +466,32 @@ au dessous de tout et surtout la barre des familles.
   border: none !important;
   width: var(--sprite--width);
   height: var(--sprite--height);
-  transform-origin: left top;
-  animation: currentAnimation 60s steps(var(--sheet--steps));
-  animation-iteration-count: infinite;
-  animation-delay: 10s;
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-animation: currentAnimation 60s steps(var(--sheet--steps));
+          animation: currentAnimation 60s steps(var(--sheet--steps));
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-delay: 10s;
+          animation-delay: 10s;
 }
 .abstract-Logo:hover, .navbar-default.navbar-main .navbar-header .navbar-logo:hover {
-  animation: hoverAnimation 6s steps(var(--sheet--steps)) forwards;
-  animation-iteration-count: 1;
+  -webkit-animation: hoverAnimation 6s steps(var(--sheet--steps)) forwards;
+          animation: hoverAnimation 6s steps(var(--sheet--steps)) forwards;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
 }
 .abstract-Logo:before, .navbar-default.navbar-main .navbar-header .navbar-logo:before, .abstract-Logo:after, .navbar-default.navbar-main .navbar-header .navbar-logo:after {
   content: none !important;
+}
+
+@-webkit-keyframes currentAnimation {
+  0% {
+    background-position-y: 0px;
+  }
+  10% {
+    background-position-y: var(--sheet--height-lessOne);
+  }
 }
 
 @keyframes currentAnimation {
@@ -464,6 +499,14 @@ au dessous de tout et surtout la barre des familles.
     background-position-y: 0px;
   }
   10% {
+    background-position-y: var(--sheet--height-lessOne);
+  }
+}
+@-webkit-keyframes hoverAnimation {
+  0% {
+    background-position-y: 0px;
+  }
+  100% {
     background-position-y: var(--sheet--height-lessOne);
   }
 }
@@ -482,12 +525,19 @@ au dessous de tout et surtout la barre des familles.
 *
 **********************************************************/
 .navbar-default.navbar-main {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   margin: 0;
   /** Etire le menu-right sur la largeur restante
   en block, permet l'alignement des 3 points à droite **/
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 .navbar-default.navbar-main .container-fluid {
   display: contents;
@@ -500,11 +550,21 @@ au dessous de tout et surtout la barre des familles.
 .navbar-default.navbar-main .navbar-header {
   min-height: var(--header__height);
   margin: 0 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 @media only screen and (max-width: 768px) {
   .navbar-default.navbar-main .navbar-header .navbar-logo {
@@ -534,27 +594,47 @@ au dessous de tout et surtout la barre des familles.
   background-color: var(--header__background-color);
   margin: 0;
   border: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   width: 100vw;
   padding: 0 2rem 2rem 2rem;
   position: absolute;
 }
 .navbar-default.navbar-main .navbar-collapse .navbar-right {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   margin-right: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   gap: 0.75rem;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 @media only screen and (max-width: 768px) {
   .navbar-default.navbar-main .navbar-collapse .navbar-right {
     margin-right: 0rem;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
     padding: 2rem;
     gap: 2rem;
   }
@@ -587,7 +667,8 @@ au dessous de tout et surtout la barre des familles.
   content: " Langue";
 }
 .navbar-default.navbar-main .navbar-form {
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border: none;
   position: relative;
   margin: 0;
@@ -596,6 +677,7 @@ au dessous de tout et surtout la barre des familles.
 .navbar-default.navbar-main .navbar-form input {
   z-index: 1;
   width: 16rem;
+  -webkit-transition: width var(--global__transition);
   transition: width var(--global__transition);
 }
 .navbar-default.navbar-main .navbar-form input:focus {
@@ -610,10 +692,18 @@ au dessous de tout et surtout la barre des familles.
   display: none;
 }
 .navbar-default.navbar-main .navbar-form .input-group {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
   display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  align-content: center !important;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+      -ms-flex-direction: row !important;
+          flex-direction: row !important;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+  -ms-flex-line-pack: center !important;
+      align-content: center !important;
 }
 .navbar-default.navbar-main .navbar-form .input-group-btn {
   display: contents;
@@ -633,10 +723,18 @@ au dessous de tout et surtout la barre des familles.
 }
 @media only screen and (max-width: 768px) {
   #btn_toggle_navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
   }
 }
 #btn_toggle_navbar:hover {
@@ -663,6 +761,11 @@ au dessous de tout et surtout la barre des familles.
 	car en dessous, passe en mode compacte et doit rester aligner à gauche
 	et au dessus de se suppose que le drop-menu ne sort pas de l'écran à droite...
 **/
+@media only screen and (max-width: 768px) {
+  :root {
+    --navbar__height: auto;
+  }
+}
 :root {
   --navbar__height: 6rem;
 }
@@ -676,7 +779,7 @@ au dessous de tout et surtout la barre des familles.
   --top__scroll-down: 0;
   position: fixed;
   width: 100%;
-  height: var(--navbar__height);
+  height: auto;
   top: var(--top__scroll-up);
   left: -2px;
   z-index: 1000;
@@ -692,16 +795,29 @@ au dessous de tout et surtout la barre des familles.
   	menus étant relégué à "navbar-collapse" qui est le l'élément recevant la
   	classe indiquant l'état ouvert ou fermé du menu.
   **/
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-content: flex-start;
-  align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: start;
+      align-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   background-color: var(--global__foreground-color);
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
   border-radius: 0;
   padding: 0 0 0.5rem 0;
+  -webkit-transition: var(--global__transition--all);
   transition: var(--global__transition--all);
 }
 .navbar-menu a .caret {
@@ -726,6 +842,8 @@ au dessous de tout et surtout la barre des familles.
 }
 @media only screen and (max-width: 768px) {
   .navbar-menu .navbar-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
   }
 }
@@ -754,13 +872,16 @@ au dessous de tout et surtout la barre des familles.
 }
 .navbar-menu .navbar-header button.navbar-toggle .icon-bar {
   background-color: var(--color);
-  transform-origin: left center;
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
 }
 .navbar-menu .navbar-header button.navbar-toggle .icon-bar:nth-child(1) {
-  transform: scaleX(50%);
+  -webkit-transform: scaleX(50%);
+          transform: scaleX(50%);
 }
 .navbar-menu .navbar-header button.navbar-toggle .icon-bar:nth-child(3) {
-  transform: scaleX(75%);
+  -webkit-transform: scaleX(75%);
+          transform: scaleX(75%);
 }
 .navbar-menu .navbar-collapse {
   /**
@@ -794,11 +915,16 @@ au dessous de tout et surtout la barre des familles.
   overflow-x: hidden;
 }
 .navbar-menu .navbar-collapse.in ul.navbar-nav {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   gap: calc(var(--categorie__font-size) * 1.5);
 }
 .navbar-menu .navbar-collapse.in ul.navbar-nav > li:nth-child(2) {
-  order: 11;
+  -webkit-box-ordinal-group: 12;
+      -ms-flex-order: 11;
+          order: 11;
   position: relative;
   right: unset;
 }
@@ -806,10 +932,18 @@ au dessous de tout et surtout la barre des familles.
   bottom: 0em;
 }
 .navbar-menu .navbar-collapse > ul.navbar-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   gap: 1.75rem;
   padding: 2rem 2rem;
   margin: 0;
@@ -858,11 +992,15 @@ au dessous de tout et surtout la barre des familles.
     border-right: solid 3px var(--categorie__color) !important;
     left: unset;
     right: 0;
-    align-items: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
   }
 }
 .navbar-menu .navbar-collapse > ul.navbar-nav > li:nth-child(9) {
-  order: 10;
+  -webkit-box-ordinal-group: 11;
+      -ms-flex-order: 10;
+          order: 10;
   --categorie__color: var(--global__color__outdoor);
 }
 @media only screen and (min-width: 768px) and (max-width: 992px) {
@@ -871,11 +1009,15 @@ au dessous de tout et surtout la barre des familles.
     border-right: solid 3px var(--categorie__color) !important;
     left: unset;
     right: 0;
-    align-items: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
   }
 }
 .navbar-menu .navbar-collapse > ul.navbar-nav > li:nth-child(10) {
-  order: 9;
+  -webkit-box-ordinal-group: 10;
+      -ms-flex-order: 9;
+          order: 9;
   --categorie__color: var(--global__color__airsoft);
 }
 @media only screen and (min-width: 768px) and (max-width: 992px) {
@@ -884,7 +1026,9 @@ au dessous de tout et surtout la barre des familles.
     border-right: solid 3px var(--categorie__color) !important;
     left: unset;
     right: 0;
-    align-items: flex-end;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
   }
 }
 .navbar-menu .navbar-collapse > ul.navbar-nav > li.open > a {
@@ -1053,6 +1197,8 @@ h1, h2, h3, h4, h5, h6 {
 #security_forgot_password .login-page,
 #security_inscription .login-page {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin: auto;
   width: clamp(270px, 50vw, 550px);
@@ -1066,7 +1212,8 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   border: none;
   background: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 #security_login .login-page .login-box > h3,
 #security_forgot_password .login-page .login-box > h3,
@@ -1077,10 +1224,18 @@ h1, h2, h3, h4, h5, h6 {
 #security_login .login-page .login-box form,
 #security_forgot_password .login-page .login-box form,
 #security_inscription .login-page .login-box form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 #security_login .login-page .login-box form button,
 #security_forgot_password .login-page .login-box form button,
@@ -1091,6 +1246,7 @@ h1, h2, h3, h4, h5, h6 {
 #security_forgot_password .login-page .login-box a,
 #security_inscription .login-page .login-box a {
   display: block;
+  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   margin-bottom: 2rem;
@@ -1099,9 +1255,11 @@ h1, h2, h3, h4, h5, h6 {
 #security_forgot_password .login-page .login-box .alert-danger,
 #security_inscription .login-page .login-box .alert-danger {
   margin: 2rem 0;
+  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  align-self: flex-end;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 #security_login .login-page .login-box input[type=text] {
@@ -1138,7 +1296,8 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   font-size: 1rem;
   color: var(--global__color__grey50);
-  align-self: flex-start;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   margin: -5rem 0 3rem 0;
 }
 #security_inscription .login-page .obligatory-text sup {
@@ -1195,6 +1354,7 @@ h1, h2, h3, h4, h5, h6 {
   **/
 }
 .abstract-Product .product-Marque, #article_read .product-info .product-Marque, .abstract-Product--card .product-Marque, .product-thumbnail .product-Marque, .container .product-line .product-Marque {
+  grid-area: marque;
   height: var(--product__marque__height);
   aspect-ratio: var(--product__marque__aspect-ratio);
   border: none;
@@ -1211,7 +1371,8 @@ h1, h2, h3, h4, h5, h6 {
   background-repeat: no-repeat;
 }
 .abstract-Product .image, #article_read .product-info .image, .abstract-Product--card .image, .product-thumbnail .image, .container .product-line .image, .abstract-Product .left, #article_read .product-info .left, .abstract-Product--card .left, .product-thumbnail .left, .container .product-line .left {
-  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.1333333333);
+  -webkit-box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.1333333333);
+          box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.1333333333);
   background: #fff;
   border-radius: calc(var(--global__UI__border-radius--card) * 0.25);
   width: 100%;
@@ -1226,6 +1387,7 @@ h1, h2, h3, h4, h5, h6 {
   mix-blend-mode: multiply;
 }
 .abstract-Product .product-code, #article_read .product-info .product-code, .abstract-Product--card .product-code, .product-thumbnail .product-code, .container .product-line .product-code {
+  grid-area: code;
   position: relative;
   font-family: var(--global__font-family__text) !important;
   font-size: var(--global__font-size__sm) !important;
@@ -1242,10 +1404,12 @@ h1, h2, h3, h4, h5, h6 {
   bottom: -0.5rem;
 }
 .abstract-Product .product-rga, #article_read .product-info .product-rga, .abstract-Product--card .product-rga, .product-thumbnail .product-rga, .container .product-line .product-rga {
+  grid-area: rga;
   color: var(--product__rga__color) !important;
   font-size: var(--global__font-size__xs) !important;
 }
 .abstract-Product .product-libelle, #article_read .product-info .product-libelle, .abstract-Product--card .product-libelle, .product-thumbnail .product-libelle, .container .product-line .product-libelle {
+  grid-area: libelle;
   color: var(--product__libelle__color);
   font-family: var(--global__font-family__title);
   font-size: var(--global__font-size__md);
@@ -1253,6 +1417,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.15em;
 }
 .abstract-Product .product-description, #article_read .product-info .product-description, .abstract-Product--card .product-description, .product-thumbnail .product-description, .container .product-line .product-description {
+  grid-area: description;
   font-family: var(--global__font-family__text);
   font-size: var(--global__font-size__sm);
   font-weight: var(--global__font-weight__light);
@@ -1269,6 +1434,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .abstract-Product .product-cat, #article_read .product-info .product-cat, .abstract-Product--card .product-cat, .product-thumbnail .product-cat, .container .product-line .product-cat {
+  grid-area: cat;
   color: white;
   background-color: var(--product__cat-color);
   border-radius: calc(var(--global__UI__border-radius--card) * 0.25);
@@ -1291,12 +1457,14 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--global__font-family__text);
   font-weight: var(--global__font-weight__bold);
   font-size: 0.6rem;
-  transform: translate(-3px, 17px) rotate(-90deg);
-  transform-origin: left center;
+  -webkit-transform: translate(-3px, 17px) rotate(-90deg);
+          transform: translate(-3px, 17px) rotate(-90deg);
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
   position: absolute;
 }
 .abstract-Product .product-stock, #article_read .product-info .product-stock, .abstract-Product--card .product-stock, .product-thumbnail .product-stock, .container .product-line .product-stock {
-  display: none;
+  grid-area: stock;
 }
 .abstract-Product.stock-danger, #article_read .stock-danger.product-info, .stock-danger.abstract-Product--card, .stock-danger.product-thumbnail, .container .stock-danger.product-line {
   --product__stock__opacity: 0.33;
@@ -1314,15 +1482,19 @@ h1, h2, h3, h4, h5, h6 {
   --PVC__price__font-size: var(--global__font-size__sm);
 }
 .show-prix-public .abstract-Product .product-prix[data-toggle=prix-public], .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-public], #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-public], .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-public], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-public], .show-prix-public .container .product-line .product-prix[data-toggle=prix-public], .container .show-prix-public .product-line .product-prix[data-toggle=prix-public] {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column-reverse;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
   font-size: var(--global__font-size__lg);
 }
 .show-prix-public .abstract-Product .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label:after, #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label:after, .show-prix-public .container .product-line .product-prix[data-toggle=prix-public] .desc-label:after, .container .show-prix-public .product-line .product-prix[data-toggle=prix-public] .desc-label:after {
   content: "PRIX PUBLIC TTC";
 }
 .abstract-Product .product-prix, #article_read .product-info .product-prix, .abstract-Product--card .product-prix, .product-thumbnail .product-prix, .container .product-line .product-prix {
-  opacity: var(--product__stock__opacity);
   color: var(--product__price__color);
   font-family: var(--global__font-family__text);
   position: relative;
@@ -1335,8 +1507,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .abstract-Product .product-prix[data-toggle=prix-public] .desc-label, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label, .container .product-line .product-prix[data-toggle=prix-public] .desc-label {
   font-size: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: relative;
 }
 .abstract-Product .product-prix[data-toggle=prix-public] .desc-label::before, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label::before, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label::before, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label::before, .container .product-line .product-prix[data-toggle=prix-public] .desc-label::before, .abstract-Product .product-prix[data-toggle=prix-public] .desc-label::after, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label::after, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label::after, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label::after, .container .product-line .product-prix[data-toggle=prix-public] .desc-label::after {
@@ -1354,8 +1530,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 0.5em;
 }
 .abstract-Product .product-prix .desc-value, #article_read .product-info .product-prix .desc-value, .abstract-Product--card .product-prix .desc-value, .product-thumbnail .product-prix .desc-value, .container .product-line .product-prix .desc-value {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: var(--PVC__flex-direction);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: var(--PVC__flex-direction);
+          flex-direction: var(--PVC__flex-direction);
   color: var(--product-price__color) !important;
   font-size: var(--global__font-size__lg);
   font-weight: var(--global__font-weight__bold);
@@ -1365,8 +1546,10 @@ h1, h2, h3, h4, h5, h6 {
 .abstract-Product--card, .product-thumbnail, .container .product-line {
   border-radius: var(--global__UI__border-radius--card);
   background-color: var(--global__background-color);
+  -webkit-transition: var(--global__transition--all);
   transition: var(--global__transition--all);
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .abstract-Product--card:hover, .product-thumbnail:hover, .container .product-line:hover {
   --product__code__color: white;
@@ -1377,7 +1560,8 @@ h1, h2, h3, h4, h5, h6 {
   --product__icon__color: var(--colormap__product-color);
   --product__ribbon__color: black;
   background-color: var(--colormap__product-color);
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .abstract-Product--card.stock-danger:hover, .stock-danger.product-thumbnail:hover, .container .stock-danger.product-line:hover, .abstract-Product--card.stock-success:hover, .stock-success.product-thumbnail:hover, .container .stock-success.product-line:hover {
   --product__stock__opacity: 1;
@@ -1386,18 +1570,31 @@ h1, h2, h3, h4, h5, h6 {
 .container .product-line {
   border: none !important;
   padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: center;
-  align-items: stretch;
-  justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .container .product-line .right {
   background-color: bisque;
 }
 .container .product-line .left {
-  flex: 0 0 100px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100px;
+          flex: 0 0 100px;
 }
 
 /**
@@ -1408,49 +1605,62 @@ h1, h2, h3, h4, h5, h6 {
             - Surécrire une valeur Equation
 **/
 .abstract-Promotion, .product-thumbnail .product-promotion.ribbon-top-right {
-  background: var(--global__color__promo);
-  width: auto;
-  height: auto;
-  top: 0px;
-  right: 0px;
-  overflow: unset;
+  width: 150px;
+  height: 150px;
+  top: -2.2rem;
+  right: -2.2rem;
+  overflow: hidden;
   position: absolute;
   z-index: 1;
   display: grid;
   place-content: center;
-  padding: 0.5rem 2rem 1rem 2rem;
-  border-radius: 0 var(--global__UI__border-radius--card) 0 0;
+  padding: 0;
 }
 .show-prix-public .abstract-Promotion, .show-prix-public .product-thumbnail .product-promotion.ribbon-top-right, .product-thumbnail .show-prix-public .product-promotion.ribbon-top-right {
   display: none !important;
 }
+.abstract-Promotion::before, .product-thumbnail .product-promotion.ribbon-top-right::before {
+  content: "";
+  width: 200px;
+  height: 52px;
+  background: -webkit-gradient(linear, left top, right top, color-stop(20%, rgba(0, 0, 0, 0)), color-stop(black), color-stop(80%, rgba(0, 0, 0, 0)));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 20%, black, rgba(0, 0, 0, 0) 80%);
+  -webkit-transform: rotate(45deg) translate(-7px, -5px);
+  transform: rotate(45deg) translate(-7px, -38px);
+  mix-blend-mode: multiply;
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
 .abstract-Promotion span, .product-thumbnail .product-promotion.ribbon-top-right span {
-  width: unset;
-  height: unset;
-  top: unset;
-  left: unset;
-  right: unset;
-  position: relative;
-  transform: rotate(0);
-  box-shadow: none;
-  background: none;
+  width: 200px;
+  height: 50px;
+  top: 20px;
+  right: -50px;
+  position: absolute;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background: var(--global__color__promo);
   color: var(--global__color__promo--text);
   font-size: var(--global__font-size__lg);
   font-weight: 900;
-  line-height: 0.6em;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  line-height: 0.8em;
+  padding: 0.4em 0 1.5em 0;
+  text-align: center;
+  display: inline-block;
 }
 .abstract-Promotion span::before, .product-thumbnail .product-promotion.ribbon-top-right span::before {
-  content: "PROMO SPÉCIALE";
+  content: "-";
+  border: none;
+  position: relative;
+  display: inline;
+}
+.abstract-Promotion span::after, .product-thumbnail .product-promotion.ribbon-top-right span::after {
+  content: "PROMOTION";
   font-size: var(--global__font-size__xs);
   font-weight: var(--global__font-weight__regular);
   display: block;
   border: none;
-}
-.abstract-Promotion span::after, .product-thumbnail .product-promotion.ribbon-top-right span::after {
-  content: unset;
+  line-height: 1.25em;
 }
 
 /**
@@ -1467,6 +1677,15 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--global__UI__border-radius--card);
   background-color: var(--global__background-color);
   padding: 6rem 2rem 2rem 2rem;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "marque 	promo" "image 		image" "code 		code" "libelle 	libelle" "prix_tarif prix_public" "stock 	panier";
+  /** 
+  	Cassage du container pour :
+  	- Mettre la marque en premier
+  	- Utiliser een superposition le before et le after de la carte
+  **/
   --product-button__color: var(--global__color__accent);
   --product-icon__color: var(--global__foreground-color);
   --product-ribbon__color: var(--colormap__product-color);
@@ -1474,6 +1693,19 @@ h1, h2, h3, h4, h5, h6 {
   	LE PARENT DES INFOS PRODUITS ----------------------------------------
   	Celui à ne pas utiliser dans l'incustre
   **/
+}
+.product-thumbnail .product-caption {
+  display: contents;
+}
+@media (prefers-color-scheme: light) {
+  .product-thumbnail {
+    --product-marque__logo: var(--marque__logo-color__url);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .product-thumbnail {
+    --product-marque__logo: var(--marque__logo-white__url);
+  }
 }
 .product-thumbnail:hover {
   --product-code__color: white;
@@ -1483,54 +1715,63 @@ h1, h2, h3, h4, h5, h6 {
   --product-button__color: white;
   --product-icon__color: var(--colormap__product-color);
   --product-ribbon__color: black;
+  --product-marque__logo: var(--marque__logo-white__url);
   background-color: var(--colormap__product-color);
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
-.product-thumbnail::before {
+.product-thumbnail > a {
+  grid-area: image;
+}
+.product-thumbnail *[class*=product-marque] {
+  position: relative;
+  text-align: unset;
+  margin-bottom: 2rem;
+  height: 50px;
+}
+.product-thumbnail *[class*=product-marque]::before {
+  width: 100%;
+  height: 100%;
   content: "";
   position: absolute;
-  height: 3rem;
-  margin-top: -4.5rem;
-  margin-left: 0rem;
-  background: var(--marque__logo-url);
+  background: var(--product-marque__logo);
   background-size: contain;
   background-position: left center;
   background-repeat: no-repeat;
 }
-.product-thumbnail.statut-PRECO::after, .product-thumbnail.statut-NOUVEAU::after {
+.product-thumbnail.statut-PRECO::before, .product-thumbnail.statut-NOUVEAU::before {
+  content: "";
   color: white;
   position: absolute;
-  top: -28px;
-  left: 20px;
-  border-radius: 6px 6px 0 0;
+  top: 11rem;
+  left: -1rem;
+  height: 4rem;
   display: grid;
   place-content: center;
-  font-size: var(--global__font-size__sm);
+  font-size: var(--global__font-size__md);
   font-weight: var(--global__font-weight__bold);
-  padding: 0.25em 1em;
-  z-index: -1;
-  box-shadow: inset 0 -15px 5px -10px rgba(0, 0, 0, 0.6);
+  letter-spacing: -0.05rem;
+  padding: 0 2rem;
+  z-index: 1;
+  -webkit-clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
+          clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
 }
-.product-thumbnail.statut-NOUVEAU::after {
+.product-thumbnail.statut-NOUVEAU::before {
   content: "NOUVEAU";
   background-color: var(--global__color__nouveau);
 }
-.product-thumbnail.statut-PRECO::after {
+.product-thumbnail.statut-PRECO::before {
   content: "PRECOMMANDE";
   background-color: var(--global__color__preco);
 }
-.product-thumbnail .product-caption {
-  background: none;
-  border: none;
-  padding: 2rem 0 0 0;
-  position: relative;
-  display: grid;
+.product-thumbnail .product-promotion.ribbon-top-right {
+  grid-area: promo;
 }
 .product-thumbnail .product-caption div[data-toggle=prix-public] {
-  order: 5;
+  grid-area: prix_public;
 }
 .product-thumbnail .product-caption div[data-toggle=prix-tarif] {
-  order: 4;
+  grid-area: prix_tarif;
 }
 .product-thumbnail .product-caption:hover {
   --input__opacity: 1;
@@ -1549,36 +1790,55 @@ h1, h2, h3, h4, h5, h6 {
 .product-thumbnail form {
   display: contents;
 }
+.product-thumbnail .product-marque-wrapper,
 .product-thumbnail .product-panier-wrapper {
   --input__opacity: 1;
   --input__transform: translate(100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   position: absolute;
   right: 0;
   bottom: 0;
   margin: 0;
+  -webkit-transition: var(--global__transition--all);
   transition: var(--global__transition--all);
 }
-.product-thumbnail .product-panier-wrapper:hover, .product-thumbnail .product-panier-wrapper:focus-within {
+.product-thumbnail .product-marque-wrapper:hover, .product-thumbnail .product-marque-wrapper:focus-within,
+.product-thumbnail .product-panier-wrapper:hover,
+.product-thumbnail .product-panier-wrapper:focus-within {
   --input__opacity: 1;
   --input__transform: translate(0);
 }
+.product-thumbnail .product-marque-col-text,
 .product-thumbnail .product-panier-col-text {
   display: none;
 }
+.product-thumbnail .product-marque-col-input .label,
 .product-thumbnail .product-panier-col-input .label {
   display: none;
 }
+.product-thumbnail .product-marque-col-input,
 .product-thumbnail .product-panier-col-input {
   width: 100%;
   margin: 0;
-  flex: unset;
+  -webkit-box-flex: unset;
+      -ms-flex: unset;
+          flex: unset;
   opacity: var(--input__opacity);
-  transform: var(--input__transform);
+  -webkit-transform: var(--input__transform);
+          transform: var(--input__transform);
 }
+.product-thumbnail .product-marque-col-input input,
 .product-thumbnail .product-panier-col-input input {
   background: none;
   border: none !important;
@@ -1591,6 +1851,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 !important;
   display: none;
 }
+g .product-thumbnail .product-marque-col-button .btn-add-cart,
 g .product-thumbnail .product-panier-col-button .btn-add-cart {
   display: grid;
   place-content: center;
@@ -1599,12 +1860,15 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart {
   border-color: var(--product-button__color) !important;
   background-color: var(--product-button__color) !important;
 }
+g .product-thumbnail .product-marque-col-button .btn-add-cart:hover .fa-shopping-cart:before,
 g .product-thumbnail .product-panier-col-button .btn-add-cart:hover .fa-shopping-cart:before {
   content: "\f217";
 }
+g .product-thumbnail .product-marque-col-button .btn-add-cart .fa-shopping-cart,
 g .product-thumbnail .product-panier-col-button .btn-add-cart .fa-shopping-cart {
   font-size: var(--global__font-size__xl);
 }
+g .product-thumbnail .product-marque-col-button .btn-add-cart span,
 g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   display: none;
 }
@@ -1621,18 +1885,20 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   padding: 0;
   margin: 0;
   width: auto;
-  filter: var(--global__filter__unavailable);
+  -webkit-filter: var(--global__filter__unavailable);
+          filter: var(--global__filter__unavailable);
 }
 .product-inline-wrapper > .hidden:hover,
 .product-thumbnail-wrapper > .hidden:hover {
-  filter: none;
+  -webkit-filter: none;
+          filter: none;
 }
 
 .product-inline-wrapper {
   position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
-  gap: 5rem;
+  gap: 7rem;
 }
 .product-inline-wrapper .col-inline {
   display: contents;
@@ -1641,8 +1907,8 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 .product-thumbnail-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 7rem;
 }
 .product-thumbnail-wrapper .col-thumbnail {
   display: contents;
@@ -1655,10 +1921,18 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 		- Les options de pagination (FOOTER)
 **/
 #product_result_main, #product_result_wrapper #product_result_main {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   grid-area: main;
   width: auto;
   left: unset;
@@ -1669,9 +1943,13 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 #product_result_main_header {
   display: grid;
   grid-template-areas: "title title" "views sort";
+  grid-template-columns: 1fr -webkit-max-content -webkit-max-content;
   grid-template-columns: 1fr max-content max-content;
-  align-content: center;
-  align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 5rem;
 }
 @media only screen and (max-width: 768px) {
@@ -1685,22 +1963,38 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 }
 #product_result_main_header .result-display {
   grid-area: views;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   margin: 0;
   gap: 2rem;
 }
 @media only screen and (max-width: 768px) {
   #product_result_main_header .result-display {
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
   }
 }
 #product_result_main_header .result-display label {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0;
   color: var(--global__UI__unselected-item);
 }
@@ -1721,10 +2015,18 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   color: var(--global__foreground-color) !important;
 }
 #product_result_main_header .result-display #btn_toggle_unavailable {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0;
   padding: 0;
   font-size: var(--global__font-size__xs);
@@ -1747,10 +2049,18 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   content: "\f204";
 }
 #product_result_main_header .result-display .result-filter-anchor a {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: none;
   text-decoration: none;
   color: var(--global__UI__unselected-item);
@@ -1790,13 +2100,19 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 }
 #product_result_main_header #page_title {
   grid-area: title;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border-bottom: dotted solid var(--global__color__accent);
   padding-bottom: 1rem;
   border-bottom: var(--global__UI__border-style);
 }
 #product_result_main_header #page_title a {
+  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }
@@ -1805,9 +2121,15 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 }
 #product_result_main_header .result-keyword {
   grid-area: title;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 #product_result_main_header .result-keyword > div {
   display: contents;
@@ -1833,19 +2155,37 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 #product_result_main_header .result-keyword #product_result_clear_keyword {
   border: none;
   color: var(--global__color__accent);
-  transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+          transform: scale(1.25);
 }
 #product_result_main_content {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 #product_result_main_footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 #product_result_main_footer .row {
   display: contents;
@@ -1863,7 +2203,11 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 }
 #product_result_main_footer .pagination {
   width: auto;
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 0.75rem;
 }
@@ -1904,10 +2248,19 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   overflow-x: hidden;
   grid-area: filters;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   gap: 4rem;
   width: auto;
   left: unset;
@@ -1927,8 +2280,10 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 }
 #product_result_filter .filter-box a.toggle-filter::before, #product_result_wrapper #product_result_filter .filter-box a.toggle-filter::before {
   color: var(--global__color__accent);
-  transform: rotate(90deg);
-  transform-origin: 25% 50%;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: 25% 50%;
+          transform-origin: 25% 50%;
   margin-right: 0;
   font-size: 1em;
   width: 1.5rem;
@@ -1938,17 +2293,28 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   padding-bottom: 1rem;
 }
 #product_result_filter .filter-box a.toggle-filter.collapse::before, #product_result_wrapper #product_result_filter .filter-box a.toggle-filter.collapse::before {
-  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
 }
 #product_result_filter .filter-box a.toggle-filter.collapse + ul.list-filter, #product_result_wrapper #product_result_filter .filter-box a.toggle-filter.collapse + ul.list-filter, #product_result_filter .filter-box a.toggle-filter.collapse ~ a, #product_result_wrapper #product_result_filter .filter-box a.toggle-filter.collapse ~ a {
   display: none;
 }
 #product_result_filter .filter-box ul.list-filter, #product_result_wrapper #product_result_filter .filter-box ul.list-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-end;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   height: auto;
   max-height: 170px;
   overflow: hidden;
@@ -1971,6 +2337,7 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 #product_result_filter .filter-box ul.list-filter .filter-text::before, #product_result_wrapper #product_result_filter .filter-box ul.list-filter .filter-text::before {
   border-color: var(--global__color__grey50);
   border-radius: 100vmax;
+  -webkit-transition: var(--global__transtion--all);
   transition: var(--global__transtion--all);
 }
 #product_result_filter .filter-box ul.list-filter input[type=checkbox] + .filter-text, #product_result_wrapper #product_result_filter .filter-box ul.list-filter input[type=checkbox] + .filter-text {
@@ -2005,6 +2372,8 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   content: "[ réduire ]";
 }
 #product_result_filter .filter-box.expanded ul.list-filter, #product_result_wrapper #product_result_filter .filter-box.expanded ul.list-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   max-height: unset;
   height: auto;
@@ -2012,19 +2381,29 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   margin-left: 2px;
 }
 #product_result_filter div:nth-child(1), #product_result_wrapper #product_result_filter div:nth-child(1) {
-  order: 2;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
 }
 #product_result_filter div:nth-child(2), #product_result_wrapper #product_result_filter div:nth-child(2) {
-  order: 1;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
 }
 #product_result_filter div:nth-child(3), #product_result_wrapper #product_result_filter div:nth-child(3) {
-  order: 3;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
 }
 #product_result_filter div:nth-child(4), #product_result_wrapper #product_result_filter div:nth-child(4) {
-  order: 4;
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
 }
 #product_result_filter div:nth-child(5), #product_result_wrapper #product_result_filter div:nth-child(5) {
-  order: 5;
+  -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+          order: 5;
 }
 #product_result_filter .backtop, #product_result_wrapper #product_result_filter .backtop {
   border: none !important;
@@ -2055,41 +2434,70 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   }
 }
 #article_read .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-}
-#article_read .container > div.row:first-of-type {
-  display: flex;
-  flex-direction: row-reverse;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  justify-items: stretch;
 }
 #article_read .product-image {
   --image--gap: 3rem;
 }
 #article_read .product-image-wrapper {
+  grid-area: gallery;
+  float: right;
+  width: 40%;
   position: sticky;
-  top: 400px;
-  width: 40vw;
+  top: calc(var(--header__height) + var(--navbar__height));
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   gap: 2rem;
 }
 #article_read .product-image-wrapper .product-image-container {
   background-color: white;
-  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2666666667);
+  -webkit-box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2666666667);
+          box-shadow: 0 0 4rem rgba(0, 0, 0, 0.2666666667);
   border-radius: var(--global__UI__border-radius--card);
   aspect-ratio: 1/1;
   height: auto;
   margin: 0;
 }
 #article_read .product-image-wrapper .product-gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 2rem;
 }
 #article_read .product-image-wrapper .product-gallery > a {
@@ -2097,6 +2505,7 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   border-radius: 0.8rem;
   border: none;
   margin: 0;
+  -webkit-transition: var(--global__transition--all);
   transition: var(--global__transition--all);
   border: solid 5px transparent;
   opacity: 0.75;
@@ -2109,17 +2518,33 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   border-radius: 0 !important;
 }
 #article_read .product-info {
+  float: left;
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 #article_read .product-info hr {
   display: none;
 }
 #article_read .product-info .product-marque-image {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   /* height: 60px; */
   /* justify-content: right; */
@@ -2129,13 +2554,16 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   background: white;
   border-radius: 0.5rem;
   padding: 2rem;
-  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
 }
 #article_read .product-info .product-libelle {
   font-size: var(--global__font-size__xl);
 }
 #article_read .product-info .breadcrumb {
-  order: -1;
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
 }
 
 @media (prefers-color-scheme: light) {
@@ -2167,12 +2595,24 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   border: none !important;
   width: 64px;
   height: 64px;
-  transform: scale(1.5);
-  animation: spinner 1.5s steps(29);
-  animation-iteration-count: infinite;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  -webkit-animation: spinner 1.5s steps(29);
+          animation: spinner 1.5s steps(29);
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 .article-search-loading-container .fa-spinner {
   display: none;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    background-position-y: 0px;
+  }
+  100% {
+    background-position-y: -1856px;
+  }
 }
 
 @keyframes spinner {
@@ -2210,6 +2650,8 @@ body {
 }
 
 header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   position: fixed;
   top: 0;
@@ -2217,6 +2659,7 @@ header {
   width: 100%;
   height: var(--header__height);
   padding: var(--header__padding);
+  -webkit-transition: var(--global__transition--all);
   transition: var(--global__transition--all);
   background-color: var(--header__background-color);
 }
@@ -2267,6 +2710,7 @@ footer:after {
   font-weight: var(--global__font-weight__regular);
   text-decoration: none;
   border-bottom: dotted 1px var(--link__color);
+  -webkit-transition: var(--global__transition--all);
   transition: var(--global__transition--all);
 }
 .abstract-Link:hover, a:hover, .fa--link:hover {
@@ -2295,15 +2739,21 @@ footer:after {
   --border-color--hover: var(--global__color__accent);
 }
 
+:root {
+  --input__border-color: var(--global__color__grey50);
+  --input__background-color: transparent !important ;
+  --input__place-holder: var(--global__color__grey50);
+  --input__place-holder--focus: var(--global__color__grey50);
+  --outline__border-color: black;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     --label__color: var(--global__color__grey75);
     --input__color: black;
     --input__color--focus: black;
-    --input__border-color: var(--global__color__grey25);
     --input__background-color: transparent !important ;
-    --input__place-holder: var(--global__color__grey25);
-    --input__place-holder--focus: var(--global__color__grey50);
+    --input__place-holder--focus: var(--global__color__grey25);
     --outline__border-color: black;
   }
 }
@@ -2312,9 +2762,7 @@ footer:after {
     --label__color: var(--global__color__grey25);
     --input__color: white;
     --input__color--focus: white;
-    --input__border-color: var(--global__color__grey75);
-    --input__place-holder: var(--global__color__grey75);
-    --input__place-holder--focus: var(--global__color__grey50);
+    --input__place-holder--focus: var(--global__color__grey75);
     --outline__border-color: white;
   }
 }
@@ -2330,7 +2778,9 @@ input[type=password] {
   border-radius: var(--global__UI__border-radius--input) !important;
   border: solid 1px var(--input__border-color) !important;
   background: var(--input__background-color);
-  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  -webkit-transition: var(--global__transition--all);
   transition: var(--global__transition--all);
 }
 .input:focus, input:focus, .input.focus, input.focus {
@@ -2340,13 +2790,31 @@ input[type=password] {
   border-color: var(--global__color__accent) !important;
   border-radius: 100vmax !important;
 }
+.input:focus::-webkit-input-placeholder, input:focus::-webkit-input-placeholder, .input.focus::-webkit-input-placeholder, input.focus::-webkit-input-placeholder {
+  color: red;
+}
 .input:focus::-moz-placeholder, input:focus::-moz-placeholder, .input.focus::-moz-placeholder, input.focus::-moz-placeholder {
+  color: red;
+}
+.input:focus:-ms-input-placeholder, input:focus:-ms-input-placeholder, .input.focus:-ms-input-placeholder, input.focus:-ms-input-placeholder {
+  color: red;
+}
+.input:focus::-ms-input-placeholder, input:focus::-ms-input-placeholder, .input.focus::-ms-input-placeholder, input.focus::-ms-input-placeholder {
   color: red;
 }
 .input:focus::placeholder, input:focus::placeholder, .input.focus::placeholder, input.focus::placeholder {
   color: red;
 }
+.input::-webkit-input-placeholder, input::-webkit-input-placeholder, input[type=text]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder {
+  color: var(--input__place-holder);
+}
 .input::-moz-placeholder, input::-moz-placeholder, input[type=text]::-moz-placeholder, input[type=password]::-moz-placeholder {
+  color: var(--input__place-holder);
+}
+.input:-ms-input-placeholder, input:-ms-input-placeholder, input[type=text]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder {
+  color: var(--input__place-holder);
+}
+.input::-ms-input-placeholder, input::-ms-input-placeholder, input[type=text]::-ms-input-placeholder, input[type=password]::-ms-input-placeholder {
   color: var(--input__place-holder);
 }
 .input::placeholder, input::placeholder,
@@ -2354,7 +2822,16 @@ input[type=text]::placeholder,
 input[type=password]::placeholder {
   color: var(--input__place-holder);
 }
+.input:focus-within::-webkit-input-placeholder, input:focus-within::-webkit-input-placeholder {
+  color: var(--input__place-holder--focus);
+}
 .input:focus-within::-moz-placeholder, input:focus-within::-moz-placeholder {
+  color: var(--input__place-holder--focus);
+}
+.input:focus-within:-ms-input-placeholder, input:focus-within:-ms-input-placeholder {
+  color: var(--input__place-holder--focus);
+}
+.input:focus-within::-ms-input-placeholder, input:focus-within::-ms-input-placeholder {
   color: var(--input__place-holder--focus);
 }
 .input:focus-within::placeholder, input:focus-within::placeholder {
@@ -2405,1335 +2882,668 @@ label {
    LES LOGOS DES MARQUES DU B2B
    @2020 @2023 - Colombi Sports
  --------------------------------*/
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-4STABLE],
-  .product-thumbnail[class*=marque-4STABLE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/4StableStick.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-4STABLE],
-  .product-thumbnail[class*=marque-4STABLE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/4StableStick.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-AAC],
-  .product-thumbnail[class*=marque-AAC] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/ActionArmy.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-AAC],
-  .product-thumbnail[class*=marque-AAC] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/ActionArmy.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-AIRTECH],
-  .product-thumbnail[class*=marque-AIRTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/AirtchStudios.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-AIRTECH],
-  .product-thumbnail[class*=marque-AIRTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/AirtchStudios.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-AKHONGKONG],
-  .product-thumbnail[class*=marque-AKHONGKONG] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/A&K.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-AKHONGKONG],
-  .product-thumbnail[class*=marque-AKHONGKONG] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/A&K.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-AAC],
-  .product-thumbnail[class*=marque-AAC] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/ActionArmy.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-AAC],
-  .product-thumbnail[class*=marque-AAC] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/ActionArmy.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-AIRTECH],
-  .product-thumbnail[class*=marque-AIRTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/AirtechStudios.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-AIRTECH],
-  .product-thumbnail[class*=marque-AIRTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/AirtechStudios.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-AKIS],
-  .product-thumbnail[class*=marque-AKIS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Akis.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-AKIS],
-  .product-thumbnail[class*=marque-AKIS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Akis.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-AMOMAX],
-  .product-thumbnail[class*=marque-AMOMAX] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Amomax.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-AMOMAX],
-  .product-thumbnail[class*=marque-AMOMAX] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Amomax.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-APS],
-  .product-thumbnail[class*=marque-APS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/APS.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-APS],
-  .product-thumbnail[class*=marque-APS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/APS.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ARES],
-  .product-thumbnail[class*=marque-ARES] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Ares.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ARES],
-  .product-thumbnail[class*=marque-ARES] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Ares.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ARMAESTRIA],
-  .product-thumbnail[class*=marque-ARMAESTRIA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Armaestria.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ARMAESTRIA],
-  .product-thumbnail[class*=marque-ARMAESTRIA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Armaestria.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ARMISTOL],
-  .product-thumbnail[class*=marque-ARMISTOL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Armistol.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ARMISTOL],
-  .product-thumbnail[class*=marque-ARMISTOL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Armistol.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ARMSCOR],
-  .product-thumbnail[class*=marque-ARMSCOR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Armscor.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ARMSCOR],
-  .product-thumbnail[class*=marque-ARMSCOR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Armscor.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ARMYARMAMENT],
-  .product-thumbnail[class*=marque-ARMYARMAMENT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/ArmyArmament.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ARMYARMAMENT],
-  .product-thumbnail[class*=marque-ARMYARMAMENT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/ArmyArmament.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ARTEMIS],
-  .product-thumbnail[class*=marque-ARTEMIS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Snowpeak.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ARTEMIS],
-  .product-thumbnail[class*=marque-ARTEMIS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Snowpeak.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ASG],
-  .product-thumbnail[class*=marque-ASG] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/ASG.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ASG],
-  .product-thumbnail[class*=marque-ASG] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/ASG.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ASP],
-  .product-thumbnail[class*=marque-ASP] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/ASP.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ASP],
-  .product-thumbnail[class*=marque-ASP] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/ASP.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-BAIKAL],
-  .product-thumbnail[class*=marque-BAIKAL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Baikal.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-BAIKAL],
-  .product-thumbnail[class*=marque-BAIKAL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Baikal.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-BALLEUROPE],
-  .product-thumbnail[class*=marque-BALLEUROPE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Balleurope.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-BALLEUROPE],
-  .product-thumbnail[class*=marque-BALLEUROPE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Balleurope.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-BENJAMIN],
-  .product-thumbnail[class*=marque-BENJAMIN] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Benjamin.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-BENJAMIN],
-  .product-thumbnail[class*=marque-BENJAMIN] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Benjamin.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-BERGERLEVRAU],
-  .product-thumbnail[class*=marque-BERGERLEVRAU] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/BergerLevrault.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-BERGERLEVRAU],
-  .product-thumbnail[class*=marque-BERGERLEVRAU] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/BergerLevrault.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-BLS],
-  .product-thumbnail[class*=marque-BLS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/BLS.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-BLS],
-  .product-thumbnail[class*=marque-BLS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/BLS.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-BOLT],
-  .product-thumbnail[class*=marque-BOLT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Bolt.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-BOLT],
-  .product-thumbnail[class*=marque-BOLT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Bolt.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-BROWNING],
-  .product-thumbnail[class*=marque-BROWNING] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Browning.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-BROWNING],
-  .product-thumbnail[class*=marque-BROWNING] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Browning.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-BUBITS],
-  .product-thumbnail[class*=marque-BUBITS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Bubits.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-BUBITS],
-  .product-thumbnail[class*=marque-BUBITS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Bubits.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-CANIK],
-  .product-thumbnail[class*=marque-CANIK] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Canik.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-CANIK],
-  .product-thumbnail[class*=marque-CANIK] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Canik.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-CAPADI],
-  .product-thumbnail[class*=marque-CAPADI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Capadi.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-CAPADI],
-  .product-thumbnail[class*=marque-CAPADI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Capadi.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-CBM],
-  .product-thumbnail[class*=marque-CBM] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/CBM.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-CBM],
-  .product-thumbnail[class*=marque-CBM] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/CBM.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-CENTERPOINT],
-  .product-thumbnail[class*=marque-CENTERPOINT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/CenterPoint.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-CENTERPOINT],
-  .product-thumbnail[class*=marque-CENTERPOINT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/CenterPoint.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-COLOMBI],
-  .product-thumbnail[class*=marque-COLOMBI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/ColombiSports.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-COLOMBI],
-  .product-thumbnail[class*=marque-COLOMBI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/ColombiSports.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-CONTESSA],
-  .product-thumbnail[class*=marque-CONTESSA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Contessa.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-CONTESSA],
-  .product-thumbnail[class*=marque-CONTESSA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Contessa.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-COURT],
-  .product-thumbnail[class*=marque-COURT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/CourtImprimerie.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-COURT],
-  .product-thumbnail[class*=marque-COURT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/CourtImprimerie.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-CROSMAN],
-  .product-thumbnail[class*=marque-CROSMAN] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Crosman.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-CROSMAN],
-  .product-thumbnail[class*=marque-CROSMAN] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Crosman.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-CYTAC],
-  .product-thumbnail[class*=marque-CYTAC] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Cytac.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-CYTAC],
-  .product-thumbnail[class*=marque-CYTAC] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Cytac.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-DANNA],
-  .product-thumbnail[class*=marque-DANNA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/D'Anna.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-DANNA],
-  .product-thumbnail[class*=marque-DANNA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/D'Anna.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-DENISCLEMENT],
-  .product-thumbnail[class*=marque-DENISCLEMENT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/DenisCLEMENT.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-DENISCLEMENT],
-  .product-thumbnail[class*=marque-DENISCLEMENT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/DenisCLEMENT.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-DE],
-  .product-thumbnail[class*=marque-DE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/DoubleEagle.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-DE],
-  .product-thumbnail[class*=marque-DE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/DoubleEagle.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-EARMOR],
-  .product-thumbnail[class*=marque-EARMOR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Earmor.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-EARMOR],
-  .product-thumbnail[class*=marque-EARMOR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Earmor.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-EGEARMS],
-  .product-thumbnail[class*=marque-EGEARMS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/EgeArms.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-EGEARMS],
-  .product-thumbnail[class*=marque-EGEARMS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/EgeArms.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-EKOL],
-  .product-thumbnail[class*=marque-EKOL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Ekol.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-EKOL],
-  .product-thumbnail[class*=marque-EKOL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Ekol.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ESHOOTER],
-  .product-thumbnail[class*=marque-ESHOOTER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Eshooter.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ESHOOTER],
-  .product-thumbnail[class*=marque-ESHOOTER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Eshooter.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-EVOLUTION],
-  .product-thumbnail[class*=marque-EVOLUTION] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Evolution.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-EVOLUTION],
-  .product-thumbnail[class*=marque-EVOLUTION] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Evolution.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-FIOCCHI],
-  .product-thumbnail[class*=marque-FIOCCHI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Fiocchi.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-FIOCCHI],
-  .product-thumbnail[class*=marque-FIOCCHI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Fiocchi.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-FOB],
-  .product-thumbnail[class*=marque-FOB] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/FOB.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-FOB],
-  .product-thumbnail[class*=marque-FOB] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/FOB.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-GUIDE],
-  .product-thumbnail[class*=marque-GUIDE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Guide.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-GUIDE],
-  .product-thumbnail[class*=marque-GUIDE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Guide.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-GNGARMAMENT],
-  .product-thumbnail[class*=marque-GNGARMAMENT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/G&G.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-GNGARMAMENT],
-  .product-thumbnail[class*=marque-GNGARMAMENT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/G&G.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-GATE],
-  .product-thumbnail[class*=marque-GATE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Gate.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-GATE],
-  .product-thumbnail[class*=marque-GATE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Gate.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-GOLDENEAGLE],
-  .product-thumbnail[class*=marque-GOLDENEAGLE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/GoldenEagle.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-GOLDENEAGLE],
-  .product-thumbnail[class*=marque-GOLDENEAGLE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/GoldenEagle.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-HBCALLS],
-  .product-thumbnail[class*=marque-HBCALLS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/HB-Calls.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-HBCALLS],
-  .product-thumbnail[class*=marque-HBCALLS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/HB-Calls.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-HBDOG],
-  .product-thumbnail[class*=marque-HBDOG] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/HB-Dog.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-HBDOG],
-  .product-thumbnail[class*=marque-HBDOG] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/HB-Dog.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-INTEGRA],
-  .product-thumbnail[class*=marque-INTEGRA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Integra.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-INTEGRA],
-  .product-thumbnail[class*=marque-INTEGRA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Integra.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-INVESTARM],
-  .product-thumbnail[class*=marque-INVESTARM] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Investarm.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-INVESTARM],
-  .product-thumbnail[class*=marque-INVESTARM] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Investarm.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ISSC],
-  .product-thumbnail[class*=marque-ISSC] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/ISSC.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ISSC],
-  .product-thumbnail[class*=marque-ISSC] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/ISSC.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-JOCKER],
-  .product-thumbnail[class*=marque-JOCKER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Jocker.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-JOCKER],
-  .product-thumbnail[class*=marque-JOCKER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Jocker.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-KIMAR],
-  .product-thumbnail[class*=marque-KIMAR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Kimar.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-KIMAR],
-  .product-thumbnail[class*=marque-KIMAR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Kimar.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-KIZUNA],
-  .product-thumbnail[class*=marque-KIZUNA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/KizunaWorks.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-KIZUNA],
-  .product-thumbnail[class*=marque-KIZUNA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/KizunaWorks.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-KJWORKS],
-  .product-thumbnail[class*=marque-KJWORKS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/KJWorks.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-KJWORKS],
-  .product-thumbnail[class*=marque-KJWORKS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/KJWorks.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-KONUS],
-  .product-thumbnail[class*=marque-KONUS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Konus.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-KONUS],
-  .product-thumbnail[class*=marque-KONUS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Konus.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-LAHOUX],
-  .product-thumbnail[class*=marque-LAHOUX] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/LahouxOptics.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-LAHOUX],
-  .product-thumbnail[class*=marque-LAHOUX] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/LahouxOptics.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-LEEPRECISION],
-  .product-thumbnail[class*=marque-LEEPRECISION] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/LeePrecision.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-LEEPRECISION],
-  .product-thumbnail[class*=marque-LEEPRECISION] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/LeePrecision.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-LTL],
-  .product-thumbnail[class*=marque-LTL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/LTL.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-LTL],
-  .product-thumbnail[class*=marque-LTL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/LTL.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-MAGTECH],
-  .product-thumbnail[class*=marque-MAGTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Magtech.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-MAGTECH],
-  .product-thumbnail[class*=marque-MAGTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Magtech.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-MAXXTECH],
-  .product-thumbnail[class*=marque-MAXXTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/MaxxTech.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-MAXXTECH],
-  .product-thumbnail[class*=marque-MAXXTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/MaxxTech.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-MECGAR],
-  .product-thumbnail[class*=marque-MECGAR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Mecgar.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-MECGAR],
-  .product-thumbnail[class*=marque-MECGAR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Mecgar.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-MEGALINE],
-  .product-thumbnail[class*=marque-MEGALINE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Megaline.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-MEGALINE],
-  .product-thumbnail[class*=marque-MEGALINE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Megaline.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-MIDLAND],
-  .product-thumbnail[class*=marque-MIDLAND] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Midland.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-MIDLAND],
-  .product-thumbnail[class*=marque-MIDLAND] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Midland.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-MODIFY],
-  .product-thumbnail[class*=marque-MODIFY] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Modify.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-MODIFY],
-  .product-thumbnail[class*=marque-MODIFY] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Modify.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-NOBELPOUDRE],
-  .product-thumbnail[class*=marque-NOBELPOUDRE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/NobelSport.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-NOBELPOUDRE],
-  .product-thumbnail[class*=marque-NOBELPOUDRE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/NobelSport.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-NORCONIA],
-  .product-thumbnail[class*=marque-NORCONIA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Norconia.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-NORCONIA],
-  .product-thumbnail[class*=marque-NORCONIA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Norconia.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-NORINCO],
-  .product-thumbnail[class*=marque-NORINCO] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Norinco.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-NORINCO],
-  .product-thumbnail[class*=marque-NORINCO] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Norinco.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-PHANTOMEL],
-  .product-thumbnail[class*=marque-PHANTOMEL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/PhantomElite.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-PHANTOMEL],
-  .product-thumbnail[class*=marque-PHANTOMEL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/PhantomElite.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-PIETTA],
-  .product-thumbnail[class*=marque-PIETTA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Pietta.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-PIETTA],
-  .product-thumbnail[class*=marque-PIETTA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Pietta.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SUPPER],
-  .product-thumbnail[class*=marque-SUPPER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Piranha.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SUPPER],
-  .product-thumbnail[class*=marque-SUPPER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Piranha.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-POBJEDA],
-  .product-thumbnail[class*=marque-POBJEDA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Pobjeda.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-POBJEDA],
-  .product-thumbnail[class*=marque-POBJEDA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Pobjeda.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-POWAIR],
-  .product-thumbnail[class*=marque-POWAIR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Powair.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-POWAIR],
-  .product-thumbnail[class*=marque-POWAIR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Powair.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-PRADEL],
-  .product-thumbnail[class*=marque-PRADEL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/PradelExcellence.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-PRADEL],
-  .product-thumbnail[class*=marque-PRADEL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/PradelExcellence.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-QUANTUM],
-  .product-thumbnail[class*=marque-QUANTUM] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/QuantumMechanics.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-QUANTUM],
-  .product-thumbnail[class*=marque-QUANTUM] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/QuantumMechanics.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-RAPTOR],
-  .product-thumbnail[class*=marque-RAPTOR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/RaptorAirsoft.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-RAPTOR],
-  .product-thumbnail[class*=marque-RAPTOR] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/RaptorAirsoft.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-REMINGTON],
-  .product-thumbnail[class*=marque-REMINGTON] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Remington.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-REMINGTON],
-  .product-thumbnail[class*=marque-REMINGTON] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Remington.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-RANTECH],
-  .product-thumbnail[class*=marque-RANTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Rantech.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-RANTECH],
-  .product-thumbnail[class*=marque-RANTECH] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Rantech.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-RIO],
-  .product-thumbnail[class*=marque-RIO] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Rio.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-RIO],
-  .product-thumbnail[class*=marque-RIO] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Rio.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ROG],
-  .product-thumbnail[class*=marque-ROG] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Rog.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ROG],
-  .product-thumbnail[class*=marque-ROG] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Rog.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-ROSSI],
-  .product-thumbnail[class*=marque-ROSSI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Rossi.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-ROSSI],
-  .product-thumbnail[class*=marque-ROSSI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Rossi.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-RTIARMS],
-  .product-thumbnail[class*=marque-RTIARMS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/RTIArms.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-RTIARMS],
-  .product-thumbnail[class*=marque-RTIARMS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/RTIArms.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-S_T],
-  .product-thumbnail[class*=marque-S_T] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/S&T.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-S_T],
-  .product-thumbnail[class*=marque-S_T] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/S&T.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SAPL],
-  .product-thumbnail[class*=marque-SAPL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/SAPL.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SAPL],
-  .product-thumbnail[class*=marque-SAPL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/SAPL.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SAUVESTRE],
-  .product-thumbnail[class*=marque-SAUVESTRE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Sauvestre.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SAUVESTRE],
-  .product-thumbnail[class*=marque-SAUVESTRE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Sauvestre.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SCHMIDT],
-  .product-thumbnail[class*=marque-SCHMIDT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Schmidt&Bender.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SCHMIDT],
-  .product-thumbnail[class*=marque-SCHMIDT] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Schmidt&Bender.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SHS],
-  .product-thumbnail[class*=marque-SHS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/SHS.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SHS],
-  .product-thumbnail[class*=marque-SHS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/SHS.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SNOWPEAK],
-  .product-thumbnail[class*=marque-SNOWPEAK] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Snowpeak.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SNOWPEAK],
-  .product-thumbnail[class*=marque-SNOWPEAK] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Snowpeak.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SNOWWOLF],
-  .product-thumbnail[class*=marque-SNOWWOLF] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/SnowWolf.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SNOWWOLF],
-  .product-thumbnail[class*=marque-SNOWWOLF] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/SnowWolf.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SOGER],
-  .product-thumbnail[class*=marque-SOGER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Soger.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SOGER],
-  .product-thumbnail[class*=marque-SOGER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Soger.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SOLOGNE],
-  .product-thumbnail[class*=marque-SOLOGNE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Sologne.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SOLOGNE],
-  .product-thumbnail[class*=marque-SOLOGNE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Sologne.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-SPECNAARMS],
-  .product-thumbnail[class*=marque-SPECNAARMS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/SpecnaArms.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-SPECNAARMS],
-  .product-thumbnail[class*=marque-SPECNAARMS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/SpecnaArms.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-STALON],
-  .product-thumbnail[class*=marque-STALON] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Stalon.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-STALON],
-  .product-thumbnail[class*=marque-STALON] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Stalon.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-STEPLAND],
-  .product-thumbnail[class*=marque-STEPLAND] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Stepland.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-STEPLAND],
-  .product-thumbnail[class*=marque-STEPLAND] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Stepland.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-TACTICALOPS],
-  .product-thumbnail[class*=marque-TACTICALOPS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/TacticalOps.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-TACTICALOPS],
-  .product-thumbnail[class*=marque-TACTICALOPS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/TacticalOps.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-TAURUS],
-  .product-thumbnail[class*=marque-TAURUS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Taurus.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-TAURUS],
-  .product-thumbnail[class*=marque-TAURUS] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Taurus.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-TERMOPAD],
-  .product-thumbnail[class*=marque-TERMOPAD] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Thermopad.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-TERMOPAD],
-  .product-thumbnail[class*=marque-TERMOPAD] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Thermopad.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-TIPPMANN],
-  .product-thumbnail[class*=marque-TIPPMANN] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Tippmann.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-TIPPMANN],
-  .product-thumbnail[class*=marque-TIPPMANN] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Tippmann.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-UNICORN],
-  .product-thumbnail[class*=marque-UNICORN] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Unicorn.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-UNICORN],
-  .product-thumbnail[class*=marque-UNICORN] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Unicorn.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-VICTORY],
-  .product-thumbnail[class*=marque-VICTORY] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/VBPower.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-VICTORY],
-  .product-thumbnail[class*=marque-VICTORY] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/VBPower.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-VALERIA],
-  .product-thumbnail[class*=marque-VALERIA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Valeria.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-VALERIA],
-  .product-thumbnail[class*=marque-VALERIA] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Valeria.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-VEOPTIK],
-  .product-thumbnail[class*=marque-VEOPTIK] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Veoptik.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-VEOPTIK],
-  .product-thumbnail[class*=marque-VEOPTIK] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Veoptik.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-VIDE],
-  .product-thumbnail[class*=marque-VIDE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/ColombiSports.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-VIDE],
-  .product-thumbnail[class*=marque-VIDE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/ColombiSports.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-VIRI],
-  .product-thumbnail[class*=marque-VIRI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Viri.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-VIRI],
-  .product-thumbnail[class*=marque-VIRI] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Viri.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-WADIE],
-  .product-thumbnail[class*=marque-WADIE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Wadie.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-WADIE],
-  .product-thumbnail[class*=marque-WADIE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Wadie.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-WELL],
-  .product-thumbnail[class*=marque-WELL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Well.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-WELL],
-  .product-thumbnail[class*=marque-WELL] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Well.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-WINCHESTER],
-  .product-thumbnail[class*=marque-WINCHESTER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Winchester.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-WINCHESTER],
-  .product-thumbnail[class*=marque-WINCHESTER] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Winchester.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-WOLVERINE],
-  .product-thumbnail[class*=marque-WOLVERINE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/Wolverine.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-WOLVERINE],
-  .product-thumbnail[class*=marque-WOLVERINE] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/Wolverine.png");
-  }
-}
-@media (prefers-color-scheme: light) {
-  .product-info[class*=marque-WSD],
-  .product-thumbnail[class*=marque-WSD] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/WSD.png");
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-info[class*=marque-WSD],
-  .product-thumbnail[class*=marque-WSD] {
-    --marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/WSD.png");
-  }
+.product-info[class*=marque-4STABLE],
+.product-thumbnail[class*=marque-4STABLE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/4StableStick.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/4StableStick.png");
+}
+
+.product-info[class*=marque-AAC],
+.product-thumbnail[class*=marque-AAC] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/ActionArmy.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/ActionArmy.png");
+}
+
+.product-info[class*=marque-AIRTECH],
+.product-thumbnail[class*=marque-AIRTECH] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/AirtchStudios.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/AirtchStudios.png");
+}
+
+.product-info[class*=marque-AKHONGKONG],
+.product-thumbnail[class*=marque-AKHONGKONG] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/A&K.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/A&K.png");
+}
+
+.product-info[class*=marque-AAC],
+.product-thumbnail[class*=marque-AAC] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/ActionArmy.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/ActionArmy.png");
+}
+
+.product-info[class*=marque-AIRTECH],
+.product-thumbnail[class*=marque-AIRTECH] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/AirtechStudios.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/AirtechStudios.png");
+}
+
+.product-info[class*=marque-AKIS],
+.product-thumbnail[class*=marque-AKIS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Akis.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Akis.png");
+}
+
+.product-info[class*=marque-AMOMAX],
+.product-thumbnail[class*=marque-AMOMAX] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Amomax.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Amomax.png");
+}
+
+.product-info[class*=marque-APS],
+.product-thumbnail[class*=marque-APS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/APS.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/APS.png");
+}
+
+.product-info[class*=marque-ARES],
+.product-thumbnail[class*=marque-ARES] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Ares.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Ares.png");
+}
+
+.product-info[class*=marque-ARMAESTRIA],
+.product-thumbnail[class*=marque-ARMAESTRIA] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Armaestria.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Armaestria.png");
+}
+
+.product-info[class*=marque-ARMISTOL],
+.product-thumbnail[class*=marque-ARMISTOL] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Armistol.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Armistol.png");
+}
+
+.product-info[class*=marque-ARMSCOR],
+.product-thumbnail[class*=marque-ARMSCOR] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Armscor.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Armscor.png");
+}
+
+.product-info[class*=marque-ARMYARMAMENT],
+.product-thumbnail[class*=marque-ARMYARMAMENT] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/ArmyArmament.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/ArmyArmament.png");
+}
+
+.product-info[class*=marque-ARTEMIS],
+.product-thumbnail[class*=marque-ARTEMIS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Snowpeak.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Snowpeak.png");
+}
+
+.product-info[class*=marque-ASG],
+.product-thumbnail[class*=marque-ASG] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/ASG.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/ASG.png");
+}
+
+.product-info[class*=marque-ASP],
+.product-thumbnail[class*=marque-ASP] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/ASP.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/ASP.png");
+}
+
+.product-info[class*=marque-BAIKAL],
+.product-thumbnail[class*=marque-BAIKAL] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Baikal.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Baikal.png");
+}
+
+.product-info[class*=marque-BALLEUROPE],
+.product-thumbnail[class*=marque-BALLEUROPE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Balleurope.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Balleurope.png");
+}
+
+.product-info[class*=marque-BENJAMIN],
+.product-thumbnail[class*=marque-BENJAMIN] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Benjamin.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Benjamin.png");
+}
+
+.product-info[class*=marque-BERGERLEVRAU],
+.product-thumbnail[class*=marque-BERGERLEVRAU] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/BergerLevrault.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/BergerLevrault.png");
+}
+
+.product-info[class*=marque-BLS],
+.product-thumbnail[class*=marque-BLS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/BLS.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/BLS.png");
+}
+
+.product-info[class*=marque-BOLT],
+.product-thumbnail[class*=marque-BOLT] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Bolt.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Bolt.png");
+}
+
+.product-info[class*=marque-BROWNING],
+.product-thumbnail[class*=marque-BROWNING] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Browning.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Browning.png");
+}
+
+.product-info[class*=marque-BUBITS],
+.product-thumbnail[class*=marque-BUBITS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Bubits.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Bubits.png");
+}
+
+.product-info[class*=marque-CANIK],
+.product-thumbnail[class*=marque-CANIK] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Canik.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Canik.png");
+}
+
+.product-info[class*=marque-CAPADI],
+.product-thumbnail[class*=marque-CAPADI] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Capadi.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Capadi.png");
+}
+
+.product-info[class*=marque-CBM],
+.product-thumbnail[class*=marque-CBM] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/CBM.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/CBM.png");
+}
+
+.product-info[class*=marque-CENTERPOINT],
+.product-thumbnail[class*=marque-CENTERPOINT] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/CenterPoint.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/CenterPoint.png");
+}
+
+.product-info[class*=marque-COLOMBI],
+.product-thumbnail[class*=marque-COLOMBI] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/ColombiSports.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/ColombiSports.png");
+}
+
+.product-info[class*=marque-CONTESSA],
+.product-thumbnail[class*=marque-CONTESSA] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Contessa.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Contessa.png");
+}
+
+.product-info[class*=marque-COURT],
+.product-thumbnail[class*=marque-COURT] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/CourtImprimerie.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/CourtImprimerie.png");
+}
+
+.product-info[class*=marque-CROSMAN],
+.product-thumbnail[class*=marque-CROSMAN] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Crosman.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Crosman.png");
+}
+
+.product-info[class*=marque-CYTAC],
+.product-thumbnail[class*=marque-CYTAC] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Cytac.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Cytac.png");
+}
+
+.product-info[class*=marque-DANNA],
+.product-thumbnail[class*=marque-DANNA] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/D'Anna.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/D'Anna.png");
+}
+
+.product-info[class*=marque-DENISCLEMENT],
+.product-thumbnail[class*=marque-DENISCLEMENT] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/DenisCLEMENT.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/DenisCLEMENT.png");
+}
+
+.product-info[class*=marque-DE],
+.product-thumbnail[class*=marque-DE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/DoubleEagle.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/DoubleEagle.png");
+}
+
+.product-info[class*=marque-EARMOR],
+.product-thumbnail[class*=marque-EARMOR] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Earmor.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Earmor.png");
+}
+
+.product-info[class*=marque-EGEARMS],
+.product-thumbnail[class*=marque-EGEARMS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/EgeArms.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/EgeArms.png");
+}
+
+.product-info[class*=marque-EKOL],
+.product-thumbnail[class*=marque-EKOL] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Ekol.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Ekol.png");
+}
+
+.product-info[class*=marque-ESHOOTER],
+.product-thumbnail[class*=marque-ESHOOTER] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Eshooter.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Eshooter.png");
+}
+
+.product-info[class*=marque-EVOLUTION],
+.product-thumbnail[class*=marque-EVOLUTION] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Evolution.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Evolution.png");
+}
+
+.product-info[class*=marque-FIOCCHI],
+.product-thumbnail[class*=marque-FIOCCHI] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Fiocchi.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Fiocchi.png");
+}
+
+.product-info[class*=marque-FOB],
+.product-thumbnail[class*=marque-FOB] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/FOB.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/FOB.png");
+}
+
+.product-info[class*=marque-GUIDE],
+.product-thumbnail[class*=marque-GUIDE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Guide.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Guide.png");
+}
+
+.product-info[class*=marque-GNGARMAMENT],
+.product-thumbnail[class*=marque-GNGARMAMENT] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/G&G.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/G&G.png");
+}
+
+.product-info[class*=marque-GATE],
+.product-thumbnail[class*=marque-GATE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Gate.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Gate.png");
+}
+
+.product-info[class*=marque-GOLDENEAGLE],
+.product-thumbnail[class*=marque-GOLDENEAGLE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/GoldenEagle.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/GoldenEagle.png");
+}
+
+.product-info[class*=marque-HBCALLS],
+.product-thumbnail[class*=marque-HBCALLS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/HB-Calls.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/HB-Calls.png");
+}
+
+.product-info[class*=marque-HBDOG],
+.product-thumbnail[class*=marque-HBDOG] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/HB-Dog.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/HB-Dog.png");
+}
+
+.product-info[class*=marque-INTEGRA],
+.product-thumbnail[class*=marque-INTEGRA] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Integra.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Integra.png");
+}
+
+.product-info[class*=marque-INVESTARM],
+.product-thumbnail[class*=marque-INVESTARM] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Investarm.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Investarm.png");
+}
+
+.product-info[class*=marque-ISSC],
+.product-thumbnail[class*=marque-ISSC] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/ISSC.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/ISSC.png");
+}
+
+.product-info[class*=marque-JOCKER],
+.product-thumbnail[class*=marque-JOCKER] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Jocker.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Jocker.png");
+}
+
+.product-info[class*=marque-KIMAR],
+.product-thumbnail[class*=marque-KIMAR] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Kimar.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Kimar.png");
+}
+
+.product-info[class*=marque-KIZUNA],
+.product-thumbnail[class*=marque-KIZUNA] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/KizunaWorks.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/KizunaWorks.png");
+}
+
+.product-info[class*=marque-KJWORKS],
+.product-thumbnail[class*=marque-KJWORKS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/KJWorks.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/KJWorks.png");
+}
+
+.product-info[class*=marque-KONUS],
+.product-thumbnail[class*=marque-KONUS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Konus.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Konus.png");
+}
+
+.product-info[class*=marque-LAHOUX],
+.product-thumbnail[class*=marque-LAHOUX] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/LahouxOptics.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/LahouxOptics.png");
+}
+
+.product-info[class*=marque-LEEPRECISION],
+.product-thumbnail[class*=marque-LEEPRECISION] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/LeePrecision.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/LeePrecision.png");
+}
+
+.product-info[class*=marque-LTL],
+.product-thumbnail[class*=marque-LTL] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/LTL.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/LTL.png");
+}
+
+.product-info[class*=marque-MAGTECH],
+.product-thumbnail[class*=marque-MAGTECH] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Magtech.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Magtech.png");
+}
+
+.product-info[class*=marque-MAXXTECH],
+.product-thumbnail[class*=marque-MAXXTECH] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/MaxxTech.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/MaxxTech.png");
+}
+
+.product-info[class*=marque-MECGAR],
+.product-thumbnail[class*=marque-MECGAR] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Mecgar.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Mecgar.png");
+}
+
+.product-info[class*=marque-MEGALINE],
+.product-thumbnail[class*=marque-MEGALINE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Megaline.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Megaline.png");
+}
+
+.product-info[class*=marque-MIDLAND],
+.product-thumbnail[class*=marque-MIDLAND] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Midland.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Midland.png");
+}
+
+.product-info[class*=marque-MODIFY],
+.product-thumbnail[class*=marque-MODIFY] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Modify.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Modify.png");
+}
+
+.product-info[class*=marque-NOBELPOUDRE],
+.product-thumbnail[class*=marque-NOBELPOUDRE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/NobelSport.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/NobelSport.png");
+}
+
+.product-info[class*=marque-NORCONIA],
+.product-thumbnail[class*=marque-NORCONIA] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Norconia.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Norconia.png");
+}
+
+.product-info[class*=marque-NORINCO],
+.product-thumbnail[class*=marque-NORINCO] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Norinco.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Norinco.png");
+}
+
+.product-info[class*=marque-PHANTOMEL],
+.product-thumbnail[class*=marque-PHANTOMEL] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/PhantomElite.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/PhantomElite.png");
+}
+
+.product-info[class*=marque-PIETTA],
+.product-thumbnail[class*=marque-PIETTA] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Pietta.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Pietta.png");
+}
+
+.product-info[class*=marque-SUPPER],
+.product-thumbnail[class*=marque-SUPPER] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Piranha.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Piranha.png");
+}
+
+.product-info[class*=marque-POBJEDA],
+.product-thumbnail[class*=marque-POBJEDA] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Pobjeda.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Pobjeda.png");
+}
+
+.product-info[class*=marque-POWAIR],
+.product-thumbnail[class*=marque-POWAIR] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Powair.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Powair.png");
+}
+
+.product-info[class*=marque-PRADEL],
+.product-thumbnail[class*=marque-PRADEL] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/PradelExcellence.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/PradelExcellence.png");
+}
+
+.product-info[class*=marque-QUANTUM],
+.product-thumbnail[class*=marque-QUANTUM] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/QuantumMechanics.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/QuantumMechanics.png");
+}
+
+.product-info[class*=marque-RAPTOR],
+.product-thumbnail[class*=marque-RAPTOR] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/RaptorAirsoft.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/RaptorAirsoft.png");
+}
+
+.product-info[class*=marque-REMINGTON],
+.product-thumbnail[class*=marque-REMINGTON] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Remington.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Remington.png");
+}
+
+.product-info[class*=marque-RANTECH],
+.product-thumbnail[class*=marque-RANTECH] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Rantech.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Rantech.png");
+}
+
+.product-info[class*=marque-RIO],
+.product-thumbnail[class*=marque-RIO] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Rio.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Rio.png");
+}
+
+.product-info[class*=marque-ROG],
+.product-thumbnail[class*=marque-ROG] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Rog.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Rog.png");
+}
+
+.product-info[class*=marque-ROSSI],
+.product-thumbnail[class*=marque-ROSSI] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Rossi.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Rossi.png");
+}
+
+.product-info[class*=marque-RTIARMS],
+.product-thumbnail[class*=marque-RTIARMS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/RTIArms.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/RTIArms.png");
+}
+
+.product-info[class*=marque-S_T],
+.product-thumbnail[class*=marque-S_T] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/S&T.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/S&T.png");
+}
+
+.product-info[class*=marque-SAPL],
+.product-thumbnail[class*=marque-SAPL] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/SAPL.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/SAPL.png");
+}
+
+.product-info[class*=marque-SAUVESTRE],
+.product-thumbnail[class*=marque-SAUVESTRE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Sauvestre.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Sauvestre.png");
+}
+
+.product-info[class*=marque-SCHMIDT],
+.product-thumbnail[class*=marque-SCHMIDT] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Schmidt&Bender.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Schmidt&Bender.png");
+}
+
+.product-info[class*=marque-SHS],
+.product-thumbnail[class*=marque-SHS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/SHS.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/SHS.png");
+}
+
+.product-info[class*=marque-SNOWPEAK],
+.product-thumbnail[class*=marque-SNOWPEAK] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Snowpeak.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Snowpeak.png");
+}
+
+.product-info[class*=marque-SNOWWOLF],
+.product-thumbnail[class*=marque-SNOWWOLF] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/SnowWolf.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/SnowWolf.png");
+}
+
+.product-info[class*=marque-SOGER],
+.product-thumbnail[class*=marque-SOGER] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Soger.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Soger.png");
+}
+
+.product-info[class*=marque-SOLOGNE],
+.product-thumbnail[class*=marque-SOLOGNE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Sologne.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Sologne.png");
+}
+
+.product-info[class*=marque-SPECNAARMS],
+.product-thumbnail[class*=marque-SPECNAARMS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/SpecnaArms.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/SpecnaArms.png");
+}
+
+.product-info[class*=marque-STALON],
+.product-thumbnail[class*=marque-STALON] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Stalon.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Stalon.png");
+}
+
+.product-info[class*=marque-STEPLAND],
+.product-thumbnail[class*=marque-STEPLAND] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Stepland.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Stepland.png");
+}
+
+.product-info[class*=marque-TACTICALOPS],
+.product-thumbnail[class*=marque-TACTICALOPS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/TacticalOps.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/TacticalOps.png");
+}
+
+.product-info[class*=marque-TAURUS],
+.product-thumbnail[class*=marque-TAURUS] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Taurus.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Taurus.png");
+}
+
+.product-info[class*=marque-TERMOPAD],
+.product-thumbnail[class*=marque-TERMOPAD] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Thermopad.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Thermopad.png");
+}
+
+.product-info[class*=marque-TIPPMANN],
+.product-thumbnail[class*=marque-TIPPMANN] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Tippmann.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Tippmann.png");
+}
+
+.product-info[class*=marque-UNICORN],
+.product-thumbnail[class*=marque-UNICORN] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Unicorn.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Unicorn.png");
+}
+
+.product-info[class*=marque-VICTORY],
+.product-thumbnail[class*=marque-VICTORY] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/VBPower.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/VBPower.png");
+}
+
+.product-info[class*=marque-VALERIA],
+.product-thumbnail[class*=marque-VALERIA] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Valeria.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Valeria.png");
+}
+
+.product-info[class*=marque-VEOPTIK],
+.product-thumbnail[class*=marque-VEOPTIK] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Veoptik.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Veoptik.png");
+}
+
+.product-info[class*=marque-VIDE],
+.product-thumbnail[class*=marque-VIDE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/ColombiSports.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/ColombiSports.png");
+}
+
+.product-info[class*=marque-VIRI],
+.product-thumbnail[class*=marque-VIRI] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Viri.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Viri.png");
+}
+
+.product-info[class*=marque-WADIE],
+.product-thumbnail[class*=marque-WADIE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Wadie.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Wadie.png");
+}
+
+.product-info[class*=marque-WELL],
+.product-thumbnail[class*=marque-WELL] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Well.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Well.png");
+}
+
+.product-info[class*=marque-WINCHESTER],
+.product-thumbnail[class*=marque-WINCHESTER] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Winchester.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Winchester.png");
+}
+
+.product-info[class*=marque-WOLVERINE],
+.product-thumbnail[class*=marque-WOLVERINE] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/Wolverine.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/Wolverine.png");
+}
+
+.product-info[class*=marque-WSD],
+.product-thumbnail[class*=marque-WSD] {
+  --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/WSD.png");
+  --marque__logo-white__url: url("https://colombisports.com/b2b/img/logos-white/WSD.png");
 }

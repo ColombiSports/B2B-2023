@@ -1,4 +1,4 @@
-@use "./Typo";
+@use './Typo';
 
 /**
     CLASSE COMMUNE AU MINIATURE EN FORME DE "CARTE" OU DE "LIGNE" //////////////
@@ -35,13 +35,15 @@
 	**/
 	// LE LOGO DE LA MARQUE SELON L'ANCIENNE METHODE
 	.product-Marque {
+		grid-area: marque;
+		//
 		height: var(--product__marque__height);
 		aspect-ratio: var(--product__marque__aspect-ratio);
 		border: none;
 		position: relative;
 
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -78,6 +80,8 @@
 		LE CODE ARTICLE ----------------------------------------------------
 	**/
 	.product-code {
+		grid-area: code;
+		//
 		position: relative;
 		font-family: var(--global__font-family__text) !important;
 		font-size: var(--global__font-size__sm) !important;
@@ -87,7 +91,7 @@
 
 		// Le soulignement
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			width: 3em;
 			height: 0.15em;
@@ -101,6 +105,8 @@
 		Ingénieusement mis dans le code article 😅
 	**/
 	.product-rga {
+		grid-area: rga;
+		//
 		color: var(--product__rga__color) !important;
 		font-size: var(--global__font-size__xs) !important;
 	}
@@ -109,6 +115,8 @@
 		LA DESIGNATION ARTICLE ---------------------------------------------
 	**/
 	.product-libelle {
+		grid-area: libelle;
+		//
 		color: var(--product__libelle__color);
 		font-family: var(--global__font-family__title);
 		font-size: var(--global__font-size__md);
@@ -117,6 +125,8 @@
 	}
 
 	.product-description {
+		grid-area: description;
+		//
 		font-family: var(--global__font-family__text);
 		font-size: var(--global__font-size__sm);
 		font-weight: var(--global__font-weight__light);
@@ -136,6 +146,8 @@
 
 	// Uniquement fiche article
 	.product-cat {
+		grid-area: cat;
+		//
 		// prettier-ignore
 		&.cat-B{ --product__cat-color: var(--global__color__cat-B );}
 		// prettier-ignore
@@ -153,7 +165,7 @@
 		padding: 1.3rem 0.2em 1.4rem 1.4rem;
 
 		&:before {
-			content: "Catégorie ";
+			content: 'Catégorie ';
 			font-family: var(--global__font-family__text);
 			font-weight: var(--global__font-weight__bold);
 			font-size: 0.6rem;
@@ -166,16 +178,17 @@
 	// Les valeurs en mode article dispo -----------------------------------
 
 	.product-stock {
-		display: none;
+		grid-area: stock;
+		//display: none;
 	}
 	&.stock-danger {
 		--product__stock__opacity: 0.33; // L'opacité de stock
-		--stock-content: "\f00d"; //  X  l'icone accompagnant le label
+		--stock-content: '\f00d'; //  X  l'icone accompagnant le label
 		--stock-color: var(--global__color__danger); // La couleur de l'icone
 	}
 	&.stock-success {
 		--product__stock__opacity: 0.66;
-		--stock-content: "\f00c"; //  |/
+		--stock-content: '\f00c'; //  |/
 		--stock-color: var(--global__color__success);
 	}
 	// Déplacer dans la classe abstraite ".abstract-Product--card"
@@ -190,26 +203,26 @@
 		Permet ainsi l'incrustation dans la règle et par conséquent l'héritage lors des @extends
 	**/
 	.show-prix-public & {
-		.product-prix[data-toggle="prix-tarif"] {
+		.product-prix[data-toggle='prix-tarif'] {
 			display: none;
 
 			--PVC__flex-direction: column-reverse;
 			--PVC__price__font-size: var(--global__font-size__sm);
 		}
-		.product-prix[data-toggle="prix-public"] {
+		.product-prix[data-toggle='prix-public'] {
 			display: flex;
 			flex-direction: column-reverse;
 			font-size: var(--global__font-size__lg);
 
 			// Ajoute un texte du type de prix de la couleur du stock
 			.desc-label:after {
-				content: "PRIX PUBLIC TTC";
+				content: 'PRIX PUBLIC TTC';
 			}
 		}
 	}
 
 	.product-prix {
-		opacity: var(--product__stock__opacity);
+		//opacity: var(--product__stock__opacity);
 		color: var(--product__price__color);
 		font-family: var(--global__font-family__text);
 		position: relative;
@@ -223,14 +236,14 @@
 			font-size: 0;
 		}
 
-		&[data-toggle="prix-tarif"] {
+		&[data-toggle='prix-tarif'] {
 			.desc-label {
 			}
 			.desc-value {
 			}
 		}
 		//
-		&[data-toggle="prix-public"] {
+		&[data-toggle='prix-public'] {
 			.desc-label {
 				font-size: 0;
 				display: flex;
@@ -250,7 +263,7 @@
 				}
 				// MODIFIER EN AMONT
 				&:after {
-					content: "PVC";
+					content: 'PVC';
 					font-size: var(--global__font-size__xs);
 					margin-left: 0.5em;
 				}

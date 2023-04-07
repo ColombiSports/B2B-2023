@@ -1,4 +1,4 @@
-﻿@use "sass:string";
+﻿@use 'sass:string';
 
 /* --------------------------------
    LES LOGOS DES MARQUES DU B2B
@@ -119,21 +119,31 @@ $logos :
 	"WOLVERINE" "Wolverine",
 	"WSD" "WSD";
 
+//@each $ID, $file in $logos {
+//	@media (prefers-color-scheme: light) {
+//		.product-info,
+//		.product-thumbnail {
+//			&[class*="marque-#{$ID}"] {
+//				--marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/#{$file}.png");
+//			}
+//		}
+//	}
+//	@media (prefers-color-scheme: dark) {
+//		.product-info,
+//		.product-thumbnail {
+//			&[class*="marque-#{$ID}"] {
+//				--marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/#{$file}.png");
+//			}
+//		}
+//	}
+//}
+
 @each $ID, $file in $logos {
-	@media (prefers-color-scheme: light) {
-		.product-info,
-		.product-thumbnail {
-			&[class*="marque-#{$ID}"] {
-				--marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/#{$file}.png");
-			}
-		}
-	}
-	@media (prefers-color-scheme: dark) {
-		.product-info,
-		.product-thumbnail {
-			&[class*="marque-#{$ID}"] {
-				--marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/#{$file}.png");
-			}
+	.product-info,
+	.product-thumbnail {
+		&[class*='marque-#{$ID}'] {
+			--marque__logo-color__url: url('https://colombisports.com/b2b/img/logos-color/#{$file}.png');
+			--marque__logo-white__url: url('https://colombisports.com/b2b/img/logos-white/#{$file}.png');
 		}
 	}
 }

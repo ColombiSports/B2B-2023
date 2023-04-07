@@ -1,14 +1,19 @@
-@use "./../abstract/Product";
+@use './../abstract/Product';
 
 #article_read {
 	.container {
 		// Evite que le container soit trop court en bas de page : impossible de généraliser...
 		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-items: stretch;
 
 		// Inverse la gallerie d'image avec la colonne de texte
 		& > div.row:first-of-type {
-			display: flex;
-			flex-direction: row-reverse;
+			//display: grid;
+			//grid-template-columns: 1fr 1fr;
+			//grid-template-areas: 'description gallery';
+			// Ne peux "sticker" la gallery !!!
 		}
 	}
 
@@ -17,9 +22,13 @@
 		--image--gap: 3rem;
 		//
 		&-wrapper {
+			grid-area: gallery;
+			float: right;
+			width: 40%;
+			//
 			position: sticky;
-			top: 400px;
-			width: calc(40vw);
+			top: calc(var(--header__height) + var(--navbar__height));
+			//width: calc(40vw);
 			display: flex;
 			flex-flow: column nowrap;
 			align-items: center;
@@ -70,6 +79,11 @@
 	}
 
 	.product-info {
+		//grid-area: description;
+		float: left;
+		width: 50%;
+		//
+		//
 		// prettier-ignore
 		hr{display: none ; } // Masquage des séparateurs
 
