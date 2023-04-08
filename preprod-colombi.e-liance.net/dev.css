@@ -70,7 +70,9 @@ div {
   --global__color__info: #00ccff;
   --global__color__danger: #d00;
   --global__color__preco: #12a59e;
+  --global__color__preco--text: white;
   --global__color__nouveau: #06c;
+  --global__color__nouveau--text: white;
   --global__color__promo: #c00;
   --global__color__promo--text: white;
   --global__color__step-todo: #666;
@@ -575,7 +577,7 @@ au dessous de tout et surtout la barre des familles.
   display: none;
 }
 .navbar-default.navbar-main .navbar-collapse {
-  border: solid 1px orange;
+  border: none;
   position: absolute;
   right: 0;
   width: auto;
@@ -1544,10 +1546,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .abstract-Product--card, .product-thumbnail, .container .product-line {
+  border: none !important;
   border-radius: var(--global__UI__border-radius--card);
   background-color: var(--global__background-color);
   -webkit-transition: var(--global__transition--all);
   transition: var(--global__transition--all);
+  padding: 2rem;
+  margin: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1565,6 +1570,54 @@ h1, h2, h3, h4, h5, h6 {
 }
 .abstract-Product--card.stock-danger:hover, .stock-danger.product-thumbnail:hover, .container .stock-danger.product-line:hover, .abstract-Product--card.stock-success:hover, .stock-success.product-thumbnail:hover, .container .stock-success.product-line:hover {
   --product__stock__opacity: 1;
+}
+
+.abstract-Product--statut, #article_read .product-info, .product-thumbnail {
+  --product__statut__top: 0;
+  --product__statut__left: 0;
+}
+.abstract-Product--statut.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after, .abstract-Product--statut.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .abstract-Product--statut.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .abstract-Product--statut.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before {
+  content: "";
+  color: transparent;
+  position: absolute;
+  top: var(--product__statut__top);
+  left: var(--product__statut__left);
+  height: 5rem;
+  display: grid;
+  place-content: center;
+  font-size: var(--global__font-size__md);
+  font-weight: var(--global__font-weight__bold);
+  letter-spacing: -0.05rem;
+  padding: 0 2rem;
+  z-index: 1;
+}
+.abstract-Product--statut.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .abstract-Product--statut.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
+  -webkit-clip-path: polygon(0% 10%, 100% 0%, 90% 100%, 5% 95%);
+          clip-path: polygon(0% 10%, 100% 0%, 90% 100%, 5% 95%);
+}
+.abstract-Product--statut.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .abstract-Product--statut.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before {
+  -webkit-clip-path: unset;
+          clip-path: unset;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  -webkit-transform: scale(1.1, 0.85) rotate(7.5deg) translate(15px, 10px);
+          transform: scale(1.1, 0.85) rotate(7.5deg) translate(15px, 10px);
+  -webkit-filter: blur(4px);
+          filter: blur(4px);
+}
+.abstract-Product--statut.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .abstract-Product--statut.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after {
+  content: "NOUVEAU";
+}
+.abstract-Product--statut.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after {
+  color: var(--global__color__nouveau--text);
+  background-color: var(--global__color__nouveau);
+}
+.abstract-Product--statut.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .abstract-Product--statut.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
+  content: "PRECOMMANDE";
+}
+.abstract-Product--statut.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
+  color: var(--global__color__preco--text);
+  background-color: var(--global__color__preco);
 }
 
 .container .product-line {
@@ -1607,8 +1660,8 @@ h1, h2, h3, h4, h5, h6 {
 .abstract-Promotion, .product-thumbnail .product-promotion.ribbon-top-right {
   width: 150px;
   height: 150px;
-  top: -2.2rem;
-  right: -2.2rem;
+  top: -2px;
+  right: -2px;
   overflow: hidden;
   position: absolute;
   z-index: 1;
@@ -1677,14 +1730,9 @@ h1, h2, h3, h4, h5, h6 {
 **/
 .product-thumbnail {
   position: relative;
-  border: none !important;
-  border-radius: var(--global__UI__border-radius--card);
-  background-color: var(--global__background-color);
-  padding: 6rem 2rem 2rem 2rem;
-  padding: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "marque 	promo" "image 		image" "code 		code" "libelle 	libelle" "prix_tarif prix_public" "stock 	panier";
+  grid-template-areas: "marque 	." "image 		image" "code 		code" "libelle 	libelle" "prix_tarif prix_public" "stock 	panier";
   /** 
   	Cassage du container pour :
   	- Mettre la marque en premier
@@ -1693,6 +1741,8 @@ h1, h2, h3, h4, h5, h6 {
   --product-button__color: var(--global__color__accent);
   --product-icon__color: var(--global__foreground-color);
   --product-ribbon__color: var(--colormap__product-color);
+  --product__statut__top: 11rem;
+  --product__statut__left: -3px;
   /**
   	LE PARENT DES INFOS PRODUITS ----------------------------------------
   	Celui à ne pas utiliser dans l'incustre
@@ -1743,34 +1793,6 @@ h1, h2, h3, h4, h5, h6 {
   background-size: contain;
   background-position: left center;
   background-repeat: no-repeat;
-}
-.product-thumbnail.statut-PRECO::before, .product-thumbnail.statut-NOUVEAU::before {
-  content: "";
-  color: white;
-  position: absolute;
-  top: 11rem;
-  left: -1rem;
-  height: 4rem;
-  display: grid;
-  place-content: center;
-  font-size: var(--global__font-size__md);
-  font-weight: var(--global__font-weight__bold);
-  letter-spacing: -0.05rem;
-  padding: 0 2rem;
-  z-index: 1;
-  -webkit-clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
-          clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
-}
-.product-thumbnail.statut-NOUVEAU::before {
-  content: "NOUVEAU";
-  background-color: var(--global__color__nouveau);
-}
-.product-thumbnail.statut-PRECO::before {
-  content: "PRECOMMANDE";
-  background-color: var(--global__color__preco);
-}
-.product-thumbnail .product-promotion.ribbon-top-right {
-  grid-area: promo;
 }
 .product-thumbnail .product-caption div[data-toggle=prix-public] {
   grid-area: prix_public;
@@ -1892,7 +1914,7 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
   position: relative;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
-  gap: 6rem;
+  gap: 4rem;
 }
 .product-inline-wrapper .col-inline {
   display: contents;
@@ -1901,8 +1923,8 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 .product-thumbnail-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 6rem;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  gap: 8rem;
 }
 .product-thumbnail-wrapper .col-thumbnail {
   display: contents;
@@ -2177,9 +2199,9 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -2517,6 +2539,8 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 #article_read .product-info {
   float: left;
   width: 50%;
+  --product__statut__top: 0;
+  --product__statut__left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

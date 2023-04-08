@@ -11,20 +11,15 @@
 **/
 
 .product-thumbnail {
+	// Se laisse placer par son parent Grid
 	position: relative;
-	border: none !important ;
-	border-radius: var(--global__UI__border-radius--card);
-	background-color: var(--global__background-color);
-
-	padding: 6rem 2rem 2rem 2rem;
-	padding: 2rem;
-
+	// Décoration
 	@extend .abstract-Product--card;
 
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas:
-		'marque 	promo'
+		'marque 	.'
 		'image 		image'
 		'code 		code'
 		'libelle 	libelle'
@@ -95,36 +90,13 @@
 			background-repeat: no-repeat;
 		}
 	}
-	&.statut-PRECO::before,
-	&.statut-NOUVEAU::before {
-		content: '';
-		color: white;
-		position: absolute;
-		top: 11rem;
-		left: -1rem;
-		height: 4rem;
-		display: grid;
-		place-content: center;
-		font-size: var(--global__font-size__md);
-		font-weight: var(--global__font-weight__bold);
-		letter-spacing: -0.05rem;
-		padding: 0 2rem;
-		z-index: 1;
 
-		// Frome de flêche
-		clip-path: polygon(0% 0%, 95% 0%, 100% 50%, 95% 100%, 0% 100%);
-	}
-	&.statut-NOUVEAU::before {
-		content: 'NOUVEAU';
-		background-color: var(--global__color__nouveau);
-	}
-	&.statut-PRECO::before {
-		content: 'PRECOMMANDE';
-		background-color: var(--global__color__preco);
-	}
+	@extend .abstract-Product--statut;
+	--product__statut__top: 11rem;
+	--product__statut__left: -3px;
 
 	.product-promotion.ribbon-top-right {
-		grid-area: promo;
+		// grid-area: promo; // Sortit de la grille
 		@extend .abstract-Promotion;
 	}
 	/**

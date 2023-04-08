@@ -16,7 +16,7 @@
 	--product__libelle__color: var(--global__foreground-color);
 	--product__price__color: var(--global__foreground-color);
 	--product__border-color: var(--colormap__product-color); // Voir fichier "utils/colormap.scss"
-	--product__cat-color: var(--global__foreground-color); // En attente de la classe Equation
+	--product__cat-color: var(--global__foreground-color);
 	--product__marque__height: 5rem;
 	--product__marque__aspect-ratio: 3 / 1;
 	// FONCTIONNNE
@@ -285,10 +285,16 @@
 	}
 }
 
+/**
+	Permet de dissocier les Thumbnails de la fiche article.
+**/
 .abstract-Product--card {
+	border: none !important ;
 	border-radius: var(--global__UI__border-radius--card);
 	background-color: var(--global__background-color);
 	transition: var(--global__transition--all);
+	padding: 2rem;
+	margin: 0;
 	box-shadow: none;
 	@extend .abstract-Product;
 
@@ -303,13 +309,75 @@
 		--product__icon__color: var(--colormap__product-color);
 		--product__ribbon__color: black;
 
-		//--unvalaible-filter: none;
-
 		background-color: var(--colormap__product-color);
 		box-shadow: none;
 	}
 	&.stock-danger:hover,
 	&.stock-success:hover {
 		--product__stock__opacity: 1;
+	}
+}
+
+/**
+	Ajout d'un bloc de couleur utlisant le BEFORE et l'AFTER de classe étendue.
+	Correspond au "statut-XXXX" envoyé par Equapro depuis Equation.
+**/
+.abstract-Product--Statut {
+	--product__statut__top: 0;
+	--product__statut__left: 0;
+	//
+	// Taille et position en commun
+	&.statut-PRECO::after,
+	&.statut-PRECO::before,
+	&.statut-NOUVEAU::after,
+	&.statut-NOUVEAU::before {
+		content: '';
+		color: transparent;
+		position: absolute;
+		top: var(--product__statut__top);
+		left: var(--product__statut__left);
+		height: 5rem;
+		display: grid;
+		place-content: center;
+		font-size: var(--global__font-size__md);
+		font-weight: var(--global__font-weight__bold);
+		letter-spacing: -0.05rem;
+		padding: 0 2rem;
+		z-index: 1;
+	}
+	// Définit la forme pour tous -----------------------------------
+	&.statut-NOUVEAU::after,
+	&.statut-PRECO::after {
+		clip-path: polygon(0% 10%, 100% 0%, 90% 100%, 5% 95%);
+	}
+	// L'ombre, annule le clip-path à cause du blur ----------------
+	&.statut-NOUVEAU::before,
+	&.statut-PRECO::before {
+		clip-path: unset;
+		background: linear-gradient(90deg, #000000cc, #00000000);
+		transform: scale(1.1, 0.85) rotate(7.5deg) translate(15px, 10px);
+		filter: blur(4px);
+	}
+	// Pour le statut NOUVEAU ---------------------------------------
+	&.statut-NOUVEAU::before,
+	&.statut-NOUVEAU::after {
+		content: 'NOUVEAU';
+		// Taille dynnamique, permet que les deux soient identiques
+		// Celui du dessous, l'ombre, la couleur est transparente
+	}
+	&.statut-NOUVEAU::after {
+		color: var(--global__color__nouveau--text);
+		background-color: var(--global__color__nouveau);
+	}
+	// Pour le statut PRECO -----------------------------------------
+	&.statut-PRECO::before,
+	&.statut-PRECO::after {
+		content: 'PRECOMMANDE';
+		// Taille dynnamique, permet que les deux soient identiques
+		// Celui du dessous, l'ombre, la couleur est transparente
+	}
+	&.statut-PRECO::after {
+		color: var(--global__color__preco--text);
+		background-color: var(--global__color__preco);
 	}
 }

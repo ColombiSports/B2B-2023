@@ -14,8 +14,8 @@
 	// Surécriture Equation ---------------------------------------------
 	width: 150px;
 	height: 150px;
-	top: -2.2rem;
-	right: -2.2rem;
+	top: -2px; // Parceque sorti de la grille Thumnail
+	right: -2px; // Parceque sorti de la grille Thumnail
 	overflow: hidden;
 	position: absolute;
 	z-index: 1;
