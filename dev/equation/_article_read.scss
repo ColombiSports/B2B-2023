@@ -89,9 +89,9 @@
 
 		@extend .abstract-Product;
 
-		@extend .abstract-Product--statut;
-		--product__statut__top: 0;
-		--product__statut__left: 0;
+		@extend .abstract-Product--Status;
+		--product__status__top: 0;
+		--product__status__left: 0;
 
 		display: flex;
 		flex-direction: column;

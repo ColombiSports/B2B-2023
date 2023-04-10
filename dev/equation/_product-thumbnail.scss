@@ -4,10 +4,11 @@
 /**
 	LES MINIATURES ARTICLES ///////////////////////////////////////////
 
-	Est une extention de la class abstraite "Product" sensée définir
+	Est une extention de la class abstraite "Product" censée définir
 	tous les éléments globaux d'une article: couleur, fonte...
 
-	Ne gère pas l'aspect des INDISPONIBLES (cf product-wrapper)
+	Ne gère pas l'aspect des INDISPONIBLES : c'est le parent "bootstrapé qui s'occupe
+	des effets à appliquer.
 **/
 
 .product-thumbnail {
@@ -18,23 +19,22 @@
 
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto 3rem 10rem 1fr 5rem 5rem;
 	grid-template-areas:
 		'marque 	.'
-		'image 		image'
 		'code 		code'
 		'libelle 	libelle'
-		'prix_tarif prix_public'
-		'stock 	panier';
+		'image 		image'
+		'prix_tarif stock'
+		'prix_public 	panier';
 
 	/** 
 		Cassage du container pour :
 		- Mettre la marque en premier
-		- Utiliser een superposition le before et le after de la carte
+		- Utilises en superposition le before et le after de la carte
 	**/
 	// prettier-ignore
-	.product-caption {
-		display: contents;
-	}
+	.product-caption { display: contents; }
 
 	// Définit les couleurs de la carte avant survol.
 	--product-button__color: var(--global__color__accent);
@@ -72,13 +72,12 @@
 	}
 
 	// LE LOGO DE LA MARQUE
-	*[class*='product-marque'] {
+	div[class*='product-marque'] {
 		position: relative;
 		text-align: unset;
 		margin-bottom: 2rem;
 		height: 50px;
 		padding: 0;
-
 		&::before {
 			width: 100%;
 			height: 100%;
@@ -91,9 +90,9 @@
 		}
 	}
 
-	@extend .abstract-Product--statut;
-	--product__statut__top: 11rem;
-	--product__statut__left: -3px;
+	@extend .abstract-Product--Status;
+	--product__status__top: 9.5rem;
+	--product__status__left: -3px;
 
 	.product-promotion.ribbon-top-right {
 		// grid-area: promo; // Sortit de la grille

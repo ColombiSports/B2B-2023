@@ -320,11 +320,11 @@
 
 /**
 	Ajout d'un bloc de couleur utlisant le BEFORE et l'AFTER de classe étendue.
-	Correspond au "statut-XXXX" envoyé par Equapro depuis Equation.
+	Correspond au "statut-XXXX" (avec faute) envoyé par Equapro depuis Equation.
 **/
-.abstract-Product--Statut {
-	--product__statut__top: 0;
-	--product__statut__left: 0;
+.abstract-Product--Status {
+	--product__status__top: 0;
+	--product__status__left: 0;
 	//
 	// Taille et position en commun
 	&.statut-PRECO::after,
@@ -334,8 +334,8 @@
 		content: '';
 		color: transparent;
 		position: absolute;
-		top: var(--product__statut__top);
-		left: var(--product__statut__left);
+		top: var(--product__status__top);
+		left: var(--product__status__left);
 		height: 5rem;
 		display: grid;
 		place-content: center;
@@ -358,7 +358,7 @@
 		transform: scale(1.1, 0.85) rotate(7.5deg) translate(15px, 10px);
 		filter: blur(4px);
 	}
-	// Pour le statut NOUVEAU ---------------------------------------
+	// Pour le status NOUVEAU ---------------------------------------
 	&.statut-NOUVEAU::before,
 	&.statut-NOUVEAU::after {
 		content: 'NOUVEAU';
@@ -369,7 +369,7 @@
 		color: var(--global__color__nouveau--text);
 		background-color: var(--global__color__nouveau);
 	}
-	// Pour le statut PRECO -----------------------------------------
+	// Pour le status PRECO -----------------------------------------
 	&.statut-PRECO::before,
 	&.statut-PRECO::after {
 		content: 'PRECOMMANDE';

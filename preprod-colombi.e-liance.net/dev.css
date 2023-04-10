@@ -1545,6 +1545,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.33em;
 }
 
+/**
+	Permet de dissocier les Thumbnails de la fiche article.
+**/
 .abstract-Product--card, .product-thumbnail, .container .product-line {
   border: none !important;
   border-radius: var(--global__UI__border-radius--card);
@@ -1572,16 +1575,20 @@ h1, h2, h3, h4, h5, h6 {
   --product__stock__opacity: 1;
 }
 
-.abstract-Product--statut, #article_read .product-info, .product-thumbnail {
-  --product__statut__top: 0;
-  --product__statut__left: 0;
+/**
+	Ajout d'un bloc de couleur utlisant le BEFORE et l'AFTER de classe étendue.
+	Correspond au "statut-XXXX" (avec faute) envoyé par Equapro depuis Equation.
+**/
+.abstract-Product--Status, #article_read .product-info, .product-thumbnail {
+  --product__status__top: 0;
+  --product__status__left: 0;
 }
-.abstract-Product--statut.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after, .abstract-Product--statut.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .abstract-Product--statut.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .abstract-Product--statut.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before {
+.abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after, .abstract-Product--Status.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .abstract-Product--Status.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before {
   content: "";
   color: transparent;
   position: absolute;
-  top: var(--product__statut__top);
-  left: var(--product__statut__left);
+  top: var(--product__status__top);
+  left: var(--product__status__left);
   height: 5rem;
   display: grid;
   place-content: center;
@@ -1591,11 +1598,11 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 2rem;
   z-index: 1;
 }
-.abstract-Product--statut.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .abstract-Product--statut.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
+.abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
   -webkit-clip-path: polygon(0% 10%, 100% 0%, 90% 100%, 5% 95%);
           clip-path: polygon(0% 10%, 100% 0%, 90% 100%, 5% 95%);
 }
-.abstract-Product--statut.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .abstract-Product--statut.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before {
+.abstract-Product--Status.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .abstract-Product--Status.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before {
   -webkit-clip-path: unset;
           clip-path: unset;
   background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0)));
@@ -1605,17 +1612,17 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-filter: blur(4px);
           filter: blur(4px);
 }
-.abstract-Product--statut.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .abstract-Product--statut.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after {
+.abstract-Product--Status.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after {
   content: "NOUVEAU";
 }
-.abstract-Product--statut.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after {
+.abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after {
   color: var(--global__color__nouveau--text);
   background-color: var(--global__color__nouveau);
 }
-.abstract-Product--statut.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .abstract-Product--statut.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
+.abstract-Product--Status.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
   content: "PRECOMMANDE";
 }
-.abstract-Product--statut.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
+.abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
   color: var(--global__color__preco--text);
   background-color: var(--global__color__preco);
 }
@@ -1723,26 +1730,28 @@ h1, h2, h3, h4, h5, h6 {
 /**
 	LES MINIATURES ARTICLES ///////////////////////////////////////////
 
-	Est une extention de la class abstraite "Product" sensée définir
+	Est une extention de la class abstraite "Product" censée définir
 	tous les éléments globaux d'une article: couleur, fonte...
 
-	Ne gère pas l'aspect des INDISPONIBLES (cf product-wrapper)
+	Ne gère pas l'aspect des INDISPONIBLES : c'est le parent "bootstrapé qui s'occupe
+	des effets à appliquer.
 **/
 .product-thumbnail {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "marque 	." "image 		image" "code 		code" "libelle 	libelle" "prix_tarif prix_public" "stock 	panier";
+  grid-template-rows: auto 3rem 10rem 1fr 5rem 5rem;
+  grid-template-areas: "marque 	." "code 		code" "libelle 	libelle" "image 		image" "prix_tarif stock" "prix_public 	panier";
   /** 
   	Cassage du container pour :
   	- Mettre la marque en premier
-  	- Utiliser een superposition le before et le after de la carte
+  	- Utilises en superposition le before et le after de la carte
   **/
   --product-button__color: var(--global__color__accent);
   --product-icon__color: var(--global__foreground-color);
   --product-ribbon__color: var(--colormap__product-color);
-  --product__statut__top: 11rem;
-  --product__statut__left: -3px;
+  --product__status__top: 9.5rem;
+  --product__status__left: -3px;
   /**
   	LE PARENT DES INFOS PRODUITS ----------------------------------------
   	Celui à ne pas utiliser dans l'incustre
@@ -1777,14 +1786,14 @@ h1, h2, h3, h4, h5, h6 {
 .product-thumbnail > a {
   grid-area: image;
 }
-.product-thumbnail *[class*=product-marque] {
+.product-thumbnail div[class*=product-marque] {
   position: relative;
   text-align: unset;
   margin-bottom: 2rem;
   height: 50px;
   padding: 0;
 }
-.product-thumbnail *[class*=product-marque]::before {
+.product-thumbnail div[class*=product-marque]::before {
   width: 100%;
   height: 100%;
   content: "";
@@ -2539,8 +2548,8 @@ g .product-thumbnail .product-panier-col-button .btn-add-cart span {
 #article_read .product-info {
   float: left;
   width: 50%;
-  --product__statut__top: 0;
-  --product__statut__left: 0;
+  --product__status__top: 0;
+  --product__status__left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2903,6 +2912,16 @@ label {
    LES LOGOS DES MARQUES DU B2B
    @2020 @2023 - Colombi Sports
  --------------------------------*/
+/**
+	Méthode 1 : 
+	C'est le thème qui change le contenu de la variable du logo.
+	Les classes ne pouvant pas accèder aux autres versions.
+**/
+/**
+	Méthode 2
+	Stocke les variables deux versions de logo dans les classes en ayant besoin. 
+	A la classe d'utiliser celle qu'elle souhaite.
+**/
 .product-info[class*=marque-4STABLE],
 .product-thumbnail[class*=marque-4STABLE] {
   --marque__logo-color__url: url("https://colombisports.com/b2b/img/logos-color/4StableStick.png");
