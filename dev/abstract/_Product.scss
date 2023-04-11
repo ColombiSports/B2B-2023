@@ -1,4 +1,4 @@
-@use './Typo';
+@use "./Typo";
 
 /**
     CLASSE COMMUNE AU MINIATURE EN FORME DE "CARTE" OU DE "LIGNE" //////////////
@@ -43,7 +43,7 @@
 		position: relative;
 
 		&::before {
-			content: '';
+			content: "";
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -87,16 +87,16 @@
 		font-size: var(--global__font-size__sm) !important;
 		font-weight: var(--global__font-weight__light) !important;
 		color: var(--product__code__color) !important;
-		padding: 0;
+		padding: 1rem 0;
 
 		// Le soulignement
 		&::before {
-			content: '';
+			content: "";
 			position: absolute;
 			width: 3em;
 			height: 0.15em;
 			background-color: var(--product__border-color, #666);
-			bottom: -0.5rem;
+			bottom: -0.25rem;
 		}
 	}
 
@@ -119,9 +119,10 @@
 		//
 		color: var(--product__libelle__color);
 		font-family: var(--global__font-family__title);
-		font-size: var(--global__font-size__md);
+		font-size: calc(var(--global__font-size__md) * 0.9);
 		font-weight: var(--global__font-weight__bold);
-		line-height: 1.15em;
+		text-transform: uppercase;
+		line-height: 1.2em;
 	}
 
 	.product-description {
@@ -132,16 +133,10 @@
 		font-weight: var(--global__font-weight__light);
 		line-height: 2em;
 
-		@media (prefers-color-scheme: light) {
-			& {
-				color: var(--global__color__grey75);
-			}
-		}
-		@media (prefers-color-scheme: dark) {
-			& {
-				color: var(--global__color__grey25);
-			}
-		}
+		// prettier-ignore
+		@media (prefers-color-scheme: light) { & { color: var(--global__color__grey75); } }
+		// prettier-ignore
+		@media (prefers-color-scheme: dark) { & { color: var(--global__color__grey25); } }
 	}
 
 	// Uniquement fiche article
@@ -165,7 +160,7 @@
 		padding: 1.3rem 0.2em 1.4rem 1.4rem;
 
 		&:before {
-			content: 'Catégorie ';
+			content: "Catégorie ";
 			font-family: var(--global__font-family__text);
 			font-weight: var(--global__font-weight__bold);
 			font-size: 0.6rem;
@@ -179,16 +174,16 @@
 
 	.product-stock {
 		grid-area: stock;
-		//display: none;
+		display: none;
 	}
 	&.stock-danger {
-		--product__stock__opacity: 0.33; // L'opacité de stock
-		--stock-content: '\f00d'; //  X  l'icone accompagnant le label
+		--product__stock__opacity: 0.4; // L'opacité de stock
+		--stock-content: "\f00d"; //  X  l'icone accompagnant le label
 		--stock-color: var(--global__color__danger); // La couleur de l'icone
 	}
 	&.stock-success {
-		--product__stock__opacity: 0.66;
-		--stock-content: '\f00c'; //  |/
+		--product__stock__opacity: 0.8;
+		--stock-content: "\f00c"; //  |/
 		--stock-color: var(--global__color__success);
 	}
 	// Déplacer dans la classe abstraite ".abstract-Product--card"
@@ -203,84 +198,65 @@
 		Permet ainsi l'incrustation dans la règle et par conséquent l'héritage lors des @extends
 	**/
 	.show-prix-public & {
-		.product-prix[data-toggle='prix-tarif'] {
-			display: none;
-
-			--PVC__flex-direction: column-reverse;
-			--PVC__price__font-size: var(--global__font-size__sm);
-		}
-		.product-prix[data-toggle='prix-public'] {
-			display: flex;
-			flex-direction: column-reverse;
-			font-size: var(--global__font-size__lg);
-
-			// Ajoute un texte du type de prix de la couleur du stock
-			.desc-label:after {
-				content: 'PRIX PUBLIC TTC';
-			}
+		.product-prix[data-toggle="prix-tarif"] {
+			display: none !important;
 		}
 	}
 
 	.product-prix {
-		//opacity: var(--product__stock__opacity);
+		display: flex !important;
+		flex-direction: column-reverse;
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		//
+		opacity: var(--product__stock__opacity);
 		color: var(--product__price__color);
-		font-family: var(--global__font-family__text);
-		position: relative;
 		padding: 0 !important;
 		margin: 0 0 -0.5rem 0 !important;
+		transform-origin: bottom left;
 
 		// Le label des prix -------------------------------------------
 
 		.desc-label {
-			font-size: var(--global__font-size__xs);
 			font-size: 0;
+
+			&:after {
+				content: "PRIX";
+				font-size: var(--global__font-size__xs);
+				line-height: 0.5rem;
+			}
+		}
+		.desc-value {
+			color: var(--product-price__color) !important ;
+			font-size: var(--global__font-size__md);
+			font-weight: var(--global__font-weight__bold);
+			margin-bottom: 0.33em;
 		}
 
-		&[data-toggle='prix-tarif'] {
-			.desc-label {
-			}
-			.desc-value {
+		&[data-toggle="prix-tarif"] {
+			transform: scale(0.95);
+			.desc-label:after {
+				content: "Tarif HT";
 			}
 		}
 		//
-		&[data-toggle='prix-public'] {
-			.desc-label {
-				font-size: 0;
-				display: flex;
-				align-items: center;
-				position: relative;
-				//
-				// Ajoute un icone de disponibilite de la couleur du stock
-				&::before,
-				&::after {
-					font-weight: var(--global__font-weight__bold);
-				}
-				&::before {
-					content: var(--stock-content);
-					color: var(--stock-color);
-					font-size: var(--global__font-size__md);
-					font-family: FontAwesome;
-				}
-				// MODIFIER EN AMONT
-				&:after {
-					content: 'PVC';
-					font-size: var(--global__font-size__xs);
-					margin-left: 0.5em;
-				}
+		&[data-toggle="prix-public"] {
+			transform: scale(1.05);
+
+			.desc-label:after {
+				content: "Prix vente conseillé";
+				margin-left: 1.2rem;
 			}
-			.desc-value {
+
+			.desc-label::before {
+				content: var(--stock-content);
+				color: var(--stock-color);
+				font-size: var(--global__font-size__sm);
+				font-family: FontAwesome;
+				line-height: 0.7rem;
+				position: absolute;
+				left: -0.3rem;
 			}
-		}
-
-		.desc-value {
-			display: flex;
-			flex-direction: var(--PVC__flex-direction);
-
-			color: var(--product-price__color) !important ;
-			font-size: var(--global__font-size__lg);
-			font-weight: var(--global__font-weight__bold);
-
-			margin-bottom: 0.33em;
 		}
 	}
 }
@@ -293,7 +269,7 @@
 	border-radius: var(--global__UI__border-radius--card);
 	background-color: var(--global__background-color);
 	transition: var(--global__transition--all);
-	padding: 2rem;
+	padding: 2rem 3rem 3rem 3rem;
 	margin: 0;
 	box-shadow: none;
 	@extend .abstract-Product;
@@ -331,7 +307,7 @@
 	&.statut-PRECO::before,
 	&.statut-NOUVEAU::after,
 	&.statut-NOUVEAU::before {
-		content: '';
+		content: "";
 		color: transparent;
 		position: absolute;
 		top: var(--product__status__top);
@@ -361,7 +337,7 @@
 	// Pour le status NOUVEAU ---------------------------------------
 	&.statut-NOUVEAU::before,
 	&.statut-NOUVEAU::after {
-		content: 'NOUVEAU';
+		content: "NOUVEAU";
 		// Taille dynnamique, permet que les deux soient identiques
 		// Celui du dessous, l'ombre, la couleur est transparente
 	}
@@ -372,7 +348,7 @@
 	// Pour le status PRECO -----------------------------------------
 	&.statut-PRECO::before,
 	&.statut-PRECO::after {
-		content: 'PRECOMMANDE';
+		content: "PRECOMMANDE";
 		// Taille dynnamique, permet que les deux soient identiques
 		// Celui du dessous, l'ombre, la couleur est transparente
 	}
