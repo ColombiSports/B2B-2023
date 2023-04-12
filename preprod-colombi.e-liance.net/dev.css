@@ -987,6 +987,11 @@ au dessous de tout et surtout la barre des familles.
   font-size: var(--global__font-size__xs);
 }
 
+.form-group:focus label,
+.form-group:focus-within label {
+  color: var(--global__foreground-color);
+}
+
 .h1 {
   font-family: var(--global__font-family__title);
   font-size: var(--global__font-size__md);
@@ -1568,20 +1573,38 @@ h1, h2, h3, h4, h5, h6 {
 **/
 .product-thumbnail {
   position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   transition: var(--global__transition--all);
   --thumbnail__buton__color: var(--global__color__accent);
-  --thumbnail__icon__color: var(--global__foreground-color);
+  --thumbnail__icon__color: white;
   --thumbnail__ribbon__color: var(--colormap__product-color);
-  --thumbnail__inpput__right: -12rem;
-  --product__status__top: 9.5rem;
+  --thumbnail__input__width: 7.5rem;
+  --thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
+  --thumbnail__button__right: 0.5rem;
+  --thumbnail__input_shadow: 0 0 1rem #00000000;
+  /**
+  	LE LIEN DES IMAGES --------------------------------------------------
+  **/
+  /**
+  	LE STATUS DE L'ARTICLE ---------------------------------------------
+  **/
+  --product__status__top: 6.5rem;
   --product__status__left: -3px;
   /**
+  	LE CODE ARTICLE ----------------------------------------------------
+  **/
+  /**
+  	LA DESIGNATION ARTICLE ---------------------------------------------
+  **/
+  /**
+  	LA REMISE PROMO DE L'ARTICLE --------------------------------------
+  **/
+  /**
   	LE PARENT DES INFOS PRODUITS --------------------
-  	Celui à ne pas utiliser dans l'incustre
+  	// Celui à ne pas utiliser dans l'imbriquage
+  	// Structure des des infos de la miniature
   **/
 }
 .product-thumbnail:hover {
@@ -1604,21 +1627,26 @@ h1, h2, h3, h4, h5, h6 {
   grid-area: image;
   border: none;
 }
+.product-thumbnail .product-code {
+  padding-top: 2rem;
+  margin: 0 0 2rem 0;
+}
 .product-thumbnail .product-code:before {
   margin-left: -2rem;
 }
+.product-thumbnail .product-libelle {
+  height: 7rem !important;
+}
 .product-thumbnail .product-caption {
-  background: none;
-  padding: 0;
-  border: none;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 9rem 3.5rem 3rem 0;
   grid-template-areas: "code" "libelle" "prix_tarif" "prix_public";
   align-items: start;
-}
-.product-thumbnail .product-caption:hover {
-  --thumbnail__inpput__right: 0rem;
+  background: none;
+  padding: 0;
+  border: none;
+  margin-top: 1.5rem;
 }
 .product-thumbnail .product-caption div[data-toggle=prix-public] {
   grid-area: prix_public;
@@ -1626,25 +1654,25 @@ h1, h2, h3, h4, h5, h6 {
 .product-thumbnail .product-caption div[data-toggle=prix-tarif] {
   grid-area: prix_tarif;
 }
-.product-thumbnail .product-caption:hover {
-  --input__opacity: 1;
-  --input__transform: translate(0);
-}
 .product-thumbnail .product-caption > div {
   padding: 0;
-}
-.product-thumbnail .product-caption > div.product-code {
-  padding-top: 2rem;
-  margin: 0 0 2rem 0;
-}
-.product-thumbnail .product-caption > div.product-libelle {
-  height: 7rem;
 }
 .product-thumbnail form {
   display: contents;
 }
 .product-thumbnail .product-panier-wrapper {
-  display: contents;
+  position: absolute;
+  width: calc(100% - 4rem);
+  height: 8rem;
+  bottom: 0;
+}
+.product-thumbnail .product-panier-wrapper:hover {
+  --thumbnail__buton__color: var(--global__foreground-color);
+  --thumbnail__icon__color: var(--global__background-color);
+  --thumbnail__input_shadow: 0 0 1rem #00000099;
+  --thumbnail__input__width: 20rem;
+  --thumbnail__input__padding: 0.5rem 9rem 0.5rem 0.5rem;
+  --thumbnail__button__right: -2rem;
 }
 .product-thumbnail .product-panier-col-text {
   display: none;
@@ -1654,28 +1682,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 .product-thumbnail .product-panier-col-input {
   position: absolute;
-  bottom: 8rem;
-  width: 5rem;
-  right: var(--thumbnail__inpput__right);
-  opacity: var(--input__opacity);
+  height: 7.5rem;
+  width: var(--thumbnail__input__width);
+  right: var(--thumbnail__button__right);
+  bottom: 1.25rem;
+  margin: 0 !important;
+  padding: var(--thumbnail__input__padding);
+  border-radius: var(--global__UI__border-radius--input);
+  background-color: var(--global__background-color);
   transition: var(--global__transition--all);
-  background-color: red;
+  box-shadow: var(--thumbnail__input_shadow);
+  overflow: hidden;
 }
 .product-thumbnail .product-panier-col-input:after {
   content: "Quantité";
   font-size: var(--global__font-size__xs);
-  color: white;
+  margin: 0rem 1rem 0 1rem;
+  color: var(--global__foreground-color);
   text-align: right;
   display: block;
 }
 .product-thumbnail .product-panier-col-input input {
   background-color: transparent;
-  color: white;
+  border-radius: 0 !important;
+  color: var(--global__foreground-color) !important;
   font-weight: var(--global__font-weight__bold) !important;
   font-size: var(--global__font-size__lg) !important;
   border-color: transparent !important;
   text-align: right;
-  padding: 0 1rem !important;
+  padding: 0 !important;
   margin: 0 !important;
 }
 .product-thumbnail .product-panier-col-button .btn-add-cart {
@@ -1684,11 +1719,12 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   width: 8rem;
   height: 8rem;
-  right: 1rem;
+  right: var(--thumbnail__button__right);
   bottom: 1rem;
   color: var(--thumbnail__icon__color) !important;
   border-color: var(--thumbnail__buton__color) !important;
   background-color: var(--thumbnail__buton__color) !important;
+  box-shadow: var(--thumbnail__input_shadow);
 }
 .product-thumbnail .product-panier-col-button .btn-add-cart:hover .fa-shopping-cart:before {
   content: "\f217";
@@ -1722,7 +1758,7 @@ h1, h2, h3, h4, h5, h6 {
 .product-inline-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(750px, 1fr));
   gap: 4rem;
 }
 .product-inline-wrapper .col-inline {
@@ -2467,7 +2503,7 @@ label {
   display: inline-block;
   color: var(--label__color);
   font-weight: var(--global__font-weight__light);
-  font-size: var(--global__font-size__sm);
+  font-size: var(--global__font-size__xs);
   margin-bottom: 0.75rem;
   max-width: 100%;
 }

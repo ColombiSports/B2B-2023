@@ -71,12 +71,12 @@
 	&:focus-within::placeholder { color: var(--input__place-holder--focus );}
 }
 input,
-input[type='text'],
-input[type='password'] {
+input[type="text"],
+input[type="password"] {
 	@extend .input;
 }
 
-input[type='file'] {
+input[type="file"] {
 	//
 }
 
@@ -84,7 +84,7 @@ label {
 	display: inline-block;
 	color: var(--label__color);
 	font-weight: var(--global__font-weight__light);
-	font-size: var(--global__font-size__sm);
+	font-size: var(--global__font-size__xs);
 	margin-bottom: 0.75rem;
 	max-width: 100%;
 }

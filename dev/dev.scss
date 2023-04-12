@@ -10,6 +10,7 @@
 @use "./bootstrap/alert";
 @use "./bootstrap/error";
 @use "./bootstrap/breadcrumb";
+@use "./bootstrap/form";
 
 @use "./equation/security"; // Authentification, Mot de passe oublié, Inscription
 @use "./equation/product-line"; // Article en mode "ligne"

@@ -1,0 +1,6 @@
+.form-group:focus,
+.form-group:focus-within {
+	& label {
+		color: var(--global__foreground-color);
+	}
+}
