@@ -1,0 +1,80 @@
+/**
+      Etendre à la classe ".ribbon-rop-right"
+
+      Toutes les règles sont là pour quelque chose :
+            - Définir la valeur
+            - Surécrire une valeur Equation
+**/
+.abstract-Promotion {
+	//
+	// prettier-ignore
+	.show-prix-public & { display: none !important ; }
+	// MASQUE LA PROMO POUR LES CLIENTS DE L'ARUMURIER
+
+	// Surécriture Equation ---------------------------------------------
+	width: 150px;
+	height: 150px;
+	top: -2px; // Parceque sorti de la grille Thumnail
+	right: -2px; // Parceque sorti de la grille Thumnail
+	overflow: hidden;
+	position: absolute;
+	z-index: 1;
+	display: grid;
+	place-content: center;
+	padding: 0;
+
+	// L'effet d'ombre sous le ruban
+	&::before {
+		content: '';
+		width: 200px;
+		height: 52px;
+		background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, black 66%, rgba(0, 0, 0, 0) 95%);
+		transform: rotate(48deg) translate(20px, -40px);
+		mix-blend-mode: multiply;
+		filter: blur(5px);
+	}
+	// La valeur de la promotion sous Equation -------------------------
+	span {
+		// Surécriture Equation
+		width: 200px;
+		height: 50px;
+		top: 12px;
+		right: -54px;
+		position: absolute;
+		box-shadow: none;
+		background: var(--global__color__promo);
+		color: var(--global__color__promo--text);
+		font-size: var(--global__font-size__lg);
+		font-weight: 900;
+		line-height: 1em;
+		padding: 0.3em 0 1.8em 0;
+		text-align: center;
+
+		// Aligne le signe et la valeur
+		display: inline-block;
+
+		// Le signe -
+		&::before {
+			content: '-';
+			border: none;
+			position: relative;
+			display: inline;
+		}
+
+		// Ajoute le label de la promo
+		&::after {
+			content: 'PROMOTION';
+			font-size: var(--global__font-size__xs);
+			font-weight: var(--global__font-weight__regular);
+			display: block;
+			border: none;
+			line-height: 1.25em;
+
+			// Sur écrit Bootstrap / Equation
+			top: initial;
+			right: initial;
+			position: static;
+			z-index: unset;
+		}
+	}
+}

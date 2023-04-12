@@ -1,0 +1,90 @@
+:root {
+	--input__border-color: var(--global__color__grey50);
+	--input__background-color: transparent !important ;
+	--input__place-holder: var(--global__color__grey50);
+	--input__place-holder--focus: var(--global__color__grey50);
+	--outline__border-color: black;
+}
+// Pour les utilsateurs à thème clair --------------------------------------------------
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--label__color: var(--global__color__grey75);
+
+		--input__color: black; // var(--global__color__grey75);
+		--input__color--focus: black;
+		//--input__border-color: var(--global__color__grey25);
+		--input__background-color: transparent !important ;
+		//--input__place-holder: var(--global__color__grey25);
+		--input__place-holder--focus: var(--global__color__grey25);
+		--outline__border-color: black;
+	}
+}
+// Pour les utilsateurs à thème ombre --------------------------------------------------
+@media (prefers-color-scheme: dark) {
+	:root {
+		--label__color: var(--global__color__grey25);
+
+		--input__color: white; //var(--global__color__grey25);
+		--input__color--focus: white;
+		//--input__border-color: var(--global__color__grey75);
+		//--input__place-holder: var(--global__color__grey75);
+		--input__place-holder--focus: var(--global__color__grey75);
+		--outline__border-color: white;
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////
+
+.input {
+	width: 100%;
+	min-height: 5rem;
+
+	font-weight: var(--global__font-weight__regular);
+	font-size: var(--global__font-size__sm);
+	color: var(--input__color);
+	// margin-bottom: 1em;
+	padding: 0.25rem 2rem;
+
+	border-radius: var(--global__UI__border-radius--input) !important;
+	border: solid 1px var(--input__border-color) !important;
+	background: var(--input__background-color);
+
+	box-shadow: none !important ;
+	transition: var(--global__transition--all);
+
+	&:focus,
+	&.focus {
+		color: var(--input__color--focus) !important;
+		font-weight: var(--global__font-weight__bold) !important;
+		background: var(--input__background-color) !important ;
+		border-color: var(--global__color__accent) !important;
+		border-radius: 100vmax !important; // Car carré sur IOS
+
+		&::placeholder {
+			color: red;
+		}
+	}
+
+	// prettier-ignore
+	&::placeholder{ color: var(--input__place-holder );}
+	// prettier-ignore
+	&:focus-within::placeholder { color: var(--input__place-holder--focus );}
+}
+input,
+input[type="text"],
+input[type="password"] {
+	@extend .input;
+}
+
+input[type="file"] {
+	//
+}
+
+label {
+	display: inline-block;
+	color: var(--label__color);
+	font-weight: var(--global__font-weight__light);
+	font-size: var(--global__font-size__xs);
+	margin-bottom: 0.75rem;
+	max-width: 100%;
+}

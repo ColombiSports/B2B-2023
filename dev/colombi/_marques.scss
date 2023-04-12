@@ -91,7 +91,7 @@ $logos :
 	"ROG" "Rog",
 	"ROSSI" "Rossi",
 	"RTIARMS" "RTIArms",
-	"S&T" "S&T",
+	"S_T" "S&T",
 	"SAPL" "SAPL",
 	"SAUVESTRE" "Sauvestre",
 	"SCHMIDT" "Schmidt&Bender",
@@ -119,12 +119,40 @@ $logos :
 	"WOLVERINE" "Wolverine",
 	"WSD" "WSD";
 
+/**
+	Méthode 1 : 
+	C'est le thème qui change le contenu de la variable du logo.
+	Les classes ne pouvant pas accèder aux autres versions.
+**/
+//@each $ID, $file in $logos {
+//	@media (prefers-color-scheme: light) {
+//		.product-info,
+//		.product-thumbnail {
+//			&[class*="marque-#{$ID}"] {
+//				--marque__logo-url: url("https://colombisports.com/b2b/img/logos-color/#{$file}.png");
+//			}
+//		}
+//	}
+//	@media (prefers-color-scheme: dark) {
+//		.product-info,
+//			&[class*="marque-#{$ID}"] {R
+//				--marque__logo-url: url("https://colombisports.com/b2b/img/logos-white/#{$file}.png");
+//			}
+//		}
+//	}
+//}
+
+/**
+	Méthode 2
+	Stocke les variables deux versions de logo dans les classes en ayant besoin. 
+	A la classe d'utiliser celle qu'elle souhaite.
+**/
 @each $ID, $file in $logos {
 	.product-info,
 	.product-thumbnail {
 		&[class*='marque-#{$ID}'] {
-			--URL__logo-color: url('https://colombisports.com/b2b/img/logos-color/#{$file}.png');
-			--URL__logo-white: url('https://colombisports.com/b2b/img/logos-white/#{$file}.png');
+			--marque__logo-color__url: url('https://colombisports.com/b2b/img/logos-color/#{$file}.png');
+			--marque__logo-white__url: url('https://colombisports.com/b2b/img/logos-white/#{$file}.png');
 		}
 	}
 }

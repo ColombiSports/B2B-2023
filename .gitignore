@@ -2,4 +2,5 @@ _bin/*
 .vscode/*
 assets/*
 *.tif
-
+preprod-colombi.e-liance.net/css/*
+preprod-colombi.e-liance.net/prod/*

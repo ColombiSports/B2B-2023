@@ -46,7 +46,7 @@
 	&.categorie-2110,
 	// Chargeurs
 	&.categorie-1430:not(.famille-2300) {
-		--product-menu__color: var(--global__color__armes);
+		--colormap__product-color: var(--global__color__armes);
 	}
 
 	// DEFENSE //////////////////////////////////////////////////
@@ -67,7 +67,7 @@
 	&.categorie-2052,
 	// Bombes de défense
 	&.categorie-1265 {
-		--product-menu__color: var(--global__color__defense);
+		--colormap__product-color: var(--global__color__defense);
 	}
 
 	// MUNITIONS ///////////////////////////////////////////////////////////////////
@@ -93,7 +93,7 @@
 	&.categorie-1020,
 	&.categorie-1250,
 	&.categorie-1940 {
-		--product-menu__color: var(--global__color__munitions);
+		--colormap__product-color: var(--global__color__munitions);
 	}
 
 	// OPTIQUE /////////////////////////////////////////////////////////////////////
@@ -114,7 +114,7 @@
 	&.categorie-2062,
 	// Lampes
 	&.categorie-1970 {
-		--product-menu__color: var(--global__color__optique);
+		--colormap__product-color: var(--global__color__optique);
 	}
 
 	// ACCESSOIRES /////////////////////////////////////////////////////////////////
@@ -170,7 +170,7 @@
 	&.famille-2300,
 	// Piles et batteries
 	&.categorie-1261 {
-		--product-menu__color: var(--global__color__accessoires);
+		--colormap__product-color: var(--global__color__accessoires);
 	}
 
 	// OUTDOOR /////////////////////////////////////////////////////////////////////
@@ -198,7 +198,7 @@
 	// Déguisement
 	&.categorie-2880 //
 	{
-		--product-menu__color: var(--global__color__outdoor);
+		--colormap__product-color: var(--global__color__outdoor);
 	}
 }
 
@@ -273,6 +273,6 @@
 	&.categorie-2015,
 	&.categorie-2062,
 	&.categorie-2025 {
-		--product-menu__color: var(--global__color__airsoft);
+		--colormap__product-color: var(--global__color__airsoft);
 	}
 }

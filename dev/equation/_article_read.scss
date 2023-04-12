@@ -1,11 +1,97 @@
 @use './../abstract/Product';
 
 #article_read {
+	.container {
+		// Evite que le container soit trop court en bas de page : impossible de généraliser...
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-items: stretch;
+
+		// Inverse la gallerie d'image avec la colonne de texte
+		& > div.row:first-of-type {
+			//display: grid;
+			//grid-template-columns: 1fr 1fr;
+			//grid-template-areas: 'description gallery';
+			// Ne peux "sticker" la gallery !!!
+		}
+	}
+
+	// APPAREANCE
+	.product-image {
+		--image--gap: 3rem;
+		//
+		&-wrapper {
+			grid-area: gallery;
+			float: right;
+			width: 40%;
+			//
+			position: sticky;
+			top: calc(var(--header__height) + var(--navbar__height));
+			//width: calc(40vw);
+			display: flex;
+			flex-flow: column nowrap;
+			align-items: center;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			gap: 2rem;
+
+			// La vue de l'image
+			.product-image-container {
+				background-color: white;
+				box-shadow: 0 0 4rem #00000044;
+				border-radius: var(--global__UI__border-radius--card);
+				aspect-ratio: 1 / 1;
+				height: auto;
+				margin: 0;
+			}
+
+			.product-gallery {
+				display: flex;
+				justify-content: flex-start;
+
+				flex-direction: row;
+				flex-wrap: nowrap;
+				align-items: center;
+				gap: 2rem; //
+
+				& > a {
+					overflow: hidden;
+					border-radius: 0.8rem;
+					border: none;
+					margin: 0;
+					transition: var(--global__transition--all);
+					border: solid 5px transparent;
+					opacity: 0.75;
+
+					&.active {
+						opacity: 1;
+						border-color: var(--global__color__accent);
+					}
+
+					img {
+						border-radius: 0 !important ;
+					}
+				}
+			}
+		}
+	}
+
 	.product-info {
+		//grid-area: description;
+		float: left;
+		width: 50%;
+		//
+		//
 		// prettier-ignore
 		hr{display: none ; } // Masquage des séparateurs
 
 		@extend .abstract-Product;
+
+		@extend .abstract-Product--Status;
+		--product__status__top: 0;
+		--product__status__left: 0;
 
 		display: flex;
 		flex-direction: column;
@@ -25,6 +111,10 @@
 			border-radius: 0.5rem;
 			padding: 2rem;
 			box-shadow: 0 0 2rem #00000033;
+		}
+
+		.product-libelle {
+			font-size: var(--global__font-size__xl);
 		}
 
 		// prettier-ignore

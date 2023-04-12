@@ -4,15 +4,7 @@
 
  ******************************************************************/
 
-.container {
-	width: 100%;
-	min-height: 100vh;
-
-	&-fluid {
-		margin: 0;
-		padding: 0;
-	}
-}
+// Voir aussi "bootstrap/container.scss"
 
 .navbar-default,
 .navbar-default.navbar-main {

@@ -34,12 +34,12 @@
 	// prettier-ignore
 	.col-inline{  display: contents ;}
 
-	@include setGrid(500px, 5rem);
+	@include setGrid(600px, 4rem);
 }
 
 .product-thumbnail-wrapper {
 	// prettier-ignore
 	.col-thumbnail{ display: contents ;}
 
-	@include setGrid(250px, 5rem);
+	@include setGrid(275px, 8rem);
 }

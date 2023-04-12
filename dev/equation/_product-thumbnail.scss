@@ -1,134 +1,204 @@
 @use "./../abstract/Product";
+@use "./../abstract/Promotion";
 
 /**
-	LES MINIATURES ARTICLES ///////////////////////////////////////////
+	LES MINIATURES ARTICLES ////////////////////////////////////////////////////////
 
-	Est une extention de la class abstraite "Product" sensée définir
+	Est une extention de la class abstraite "Product" censée définir
 	tous les éléments globaux d'une article: couleur, fonte...
 
-	Ne gère pas l'aspect des INDISPONIBLES (cf product-wrapper)
+	Ne gère pas l'aspect des INDISPONIBLES : c'est le parent "bootstrapé" qui s'occupe
+	des effets à appliquer.
 **/
-
 .product-thumbnail {
+	// Se laisse placer et étirer par son parent Grid
 	position: relative;
-	border: none !important ;
-	border-radius: var(--global__UI__border-radius--card);
-	background-color: var(--global__background-color);
+	//
+	// Décoration
+	@extend .abstract-Product--card;
 
-	padding: 2rem;
+	// Aligne les éléments internes dans une colonne aligner sur la gauche
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	transition: var(--global__transition--all);
 
-	@extend .abstract-Product;
-
-	// Définit les couleurs de la carte avant survol.
-	--product-button__color: var(--global__color__accent);
-	--product-icon__color: var(--global__foreground-color);
-
-	//filter: var(--unvalaible-filter);
+	// Définit les propriétés de la carte avant survol.
+	--thumbnail__buton__color: var(--global__color__accent); //Le boutton PANIER
+	--thumbnail__icon__color: white; // var(--global__background-color); // L'icone du bouton PANIER
+	--thumbnail__ribbon__color: var(--colormap__product-color); // Le ruban PROMOTION
+	--thumbnail__input__width: 7.5rem;
+	--thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
+	--thumbnail__button__right: 0.5rem;
+	--thumbnail__input_shadow: 0 0 1rem #00000000;
 
 	&:hover {
-		//--product-price__color: white;
-		--product-code__color: white;
-		--product-rga__color: white;
-		--product-libelle__color: white;
-		--product-border__color: white;
-		--product-button__color: white;
-		--product-icon__color: var(--product-menu__color);
-
-		//--unvalaible-filter: none;
-
-		background-color: var(--product-menu__color);
+		// Définit en amont par "abstract-Product" ----------------------------
+		--product__code__color: white;
+		--product__border__color: white;
+		--product__rga__color: white;
+		--product__libelle__color: white;
+		--product__price__color: white;
+		--product__marque__logo: var(--marque__logo-white__url);
+		--product__stock__color: white;
+		//
+		--global__color__promo: white;
+		--global__color__promo--text: var(--colormap__product-color);
+		//
+		--thumbnail__buton__color: white; // var(--global__foreground-color);
+		--thumbnail__icon__color: var(--colormap__product-color); // var(--global__background-color);
+		--thumbnail__ribbon__color: black;
+		//
+		background-color: var(--colormap__product-color);
 		box-shadow: none;
 	}
 
+	/**
+		LE LIEN DES IMAGES --------------------------------------------------
+	**/
+	& > a {
+		grid-area: image;
+		border: none;
+	}
+
+	/**
+		LE STATUS DE L'ARTICLE ---------------------------------------------
+	**/
+	@extend .abstract-Product--Status;
+	--product__status__top: 6.5rem;
+	--product__status__left: -3px;
+
+	/**
+		LE CODE ARTICLE ----------------------------------------------------
+	**/
+	.product-code {
+		padding-top: 2rem; // Eloigne verticalement de l'image
+		margin: 0 0 2rem 0; // Décale l'ensemble vers la droite
+		&:before {
+			margin-left: -2rem; // Ramène le trait vers la gaucuhe
+		}
+	}
+
+	/**
+		LA DESIGNATION ARTICLE ---------------------------------------------
+	**/
+	.product-libelle {
+		height: 7rem !important ;
+	}
+
+	/**
+		LA REMISE PROMO DE L'ARTICLE --------------------------------------
+	**/
+	.product-promotion.ribbon-top-right {
+		@extend .abstract-Promotion;
+	}
+
+	/**
+		LE PARENT DES INFOS PRODUITS --------------------
+		// Celui à ne pas utiliser dans l'imbriquage
+		// Structure des des infos de la miniature
+	**/
 	.product-caption {
-		&:hover {
-			--input__opacity: 1;
-			--input__transform: translate(0);
-		}
-		& > div {
-			padding: 0;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto 9rem 3.5rem 3rem 0;
+		grid-template-areas:
+			"code"
+			"libelle"
+			"prix_tarif"
+			"prix_public";
+		//
+		align-items: start;
+		background: none;
+		padding: 0;
+		border: none;
+		margin-top: 1.5rem;
+		//
 
-			&.product-code {
-				::before {
-					left: -2rem;
-				}
-			}
-			&.product-libelle {
-				height: 4em;
-				overflow: hidden;
-			}
+		// Attibution des noms d'espaces pour l'inversion
+		// prettier-ignore
+		& div[data-toggle="prix-public"] { grid-area: prix_public ;}
+		// prettier-ignore
+		& div[data-toggle="prix-tarif"] { grid-area: prix_tarif ; }
 
-			&.product-prix {
-			}
-		}
+		// prettier-ignore
+		& > div { padding: 0; } // Surécrit Bootstrap pour réaligner les paddings
 	}
 
 	form {
 		display: contents;
 	}
+	.product-panier-wrapper {
+		position: absolute;
+		width: calc(100% - 4rem);
+		height: 8rem;
+		bottom: 0;
 
-	.product-panier {
-		&-wrapper {
-			--input__opacity: 1;
-			--input__transform: translate(100%);
-
-			display: flex;
-			flex-direction: column;
-			flex-wrap: nowrap;
-			align-items: flex-end;
-			position: absolute;
-			right: 0;
-			bottom: 0;
-			margin: 0;
-			transition: var(--global__transition--all);
-
-			&:hover,
-			&:focus-within {
-				//background-color: bisque;
-
-				--input__opacity: 1;
-				--input__transform: translate(0);
-			}
+		&:hover {
+			--thumbnail__buton__color: var(--global__foreground-color);
+			--thumbnail__icon__color: var(--global__background-color);
+			--thumbnail__input_shadow: 0 0 1rem #00000099;
+			//
+			--thumbnail__input__width: 20rem;
+			--thumbnail__input__padding: 0.5rem 9rem 0.5rem 0.5rem;
+			--thumbnail__button__right: -2rem;
 		}
+	}
+	//.product-marque,
+	.product-panier {
 		// prettier-ignore
-		&-col-text { display: none; }
-
+		&-col-text { display: none; } // Le mot "Qte" d'origine
 		// prettier-ignore
-		&-col-input .label {display: none; }
+		&-col-input .label {display: none; } // Le second mot "Qte" d'origine
 
 		&-col-input {
-			width: 100%;
-			margin: 0;
-			flex: unset;
-			opacity: var(--input__opacity);
-			transform: var(--input__transform);
+			position: absolute;
+			height: 7.5rem;
+			width: var(--thumbnail__input__width);
+			right: var(--thumbnail__button__right);
+			bottom: 1.25rem;
+			margin: 0 !important ; // Surécrit Bootstrap
+			padding: var(--thumbnail__input__padding);
+			border-radius: var(--global__UI__border-radius--input);
+			background-color: var(--global__background-color);
+			transition: var(--global__transition--all);
+			box-shadow: var(--thumbnail__input_shadow);
+			overflow: hidden;
 
+			&:after {
+				content: "Quantité";
+				font-size: var(--global__font-size__xs);
+				margin: 0rem 1rem 0 1rem;
+				color: var(--global__foreground-color);
+				text-align: right;
+				display: block;
+			}
 			input {
-				background: none;
-				border: none !important ;
+				background-color: transparent;
 				border-radius: 0 !important ;
-				border-bottom: var(--global__UI__border-style) !important ;
+				color: var(--global__foreground-color) !important;
 				font-weight: var(--global__font-weight__bold) !important;
 				font-size: var(--global__font-size__lg) !important ;
+				border-color: transparent !important ;
 				text-align: right;
-				padding: 0 1rem !important;
+				padding: 0 !important;
 				margin: 0 !important ;
-				display: none;
 			}
 		}
-
 		&-col-button .btn-add-cart {
 			// BOUTON AJOUTER AU PANIER //////////////////////////////////////////////
-
 			display: grid;
 			place-content: center;
+			position: absolute;
 			width: 8rem;
 			height: 8rem;
-
-			//--product-button__color: red; // var(--global__background-color);
-			color: var(--product-icon__color) !important;
-			border-color: var(--product-button__color) !important;
-			background-color: var(--product-button__color) !important;
+			right: var(--thumbnail__button__right);
+			bottom: 1rem;
+			//
+			color: var(--thumbnail__icon__color) !important;
+			border-color: var(--thumbnail__buton__color) !important;
+			background-color: var(--thumbnail__buton__color) !important;
+			box-shadow: var(--thumbnail__input_shadow);
 
 			&:hover {
 				.fa-shopping-cart:before {
@@ -138,9 +208,9 @@
 			.fa-shopping-cart {
 				font-size: var(--global__font-size__xl);
 			}
-			span {
-				display: none;
-			}
+			// prettier-ignore
+			span { display: none; }
+			// Masque le mot "PANIER"
 		}
 	}
 }
