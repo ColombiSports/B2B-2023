@@ -102,7 +102,6 @@ div {
     --global__background-image: radial-gradient(ellipse at top, white 0%, #ddd 75%);
     --global__color__accent--hover: #f72;
     --global__filter__unavailable: grayscale(1) contrast(0.1) brightness(1.7);
-    --global__color__promo: #c00;
     --global__UI__unselected-item: var(--global__color__grey33);
   }
 }
@@ -113,7 +112,6 @@ div {
     --global__background-image: radial-gradient(ellipse at top, #333333 25%, var(--global__background-color) 100%);
     --global__color__accent--hover: #c30;
     --global__filter__unavailable: grayscale(1) contrast(0.3) brightness(0.3);
-    --promo__backgrou: #c00;
     --global__UI__unselected-item: var(--global__color__grey66);
   }
 }
@@ -1622,10 +1620,13 @@ h1, h2, h3, h4, h5, h6 {
   --thumbnail__ribbon__color: black;
   background-color: var(--colormap__product-color);
   box-shadow: none;
+  cursor: not-allowed;
 }
 .product-thumbnail > a {
+  position: relative;
   grid-area: image;
   border: none;
+  position: relative;
 }
 .product-thumbnail .product-code {
   padding-top: 2rem;
@@ -1661,6 +1662,7 @@ h1, h2, h3, h4, h5, h6 {
   display: contents;
 }
 .product-thumbnail .product-panier-wrapper {
+  cursor: default;
   position: absolute;
   width: calc(100% - 4rem);
   height: 8rem;
@@ -1758,7 +1760,7 @@ h1, h2, h3, h4, h5, h6 {
 .product-inline-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(750px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
   gap: 4rem;
 }
 .product-inline-wrapper .col-inline {

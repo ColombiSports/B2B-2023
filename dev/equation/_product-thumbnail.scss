@@ -51,14 +51,17 @@
 		//
 		background-color: var(--colormap__product-color);
 		box-shadow: none;
+		cursor: not-allowed;
 	}
 
 	/**
 		LE LIEN DES IMAGES --------------------------------------------------
 	**/
 	& > a {
+		position: relative;
 		grid-area: image;
 		border: none;
+		position: relative;
 	}
 
 	/**
@@ -129,6 +132,7 @@
 		display: contents;
 	}
 	.product-panier-wrapper {
+		cursor: default;
 		position: absolute;
 		width: calc(100% - 4rem);
 		height: 8rem;

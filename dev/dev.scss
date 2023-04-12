@@ -10,20 +10,14 @@
 @use "./bootstrap/alert";
 @use "./bootstrap/error";
 @use "./bootstrap/breadcrumb";
-<<<<<<< HEAD
-=======
 @use "./bootstrap/form";
->>>>>>> thumbnail_in_flex
 
 @use "./equation/security"; // Authentification, Mot de passe oublié, Inscription
 @use "./equation/product-line"; // Article en mode "ligne"
 @use "./equation/product-thumbnail"; // Article en mode "vignette"
 @use "./equation/product-wrapper"; // Grille d'article
 @use "./equation/product-result"; // Résultat de recherche
-<<<<<<< HEAD
-=======
 @use "./equation/product-image"; // Résltat de recherche
->>>>>>> thumbnail_in_flex
 @use "./equation/article_read"; // Page article
 @use "./equation/article-search-loading"; // Le spinner personnalisé
 
