@@ -1171,10 +1171,6 @@ h1, h2, h3, h4, h5, h6 {
   --product__cat-color: var(--global__foreground-color);
   --product__marque__height: 5rem;
   --product__marque__aspect-ratio: 3 / 1;
-  /**
-  	TOUTES VERSIONS ///////////////////////////////////////////////////
-  	NE PAS INCRUSTRER LES SÉLECTEURS CI-DESSOUS !
-  **/
   /** 
   	LE LOGO DE LA MARQUE -------------------------------------------
   	Car ils peuvent être sur fond noir ou blanc
@@ -1195,25 +1191,45 @@ h1, h2, h3, h4, h5, h6 {
   	LA DESIGNATION ARTICLE ---------------------------------------------
   **/
   /**
-  	VERSION PUBLIC /////////////////////////////////////////////////
-
-  	Le & faisant référence à ".abstract-Product"
-  	Permet ainsi l'incrustation dans la règle et par conséquent l'héritage lors des @extends
+  	LA DESCRIPTION ARTICLE -----------------------------------------------
+  	// Uniquement fiche article
+  **/
+  /**
+  	LA CATÉGORIE DE L'ARME ARTICLE ------------------------------------------
+  	// Uniquement fiche article
+  **/
+  /**
+  	LA DISPONIBILTÉ  -------------------------------------------------
+  	// Délégué sur le prix public
+  **/
+  /**
+  	LES PRIX  -----------------------------------------------------
+  	// Public et pro
   **/
 }
-.abstract-Product .product-Marque, #article_read .product-info .product-Marque, .abstract-Product--card .product-Marque, .product-thumbnail .product-Marque, .container .product-line .product-Marque {
-  grid-area: marque;
-  height: var(--product__marque__height);
-  aspect-ratio: var(--product__marque__aspect-ratio);
-  border: none;
-  position: relative;
+@media (prefers-color-scheme: light) {
+  .abstract-Product, #article_read .product-info, .abstract-Product--card, .product-thumbnail, .container .product-line {
+    --product__marque__logo: var(--marque__logo-color__url);
+  }
 }
-.abstract-Product .product-Marque::before, #article_read .product-info .product-Marque::before, .abstract-Product--card .product-Marque::before, .product-thumbnail .product-Marque::before, .container .product-line .product-Marque::before {
+@media (prefers-color-scheme: dark) {
+  .abstract-Product, #article_read .product-info, .abstract-Product--card, .product-thumbnail, .container .product-line {
+    --product__marque__logo: var(--marque__logo-white__url);
+  }
+}
+.abstract-Product div[class*=product-marque], #article_read .product-info div[class*=product-marque], .abstract-Product--card div[class*=product-marque], .product-thumbnail div[class*=product-marque], .container .product-line div[class*=product-marque] {
+  position: relative;
+  text-align: unset;
+  margin-bottom: 2rem;
+  height: 30px;
+  padding: 0;
+}
+.abstract-Product div[class*=product-marque]::before, #article_read .product-info div[class*=product-marque]::before, .abstract-Product--card div[class*=product-marque]::before, .product-thumbnail div[class*=product-marque]::before, .container .product-line div[class*=product-marque]::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  background: var(--marque__logo-url);
+  background: var(--product__marque__logo);
   background-size: contain;
   background-position: left center;
   background-repeat: no-repeat;
@@ -1315,16 +1331,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 .abstract-Product.stock-danger, #article_read .stock-danger.product-info, .stock-danger.abstract-Product--card, .stock-danger.product-thumbnail, .container .stock-danger.product-line {
   --product__stock__opacity: 0.4;
-  --stock-content: "";
-  --stock-color: var(--global__color__danger);
+  --product__stock__content: "";
+  --product__stock__color: var(--global__color__danger);
 }
 .abstract-Product.stock-success, #article_read .stock-success.product-info, .stock-success.abstract-Product--card, .stock-success.product-thumbnail, .container .stock-success.product-line {
   --product__stock__opacity: 0.8;
-  --stock-content: "";
-  --stock-color: var(--global__color__success);
-}
-.show-prix-public .abstract-Product .product-prix[data-toggle=prix-tarif], .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-tarif], #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-tarif], .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-tarif], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-tarif], .show-prix-public .container .product-line .product-prix[data-toggle=prix-tarif], .container .show-prix-public .product-line .product-prix[data-toggle=prix-tarif] {
-  display: none !important;
+  --product__stock__content: "";
+  --product__stock__color: var(--global__color__success);
 }
 .abstract-Product .product-prix, #article_read .product-info .product-prix, .abstract-Product--card .product-prix, .product-thumbnail .product-prix, .container .product-line .product-prix {
   display: flex !important;
@@ -1336,6 +1349,19 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 !important;
   margin: 0 0 -0.5rem 0 !important;
   transform-origin: bottom left;
+  transition: var(--global__transition--all);
+}
+.abstract-Product .product-prix[data-toggle=prix-tarif], #article_read .product-info .product-prix[data-toggle=prix-tarif], .abstract-Product--card .product-prix[data-toggle=prix-tarif], .product-thumbnail .product-prix[data-toggle=prix-tarif], .container .product-line .product-prix[data-toggle=prix-tarif] {
+  transform: scale(1.25);
+}
+.show-prix-public .abstract-Product .product-prix[data-toggle=prix-tarif], .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-tarif], #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-tarif], .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-tarif], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-tarif], .show-prix-public .container .product-line .product-prix[data-toggle=prix-tarif], .container .show-prix-public .product-line .product-prix[data-toggle=prix-tarif] {
+  transform: scale(0);
+}
+.abstract-Product .product-prix[data-toggle=prix-public], #article_read .product-info .product-prix[data-toggle=prix-public], .abstract-Product--card .product-prix[data-toggle=prix-public], .product-thumbnail .product-prix[data-toggle=prix-public], .container .product-line .product-prix[data-toggle=prix-public] {
+  transform: scale(0.8);
+}
+.show-prix-public .abstract-Product .product-prix[data-toggle=prix-public], .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-public], #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-public], .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-public], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-public], .show-prix-public .container .product-line .product-prix[data-toggle=prix-public], .container .show-prix-public .product-line .product-prix[data-toggle=prix-public] {
+  transform: scale(1.25);
 }
 .abstract-Product .product-prix .desc-label, #article_read .product-info .product-prix .desc-label, .abstract-Product--card .product-prix .desc-label, .product-thumbnail .product-prix .desc-label, .container .product-line .product-prix .desc-label {
   font-size: 0;
@@ -1345,33 +1371,31 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--global__font-size__xs);
   line-height: 0.5rem;
 }
+.abstract-Product .product-prix[data-toggle=prix-tarif] .desc-label:after, #article_read .product-info .product-prix[data-toggle=prix-tarif] .desc-label:after, .abstract-Product--card .product-prix[data-toggle=prix-tarif] .desc-label:after, .product-thumbnail .product-prix[data-toggle=prix-tarif] .desc-label:after, .container .product-line .product-prix[data-toggle=prix-tarif] .desc-label:after {
+  content: "Tarif HT";
+}
+.abstract-Product .product-prix[data-toggle=prix-public] .desc-label:before, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label:before, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label:before, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label:before, .container .product-line .product-prix[data-toggle=prix-public] .desc-label:before {
+  content: var(--product__stock__content);
+  color: var(--product__stock__color);
+  font-size: var(--global__font-size__sm);
+  font-family: FontAwesome;
+  line-height: 0.7rem;
+  position: absolute;
+  left: -0.3rem;
+}
+.abstract-Product .product-prix[data-toggle=prix-public] .desc-label:after, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label:after, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label:after, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label:after, .container .product-line .product-prix[data-toggle=prix-public] .desc-label:after {
+  content: "Prix vente conseillé";
+  margin-left: 1.2rem;
+}
 .abstract-Product .product-prix .desc-value, #article_read .product-info .product-prix .desc-value, .abstract-Product--card .product-prix .desc-value, .product-thumbnail .product-prix .desc-value, .container .product-line .product-prix .desc-value {
   color: var(--product-price__color) !important;
   font-size: var(--global__font-size__md);
   font-weight: var(--global__font-weight__bold);
   margin-bottom: 0.33em;
 }
-.abstract-Product .product-prix[data-toggle=prix-tarif], #article_read .product-info .product-prix[data-toggle=prix-tarif], .abstract-Product--card .product-prix[data-toggle=prix-tarif], .product-thumbnail .product-prix[data-toggle=prix-tarif], .container .product-line .product-prix[data-toggle=prix-tarif] {
-  transform: scale(0.95);
-}
-.abstract-Product .product-prix[data-toggle=prix-tarif] .desc-label:after, #article_read .product-info .product-prix[data-toggle=prix-tarif] .desc-label:after, .abstract-Product--card .product-prix[data-toggle=prix-tarif] .desc-label:after, .product-thumbnail .product-prix[data-toggle=prix-tarif] .desc-label:after, .container .product-line .product-prix[data-toggle=prix-tarif] .desc-label:after {
-  content: "Tarif HT";
-}
-.abstract-Product .product-prix[data-toggle=prix-public], #article_read .product-info .product-prix[data-toggle=prix-public], .abstract-Product--card .product-prix[data-toggle=prix-public], .product-thumbnail .product-prix[data-toggle=prix-public], .container .product-line .product-prix[data-toggle=prix-public] {
-  transform: scale(1.05);
-}
-.abstract-Product .product-prix[data-toggle=prix-public] .desc-label:after, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label:after, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label:after, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label:after, .container .product-line .product-prix[data-toggle=prix-public] .desc-label:after {
-  content: "Prix vente conseillé";
-  margin-left: 1.2rem;
-}
-.abstract-Product .product-prix[data-toggle=prix-public] .desc-label::before, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label::before, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label::before, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label::before, .container .product-line .product-prix[data-toggle=prix-public] .desc-label::before {
-  content: var(--stock-content);
-  color: var(--stock-color);
-  font-size: var(--global__font-size__sm);
-  font-family: FontAwesome;
-  line-height: 0.7rem;
-  position: absolute;
-  left: -0.3rem;
+.abstract-Product .product-prix .desc-value.lead, #article_read .product-info .product-prix .desc-value.lead, .abstract-Product--card .product-prix .desc-value.lead, .product-thumbnail .product-prix .desc-value.lead, .container .product-line .product-prix .desc-value.lead {
+  margin-bottom: -0.25rem;
+  min-height: initial;
 }
 
 /**
@@ -1382,7 +1406,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--global__UI__border-radius--card);
   background-color: var(--global__background-color);
   transition: var(--global__transition--all);
-  padding: 2rem 3rem 3rem 3rem;
+  padding: 2rem 2rem 2.5rem 2rem;
   margin: 0;
   box-shadow: none;
 }
@@ -1534,7 +1558,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
-	LES MINIATURES ARTICLES ///////////////////////////////////////////
+	LES MINIATURES ARTICLES ////////////////////////////////////////////////////////
 
 	Est une extention de la class abstraite "Product" censée définir
 	tous les éléments globaux d'une article: couleur, fonte...
@@ -1545,38 +1569,20 @@ h1, h2, h3, h4, h5, h6 {
 .product-thumbnail {
   position: relative;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr auto 8rem 5rem 4rem;
-  grid-template-areas: "marque 		." "image		image" "code 		code" "libelle 		libelle" "prix_tarif 	prix_tarif " "prix_public	prix_public";
-  align-items: start;
-  /** 
-  	Cassage du container pour réorganiser selon nos besoins
-  **/
-  --product__button__color: var(--global__color__accent);
-  --product__icon__color: var(--global__foreground-color);
-  --product__ribbon__color: var(--colormap__product-color);
-  --input__right: -12rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   transition: var(--global__transition--all);
+  --thumbnail__buton__color: var(--global__color__accent);
+  --thumbnail__icon__color: var(--global__foreground-color);
+  --thumbnail__ribbon__color: var(--colormap__product-color);
+  --thumbnail__inpput__right: -12rem;
   --product__status__top: 9.5rem;
   --product__status__left: -3px;
   /**
-  	LE PARENT DES INFOS PRODUITS ----------------------------------------
+  	LE PARENT DES INFOS PRODUITS --------------------
   	Celui à ne pas utiliser dans l'incustre
   **/
-}
-.product-thumbnail .product-caption {
-  display: contents;
-}
-@media (prefers-color-scheme: light) {
-  .product-thumbnail {
-    --product__marque__logo: var(--marque__logo-color__url);
-  }
-}
-@media (prefers-color-scheme: dark) {
-  .product-thumbnail {
-    --product__marque__logo: var(--marque__logo-white__url);
-  }
 }
 .product-thumbnail:hover {
   --product__code__color: white;
@@ -1584,36 +1590,35 @@ h1, h2, h3, h4, h5, h6 {
   --product__rga__color: white;
   --product__libelle__color: white;
   --product__price__color: white;
+  --product__marque__logo: var(--marque__logo-white__url);
+  --product__stock__color: white;
   --global__color__promo: white;
   --global__color__promo--text: var(--colormap__product-color);
-  --product__button__color: white;
-  --product__icon__color: var(--colormap__product-color);
-  --product__ribbon__color: black;
-  --product__marque__logo: var(--marque__logo-white__url);
-  --stock-color: white;
-  --input__right: 2rem;
+  --thumbnail__buton__color: white;
+  --thumbnail__icon__color: var(--colormap__product-color);
+  --thumbnail__ribbon__color: black;
   background-color: var(--colormap__product-color);
   box-shadow: none;
 }
 .product-thumbnail > a {
   grid-area: image;
+  border: none;
 }
-.product-thumbnail div[class*=product-marque] {
-  position: relative;
-  text-align: unset;
-  margin-bottom: 2rem;
-  height: 50px;
+.product-thumbnail .product-code:before {
+  margin-left: -2rem;
+}
+.product-thumbnail .product-caption {
+  background: none;
   padding: 0;
+  border: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 9rem 3.5rem 3rem 0;
+  grid-template-areas: "code" "libelle" "prix_tarif" "prix_public";
+  align-items: start;
 }
-.product-thumbnail div[class*=product-marque]::before {
-  width: 100%;
-  height: 100%;
-  content: "";
-  position: absolute;
-  background: var(--product__marque__logo);
-  background-size: contain;
-  background-position: left center;
-  background-repeat: no-repeat;
+.product-thumbnail .product-caption:hover {
+  --thumbnail__inpput__right: 0rem;
 }
 .product-thumbnail .product-caption div[data-toggle=prix-public] {
   grid-area: prix_public;
@@ -1630,6 +1635,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .product-thumbnail .product-caption > div.product-code {
   padding-top: 2rem;
+  margin: 0 0 2rem 0;
 }
 .product-thumbnail .product-caption > div.product-libelle {
   height: 7rem;
@@ -1638,21 +1644,7 @@ h1, h2, h3, h4, h5, h6 {
   display: contents;
 }
 .product-thumbnail .product-panier-wrapper {
-  --input__opacity: 1;
-  --input__transform: translate(100%);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-end;
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  transition: var(--global__transition--all);
-}
-.product-thumbnail .product-panier-wrapper:hover, .product-thumbnail .product-panier-wrapper:focus-within {
-  --input__opacity: 1;
-  --input__transform: translate(0);
+  display: contents;
 }
 .product-thumbnail .product-panier-col-text {
   display: none;
@@ -1663,30 +1655,40 @@ h1, h2, h3, h4, h5, h6 {
 .product-thumbnail .product-panier-col-input {
   position: absolute;
   bottom: 8rem;
-  width: 11rem;
-  right: var(--input__right);
+  width: 5rem;
+  right: var(--thumbnail__inpput__right);
   opacity: var(--input__opacity);
   transition: var(--global__transition--all);
+  background-color: red;
+}
+.product-thumbnail .product-panier-col-input:after {
+  content: "Quantité";
+  font-size: var(--global__font-size__xs);
+  color: white;
+  text-align: right;
+  display: block;
 }
 .product-thumbnail .product-panier-col-input input {
+  background-color: transparent;
+  color: white;
   font-weight: var(--global__font-weight__bold) !important;
   font-size: var(--global__font-size__lg) !important;
+  border-color: transparent !important;
   text-align: right;
   padding: 0 1rem !important;
   margin: 0 !important;
-  right: 0;
 }
 .product-thumbnail .product-panier-col-button .btn-add-cart {
   display: grid;
   place-content: center;
+  position: absolute;
   width: 8rem;
   height: 8rem;
-  position: absolute;
-  right: 0rem;
+  right: 1rem;
   bottom: 1rem;
-  color: var(--product__icon__color) !important;
-  border-color: var(--product__button__color) !important;
-  background-color: var(--product__button__color) !important;
+  color: var(--thumbnail__icon__color) !important;
+  border-color: var(--thumbnail__buton__color) !important;
+  background-color: var(--thumbnail__buton__color) !important;
 }
 .product-thumbnail .product-panier-col-button .btn-add-cart:hover .fa-shopping-cart:before {
   content: "\f217";

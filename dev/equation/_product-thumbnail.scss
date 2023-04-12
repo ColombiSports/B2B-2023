@@ -2,7 +2,7 @@
 @use "./../abstract/Promotion";
 
 /**
-	LES MINIATURES ARTICLES ///////////////////////////////////////////
+	LES MINIATURES ARTICLES ////////////////////////////////////////////////////////
 
 	Est une extention de la class abstraite "Product" censée définir
 	tous les éléments globaux d'une article: couleur, fonte...
@@ -10,91 +10,55 @@
 	Ne gère pas l'aspect des INDISPONIBLES : c'est le parent "bootstrapé" qui s'occupe
 	des effets à appliquer.
 **/
-
 .product-thumbnail {
-	// Se laisse placer par son parent Grid
+	// Se laisse placer et étirer par son parent Grid
 	position: relative;
 	overflow: hidden;
 	//
 	// Décoration
 	@extend .abstract-Product--card;
 
-	// Structure de la miniature
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: auto 1fr auto 8rem 5rem 4rem;
-	grid-template-areas:
-		"marque 		."
-		"image		image"
-		"code 		code"
-		"libelle 		libelle"
-		"prix_tarif 	prix_tarif "
-		"prix_public	prix_public";
-	align-items: start;
-
-	/** 
-		Cassage du container pour réorganiser selon nos besoins
-	**/
-	// prettier-ignore
-	.product-caption { display: contents; }
-
-	// Définit les couleurs de la carte avant survol.
-	--product__button__color: var(--global__color__accent); // Boutton PANIER
-	--product__icon__color: var(--global__foreground-color); // L'icone du bouton PANIER
-	--product__ribbon__color: var(--colormap__product-color); // Le ruban PROMOTION
-	//
-	--input__right: -12rem;
+	// Aligne les éléments internes dans une colonne aligner sur la gauche
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
 	transition: var(--global__transition--all);
 
-	// prettier-ignore
-	@media (prefers-color-scheme: light) { & { --product__marque__logo: var(--marque__logo-color__url);}}
-	// prettier-ignore
-	@media (prefers-color-scheme: dark) { & { --product__marque__logo: var(--marque__logo-white__url); } }
+	// Définit les propriétés de la carte avant survol.
+	--thumbnail__buton__color: var(--global__color__accent); //LE bBoutton PANIER
+	--thumbnail__icon__color: var(--global__foreground-color); // L'icone du bouton PANIER
+	--thumbnail__ribbon__color: var(--colormap__product-color); // Le ruban PROMOTION
+	--thumbnail__inpput__right: -12rem;
 
 	&:hover {
-		// Définit en amont par "abstract-Product"
+		// Définit en amont par "abstract-Product" ----------------------------
 		--product__code__color: white;
 		--product__border__color: white;
 		--product__rga__color: white;
 		--product__libelle__color: white;
 		--product__price__color: white;
+		--product__marque__logo: var(--marque__logo-white__url);
+		--product__stock__color: white;
+		//
 		--global__color__promo: white;
 		--global__color__promo--text: var(--colormap__product-color);
 		//
-		// Définit
-		--product__button__color: white;
-		--product__icon__color: var(--colormap__product-color);
-		--product__ribbon__color: black;
-		--product__marque__logo: var(--marque__logo-white__url);
-
-		--stock-color: white;
-
-		--input__right: 2rem;
+		--thumbnail__buton__color: white;
+		--thumbnail__icon__color: var(--colormap__product-color);
+		--thumbnail__ribbon__color: black;
+		//
 
 		background-color: var(--colormap__product-color);
 		box-shadow: none;
 	}
-	> a {
+
+	& > a {
 		grid-area: image;
+		border: none;
 	}
 
-	// LE LOGO DE LA MARQUE
-	div[class*="product-marque"] {
-		position: relative;
-		text-align: unset;
-		margin-bottom: 2rem;
-		height: 50px;
-		padding: 0;
-		&::before {
-			width: 100%;
-			height: 100%;
-			content: "";
-			position: absolute;
-			background: var(--product__marque__logo);
-			background-size: contain;
-			background-position: left center;
-			background-repeat: no-repeat;
-		}
+	.product-code:before {
+		margin-left: -2rem;
 	}
 
 	@extend .abstract-Product--Status;
@@ -106,11 +70,30 @@
 		@extend .abstract-Promotion;
 	}
 	/**
-		LE PARENT DES INFOS PRODUITS ----------------------------------------
+		LE PARENT DES INFOS PRODUITS --------------------
 		Celui à ne pas utiliser dans l'incustre
 	**/
 
+	// Structure des des infos de la miniature
 	.product-caption {
+		background: none;
+		padding: 0;
+		border: none;
+		//
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: auto 9rem 3.5rem 3rem 0;
+		grid-template-areas:
+			"code"
+			"libelle"
+			"prix_tarif"
+			"prix_public";
+		align-items: start;
+	}
+	.product-caption {
+		&:hover {
+			--thumbnail__inpput__right: 0rem;
+		}
 		// prettier-ignore
 		& div[data-toggle="prix-public"] { grid-area: prix_public ;}
 		// prettier-ignore
@@ -125,6 +108,7 @@
 
 			&.product-code {
 				padding-top: 2rem;
+				margin: 0 0 2rem 0;
 			}
 			&.product-code {
 				&::before {
@@ -146,73 +130,54 @@
 	//.product-marque,
 	.product-panier {
 		&-wrapper {
-			--input__opacity: 1;
-			--input__transform: translate(100%);
-
-			display: flex;
-			flex-direction: column;
-			flex-wrap: nowrap;
-			align-items: flex-end;
-			position: absolute;
-			right: 0;
-			bottom: 0;
-			margin: 0;
-			transition: var(--global__transition--all);
-
-			&:hover,
-			&:focus-within {
-				//background-color: bisque;
-
-				--input__opacity: 1;
-				--input__transform: translate(0);
-			}
+			display: contents;
 		}
 		// prettier-ignore
-		&-col-text { display: none; }
-
+		&-col-text { display: none; } // Le mot "Qte" d'origine
 		// prettier-ignore
-		&-col-input .label {display: none; }
+		&-col-input .label {display: none; } // Le second mot "Qte" d'origine
 
 		&-col-input {
 			position: absolute;
-			// margin: 0;
-			// flex: unset;
-			// opacity: var(--input__opacity);
-			// transform: var(--input__transform);
 			bottom: 8rem;
-			width: 11rem;
-			right: var(--input__right);
+			width: 5rem;
+			right: var(--thumbnail__inpput__right);
 			opacity: var(--input__opacity);
 			transition: var(--global__transition--all);
+			background-color: red;
 
+			&:after {
+				content: "Quantité";
+				font-size: var(--global__font-size__xs);
+				color: white;
+				text-align: right;
+				display: block;
+			}
 			input {
-				// background: none;
-				// border: none !important ;
-				// border-radius: 0 !important ;
-				// border-bottom: var(--global__UI__border-style) !important ;
+				background-color: transparent;
+				color: white;
 				font-weight: var(--global__font-weight__bold) !important;
 				font-size: var(--global__font-size__lg) !important ;
+				border-color: transparent !important ;
 				text-align: right;
 				padding: 0 1rem !important;
 				margin: 0 !important ;
-				right: 0;
 			}
 		}
 		&-col-button .btn-add-cart {
 			// BOUTON AJOUTER AU PANIER //////////////////////////////////////////////
-
 			display: grid;
 			place-content: center;
+			position: absolute;
 			width: 8rem;
 			height: 8rem;
-			position: absolute;
-			right: 0rem;
+			right: 1rem;
 			bottom: 1rem;
 
 			//--product-button__color: red; // var(--global__background-color);
-			color: var(--product__icon__color) !important;
-			border-color: var(--product__button__color) !important;
-			background-color: var(--product__button__color) !important;
+			color: var(--thumbnail__icon__color) !important;
+			border-color: var(--thumbnail__buton__color) !important;
+			background-color: var(--thumbnail__buton__color) !important;
 
 			&:hover {
 				.fa-shopping-cart:before {
