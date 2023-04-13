@@ -1580,7 +1580,7 @@ h1, h2, h3, h4, h5, h6 {
   --thumbnail__ribbon__color: var(--colormap__product-color);
   --thumbnail__input__width: 7.5rem;
   --thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
-  --thumbnail__button__right: 0.5rem;
+  --thumbnail__button__right: 0rem;
   --thumbnail__input_shadow: 0 0 1rem #00000000;
   /**
   	LE LIEN DES IMAGES --------------------------------------------------
@@ -1627,6 +1627,7 @@ h1, h2, h3, h4, h5, h6 {
   grid-area: image;
   border: none;
   position: relative;
+  transition: var(--global__transition--all);
 }
 .product-thumbnail .product-code {
   padding-top: 2rem;
@@ -1673,8 +1674,11 @@ h1, h2, h3, h4, h5, h6 {
   --thumbnail__icon__color: var(--global__background-color);
   --thumbnail__input_shadow: 0 0 1rem #00000099;
   --thumbnail__input__width: 20rem;
-  --thumbnail__input__padding: 0.5rem 9rem 0.5rem 0.5rem;
+  --thumbnail__input__padding: 0.5rem 9rem 0.5rem 3rem;
   --thumbnail__button__right: -2rem;
+}
+.product-thumbnail .product-panier {
+  --text-align: left;
 }
 .product-thumbnail .product-panier-col-text {
   display: none;
@@ -1699,9 +1703,9 @@ h1, h2, h3, h4, h5, h6 {
 .product-thumbnail .product-panier-col-input:after {
   content: "Quantité";
   font-size: var(--global__font-size__xs);
-  margin: 0rem 1rem 0 1rem;
+  margin: -0.75rem 0 0 0;
   color: var(--global__foreground-color);
-  text-align: right;
+  text-align: var(--text-align);
   display: block;
 }
 .product-thumbnail .product-panier-col-input input {
@@ -1711,7 +1715,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: var(--global__font-weight__bold) !important;
   font-size: var(--global__font-size__lg) !important;
   border-color: transparent !important;
-  text-align: right;
+  text-align: var(--text-align);
   padding: 0 !important;
   margin: 0 !important;
 }
