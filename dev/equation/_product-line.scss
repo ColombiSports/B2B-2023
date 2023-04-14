@@ -1,25 +1,74 @@
 @use "./../abstract/Product";
+@use "./../abstract/Promotion";
+@use "./../utils/breakpoints" as *;
 
 .container .product-line {
-	border: none !important;
-	padding: 2rem;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	align-content: center;
-	align-items: stretch;
-	justify-content: space-between;
+	--line-height: 7rem;
+
+	// Redéfinir la grille
+	display: grid;
+	grid-template-columns: var(--line-height) 1fr 15rem 15rem var(--line-height);
+	grid-template-rows: 30px 70px;
+	grid-template-areas:
+		"image code prix_tarif prix_public addCart"
+		"image libelle libelle libelle addCart";
+	gap: 1rem;
+	justify-items: start;
+
+	@include for-tablet {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 5rem 3rem 15rem 15rem 5rem;
+		grid-template-areas:
+			"image	."
+			"code		libelle"
+			"prix_tarif	prix_public"
+			"promo	addCart";
+	}
 
 	@extend .abstract-Product--card;
 
-	.center {
-		// background-color: yellow;
-	}
-	.right {
-		background-color: bisque;
+	// prettier-ignore
+	.left, .center, .right, form, form > p { display: contents ;}
+	// prettier-ignore
+	label{display: none ;}
+	// Cassage de tous les containers
+
+	.product-libelle {
+		font-size: var(--global__font-size__sm);
 	}
 
-	.left {
-		flex: 0 0 100px;
+	/**
+		LE LIEN DES IMAGES --------------------------------------------------
+	**/
+	& a {
+		width: var(--line-height);
+		height: var(--line-height);
+		background-color: white;
+		border-radius: 5px;
+		border: none;
+	}
+
+	// Attibution des noms d'espaces pour l'inversion
+	// prettier-ignore
+	p.product-prix{ 
+		justify-self: end ;
+		transform: scale(0.8) !important ;}
+
+	input.form-control {
+		display: none;
+	}
+	.btn-add-cart {
+		grid-area: addCart;
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		align-self: center;
+	}
+
+	grid .product-promotion {
+		// @extend .abstract-Promotion;
+	}
+
+	.btn-add-cart .hidden-xs {
+		display: none;
 	}
 }

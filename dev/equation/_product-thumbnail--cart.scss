@@ -1,0 +1,113 @@
+/**
+	PANIER DES THUMBNAILS --------------------------------------------------
+      // Est une extention de la classe Equation "product-thumbnail"
+      // ID inexistante
+**/
+.product_thumbnail--cart {
+	//
+	// La zone faisant apparaître les quantités du panier ////////////
+	.product-panier-wrapper {
+		cursor: default;
+		position: absolute;
+		width: calc(100% - 4rem);
+		height: 8rem;
+		bottom: 0;
+		//
+		// Définit les propriétés avant survol.
+		--thumbnail__input_shadow: 0 0 1rem #00000000; // L'ombre du bouton et du champs Quantité
+		--thumbnail__buton__color: var(--global__color__accent); //Le boutton PANIER
+		--thumbnail__icon__color: white; // var(--global__background-color); // L'icone du bouton PANIER
+		--thumbnail__input__width: 7.5rem;
+		--thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
+		--thumbnail__button__right: 0rem;
+		//
+		&:hover {
+			// Changer la couleur du bouton PANIER
+			--thumbnail__buton__color: var(--global__foreground-color);
+			--thumbnail__icon__color: var(--global__background-color);
+			--thumbnail__input_shadow: 0 0 1rem #00000099;
+			//
+			// Faire apparaître la zone des quantités
+			--thumbnail__input__width: 20rem;
+			--thumbnail__input__padding: 0.5rem 9rem 0.5rem 3rem;
+			--thumbnail__button__right: -2rem;
+		}
+	}
+
+	// Utilisé comme préfix uniquement ////////////////////////////////////
+	.product-panier {
+		--text-align: left;
+
+		// prettier-ignore
+		&-col-text { display: none; } // Le mot "Qte" d'origine
+
+		// Parent du champ input dont le label a été masqué au dessus
+		&-col-input {
+			// prettier-ignore
+			.label {display: none; } // Le second mot "Qte" d'origine
+
+			position: absolute;
+			height: 7.5rem;
+			width: var(--thumbnail__input__width);
+			right: var(--thumbnail__button__right);
+			bottom: 1.25rem;
+			margin: 0 !important ; // Surécrit Bootstrap
+			padding: var(--thumbnail__input__padding);
+			border-radius: var(--global__UI__border-radius--input);
+			background-color: var(--global__background-color);
+			transition: var(--global__transition--all);
+			box-shadow: var(--thumbnail__input_shadow);
+			overflow: hidden;
+
+			// Création de notre label sous le champ input
+			&:after {
+				content: "Quantité";
+				font-size: var(--global__font-size__xs);
+				margin: -0.75rem 0 0 0;
+				color: var(--global__foreground-color);
+				text-align: var(--text-align);
+				display: block;
+			}
+			// Définition du champ input
+			input {
+				text-align: var(--text-align);
+				background-color: transparent !important ;
+				border-radius: 0 !important ;
+				color: var(--global__foreground-color) !important;
+				font-weight: var(--global__font-weight__bold) !important;
+				font-size: var(--global__font-size__lg) !important ;
+				border-color: transparent !important ;
+				padding: 0 !important;
+				margin: 0 !important ;
+			}
+		}
+
+		// BOUTON AJOUTER AU PANIER ------------------------------------------
+		&-col-button .btn-add-cart {
+			display: grid;
+			place-content: center;
+			position: absolute;
+			width: 8rem;
+			height: 8rem;
+			right: var(--thumbnail__button__right);
+			bottom: 1rem;
+			//
+			color: var(--thumbnail__icon__color) !important;
+			border-color: var(--thumbnail__buton__color) !important;
+			background-color: var(--thumbnail__buton__color) !important;
+			box-shadow: var(--thumbnail__input_shadow);
+
+			// prettier-ignore
+			&:hover .fa-shopping-cart:before { content: "\f217"; }
+			// Bascule vers le logo Panier avec un +
+
+			// prettier-ignore
+			.fa-shopping-cart { font-size: var(--global__font-size__xl); }
+			// On aggrandit l'icone d'origine
+
+			// prettier-ignore
+			span { display: none; }
+			// Masque le mot "PANIER"
+		}
+	}
+}

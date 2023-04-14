@@ -81,7 +81,7 @@
 		font-size: var(--global__font-size__sm) !important;
 		font-weight: var(--global__font-weight__light) !important;
 		color: var(--product__code__color) !important;
-		padding: 1rem 0;
+		padding: 0rem 0;
 
 		// Le soulignement
 		&::before {
@@ -90,7 +90,7 @@
 			width: 3em;
 			height: 0.15em;
 			background-color: var(--product__border-color, #666);
-			bottom: -0.25rem;
+			bottom: -0.5rem;
 		}
 	}
 
@@ -113,10 +113,10 @@
 		//
 		color: var(--product__libelle__color);
 		font-family: var(--global__font-family__title);
-		font-size: calc(var(--global__font-size__md) * 0.9);
+		font-size: var(--global__font-size__md);
 		font-weight: var(--global__font-weight__bold);
 		text-transform: uppercase;
-		line-height: 1.2em;
+		line-height: 1.15em;
 	}
 
 	/**
@@ -213,7 +213,7 @@
 		transform-origin: bottom left;
 		//
 		// prettier-ignore
-		&[data-toggle="prix-tarif"] { transform: scale(1.25); }
+		&[data-toggle="prix-tarif"] {  transform: scale(1.25); }
 		// prettier-ignore
 		.show-prix-public &[data-toggle="prix-tarif"] { transform: scale(0); }
 		//
@@ -222,6 +222,12 @@
 		// prettier-ignore
 		.show-prix-public &[data-toggle="prix-public"] { transform: scale(1.25); }
 		transition: var(--global__transition--all);
+
+		// Attibution des noms d'espaces pour l'inversion
+		// prettier-ignore
+		& *[data-toggle="prix-public"] { grid-area: prix_public ;}
+		// prettier-ignore
+		& *[data-toggle="prix-tarif"] { grid-area: prix_tarif ; }
 
 		// Le label des prix -------------------------------------------
 		.desc-label {
