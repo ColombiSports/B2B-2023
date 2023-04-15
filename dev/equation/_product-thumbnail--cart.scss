@@ -61,7 +61,7 @@
 
 			// Création de notre label sous le champ input
 			&:after {
-				content: "Quantité";
+				content: 'Quantité';
 				font-size: var(--global__font-size__xs);
 				margin: -0.75rem 0 0 0;
 				color: var(--global__foreground-color);
@@ -84,11 +84,7 @@
 
 		// BOUTON AJOUTER AU PANIER ------------------------------------------
 		&-col-button .btn-add-cart {
-			display: grid;
-			place-content: center;
-			position: absolute;
-			width: 8rem;
-			height: 8rem;
+			--btn-add-cart__size: 8rem;
 			right: var(--thumbnail__button__right);
 			bottom: 1rem;
 			//
@@ -96,18 +92,6 @@
 			border-color: var(--thumbnail__buton__color) !important;
 			background-color: var(--thumbnail__buton__color) !important;
 			box-shadow: var(--thumbnail__input_shadow);
-
-			// prettier-ignore
-			&:hover .fa-shopping-cart:before { content: "\f217"; }
-			// Bascule vers le logo Panier avec un +
-
-			// prettier-ignore
-			.fa-shopping-cart { font-size: var(--global__font-size__xl); }
-			// On aggrandit l'icone d'origine
-
-			// prettier-ignore
-			span { display: none; }
-			// Masque le mot "PANIER"
 		}
 	}
 }

@@ -1,6 +1,6 @@
-@use "./../abstract/Product";
-@use "./../abstract/Promotion";
-@use "./product-thumbnail--cart";
+@use './../abstract/Product';
+@use './../abstract/Promotion';
+@use './product-thumbnail--cart';
 
 /**
 	LES MINIATURES ARTICLES ////////////////////////////////////////////////////////
@@ -99,12 +99,12 @@
 	.product-caption {
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: auto 10rem 3.5rem 3rem 0;
+		grid-template-rows: 6rem 10rem 3.5rem 3rem 0;
 		grid-template-areas:
-			"code"
-			"libelle"
-			"prix_tarif"
-			"prix_public";
+			'code'
+			'libelle'
+			'prix_tarif'
+			'prix_public';
 		//
 		align-items: start;
 		background: none;

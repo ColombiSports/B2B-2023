@@ -1,4 +1,4 @@
-@use "./../utils/breakpoints" as *;
+@use './../utils/breakpoints' as *;
 
 @mixin setGrid($min, $max, $gap) {
 	position: relative;
@@ -37,7 +37,9 @@
 	.col-inline{  display: contents ;}
 
 	// Tableau en normal et en mode téléphone
-	@include setGrid(540px, 1fr, 4rem);
+	@include setGrid(1fr, 1fr, 4rem);
+	grid-template-columns: minmax(700px, 1fr);
+
 	// prettier-ignore
 	@include for-tablet { @include setGrid(270px, 100%, 4rem); }
 }

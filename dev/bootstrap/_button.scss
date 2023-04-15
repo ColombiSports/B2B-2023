@@ -20,3 +20,28 @@
 	--border-color: var(--global__foreground-color);
 	--border-color--hover: var(--global__color__accent);
 }
+
+// Le bouton panier des miniature en carte et en ligne
+.btn-add-cart {
+	@extend .abstract-Button;
+	//
+	display: grid;
+	place-content: center;
+	position: absolute;
+	//
+	--btn-add-cart__size: 100%;
+	width: var(--btn-add-cart__size);
+	height: var(--btn-add-cart__size);
+	//
+	// prettier-ignore
+	&:hover .fa-shopping-cart:before { content: "\f217"; }
+	// Bascule vers le logo Panier avec un +
+	//
+	// prettier-ignore
+	.fa-shopping-cart { font-size: var(--global__font-size__xl); }
+	// On aggrandit l'icone d'origine
+	//
+	// prettier-ignore
+	span { display: none; }
+	// Masque le mot "PANIER"
+}

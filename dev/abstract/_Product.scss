@@ -1,4 +1,4 @@
-@use "./Typo";
+@use './Typo';
 
 /**
     CLASSE COMMUNE AU MINIATURE EN FORME DE "CARTE" OU DE "LIGNE" //////////////
@@ -29,7 +29,7 @@
 	// prettier-ignore
 	@media (prefers-color-scheme: dark) { & { --product__marque__logo: var(--marque__logo-white__url); } }
 
-	div[class*="product-marque"] {
+	div[class*='product-marque'] {
 		position: relative;
 		text-align: unset;
 		margin-bottom: 2rem;
@@ -37,7 +37,7 @@
 		padding: 0;
 		//
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -55,6 +55,8 @@
 	**/
 	// prettier-ignore
 	.image, .left {
+		grid-area: image ;
+		//
 		// prettier-ignore
 		img, picture { mix-blend-mode: multiply; }
 
@@ -85,12 +87,12 @@
 
 		// Le soulignement
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			width: 3em;
 			height: 0.15em;
 			background-color: var(--product__border-color, #666);
-			bottom: -0.5rem;
+			bottom: -1.2em;
 		}
 	}
 
@@ -161,7 +163,7 @@
 		padding: 1.3rem 0.2em 1.4rem 1.4rem;
 
 		&:before {
-			content: "Catégorie ";
+			content: 'Catégorie ';
 			font-family: var(--global__font-family__text);
 			font-weight: var(--global__font-weight__bold);
 			font-size: 0.6rem;
@@ -181,12 +183,12 @@
 	}
 	&.stock-danger {
 		--product__stock__opacity: 0.4; // L'opacité de stock
-		--product__stock__content: "\f00d"; //  ❌  l'icone accompagnant le label
+		--product__stock__content: '\f00d'; //  ❌  l'icone accompagnant le label
 		--product__stock__color: var(--global__color__danger); // La couleur de l'icone
 	}
 	&.stock-success {
 		--product__stock__opacity: 0.8;
-		--product__stock__content: "\f00c"; //  ✔
+		--product__stock__content: '\f00c'; //  ✔
 		--product__stock__color: var(--global__color__success);
 	}
 
@@ -225,9 +227,9 @@
 
 		// Attibution des noms d'espaces pour l'inversion
 		// prettier-ignore
-		& *[data-toggle="prix-public"] { grid-area: prix_public ;}
+		&[data-toggle="prix-public"] { grid-area: prix_public ;}
 		// prettier-ignore
-		& *[data-toggle="prix-tarif"] { grid-area: prix_tarif ; }
+		&[data-toggle="prix-tarif"] { grid-area: prix_tarif ; }
 
 		// Le label des prix -------------------------------------------
 		.desc-label {
@@ -235,17 +237,17 @@
 
 			&:after {
 				// Définition du texte de remplacement
-				content: "PRIX";
+				content: 'PRIX';
 				font-size: var(--global__font-size__xs);
 				line-height: 0.5rem;
 			}
 		}
 		// Définition du label de remplacement pour le prix pro
-		&[data-toggle="prix-tarif"] .desc-label:after {
-			content: "Tarif HT";
+		&[data-toggle='prix-tarif'] .desc-label:after {
+			content: 'Tarif HT';
 		}
 		// Définition de l'icone de stock et sa couleur, juste  avant le label de remplacement
-		&[data-toggle="prix-public"] .desc-label:before {
+		&[data-toggle='prix-public'] .desc-label:before {
 			content: var(--product__stock__content);
 			color: var(--product__stock__color);
 			font-size: var(--global__font-size__sm);
@@ -255,8 +257,8 @@
 			left: -0.3rem;
 		}
 		// Définition du label de remplacement pour le prix public
-		&[data-toggle="prix-public"] .desc-label:after {
-			content: "Prix vente conseillé";
+		&[data-toggle='prix-public'] .desc-label:after {
+			content: 'Prix vente conseillé';
 			margin-left: 1.2rem;
 		}
 		// Le prix par lui-même ------------------------------------------
@@ -320,7 +322,7 @@
 	&.statut-PRECO::before,
 	&.statut-NOUVEAU::after,
 	&.statut-NOUVEAU::before {
-		content: "";
+		content: '';
 		color: transparent;
 		position: absolute;
 		top: var(--product__status__top);
@@ -350,7 +352,7 @@
 	// Pour le status NOUVEAU ---------------------------------------
 	&.statut-NOUVEAU::before,
 	&.statut-NOUVEAU::after {
-		content: "NOUVEAU";
+		content: 'NOUVEAU';
 		// Taille dynnamique, permet que les deux soient identiques
 		// Celui du dessous, l'ombre, la couleur est transparente
 	}
@@ -361,7 +363,7 @@
 	// Pour le status PRECO -----------------------------------------
 	&.statut-PRECO::before,
 	&.statut-PRECO::after {
-		content: "PRECOMMANDE";
+		content: 'PRECOMMANDE';
 		// Taille dynnamique, permet que les deux soient identiques
 		// Celui du dessous, l'ombre, la couleur est transparente
 	}
