@@ -2,41 +2,64 @@
 @use './../abstract/Promotion';
 @use './../utils/breakpoints' as *;
 
+/**
+	Affichage des miniatures en ligne
+**/
 .container .product-line {
-	--line-height: 7rem;
-	height: calc(var(--line-height) - 4rem);
+	@extend .abstract-Product--card;
 
-	// Redéfinir la grille
-	display: grid;
-	grid-template-columns: var(--line-height) 1fr 10rem 1fr 15rem var(--line-height);
-	grid-template-rows: 1fr 1fr;
-	grid-template-areas:
-		'image 		code 		rga			promo		prix_public 	addCart'
-		'image 		libelle 	libelle 	libelle		prix_tarif  	addCart';
-	gap: 1rem;
-	justify-items: start;
+	.left {
+		flex: 0 0 7rem;
 
-	@include for-tablet {
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 5rem 3rem 15rem 15rem 5rem;
-		grid-template-areas:
-			'image	.'
-			'code		libelle'
-			'prix_tarif	prix_public'
-			'promo	addCart';
+		img {
+			width: 5rem;
+			aspect-ratio: 1 / 1;
+			mix-blend-mode: multiply;
+		}
 	}
 
-	@extend .abstract-Product;
+	.right {
+		flex: 0 0 5rem;
+	}
+
+	.center {
+		& p:first-child {
+			display: contents;
+		}
+		display: grid;
+		align-items: start;
+		grid-template-columns: 1fr 1fr 10rem 12rem;
+		grid-template-rows: 1fr 1fr;
+		grid-template-areas:
+			'code		rga			promo		prix_tarif'
+			'libelle	libelle		libelle		prix_public';
+
+		@include for-tablet {
+			& {
+				flex-flow: column nowrap;
+			}
+		}
+
+		// prettier-ignore
+		.product-code{ flex: 0 0 3rem ;}
+
+		.product-libelle {
+			font-size: var(--global__font-size__md);
+		}
+		.product-promotion {
+			// @extend .abstract-Promotion;
+		}
+		// Attibution des noms d'espaces pour l'inversion
+		p.product-prix {
+			transform: scale(0.8) !important ;
+		}
+	}
 
 	// prettier-ignore
 	//.left, .center, .right, form, form > p, .center > p:first-child { display: contents ;}
 	// prettier-ignore
 	label{display: none ;}
 	// Cassage de tous les containers
-
-	.product-libelle {
-		font-size: var(--global__font-size__md);
-	}
 
 	/**
 		LE LIEN DES IMAGES --------------------------------------------------
@@ -49,18 +72,8 @@
 		border: none;
 	}
 
-	// Attibution des noms d'espaces pour l'inversion
-	// prettier-ignore
-	p.product-prix{ 
-		justify-self: end ;
-		transform: scale(0.8) !important ;}
-
 	input.form-control {
 		display: none;
-	}
-
-	grid .product-promotion {
-		// @extend .abstract-Promotion;
 	}
 
 	.btn-add-cart {

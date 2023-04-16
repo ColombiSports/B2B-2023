@@ -1,15 +1,34 @@
-.h1 {
-	font-family: var(--global__font-family__title);
-	font-size: var(--global__font-size__md);
-	color: var(--global__color__accent);
-}
-
 // prettier-ignore
-h1, h2, h3, h4, h5, h6{
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	color: var(--global__color__accent) ;
 	font-family: var(--global__font-family__title);
 	font-weight: var(--global__font-weight__bold);
 	letter-spacing: -0.025em ;
+	line-height: 1.2em ;
 	margin-bottom: 1em ;
-	
+}
+
+h1,
+.h1 {
+	font-size: var(--global__font-size__xl);
+}
+h2,
+.h2 {
+	font-size: var(--global__font-size__lg);
+}
+h3,
+.h3 {
+	font-size: var(--global__font-size__md);
+}
+h4,
+.h4 {
+	font-size: var(--global__font-size__sm);
+}
+h5,
+.h5 {
+	font-size: var(--global__font-size__xm);
+}
+h6,
+.h6 {
+	font-size: var(--global__font-size__xm);
 }

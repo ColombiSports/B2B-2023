@@ -37,8 +37,7 @@
 	.col-inline{  display: contents ;}
 
 	// Tableau en normal et en mode téléphone
-	@include setGrid(1fr, 1fr, 4rem);
-	grid-template-columns: minmax(700px, 1fr);
+	@include setGrid(810px, 1fr, 4rem);
 
 	// prettier-ignore
 	@include for-tablet { @include setGrid(270px, 100%, 4rem); }
