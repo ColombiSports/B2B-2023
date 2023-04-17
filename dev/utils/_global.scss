@@ -1,4 +1,5 @@
-﻿@use "sass:color";
+﻿@use "./../utils/breakpoints" as *;
+@use "sass:color";
 //
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500&family=Montserrat:wght@300;500;700&display=swap");
 
@@ -73,12 +74,19 @@
 	--global__UI__selected-item: var(--global__color__accent);
 
 	--global__container__padding: 5vmax;
-	--global__container__width: 100vw; // clamp(30rem, 95vw, 100vw); ;
+	--global__container__width: 100vw; // clamp(30rem, 95vw, 100vw);
 }
 
 :root .show-prix-public {
 	--global__color__accent: hsl(200, 10%, 50%);
 	--global__color__accent--hover: hsl(200, 10%, 40%);
+}
+
+// Les variables globales en mode téléphone //////////////////////////////////////////////////////////////////////////////
+@include for-phone {
+	:root {
+		--global__container__padding: 5rem 2rem;
+	}
 }
 
 // Pour les utilsateurs à thème clair ////////////////////////////////////////////////////////////////////////////////////

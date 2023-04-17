@@ -1,6 +1,6 @@
-@use './../abstract/Product';
-@use './../abstract/Promotion';
-@use './../utils/breakpoints' as *;
+@use "./../abstract/Product";
+@use "./../abstract/Promotion";
+@use "./../utils/breakpoints" as *;
 
 /**
 	Affichage des miniatures en ligne
@@ -8,76 +8,113 @@
 .container .product-line {
 	@extend .abstract-Product--card;
 
-	.left {
-		flex: 0 0 7rem;
+	// LA GRILLE DES 3 BLOCS /////////////////////////////////////////////////////////
 
-		img {
-			width: 5rem;
-			aspect-ratio: 1 / 1;
-			mix-blend-mode: multiply;
-		}
-	}
+	display: grid;
+	grid-template-columns: 7rem 1fr 5rem;
+	grid-template-rows: 1fr;
+	grid-template-areas: "left center right";
+	gap: 2rem;
 
-	.right {
-		flex: 0 0 5rem;
-	}
-
-	.center {
-		& p:first-child {
-			display: contents;
-		}
-		display: grid;
-		align-items: start;
-		grid-template-columns: 1fr 1fr 10rem 12rem;
-		grid-template-rows: 1fr 1fr;
+	// En mode tablette -------------------------------------------------------------
+	// prettier-ignore
+	@include for-tablet { & {
+		padding: 1rem;
+		border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
+		//
+		grid-template-columns: 7rem 1fr;
+		grid-template-rows: 7rem 1fr;
 		grid-template-areas:
-			'code		rga			promo		prix_tarif'
-			'libelle	libelle		libelle		prix_public';
+			"left		center"
+			"right	center";
+	} }
 
-		@include for-tablet {
-			& {
-				flex-flow: column nowrap;
-			}
+	// LE BLOC DE L'IMAGE /////////////////////////////////////////////////////////
+	.left {
+		grid-area: left;
+		//
+		flex: 0 0 7rem;
+		min-width: 7rem;
+		max-height: 7rem;
+		display: block;
+
+		// Le lien et son image
+		a {
+			border: none;
+			mix-blend-mode: multiply;
+			max-width: 5rem !important;
+			max-height: 5rem !important;
+			aspect-ratio: 1 / 1;
+			display: grid;
+			place-content: center;
+			// prettier-ignore
+			img { max-height: 5rem !important ; }
 		}
+	}
 
+	// LE BLOC DES INFOS PRODUITS ///////////////////////////////////////////////
+	.center {
+		grid-area: center;
+		padding-right: 0;
+		//
+		// Layout en mode "ligne" ---------------------------------------------
+		display: grid;
+		grid-template-columns: 1fr 1fr 12rem 12rem;
+		grid-template-rows: 2rem 1fr;
+		grid-template-areas:
+			"code		rga			promo			prix_tarif"
+			"libelle	libelle		libelle		prix_public";
+		gap: 1rem;
+		//
+		// Layout tablette ---------------------------------------------------
 		// prettier-ignore
-		.product-code{ flex: 0 0 3rem ;}
+		@include for-tablet { & {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-items: flex-start;
+		}}
+		//
+		// prettier-ignore
+		& p:first-child { display: contents; }
+		// Libère le block "code"
 
+		// Les éléments ---------------------------------------------------
+		.product-code {
+			flex: 0 0 3rem;
+			font-size: var(--global__font-size__xs) !important ;
+		}
 		.product-libelle {
-			font-size: var(--global__font-size__md);
+			font-size: var(--global__font-size__sm);
 		}
 		.product-promotion {
-			// @extend .abstract-Promotion;
+			display: none;
+			@extend .abstract-Promotion;
 		}
 		// Attibution des noms d'espaces pour l'inversion
 		p.product-prix {
 			transform: scale(0.8) !important ;
 		}
 	}
+	// LE BLOC PANIER ///////////////////////////////////////////////////////////////////////
+	.right {
+		grid-area: right;
+		flex: 0 0 5rem;
+		display: grid;
+		place-content: center;
 
-	// prettier-ignore
-	//.left, .center, .right, form, form > p, .center > p:first-child { display: contents ;}
-	// prettier-ignore
-	label{display: none ;}
-	// Cassage de tous les containers
+		// prettier-ignore
+		form p:first-of-type { display: none; }
+		// Masque le champ des quantités
 
-	/**
-		LE LIEN DES IMAGES --------------------------------------------------
-	**/
-	& a {
-		width: var(--line-height);
-		height: var(--line-height);
-		background-color: white;
-		border-radius: 5px;
-		border: none;
-	}
-
-	input.form-control {
-		display: none;
-	}
-
-	.btn-add-cart {
-		grid-area: addCart;
-		--btn-add-cart__size: 7rem;
+		// Le boutton du panier plus petit que normal
+		.btn-add-cart {
+			grid-area: addCart;
+			position: relative;
+			--btn-add-cart__size: 5rem;
+			i {
+				font-size: var(--global__font-size__md);
+			}
+		}
 	}
 }
