@@ -16,6 +16,12 @@
 	grid-template-areas: "left center right";
 	gap: 2rem;
 
+	// Applique le bandeau "status" : NOUVEAU, PRECOMMANDE, ETC....
+	@extend .abstract-Product--Status;
+	--product__status__top: -0.5rem;
+	--product__status__left: 18rem;
+	--product__status__font-size: var(--global__font-size__sm);
+
 	// En mode tablette -------------------------------------------------------------
 	// prettier-ignore
 	@include for-tablet { & {
@@ -27,6 +33,12 @@
 		grid-template-areas:
 			"left		center"
 			"right	center";
+
+		// Déplace le bandeau "status" à droite
+		&::before, &::after{
+			left: unset !important ;
+			right: 0 ;
+		}	
 	} }
 
 	// LE BLOC DE L'IMAGE /////////////////////////////////////////////////////////
@@ -76,7 +88,7 @@
 		}}
 		//
 		// prettier-ignore
-		& p:first-child { display: contents; }
+		& p:first-of-type{ display: contents; }
 		// Libère le block "code"
 
 		// Les éléments ---------------------------------------------------

@@ -1268,7 +1268,6 @@ h6,
   background-repeat: no-repeat;
 }
 .abstract-Product .image, #article_read .product-info .image, .abstract-Product--card .image, .product-thumbnail .image, .container .product-line .image, .abstract-Product .left, #article_read .product-info .left, .abstract-Product--card .left, .product-thumbnail .left, .container .product-line .left {
-  grid-area: image;
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.1333333333);
   background: #fff;
   border-radius: calc(var(--global__UI__border-radius--card) * 0.25);
@@ -1298,7 +1297,7 @@ h6,
   width: 3em;
   height: 0.15em;
   background-color: var(--product__border-color, #666);
-  bottom: -0.25em;
+  bottom: -0.5rem;
 }
 .abstract-Product .product-rga, #article_read .product-info .product-rga, .abstract-Product--card .product-rga, .product-thumbnail .product-rga, .container .product-line .product-rga {
   grid-area: rga;
@@ -1386,22 +1385,18 @@ h6,
   transition: var(--global__transition--all);
 }
 .abstract-Product .product-prix[data-toggle=prix-tarif], #article_read .product-info .product-prix[data-toggle=prix-tarif], .abstract-Product--card .product-prix[data-toggle=prix-tarif], .product-thumbnail .product-prix[data-toggle=prix-tarif], .container .product-line .product-prix[data-toggle=prix-tarif] {
+  grid-area: prix_tarif;
   transform: scale(1.25);
 }
 .show-prix-public .abstract-Product .product-prix[data-toggle=prix-tarif], .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-tarif], #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-tarif], .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-tarif], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-tarif], .show-prix-public .container .product-line .product-prix[data-toggle=prix-tarif], .container .show-prix-public .product-line .product-prix[data-toggle=prix-tarif] {
   transform: scale(0);
 }
 .abstract-Product .product-prix[data-toggle=prix-public], #article_read .product-info .product-prix[data-toggle=prix-public], .abstract-Product--card .product-prix[data-toggle=prix-public], .product-thumbnail .product-prix[data-toggle=prix-public], .container .product-line .product-prix[data-toggle=prix-public] {
+  grid-area: prix_public;
   transform: scale(0.8);
 }
 .show-prix-public .abstract-Product .product-prix[data-toggle=prix-public], .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-public], #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-public], .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-public], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-public], .show-prix-public .container .product-line .product-prix[data-toggle=prix-public], .container .show-prix-public .product-line .product-prix[data-toggle=prix-public] {
   transform: scale(1.25);
-}
-.abstract-Product .product-prix[data-toggle=prix-public], #article_read .product-info .product-prix[data-toggle=prix-public], .abstract-Product--card .product-prix[data-toggle=prix-public], .product-thumbnail .product-prix[data-toggle=prix-public], .container .product-line .product-prix[data-toggle=prix-public] {
-  grid-area: prix_public;
-}
-.abstract-Product .product-prix[data-toggle=prix-tarif], #article_read .product-info .product-prix[data-toggle=prix-tarif], .abstract-Product--card .product-prix[data-toggle=prix-tarif], .product-thumbnail .product-prix[data-toggle=prix-tarif], .container .product-line .product-prix[data-toggle=prix-tarif] {
-  grid-area: prix_tarif;
 }
 .abstract-Product .product-prix .desc-label, #article_read .product-info .product-prix .desc-label, .abstract-Product--card .product-prix .desc-label, .product-thumbnail .product-prix .desc-label, .container .product-line .product-prix .desc-label {
   font-size: 0;
@@ -1469,47 +1464,47 @@ h6,
 	Ajout d'un bloc de couleur utlisant le BEFORE et l'AFTER de classe étendue.
 	Correspond au "statut-XXXX" (avec faute) envoyé par Equapro depuis Equation.
 **/
-.abstract-Product--Status, #article_read .product-info, .product-thumbnail {
+.abstract-Product--Status, #article_read .product-info, .product-thumbnail, .container .product-line {
   --product__status__top: 0;
   --product__status__left: 0;
+  --product__status__font-size: var(--global__font-size__md);
 }
-.abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after, .abstract-Product--Status.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .abstract-Product--Status.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before {
+.abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after, .container .statut-PRECO.product-line::after, .abstract-Product--Status.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .container .statut-PRECO.product-line::before, .abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .container .statut-NOUVEAU.product-line::after, .abstract-Product--Status.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .container .statut-NOUVEAU.product-line::before {
   content: "";
   color: transparent;
   position: absolute;
   top: var(--product__status__top);
   left: var(--product__status__left);
-  height: 5rem;
   display: grid;
   place-content: center;
-  font-size: var(--global__font-size__md);
+  font-size: var(--product__status__font-size);
   font-weight: var(--global__font-weight__bold);
   letter-spacing: -0.05rem;
-  padding: 0 2rem;
+  padding: 0.75em 1.5em;
   z-index: 1;
 }
-.abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
+.abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .container .statut-NOUVEAU.product-line::after, .abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after, .container .statut-PRECO.product-line::after {
   -webkit-clip-path: polygon(0% 10%, 100% 0%, 90% 100%, 5% 95%);
           clip-path: polygon(0% 10%, 100% 0%, 90% 100%, 5% 95%);
 }
-.abstract-Product--Status.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .abstract-Product--Status.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before {
+.abstract-Product--Status.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .container .statut-NOUVEAU.product-line::before, .abstract-Product--Status.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .container .statut-PRECO.product-line::before {
   -webkit-clip-path: unset;
           clip-path: unset;
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
   transform: scale(1.1, 0.85) rotate(7.5deg) translate(15px, 10px);
   filter: blur(4px);
 }
-.abstract-Product--Status.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after {
+.abstract-Product--Status.statut-NOUVEAU::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .container .statut-NOUVEAU.product-line::before, .abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .container .statut-NOUVEAU.product-line::after {
   content: "NOUVEAU";
 }
-.abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after {
+.abstract-Product--Status.statut-NOUVEAU::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .container .statut-NOUVEAU.product-line::after {
   color: var(--global__color__nouveau--text);
   background-color: var(--global__color__nouveau);
 }
-.abstract-Product--Status.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
+.abstract-Product--Status.statut-PRECO::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .container .statut-PRECO.product-line::before, .abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after, .container .statut-PRECO.product-line::after {
   content: "PRECOMMANDE";
 }
-.abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after {
+.abstract-Product--Status.statut-PRECO::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after, .container .statut-PRECO.product-line::after {
   color: var(--global__color__preco--text);
   background-color: var(--global__color__preco);
 }
@@ -1589,6 +1584,9 @@ h6,
   grid-template-rows: 1fr;
   grid-template-areas: "left center right";
   gap: 2rem;
+  --product__status__top: -0.5rem;
+  --product__status__left: 18rem;
+  --product__status__font-size: var(--global__font-size__sm);
 }
 @media only screen and (max-width: 768px) {
   .container .product-line {
@@ -1597,6 +1595,10 @@ h6,
     grid-template-columns: 7rem 1fr;
     grid-template-rows: 7rem 1fr;
     grid-template-areas: "left		center" "right	center";
+  }
+  .container .product-line::before, .container .product-line::after {
+    left: unset !important;
+    right: 0;
   }
 }
 .container .product-line .left {
@@ -1635,7 +1637,7 @@ h6,
     align-items: flex-start;
   }
 }
-.container .product-line .center p:first-child {
+.container .product-line .center p:first-of-type {
   display: contents;
 }
 .container .product-line .center .product-code {
