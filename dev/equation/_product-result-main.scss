@@ -1,5 +1,5 @@
-@use './../abstract/Typo' as *;
-@use './../utils/breakpoints' as *;
+@use "./../abstract/Typo" as *;
+@use "./../utils/breakpoints" as *;
 
 /**
 	Partie gauche du wrapper de résultat de recherche. Contient : 
@@ -25,8 +25,8 @@
 	&_header {
 		display: grid;
 		grid-template-areas:
-			'title title'
-			'views sort';
+			"title title"
+			"views sort";
 		grid-template-columns: 1fr max-content max-content;
 		align-content: center;
 		align-items: center;
@@ -35,9 +35,9 @@
 		@include for-tablet {
 			grid-template-columns: 1fr;
 			grid-template-areas:
-				'title'
-				'views'
-				'sort';
+				"title"
+				"views"
+				"sort";
 		}
 
 		// prettier-ignore
@@ -85,7 +85,7 @@
 				color: var(--global__UI__unselected-item);
 			}
 			// Couleur SÉLECTIONNÉ
-			input[type='radio']:checked + label {
+			input[type="radio"]:checked + label {
 				color: var(--global__foreground-color) !important ;
 			}
 
@@ -110,7 +110,7 @@
 
 				// Ajoute d'un icon de type "toggle off" avant le texte
 				&:before {
-					content: '\f205';
+					content: "\f205";
 					margin-right: 0.25em;
 					font-family: FontAwesome;
 					font-size: 2.5em;
@@ -140,7 +140,7 @@
 				font-size: var(--global__font-size__md);
 
 				&:after {
-					content: 'FILTRES';
+					content: "FILTRES";
 					font-size: var(--global__font-size__xs);
 					padding: 0;
 				}
@@ -163,7 +163,7 @@
 
 			// Créé un pseudo label au dessus
 			&::before {
-				content: 'Trier par :';
+				content: "Trier par :";
 				width: 100%;
 				text-align: right;
 				display: inline-block;
@@ -209,6 +209,7 @@
 			.form-control-static.pull-right {
 				position: absolute;
 				margin-top: -3rem;
+				color: var(--label__color);
 			}
 			// Le tag des mots recherche ----------------------------------
 			.form-control.keyword {
@@ -263,7 +264,7 @@
 		// Le .result-number précédent étant masqué par son parent (voir containers inutiles)
 		.result-number {
 			&::before {
-				content: 'Résultats par page:';
+				content: "Résultats par page:";
 				width: 100%;
 				text-align: right;
 				display: inline-block;
@@ -276,6 +277,7 @@
 			width: auto;
 			flex-grow: 1;
 			display: flex;
+			flex-flow: row wrap;
 			gap: 0.75rem;
 
 			// INACTIF : pas besoin d'évènement souris

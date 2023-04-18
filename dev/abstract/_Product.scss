@@ -39,7 +39,7 @@
 		&::before {
 			content: "";
 			position: absolute;
-			width: 100%;
+			width: 50%;
 			height: 100%;
 			background: var(--product__marque__logo);
 			background-size: contain;
@@ -217,7 +217,7 @@
 			grid-area: prix_tarif ;
 			transform: scale(1.25); }
 		// prettier-ignore
-		.show-prix-public &[data-toggle="prix-tarif"] { transform: scale(0); }
+		.show-prix-public &[data-toggle="prix-tarif"] { transform: scale(0) !important; }
 		//
 		// prettier-ignore
 		&[data-toggle="prix-public"] { 

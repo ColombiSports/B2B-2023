@@ -1,10 +1,16 @@
 @use "./../utils/breakpoints" as *;
 
-@mixin setGrid($min, $max, $gap) {
+@mixin setGrid($min, $max, $row-gap, $column-gap: 0) {
 	position: relative;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax($min, $max));
-	gap: $gap;
+	row-gap: $row-gap;
+	//
+	@if $column-gap== 0 {
+		column-gap: $column-gap;
+	} @else {
+		column-gap: $row-gap;
+	}
 }
 /******************************************************************************
 
@@ -37,15 +43,15 @@
 	.col-inline{  display: contents ;}
 
 	// Tableau en normal et en mode téléphone
-	@include setGrid(720px, 1fr, 4rem);
+	@include setGrid(700px, 1fr, 2rem);
 
 	// prettier-ignore
-	@include for-tablet{ @include setGrid(250px, 100%, 4rem); }
+	@include for-tablet{ @include setGrid(250px, 100%, 2rem) ;}
 }
 
 .product-thumbnail-wrapper {
 	// prettier-ignore
 	.col-thumbnail{ display: contents ;}
 
-	@include setGrid(275px, 1fr, 8rem);
+	@include setGrid(270px, 1fr, 3vh, 3vw);
 }

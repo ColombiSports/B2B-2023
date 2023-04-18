@@ -1260,7 +1260,7 @@ h6,
 .abstract-Product div[class*=product-marque]::before, #article_read .product-info div[class*=product-marque]::before, .abstract-Product--card div[class*=product-marque]::before, .product-thumbnail div[class*=product-marque]::before, .container .product-line div[class*=product-marque]::before {
   content: "";
   position: absolute;
-  width: 100%;
+  width: 50%;
   height: 100%;
   background: var(--product__marque__logo);
   background-size: contain;
@@ -1389,7 +1389,7 @@ h6,
   transform: scale(1.25);
 }
 .show-prix-public .abstract-Product .product-prix[data-toggle=prix-tarif], .show-prix-public #article_read .product-info .product-prix[data-toggle=prix-tarif], #article_read .show-prix-public .product-info .product-prix[data-toggle=prix-tarif], .show-prix-public .abstract-Product--card .product-prix[data-toggle=prix-tarif], .show-prix-public .product-thumbnail .product-prix[data-toggle=prix-tarif], .show-prix-public .container .product-line .product-prix[data-toggle=prix-tarif], .container .show-prix-public .product-line .product-prix[data-toggle=prix-tarif] {
-  transform: scale(0);
+  transform: scale(0) !important;
 }
 .abstract-Product .product-prix[data-toggle=prix-public], #article_read .product-info .product-prix[data-toggle=prix-public], .abstract-Product--card .product-prix[data-toggle=prix-public], .product-thumbnail .product-prix[data-toggle=prix-public], .container .product-line .product-prix[data-toggle=prix-public] {
   grid-area: prix_public;
@@ -1592,6 +1592,19 @@ h6,
   .container .product-line {
     padding: 1rem;
     border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
+    grid-template-columns: 7rem 1fr 7rem;
+    grid-template-rows: 7rem 1fr;
+    grid-template-areas: "left		center	right" ".		center	right";
+  }
+  .container .product-line::before, .container .product-line::after {
+    left: unset !important;
+    right: 0;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .container .product-line {
+    padding: 1rem;
+    border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
     grid-template-columns: 7rem 1fr;
     grid-template-rows: 7rem 1fr;
     grid-template-areas: "left		center" "right	center";
@@ -1624,17 +1637,24 @@ h6,
   grid-area: center;
   padding-right: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 12rem 12rem;
+  grid-template-columns: 8rem 1fr 12rem 12rem;
   grid-template-rows: 2rem 1fr;
-  grid-template-areas: "code		rga			promo			prix_tarif" "libelle	libelle		libelle		prix_public";
+  grid-template-areas: "code		rga		prix_tarif	prix_public" "libelle	libelle	prix_tarif	prix_public";
+  align-items: center;
   gap: 1rem;
 }
 @media only screen and (max-width: 768px) {
   .container .product-line .center {
+    grid-template-columns: 12rem 1fr;
+    grid-template-rows: 2rem 1fr 1fr;
+    grid-template-areas: "code		rga" "libelle	libelle" "prix_tarif	prix_public";
+    align-items: start;
+  }
+}
+@media only screen and (max-width: 576px) {
+  .container .product-line .center {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: flex-start;
+    flex-flow: column nowrap;
   }
 }
 .container .product-line .center p:first-of-type {
@@ -1652,6 +1672,13 @@ h6,
 }
 .container .product-line .center p.product-prix {
   transform: scale(0.8) !important;
+}
+.show-prix-public .container .product-line .center p.product-prix[data-toggle=prix-tarif] {
+  transform-origin: right center;
+}
+.show-prix-public .container .product-line .center p.product-prix[data-toggle=prix-public] {
+  transform: scale(1) !important;
+  transform-origin: left center;
 }
 .container .product-line .right {
   grid-area: right;
@@ -1864,8 +1891,10 @@ h6,
 .product-inline-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(720px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(700px, 1fr));
+  row-gap: 2rem;
+  -moz-column-gap: 0;
+       column-gap: 0;
 }
 .product-inline-wrapper .col-inline {
   display: contents;
@@ -1875,15 +1904,19 @@ h6,
     position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 100%));
-    gap: 4rem;
+    row-gap: 2rem;
+    -moz-column-gap: 0;
+         column-gap: 0;
   }
 }
 
 .product-thumbnail-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-  gap: 8rem;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  row-gap: 3vh;
+  -moz-column-gap: 3vh;
+       column-gap: 3vh;
 }
 .product-thumbnail-wrapper .col-thumbnail {
   display: contents;
@@ -2057,6 +2090,7 @@ h6,
 #product_result_main_header .result-keyword .form-control-static.pull-right {
   position: absolute;
   margin-top: -3rem;
+  color: var(--label__color);
 }
 #product_result_main_header .result-keyword .form-control.keyword {
   width: auto;
@@ -2108,6 +2142,7 @@ h6,
   width: auto;
   flex-grow: 1;
   display: flex;
+  flex-flow: row wrap;
   gap: 0.75rem;
 }
 #product_result_main_footer .pagination > li.disabled > a {
