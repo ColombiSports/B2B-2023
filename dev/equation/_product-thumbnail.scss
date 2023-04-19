@@ -1,6 +1,6 @@
-@use './../abstract/Product';
-@use './../abstract/Promotion';
-@use './product-thumbnail--cart';
+@use "./../abstract/Product";
+@use "./../abstract/Promotion";
+@use "./product-thumbnail--cart";
 
 /**
 	LES MINIATURES ARTICLES ////////////////////////////////////////////////////////
@@ -63,8 +63,7 @@
 		LE STATUS DE L'ARTICLE ---------------------------------------------
 	**/
 	@extend .abstract-Product--Status;
-	--product__status__top: 6.5rem;
-	--product__status__left: -3px;
+	--product__status__inset: 8rem auto auto -3px;
 
 	/**
 		LE CODE ARTICLE ----------------------------------------------------
@@ -99,12 +98,12 @@
 	.product-caption {
 		display: grid;
 		grid-template-columns: 1fr;
-		grid-template-rows: auto 10rem 3.5rem 3rem 0;
+		grid-template-rows: auto 10rem 4.5rem 3rem 0;
 		grid-template-areas:
-			'code'
-			'libelle'
-			'prix_tarif'
-			'prix_public';
+			"code"
+			"libelle"
+			"prix_tarif"
+			"prix_public";
 		//
 		align-items: start;
 		background: none;
@@ -112,12 +111,10 @@
 		border: none;
 		margin-top: 1.5rem;
 		//
-
-		// Attibution des noms d'espaces pour l'inversion
 		// prettier-ignore
-		& div[data-toggle="prix-public"] { grid-area: prix_public ;}
+		&[data-toggle="prix-tarif"] { transform: scale(0.8);}
 		// prettier-ignore
-		& div[data-toggle="prix-tarif"] { grid-area: prix_tarif ; }
+		.show-prix-public &[data-toggle="prix-public"] { transform: scale(1.2); }
 
 		// prettier-ignore
 		& > div { padding: 0; } // Surécrit Bootstrap pour réaligner les paddings

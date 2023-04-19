@@ -1,6 +1,7 @@
-@use './../abstract/Product';
+@use "./../abstract/Product";
 
 #article_read {
+	// Disposition DE LA PAGE /////////////////////////////////////////////////////////////////////
 	.container {
 		// Evite que le container soit trop court en bas de page : impossible de généraliser...
 		display: flex;
@@ -10,114 +11,152 @@
 
 		// Inverse la gallerie d'image avec la colonne de texte
 		& > div.row:first-of-type {
-			//display: grid;
-			//grid-template-columns: 1fr 1fr;
-			//grid-template-areas: 'description gallery';
-			// Ne peux "sticker" la gallery !!!
+			display: flex;
+			flex-flow: row-reverse nowrap;
+			gap: 5rem;
+		}
+	}
+
+	// DISPO DES ELEMENTS ////////////////////////////////////////////////////////////////////////
+
+	.product-info {
+		@extend .abstract-Product;
+		// Est une extention de Product...
+
+		// Layout des infos  -----------------------------------------------------------------
+
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		align-items: stretch;
+
+		// prettier-ignore
+		hr{display: none ; } // Masquage des séparateurs
+
+		// Le fil d'ariane en premier -------------------------------------------------------
+
+		.breadcrumb {
+			width: 100%;
+			order: -1;
+		}
+
+		// Redéfinit la marque---------------------------------------------------------------
+
+		.product-marque {
+			// --product__marque__width: 20rem !important;
+			// --product__marque__height: 8rem !important ;
+			margin: 2rem 0 1rem -1rem;
+		}
+
+		// Rédéfinit le status ------------------------------------------------------------
+
+		@extend .abstract-Product--Status;
+		--product__status__inset: 7rem 0 auto auto;
+		--product__status__font-size: var(--global__font-size__md);
+
+		// Sépare la RÉFÉRENCE du code RGA : un à gauche, l'autre à droite ---------------
+
+		.product-code {
+			width: 100%;
+
+			display: flex;
+			justify-content: space-between;
+			margin-top: 1rem;
+		}
+		.product-rga {
+			background-color: var(--global__color__grey50);
+			border-radius: var(--global__UI__border-radius--input);
+			padding: 0.25rem 1.5rem;
+			// prettier-ignore
+			span { color: var(--global__background-color); }
+		}
+
+		// Le nom du produit ------------------------------------------------------------
+
+		.product-libelle {
+			width: 100%;
+			font-size: var(--global__font-size__xl);
+			margin-bottom: 1em;
+		}
+
+		// La catégorie ----------------------------------------------------------------
+
+		.product-description {
+			width: 100%;
+			margin-bottom: 2em;
+		}
+
+		// La catégorie ----------------------------------------------------------------
+
+		.product-cat {
+			transform: scale(1.5);
+			transform-origin: right bottom;
+			align-self: end;
 		}
 	}
 
 	// APPAREANCE
-	.product-image {
+	.product-image-wrapper {
 		--image--gap: 3rem;
 		//
-		&-wrapper {
-			grid-area: gallery;
-			float: right;
-			width: 40%;
-			//
-			position: sticky;
-			top: calc(var(--header__height) + var(--navbar__height));
-			//width: calc(40vw);
-			display: flex;
-			flex-flow: column nowrap;
-			align-items: center;
-			flex-direction: column;
-			flex-wrap: nowrap;
-			justify-content: flex-start;
-			gap: 2rem;
-
-			// La vue de l'image
-			.product-image-container {
-				background-color: white;
-				box-shadow: 0 0 4rem #00000044;
-				border-radius: var(--global__UI__border-radius--card);
-				aspect-ratio: 1 / 1;
-				height: auto;
-				margin: 0;
-			}
-
-			.product-gallery {
-				display: flex;
-				justify-content: flex-start;
-
-				flex-direction: row;
-				flex-wrap: nowrap;
-				align-items: center;
-				gap: 2rem; //
-
-				& > a {
-					overflow: hidden;
-					border-radius: 0.8rem;
-					border: none;
-					margin: 0;
-					transition: var(--global__transition--all);
-					border: solid 5px transparent;
-					opacity: 0.75;
-
-					&.active {
-						opacity: 1;
-						border-color: var(--global__color__accent);
-					}
-
-					img {
-						border-radius: 0 !important ;
-					}
-				}
-			}
-		}
-	}
-
-	.product-info {
-		//grid-area: description;
-		float: left;
-		width: 50%;
+		grid-area: gallery;
+		width: 40vw;
 		//
+		position: sticky;
+		align-self: flex-start; // La ligne qui fait fonctionner la position "sticky"
+		top: calc(var(--header__height) + var(--navbar__height));
 		//
-		// prettier-ignore
-		hr{display: none ; } // Masquage des séparateurs
 
-		@extend .abstract-Product;
-
-		@extend .abstract-Product--Status;
-		--product__status__top: 0;
-		--product__status__left: 0;
-
+		//width: calc(40vw);
 		display: flex;
+		flex-flow: column nowrap;
+		align-items: center;
 		flex-direction: column;
 		flex-wrap: nowrap;
 		justify-content: flex-start;
-		align-items: flex-start;
+		gap: 2rem;
 
-		.product-marque-image {
-			align-items: center;
+		// La vue de l'image
+		.product-image-container {
+			background: radial-gradient(farthest-corner, white 50%, #cccccc 100%);
+			box-shadow: 0 0 4rem #00000044;
+			border-radius: var(--global__UI__border-radius--card);
+			aspect-ratio: 1.25;
+			height: auto;
+			margin: 0;
+
+			// prettier-ignore
+			.product-image{ mix-blend-mode: multiply ; }
+		}
+
+		.product-gallery {
 			display: flex;
-			/* height: 60px; */
-			/* justify-content: right; */
-			position: absolute;
-			top: -2rem;
-			right: -2rem;
-			background: white;
-			border-radius: 0.5rem;
-			padding: 2rem;
-			box-shadow: 0 0 2rem #00000033;
-		}
+			justify-content: flex-start;
 
-		.product-libelle {
-			font-size: var(--global__font-size__xl);
-		}
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+			gap: 2rem; //
 
-		// prettier-ignore
-		.breadcrumb { order: -1; } // Remet le fil d'arian en premier
+			& > a {
+				overflow: hidden;
+				border-radius: 0.8rem;
+				border: none;
+				margin: 0;
+				transition: var(--global__transition--all);
+				border: solid 5px transparent;
+				opacity: 0.75;
+
+				&.active {
+					opacity: 1;
+					border-color: var(--global__color__accent);
+				}
+
+				img {
+					border-radius: 0 !important ;
+				}
+			}
+		}
 	}
 }

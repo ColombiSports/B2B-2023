@@ -80,6 +80,10 @@
 :root .show-prix-public {
 	--global__color__accent: hsl(200, 10%, 50%);
 	--global__color__accent--hover: hsl(200, 10%, 40%);
+
+	*[data-toggle="prix-tarif"] {
+		display: none !important ;
+	}
 }
 
 // Les variables globales en mode téléphone //////////////////////////////////////////////////////////////////////////////

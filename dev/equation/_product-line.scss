@@ -9,7 +9,7 @@
 	@extend .abstract-Product--card;
 
 	// LA GRILLE DES 3 BLOCS /////////////////////////////////////////////////////////
-
+	position: relative;
 	display: grid;
 	grid-template-columns: 7rem 1fr 5rem;
 	grid-template-rows: 1fr;

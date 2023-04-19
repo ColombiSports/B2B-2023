@@ -17,8 +17,8 @@
 	--product__price__color: var(--global__foreground-color);
 	--product__border-color: var(--colormap__product-color); // Voir fichier "utils/colormap.scss"
 	--product__cat-color: var(--global__foreground-color);
+	--product__marque__width: 12rem;
 	--product__marque__height: 5rem;
-	--product__marque__aspect-ratio: 3 / 1;
 
 	/** 
 		LE LOGO DE LA MARQUE -------------------------------------------
@@ -29,17 +29,20 @@
 	// prettier-ignore
 	@media (prefers-color-scheme: dark) { & { --product__marque__logo: var(--marque__logo-white__url); } }
 
-	div[class*="product-marque"] {
+	// L'astérix pour être compatible avec les miniatures et les fiches produits
+	*[class*="product-marque"] {
 		position: relative;
 		text-align: unset;
 		margin-bottom: 2rem;
-		height: 30px;
+		width: var(--product__marque__width);
+		height: var(--product__marque__height);
 		padding: 0;
+		border: none; // Pour les liens !
 		//
 		&::before {
 			content: "";
 			position: absolute;
-			width: 50%;
+			width: 100%;
 			height: 100%;
 			background: var(--product__marque__logo);
 			background-size: contain;
@@ -196,7 +199,7 @@
 	**/
 	.product-prix {
 		// Fait passer le label après le prix
-		display: flex !important;
+		display: flex;
 		flex-direction: column-reverse;
 		flex-wrap: nowrap;
 		align-items: flex-start;
@@ -210,22 +213,13 @@
 		margin: 0 0 -0.5rem 0 !important;
 
 		// Effet du réduction du prix -------------------------------------
-		transform-origin: bottom left;
+		transform-origin: left center;
 		//
 		// prettier-ignore
-		&[data-toggle="prix-tarif"] { 
-			grid-area: prix_tarif ;
-			transform: scale(1.25); }
+		&[data-toggle="prix-tarif"] { grid-area: prix_tarif ;}
 		// prettier-ignore
-		.show-prix-public &[data-toggle="prix-tarif"] { transform: scale(0) !important; }
-		//
-		// prettier-ignore
-		&[data-toggle="prix-public"] { 
-			grid-area: prix_public ;
-			transform: scale(0.8); } // Prix
-		// prettier-ignore
-		.show-prix-public &[data-toggle="prix-public"] { transform: scale(1.25); }
-		transition: var(--global__transition--all);
+		&[data-toggle="prix-public"] { display: flex !important ; grid-area: prix_public ; }
+		// Surécrit la masquage du prix qui utilise IMPORTANT dans le fichier "global.scss"
 
 		// Le label des prix -------------------------------------------
 		.desc-label {
@@ -235,7 +229,7 @@
 				// Définition du texte de remplacement
 				content: "PRIX";
 				font-size: var(--global__font-size__xs);
-				line-height: 0.5rem;
+				line-height: 1rem;
 			}
 		}
 		// Définition du label de remplacement pour le prix pro
@@ -250,12 +244,11 @@
 			font-family: FontAwesome;
 			line-height: 0.7rem;
 			position: absolute;
-			left: -0.3rem;
 		}
 		// Définition du label de remplacement pour le prix public
 		&[data-toggle="prix-public"] .desc-label:after {
 			content: "Prix vente conseillé";
-			margin-left: 1.2rem;
+			margin-left: 1.5rem;
 		}
 		// Le prix par lui-même ------------------------------------------
 		.desc-value {
@@ -310,9 +303,8 @@
 	Correspond au "statut-XXXX" (avec faute) envoyé par Equapro depuis Equation.
 **/
 .abstract-Product--Status {
-	--product__status__top: 0;
-	--product__status__left: 0;
-	--product__status__font-size: var(--global__font-size__md);
+	--product__status__font-size: var(--global__font-size__sm);
+	--product__status__inset: 0 auto auto 0;
 	//
 	// Taille et position en commun
 	&.statut-PRECO::after,
@@ -322,9 +314,8 @@
 		content: "";
 		color: transparent;
 		position: absolute;
-		top: var(--product__status__top);
-		left: var(--product__status__left);
-		// height: 5rem;
+		inset: var(--product__status__inset);
+		//
 		display: grid;
 		place-content: center;
 		font-size: var(--product__status__font-size);
