@@ -6,8 +6,6 @@
 	Affichage des miniatures en ligne
 **/
 .container .product-line {
-	max-height: 9rem;
-
 	@extend .abstract-Product--card;
 	--product-card__padding: 0rem;
 	--product__price__transform-origin: left center;
@@ -15,9 +13,10 @@
 	// LA GRILLE DES 3 BLOCS /////////////////////////////////////////////////////////
 	position: relative;
 	display: grid;
-	grid-template-columns: 9rem 1fr 6rem;
+	grid-template-columns: 9rem 1fr 9rem;
 	grid-template-rows: 1fr;
 	grid-template-areas: "left center right";
+	overflow: hidden;
 	gap: 0;
 
 	// Applique le bandeau "status" : NOUVEAU, PRECOMMANDE, ETC....
@@ -27,39 +26,39 @@
 
 	// En mode tablette -------------------------------------------------------------
 	// prettier-ignore
-	@include for-tablet { & {
-		border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
-		//
-		grid-template-columns: 9rem 1fr 7rem;
-		grid-template-rows: 7rem 1fr;
-		grid-template-areas:
-			"left		center	right"
-			".		center	right";
-
-		// Déplace le bandeau "status" à droite
-		&::before, &::after{
-			left: unset !important ;
-			right: 0 ;
-		}	
-	} }
-	// prettier-ignore
-	@include for-phone {& {
-		max-height: unset;
+	@include for-laptop { & {
 		border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
 		//
 		grid-template-columns: 9rem 1fr;
-		grid-template-rows: 7rem 1fr;
+		grid-template-rows: 9rem 1fr;
 		grid-template-areas:
 			"left		center"
 			"right	center";
 
 		// Déplace le bandeau "status" à droite
-		&::before,
-		&::after {
+		&::before, &::after{
 			left: unset !important ;
-			right: 0;
-		}}
-	}
+			right: 0 ;
+		}
+	} }
+	// prettier-ignore
+	// @include for-phone {& {
+	// 	max-height: unset;
+	// 	border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
+	// 	//
+	// 	grid-template-columns: 9rem 1fr;
+	// 	grid-template-rows: 7rem 1fr;
+	// 	grid-template-areas:
+	// 		"left		center"
+	// 		"right	center";
+
+	// 	// Déplace le bandeau "status" à droite
+	// 	&::before,
+	// 	&::after {
+	// 		left: unset !important ;
+	// 		right: 0;
+	// 	}}
+	// }
 
 	// LE BLOC DE L'IMAGE /////////////////////////////////////////////////////////
 	.left {
@@ -67,14 +66,10 @@
 		//
 		flex: 0 0 7rem;
 		min-width: 9rem;
-		max-height: 9rem;
+		height: 100%;
 		display: grid;
-		border-radius: var(--global__UI__border-radius--card) 0 0 var(--global__UI__border-radius--card);
+		border-radius: 0;
 
-		// prettier-ignore
-		@include for-phone {
-			& { border-radius: calc( var(--global__UI__border-radius--card) * 0.5 ) 0 0 0 ;
-		}}
 		// Le lien et son image
 		a {
 			border: none;
@@ -107,8 +102,8 @@
 		// Layout tablette ---------------------------------------------------
 		// prettier-ignore
 		@include for-laptop { & {
-			grid-template-columns: 7rem 1fr;
-			grid-template-rows: 1fr 12rem ;
+			grid-template-columns: 1fr 12rem;
+			grid-template-rows: 1fr max-content ;
 			grid-template-areas:
 				"code		rga"
 				"libelle	prix_tarif"
@@ -145,7 +140,8 @@
 			font-size: var(--global__font-size__sm);
 		}
 		.product-promotion {
-			display: none;
+			transform: scale(0.7);
+			transform-origin: top right;
 			@extend .abstract-Promotion;
 		}
 		// Attibution des noms d'espaces pour l'inversion
@@ -167,6 +163,7 @@
 		flex: 0 0 5rem;
 		display: grid;
 		place-content: center;
+		width: 9rem;
 
 		form {
 			display: contents;

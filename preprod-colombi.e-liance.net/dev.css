@@ -1631,36 +1631,23 @@ h6,
 	Affichage des miniatures en ligne
 **/
 .container .product-line {
-  max-height: 9rem;
   --product-card__padding: 0rem;
   --product__price__transform-origin: left center;
   position: relative;
   display: grid;
-  grid-template-columns: 9rem 1fr 6rem;
+  grid-template-columns: 9rem 1fr 9rem;
   grid-template-rows: 1fr;
   grid-template-areas: "left center right";
+  overflow: hidden;
   gap: 0;
   --product__status__inset: -0.5rem auto auto -0.5rem;
   --product__status__font-size: var(--global__font-size__xs);
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
   .container .product-line {
-    border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
-    grid-template-columns: 9rem 1fr 7rem;
-    grid-template-rows: 7rem 1fr;
-    grid-template-areas: "left		center	right" ".		center	right";
-  }
-  .container .product-line::before, .container .product-line::after {
-    left: unset !important;
-    right: 0;
-  }
-}
-@media only screen and (max-width: 576px) {
-  .container .product-line {
-    max-height: unset;
     border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
     grid-template-columns: 9rem 1fr;
-    grid-template-rows: 7rem 1fr;
+    grid-template-rows: 9rem 1fr;
     grid-template-areas: "left		center" "right	center";
   }
   .container .product-line::before, .container .product-line::after {
@@ -1672,14 +1659,9 @@ h6,
   grid-area: left;
   flex: 0 0 7rem;
   min-width: 9rem;
-  max-height: 9rem;
+  height: 100%;
   display: grid;
-  border-radius: var(--global__UI__border-radius--card) 0 0 var(--global__UI__border-radius--card);
-}
-@media only screen and (max-width: 576px) {
-  .container .product-line .left {
-    border-radius: calc(var(--global__UI__border-radius--card) * 0.5) 0 0 0;
-  }
+  border-radius: 0;
 }
 .container .product-line .left a {
   border: none;
@@ -1705,8 +1687,8 @@ h6,
 }
 @media only screen and (max-width: 992px) {
   .container .product-line .center {
-    grid-template-columns: 7rem 1fr;
-    grid-template-rows: 1fr 12rem;
+    grid-template-columns: 1fr 12rem;
+    grid-template-rows: 1fr max-content;
     grid-template-areas: "code		rga" "libelle	prix_tarif" "libelle	prix_public";
     align-items: start;
   }
@@ -1736,7 +1718,8 @@ h6,
   font-size: var(--global__font-size__sm);
 }
 .container .product-line .center .product-promotion {
-  display: none;
+  transform: scale(0.7);
+  transform-origin: top right;
 }
 .container .product-line .center p.product-prix {
   transform: scale(0.8) !important;
@@ -1753,6 +1736,7 @@ h6,
   flex: 0 0 5rem;
   display: grid;
   place-content: center;
+  width: 9rem;
 }
 .container .product-line .right form {
   display: contents;
@@ -1991,7 +1975,7 @@ h6,
 .product-thumbnail-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(275px, 325px));
   gap: 5rem;
 }
 .product-thumbnail-wrapper .col-thumbnail {
