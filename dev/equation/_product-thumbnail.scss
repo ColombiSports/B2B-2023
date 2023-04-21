@@ -26,37 +26,6 @@
 	flex-wrap: nowrap;
 	transition: var(--global__transition--all);
 
-	// Définit les propriétés de la carte avant survol.
-	--thumbnail__ribbon__color: var(--colormap__product-color); // Le ruban PROMOTION
-	// Définit les propriétés avant survol.
-	--thumbnail__input_shadow: 0 0 1rem #00000000; // L'ombre du bouton et du champs Quantité
-	--thumbnail__button__color: var(--global__color__accent); //Le boutton PANIER
-	--thumbnail__icon__color: white; // var(--global__background-color); // L'icone du bouton PANIER
-	--thumbnail__input__width: 7.5rem;
-	--thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
-	--thumbnail__button__right: 0rem;
-
-	&:hover {
-		// Définit en amont par "abstract-Product" ----------------------------
-		--product__code__color: white;
-		--product__border__color: white;
-		--product__rga__color: white;
-		--product__libelle__color: white;
-		--product__price__color: white;
-		--product__marque__logo: var(--marque__logo-white__url);
-		--product__stock__color: white;
-		//
-		--global__color__promo: white;
-		--global__color__promo--text: var(--colormap__product-color);
-		//
-		--thumbnail__button__color: white !important ; // var(--global__foreground-color);
-		--thumbnail__icon__color: var(--colormap__product-color) !important ; // var(--global__background-color);
-		--thumbnail__ribbon__color: black;
-		//
-		background-color: var(--colormap__product-color);
-		box-shadow: none;
-	}
-
 	/**
 		LE LIEN DES IMAGES --------------------------------------------------
 	**/

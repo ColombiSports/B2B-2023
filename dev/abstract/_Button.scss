@@ -1,9 +1,8 @@
-@use './Typo' as *;
+@use "./Typo" as *;
 //
 /**
-	ENSEMBLE DES BOUTONS AYANT L'ASPECT D'UN BOUTON
+	ENSEMBLE DES ELEMENTS AYANT L'ASPECT D'UN BOUTON
 **/
-
 @media (prefers-color-scheme: light) {
 	.abstract-ButtonText {
 		--color: var(--global__color__grey50);
@@ -17,7 +16,9 @@
 		--color--hover: white;
 	}
 }
+////////////////////////////////////////////////////////////////////////////////////////
 
+// Bouton de base
 .abstract-Button {
 	--color: white;
 	--color--hover: white;

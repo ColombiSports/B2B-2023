@@ -1,4 +1,4 @@
-@use '../abstract/Button' as *;
+@use "../abstract/Button" as *;
 
 /**
 	Gestion des différents boutons Boostrap.
@@ -32,9 +32,10 @@
 	--btn-add-cart__size: 100%;
 	width: var(--btn-add-cart__size);
 	height: var(--btn-add-cart__size);
+	font-size: 0;
 	//
 	// prettier-ignore
-	&:hover .fa-shopping-cart:before { content: "\f217"; }
+	&:hover .fa-shopping-cart:before { content: "\f217" !important ;}
 	// Bascule vers le logo Panier avec un +
 	//
 	// prettier-ignore

@@ -109,14 +109,19 @@
 		// La catégorie ----------------------------------------------------------------
 
 		.product-cat {
-			margin: 2.5rem 0 0 0; // Aliogne avec les prix
-			transform-origin: right bottom;
-			align-self: end;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			transform: translateY(-170%);
 		}
 
 		.product-info-footer {
-			margin-top: var(--gap);
+			margin-top: 5rem;
 			width: 100%;
+
+			// prettier-ignore
+			.product-col-back{ display: none ; }
+			// Masque le bouton retour
 		}
 
 		.product-promotion span {
@@ -177,6 +182,15 @@
 
 			// prettier-ignore
 			.product-image{ mix-blend-mode: multiply ; }
+
+			&:hover {
+				// prettier-ignore
+				.product-image{ display: none ; }
+				// prettier-ignore
+			}
+			.zoomImg {
+				mix-blend-mode: multiply;
+			}
 		}
 
 		.product-gallery {

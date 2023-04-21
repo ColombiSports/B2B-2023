@@ -22,13 +22,20 @@
 	--product__price__transform-origin: center center;
 
 	/** 
-		LE LOGO DE LA MARQUE -------------------------------------------
-		Car ils peuvent être sur fond noir ou blanc
+		SELON LE THEME ////////////////////////////////////////////////////////////////////////
 	**/
-	// prettier-ignore
-	@media (prefers-color-scheme: light) { & { --product__marque__logo: var(--marque__logo-color__url);}}
-	// prettier-ignore
-	@media (prefers-color-scheme: dark) { & { --product__marque__logo: var(--marque__logo-white__url); } }
+	@media (prefers-color-scheme: light) {
+		& {
+			--desc-label__color: var(--global__color__grey66); // Le texte soous le prix
+			--product__marque__logo: var(--marque__logo-color__url); // Le logo de la marque
+		}
+	}
+	@media (prefers-color-scheme: dark) {
+		& {
+			--desc-label__color: var(--global__color__grey33); // Le texte soous le prix
+			--product__marque__logo: var(--marque__logo-white__url); // Le logo de la marque
+		}
+	}
 
 	// Le sélecteur "all"'(astérix) pour être compatible avec les miniatures et les fiches produits
 	*[class*="product-marque"] {
@@ -231,6 +238,7 @@
 				// Définition du texte de remplacement
 				content: "PRIX";
 				font-size: var(--global__font-size__xs);
+				color: var(--desc-label__color);
 				line-height: 1rem;
 			}
 		}
@@ -271,6 +279,9 @@
 	.product-remise .desc-label:after {
 		content: "Votre remise" !important ;
 	}
+	.product-prix.prix-client .desc-label:after {
+		content: "Votre prix HT" !important ;
+	}
 }
 
 /**
@@ -288,21 +299,35 @@
 	box-shadow: none;
 	@extend .abstract-Product;
 
-	// Les variables au survol ---------------------------------------------
+	// Définit les propriétés de la carte avant survol.
+	--thumbnail__ribbon__color: var(--colormap__product-color); // Le ruban PROMOTION
+	// Définit les propriétés avant survol.
+	--thumbnail__input_shadow: 0 0 1rem #00000000; // L'ombre du bouton et du champs Quantité
+	--thumbnail__button__color: var(--global__color__accent); //Le boutton PANIER
+	--thumbnail__icon__color: white; // var(--global__background-color); // L'icone du bouton PANIER
+	--thumbnail__input__width: 7.5rem;
+	--thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
+	--thumbnail__button__right: 0rem;
+
 	&:hover {
-		//--product-price__color: white;
+		// Définit en amont par "abstract-Product" ----------------------------
 		--product__code__color: white;
+		--product__border__color: white;
 		--product__rga__color: white;
 		--product__libelle__color: white;
-		--product__border-color: white;
-		--product__button__color: white;
-		--product__icon__color: var(--colormap__product-color);
-		--product__ribbon__color: black;
-
+		--product__price__color: white;
+		--product__marque__logo: var(--marque__logo-white__url);
+		--product__stock__color: white;
+		//
+		--global__color__promo: white;
+		--global__color__promo--text: var(--colormap__product-color);
+		//
+		--thumbnail__button__color: white !important ; // var(--global__foreground-color);
+		--thumbnail__icon__color: var(--colormap__product-color) !important ; // var(--global__background-color);
+		--thumbnail__ribbon__color: black;
+		//
 		background-color: var(--colormap__product-color);
 		box-shadow: none;
-
-		cursor: not-allowed;
 	}
 	&.stock-danger:hover,
 	&.stock-success:hover {

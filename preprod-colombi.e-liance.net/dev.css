@@ -269,7 +269,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /**
-	ENSEMBLE DES BOUTONS AYANT L'ASPECT D'UN BOUTON
+	ENSEMBLE DES ELEMENTS AYANT L'ASPECT D'UN BOUTON
 **/
 @media (prefers-color-scheme: light) {
   .abstract-ButtonText, .navbar-default.navbar-main .navbar-collapse .navbar-right a, .dropdown a, .navbar-default.navbar-main .navbar-collapse .navbar-right .dropdown a {
@@ -1210,8 +1210,7 @@ h6,
   --product__marque__height: 5rem;
   --product__price__transform-origin: center center;
   /** 
-  	LE LOGO DE LA MARQUE -------------------------------------------
-  	Car ils peuvent être sur fond noir ou blanc
+  	SELON LE THEME ////////////////////////////////////////////////////////////////////////
   **/
   /**
   	L'IMAGE PRODUIT --------------------------------------------------
@@ -1247,11 +1246,13 @@ h6,
 }
 @media (prefers-color-scheme: light) {
   .abstract-Product, #article_read .product-info, .abstract-Product--card, .product-thumbnail, .container .product-line {
+    --desc-label__color: var(--global__color__grey66);
     --product__marque__logo: var(--marque__logo-color__url);
   }
 }
 @media (prefers-color-scheme: dark) {
   .abstract-Product, #article_read .product-info, .abstract-Product--card, .product-thumbnail, .container .product-line {
+    --desc-label__color: var(--global__color__grey33);
     --product__marque__logo: var(--marque__logo-white__url);
   }
 }
@@ -1428,6 +1429,7 @@ h6,
 .container .product-line .product-remise .desc-label:after {
   content: "PRIX";
   font-size: var(--global__font-size__xs);
+  color: var(--desc-label__color);
   line-height: 1rem;
 }
 .abstract-Product .product-prix[data-toggle=prix-tarif] .desc-label:after, #article_read .product-info .product-prix[data-toggle=prix-tarif] .desc-label:after, .abstract-Product--card .product-prix[data-toggle=prix-tarif] .desc-label:after, .product-thumbnail .product-prix[data-toggle=prix-tarif] .desc-label:after, .container .product-line .product-prix[data-toggle=prix-tarif] .desc-label:after,
@@ -1484,6 +1486,9 @@ h6,
 .abstract-Product .product-remise .desc-label:after, #article_read .product-info .product-remise .desc-label:after, .abstract-Product--card .product-remise .desc-label:after, .product-thumbnail .product-remise .desc-label:after, .container .product-line .product-remise .desc-label:after {
   content: "Votre remise" !important;
 }
+.abstract-Product .product-prix.prix-client .desc-label:after, #article_read .product-info .product-prix.prix-client .desc-label:after, .abstract-Product--card .product-prix.prix-client .desc-label:after, .product-thumbnail .product-prix.prix-client .desc-label:after, .container .product-line .product-prix.prix-client .desc-label:after {
+  content: "Votre prix HT" !important;
+}
 
 /**
 	Permet de dissocier les Thumbnails de la fiche article.
@@ -1497,18 +1502,29 @@ h6,
   padding: var(--product-card__padding);
   margin: 0;
   box-shadow: none;
+  --thumbnail__ribbon__color: var(--colormap__product-color);
+  --thumbnail__input_shadow: 0 0 1rem #00000000;
+  --thumbnail__button__color: var(--global__color__accent);
+  --thumbnail__icon__color: white;
+  --thumbnail__input__width: 7.5rem;
+  --thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
+  --thumbnail__button__right: 0rem;
 }
 .abstract-Product--card:hover, .product-thumbnail:hover, .container .product-line:hover {
   --product__code__color: white;
+  --product__border__color: white;
   --product__rga__color: white;
   --product__libelle__color: white;
-  --product__border-color: white;
-  --product__button__color: white;
-  --product__icon__color: var(--colormap__product-color);
-  --product__ribbon__color: black;
+  --product__price__color: white;
+  --product__marque__logo: var(--marque__logo-white__url);
+  --product__stock__color: white;
+  --global__color__promo: white;
+  --global__color__promo--text: var(--colormap__product-color);
+  --thumbnail__button__color: white !important ;
+  --thumbnail__icon__color: var(--colormap__product-color) !important ;
+  --thumbnail__ribbon__color: black;
   background-color: var(--colormap__product-color);
   box-shadow: none;
-  cursor: not-allowed;
 }
 .abstract-Product--card.stock-danger:hover, .stock-danger.product-thumbnail:hover, .container .stock-danger.product-line:hover, .abstract-Product--card.stock-success:hover, .stock-success.product-thumbnail:hover, .container .stock-success.product-line:hover {
   --product__stock__opacity: 1;
@@ -1845,13 +1861,6 @@ h6,
   flex-direction: column;
   flex-wrap: nowrap;
   transition: var(--global__transition--all);
-  --thumbnail__ribbon__color: var(--colormap__product-color);
-  --thumbnail__input_shadow: 0 0 1rem #00000000;
-  --thumbnail__button__color: var(--global__color__accent);
-  --thumbnail__icon__color: white;
-  --thumbnail__input__width: 7.5rem;
-  --thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
-  --thumbnail__button__right: 0rem;
   /**
   	LE LIEN DES IMAGES --------------------------------------------------
   **/
@@ -1873,22 +1882,6 @@ h6,
   	// Celui à ne pas utiliser dans l'imbriquage
   	// Structure des des infos de la miniature
   **/
-}
-.product-thumbnail:hover {
-  --product__code__color: white;
-  --product__border__color: white;
-  --product__rga__color: white;
-  --product__libelle__color: white;
-  --product__price__color: white;
-  --product__marque__logo: var(--marque__logo-white__url);
-  --product__stock__color: white;
-  --global__color__promo: white;
-  --global__color__promo--text: var(--colormap__product-color);
-  --thumbnail__button__color: white !important ;
-  --thumbnail__icon__color: var(--colormap__product-color) !important ;
-  --thumbnail__ribbon__color: black;
-  background-color: var(--colormap__product-color);
-  box-shadow: none;
 }
 .product-thumbnail > a {
   position: relative;
@@ -1975,8 +1968,8 @@ h6,
 .product-thumbnail-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(275px, 325px));
-  gap: 5rem;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 310px));
+  gap: 6rem;
 }
 .product-thumbnail-wrapper .col-thumbnail {
   display: contents;
@@ -2469,13 +2462,17 @@ h6,
   margin-bottom: 2em;
 }
 #article_read .product-info .product-cat {
-  margin: 2.5rem 0 0 0;
-  transform-origin: right bottom;
-  align-self: end;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translateY(-170%);
 }
 #article_read .product-info .product-info-footer {
-  margin-top: var(--gap);
+  margin-top: 5rem;
   width: 100%;
+}
+#article_read .product-info .product-info-footer .product-col-back {
+  display: none;
 }
 #article_read .product-info .product-promotion span {
   color: var(--global__foreground-color) !important;
@@ -2524,6 +2521,12 @@ h6,
   margin: 0;
 }
 #article_read .product-image-wrapper .product-image-container .product-image {
+  mix-blend-mode: multiply;
+}
+#article_read .product-image-wrapper .product-image-container:hover .product-image {
+  display: none;
+}
+#article_read .product-image-wrapper .product-image-container .zoomImg {
   mix-blend-mode: multiply;
 }
 #article_read .product-image-wrapper .product-gallery {
@@ -2715,9 +2718,10 @@ footer:after {
   --btn-add-cart__size: 100%;
   width: var(--btn-add-cart__size);
   height: var(--btn-add-cart__size);
+  font-size: 0;
 }
 .btn-add-cart:hover .fa-shopping-cart:before {
-  content: "\f217";
+  content: "\f217" !important;
 }
 .btn-add-cart .fa-shopping-cart {
   font-size: var(--global__font-size__xl);
