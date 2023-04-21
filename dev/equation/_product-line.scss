@@ -6,29 +6,31 @@
 	Affichage des miniatures en ligne
 **/
 .container .product-line {
+	max-height: 9rem;
+
 	@extend .abstract-Product--card;
+	--product-card__padding: 0rem;
+	--product__price__transform-origin: left center;
 
 	// LA GRILLE DES 3 BLOCS /////////////////////////////////////////////////////////
 	position: relative;
 	display: grid;
-	grid-template-columns: 7rem 1fr 5rem;
+	grid-template-columns: 9rem 1fr 6rem;
 	grid-template-rows: 1fr;
 	grid-template-areas: "left center right";
-	gap: 2rem;
+	gap: 0;
 
 	// Applique le bandeau "status" : NOUVEAU, PRECOMMANDE, ETC....
 	@extend .abstract-Product--Status;
-	--product__status__top: -0.5rem;
-	--product__status__left: 18rem;
-	--product__status__font-size: var(--global__font-size__sm);
+	--product__status__inset: -0.5rem auto auto -0.5rem;
+	--product__status__font-size: var(--global__font-size__xs);
 
 	// En mode tablette -------------------------------------------------------------
 	// prettier-ignore
 	@include for-tablet { & {
-		padding: 1rem;
 		border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
 		//
-		grid-template-columns: 7rem 1fr 7rem;
+		grid-template-columns: 9rem 1fr 7rem;
 		grid-template-rows: 7rem 1fr;
 		grid-template-areas:
 			"left		center	right"
@@ -40,24 +42,23 @@
 			right: 0 ;
 		}	
 	} }
-	@include for-phone {
-		& {
-			padding: 1rem;
-			border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
-			//
-			grid-template-columns: 7rem 1fr;
-			grid-template-rows: 7rem 1fr;
-			grid-template-areas:
-				"left		center"
-				"right	center";
+	// prettier-ignore
+	@include for-phone {& {
+		max-height: unset;
+		border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
+		//
+		grid-template-columns: 9rem 1fr;
+		grid-template-rows: 7rem 1fr;
+		grid-template-areas:
+			"left		center"
+			"right	center";
 
-			// Déplace le bandeau "status" à droite
-			&::before,
-			&::after {
-				left: unset !important ;
-				right: 0;
-			}
-		}
+		// Déplace le bandeau "status" à droite
+		&::before,
+		&::after {
+			left: unset !important ;
+			right: 0;
+		}}
 	}
 
 	// LE BLOC DE L'IMAGE /////////////////////////////////////////////////////////
@@ -65,10 +66,15 @@
 		grid-area: left;
 		//
 		flex: 0 0 7rem;
-		min-width: 7rem;
-		max-height: 7rem;
-		display: block;
+		min-width: 9rem;
+		max-height: 9rem;
+		display: grid;
+		border-radius: var(--global__UI__border-radius--card) 0 0 var(--global__UI__border-radius--card);
 
+		// prettier-ignore
+		@include for-phone {
+			& { border-radius: calc( var(--global__UI__border-radius--card) * 0.5 ) 0 0 0 ;
+		}}
 		// Le lien et son image
 		a {
 			border: none;
@@ -86,19 +92,29 @@
 	// LE BLOC DES INFOS PRODUITS ///////////////////////////////////////////////
 	.center {
 		grid-area: center;
-		padding-right: 0;
+		padding: 1rem 0 1rem 2rem;
 		//
 		// Layout en mode "ligne" ---------------------------------------------
 		display: grid;
-		grid-template-columns: 8rem 1fr 12rem 12rem;
+		grid-template-columns: 7rem 1fr 12rem 12rem;
 		grid-template-rows: 2rem 1fr;
 		grid-template-areas:
 			"code		rga		prix_tarif	prix_public"
 			"libelle	libelle	prix_tarif	prix_public";
 		align-items: center;
-		gap: 1rem;
+		gap: 0.25rem;
 		//
 		// Layout tablette ---------------------------------------------------
+		// prettier-ignore
+		@include for-laptop { & {
+			grid-template-columns: 7rem 1fr;
+			grid-template-rows: 1fr 12rem ;
+			grid-template-areas:
+				"code		rga"
+				"libelle	prix_tarif"
+				"libelle	prix_public";
+			align-items: start;
+		}}
 		// prettier-ignore
 		@include for-tablet { & {
 			grid-template-columns: 12rem 1fr ;
@@ -152,9 +168,14 @@
 		display: grid;
 		place-content: center;
 
-		// prettier-ignore
-		form p:first-of-type { display: none; }
-		// Masque le champ des quantités
+		form {
+			display: contents;
+			p {
+				margin: 0;
+				// prettier-ignore
+				&:first-of-type { display: none; } // Masque le champ des quantités
+			}
+		}
 
 		// Le boutton du panier plus petit que normal
 		.btn-add-cart {

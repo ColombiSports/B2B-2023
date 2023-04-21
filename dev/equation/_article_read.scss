@@ -1,3 +1,4 @@
+@use "./../utils/breakpoints" as *;
 @use "./../abstract/Product";
 
 #article_read {
@@ -13,7 +14,15 @@
 		& > div.row:first-of-type {
 			display: flex;
 			flex-flow: row-reverse nowrap;
-			gap: 5rem;
+			gap: 5vmax;
+
+			// prettier-ignore
+			@include for-tablet { & {
+				// En colonne, pleine largeur
+				flex-direction: column-reverse;
+				// prettier-ignore
+				.product-image-infos, .product-image-wrapper { width: 100%; }
+			} }
 		}
 	}
 
@@ -23,6 +32,14 @@
 		@extend .abstract-Product;
 		// Est une extention de Product...
 
+		// Réafffiche en couleur principale, sans tenir compte du stock
+		--product__stock__opacity: 1 !important ;
+
+		iframe {
+			width: 100% !important;
+			aspect-ratio: 16/9;
+			height: auto !important ;
+		}
 		// Layout des infos  -----------------------------------------------------------------
 
 		display: flex;
@@ -30,6 +47,8 @@
 		flex-wrap: wrap;
 		justify-content: flex-start;
 		align-items: stretch;
+		column-gap: 3rem;
+		align-items: center;
 
 		// prettier-ignore
 		hr{display: none ; } // Masquage des séparateurs
@@ -90,24 +109,54 @@
 		// La catégorie ----------------------------------------------------------------
 
 		.product-cat {
-			transform: scale(1.5);
+			margin: 2.5rem 0 0 0; // Aliogne avec les prix
 			transform-origin: right bottom;
 			align-self: end;
 		}
+
+		.product-info-footer {
+			margin-top: var(--gap);
+			width: 100%;
+		}
+
+		.product-promotion span {
+			color: var(--global__foreground-color) !important ;
+			font-size: var(--global__font-size__md);
+			font-weight: var(--global__font-weight__bold);
+			margin-bottom: 0.33em;
+			display: block;
+
+			&::after {
+				content: "Promotion";
+				font-size: var(--global__font-size__xs);
+				font-weight: var(--global__font-weight__regular);
+				line-height: 1rem;
+				margin-top: 0.5em;
+				display: block;
+			}
+		}
+
+		.product-prix,
+		.product-remise,
+		.product-promotion {
+			border-left: 1px solid var(--global__color__accent);
+			padding: 0.8rem 0 0.5rem 0.5rem !important;
+			width: 12rem;
+			margin-top: 2rem !important;
+		}
 	}
 
-	// APPAREANCE
+	// La gallerie photo ///////////////////////////////////////////////////////////////////////
 	.product-image-wrapper {
-		--image--gap: 3rem;
+		--image--gap: 5vw;
 		//
 		grid-area: gallery;
-		width: 40vw;
+		width: clamp(400px, 45vw, 800px);
 		//
 		position: sticky;
 		align-self: flex-start; // La ligne qui fait fonctionner la position "sticky"
 		top: calc(var(--header__height) + var(--navbar__height));
 		//
-
 		//width: calc(40vw);
 		display: flex;
 		flex-flow: column nowrap;

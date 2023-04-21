@@ -1,7 +1,7 @@
-@use './product-result-main';
-@use './product-result-filter';
-@use './../abstract/Typo' as *;
-@use './../utils/breakpoints' as *;
+@use "./product-result-main";
+@use "./product-result-filter";
+@use "./../abstract/Typo" as *;
+@use "./../utils/breakpoints" as *;
 
 /**
 	PAGE AFFICHANT LES RECHERCHES DE PRODUITS
@@ -13,15 +13,15 @@
 // Sur 2 colonne jusqu'au format "tablette" /////////////////////////////
 #product_result_wrapper {
 	display: grid;
-	grid-template-columns: 1fr 250px;
-	grid-template-areas: 'main filters';
-	gap: 5rem;
+	grid-template-columns: 27rem 1fr;
+	grid-template-areas: "filters main";
+	gap: 3em;
 
 	@include for-tablet {
 		grid-template-columns: 100%;
 		grid-template-areas:
-			'main'
-			'filters';
+			"main"
+			"filters";
 	}
 
 	// Le container du résultat : Entête et liste ///////////////////////

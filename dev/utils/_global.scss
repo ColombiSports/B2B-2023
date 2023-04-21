@@ -73,7 +73,7 @@
 	--global__UI__border-style--unset: solid 1px transparent;
 	--global__UI__selected-item: var(--global__color__accent);
 
-	--global__container__padding: 5vmax;
+	--global__container__padding: 7rem 6rem;
 	--global__container__width: 100vw; // clamp(30rem, 95vw, 100vw);
 }
 
@@ -81,15 +81,19 @@
 	--global__color__accent: hsl(200, 10%, 50%);
 	--global__color__accent--hover: hsl(200, 10%, 40%);
 
-	*[data-toggle="prix-tarif"] {
-		display: none !important ;
-	}
+	--global__UI__border-style: dotted 1px var(--global__color__accent);
+	// A definir car sinon la couleur ne s'actualise pas.
+
+	// prettier-ignore
+	*[data-toggle="prix-tarif"] { display: none !important ; }
+	// MAsque tous les prix en relation avec le tarif pro
 }
 
 // Les variables globales en mode téléphone //////////////////////////////////////////////////////////////////////////////
 @include for-phone {
+	// Ré
 	:root {
-		--global__container__padding: 5rem 2rem;
+		--global__container__padding: 6rem 4rem;
 	}
 }
 

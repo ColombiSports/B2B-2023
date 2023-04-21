@@ -19,6 +19,7 @@
 	--product__cat-color: var(--global__foreground-color);
 	--product__marque__width: 12rem;
 	--product__marque__height: 5rem;
+	--product__price__transform-origin: center center;
 
 	/** 
 		LE LOGO DE LA MARQUE -------------------------------------------
@@ -29,7 +30,7 @@
 	// prettier-ignore
 	@media (prefers-color-scheme: dark) { & { --product__marque__logo: var(--marque__logo-white__url); } }
 
-	// L'astérix pour être compatible avec les miniatures et les fiches produits
+	// Le sélecteur "all"'(astérix) pour être compatible avec les miniatures et les fiches produits
 	*[class*="product-marque"] {
 		position: relative;
 		text-align: unset;
@@ -161,7 +162,7 @@
 		font-family: var(--global__font-family__title);
 		font-weight: var(--global__font-weight__bold);
 		font-size: 4rem;
-		padding: 1.3rem 0.2em 1.4rem 1.4rem;
+		padding: 2rem 0.3em 2rem 2rem;
 
 		&:before {
 			content: "Catégorie ";
@@ -197,7 +198,8 @@
 		LES PRIX  -----------------------------------------------------
 		// Public et pro
 	**/
-	.product-prix {
+	.product-prix,
+	.product-remise {
 		// Fait passer le label après le prix
 		display: flex;
 		flex-direction: column-reverse;
@@ -213,7 +215,7 @@
 		margin: 0 0 -0.5rem 0 !important;
 
 		// Effet du réduction du prix -------------------------------------
-		transform-origin: left center;
+		transform-origin: var(--product__price__transform-origin);
 		//
 		// prettier-ignore
 		&[data-toggle="prix-tarif"] { grid-area: prix_tarif ;}
@@ -255,13 +257,19 @@
 			color: var(--product-price__color) !important ;
 			font-size: var(--global__font-size__md);
 			font-weight: var(--global__font-weight__bold);
-			margin-bottom: 0.33em;
+			margin-bottom: 0.15em;
 
 			&.lead {
 				margin-bottom: -0.25rem;
-				min-height: initial;
+				min-height: initial !important ;
+				line-height: 1;
 			}
 		}
+	}
+
+	// Change le label de la remise, doit rester après la déclaration principale ci-avant.
+	.product-remise .desc-label:after {
+		content: "Votre remise" !important ;
 	}
 }
 
@@ -269,11 +277,13 @@
 	Permet de dissocier les Thumbnails de la fiche article.
 **/
 .abstract-Product--card {
+	--product-card__padding: 0;
+
 	border: none !important ;
 	border-radius: var(--global__UI__border-radius--card);
 	background-color: var(--global__background-color);
 	transition: var(--global__transition--all);
-	padding: 2rem 2rem 2.5rem 2rem;
+	padding: var(--product-card__padding);
 	margin: 0;
 	box-shadow: none;
 	@extend .abstract-Product;
@@ -291,6 +301,8 @@
 
 		background-color: var(--colormap__product-color);
 		box-shadow: none;
+
+		cursor: not-allowed;
 	}
 	&.stock-danger:hover,
 	&.stock-success:hover {
@@ -334,8 +346,8 @@
 	&.statut-PRECO::before {
 		clip-path: unset;
 		background: linear-gradient(90deg, #000000cc, #00000000);
-		transform: scale(1.1, 0.85) rotate(7.5deg) translate(15px, 10px);
-		filter: blur(4px);
+		transform: scale(1.1, 0.85) rotate(7.5deg) translate(0.5em, 1em);
+		filter: blur(0.5em);
 	}
 	// Pour le status NOUVEAU ---------------------------------------
 	&.statut-NOUVEAU::before,

@@ -1,5 +1,5 @@
-@use './../abstract/Typo' as *;
-@use './../utils/breakpoints' as *;
+@use "./../abstract/Typo" as *;
+@use "./../utils/breakpoints" as *;
 
 /**
 	Partie droite du wrapper de résultat de recherche. Contient : 
@@ -11,17 +11,27 @@
 	grid-area: filters;
 	position: relative;
 
+	// Alignes les filtres en colonne
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: stretch;
-	gap: 4rem;
+	gap: 4rem; // Entre chque filtre
 
+	// LArgeur définit par le Wrapper
 	width: auto;
 	left: unset;
-	padding: 0 0 0 0.5rem;
+	padding: 0 4rem 0 0.5rem;
 	inset: unset;
 	float: none;
+
+	// Bordure de séparation entre les filtres et le résultat
+	border-right: var(--global__UI__border-style);
+	// Supprimée en mode tablette
+	@include for-tablet {
+		padding: 0 0 0 0.5rem;
+		border-right: none;
+	}
 
 	// Définit une boîte de filtre ---------------------------------------
 	.filter-box {
@@ -30,6 +40,8 @@
 		// Le bouton d'entête de la boîte, ouvrant et fermant les filtres
 		// Inverse les flêches Equation car elles sont à l'envers
 		a.toggle-filter {
+			position: relative; // Pour la pointe en absolute
+
 			// Le nom du filtre
 			h5 {
 				font-size: var(--global__font-size__lg);
@@ -40,19 +52,21 @@
 
 			// On fait pointer la flêche vers le bas
 			&::before {
+				position: absolute;
+				right: -1rem;
 				color: var(--global__color__accent);
 				transform: rotate(90deg);
 				transform-origin: 25% 50%;
 				margin-right: 0;
-				font-size: 1em;
+				font-size: 1.25em;
 				width: 1.5rem;
 			}
 
 			// Etat fermé du filtre ---------------------------------
 			&.collapse {
 				// prettier-ignore
-				&::before{ transform: rotate(0deg); }
-				// On fait pointer la flêche à droite
+				&::before{ transform: rotate(180deg); }
+				// On fait pointer la flêche à gauche
 
 				// prettier-ignore
 				& + ul.list-filter,   & ~ a  { display: none; }
@@ -73,12 +87,12 @@
 			flex-direction: column;
 			flex-wrap: nowrap;
 			justify-content: flex-start;
-			align-items: flex-end;
+			align-items: flex-start;
 			// Taille
 			height: auto;
 			max-height: 170px;
 			overflow: hidden;
-			padding: 0 0 1rem 2rem; // Aligne les radios boutons sous le titre
+			padding: 0 0 1rem 0rem; // Aligne les radios boutons sous le titre
 			overflow-y: scroll;
 			border-bottom: var(--global__UI__border-style);
 			margin-bottom: 1rem;
@@ -89,9 +103,9 @@
 				height: 2px;
 			}
 			// prettier-ignore
-			direction: rtl;
+			// direction: rtl;
 			// prettier-ignore
-			& li { direction: ltr; }
+			// & li { direction: ltr; }
 
 			.filter-text {
 				font-weight: var(--global__font-weight__regular);
@@ -104,7 +118,7 @@
 			}
 
 			// Le filtre avec le radio bouton --------------------------
-			input[type='checkbox'] {
+			input[type="checkbox"] {
 				// Assure que l'épaisseur du label
 				& + .filter-text {
 					font-weight: var(--global__font-weight__regular);
@@ -142,10 +156,10 @@
 		}
 
 		// Le bouton de fin de liste ------------------------------------
-		a[data-action='search#moreFilter'] {
+		a[data-action="search#moreFilter"] {
 			font-size: 0;
 			&:before {
-				content: '[ agrandir ]';
+				content: "[ agrandir ]";
 				font-size: 1.2rem;
 			}
 		}
@@ -154,8 +168,8 @@
 
 		&.expanded {
 			// On change le texte du bouton
-			a[data-action='search#moreFilter']:before {
-				content: '[ réduire ]';
+			a[data-action="search#moreFilter"]:before {
+				content: "[ réduire ]";
 			}
 			// On agrandit la liste au maximun
 			ul.list-filter {

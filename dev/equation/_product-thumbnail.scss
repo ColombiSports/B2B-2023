@@ -17,6 +17,8 @@
 	//
 	// Décoration
 	@extend .abstract-Product--card;
+	--product-card__padding: 1.5rem 2rem 3rem 2rem;
+	--product__price__transform-origin: left bottom;
 
 	// Aligne les éléments internes dans une colonne aligner sur la gauche
 	display: flex;
@@ -26,6 +28,13 @@
 
 	// Définit les propriétés de la carte avant survol.
 	--thumbnail__ribbon__color: var(--colormap__product-color); // Le ruban PROMOTION
+	// Définit les propriétés avant survol.
+	--thumbnail__input_shadow: 0 0 1rem #00000000; // L'ombre du bouton et du champs Quantité
+	--thumbnail__button__color: var(--global__color__accent); //Le boutton PANIER
+	--thumbnail__icon__color: white; // var(--global__background-color); // L'icone du bouton PANIER
+	--thumbnail__input__width: 7.5rem;
+	--thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
+	--thumbnail__button__right: 0rem;
 
 	&:hover {
 		// Définit en amont par "abstract-Product" ----------------------------
@@ -40,13 +49,12 @@
 		--global__color__promo: white;
 		--global__color__promo--text: var(--colormap__product-color);
 		//
-		--thumbnail__buton__color: white; // var(--global__foreground-color);
-		--thumbnail__icon__color: var(--colormap__product-color); // var(--global__background-color);
+		--thumbnail__button__color: white !important ; // var(--global__foreground-color);
+		--thumbnail__icon__color: var(--colormap__product-color) !important ; // var(--global__background-color);
 		--thumbnail__ribbon__color: black;
 		//
 		background-color: var(--colormap__product-color);
 		box-shadow: none;
-		cursor: not-allowed;
 	}
 
 	/**
@@ -112,9 +120,9 @@
 		margin-top: 1.5rem;
 		//
 		// prettier-ignore
-		&[data-toggle="prix-tarif"] { transform: scale(0.8);}
+		& [data-toggle="prix-tarif"] { transform: scale(1.25) ;}
 		// prettier-ignore
-		.show-prix-public &[data-toggle="prix-public"] { transform: scale(1.2); }
+		.show-prix-public & [data-toggle="prix-public"] { transform: scale(1.25); }
 
 		// prettier-ignore
 		& > div { padding: 0; } // Surécrit Bootstrap pour réaligner les paddings

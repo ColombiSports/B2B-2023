@@ -13,17 +13,9 @@
 		height: 8rem;
 		bottom: 0;
 		//
-		// Définit les propriétés avant survol.
-		--thumbnail__input_shadow: 0 0 1rem #00000000; // L'ombre du bouton et du champs Quantité
-		--thumbnail__buton__color: var(--global__color__accent); //Le boutton PANIER
-		--thumbnail__icon__color: white; // var(--global__background-color); // L'icone du bouton PANIER
-		--thumbnail__input__width: 7.5rem;
-		--thumbnail__input__padding: 0.5rem 0rem 0.5rem 0rem;
-		--thumbnail__button__right: 0rem;
-		//
 		&:hover {
 			// Changer la couleur du bouton PANIER
-			--thumbnail__buton__color: var(--global__foreground-color);
+			--thumbnail__button__color: var(--global__foreground-color);
 			--thumbnail__icon__color: var(--global__background-color);
 			--thumbnail__input_shadow: 0 0 1rem #00000099;
 			//
@@ -61,7 +53,7 @@
 
 			// Création de notre label sous le champ input
 			&:after {
-				content: 'Quantité';
+				content: "Quantité";
 				font-size: var(--global__font-size__xs);
 				margin: -0.75rem 0 0 0;
 				color: var(--global__foreground-color);
@@ -88,9 +80,9 @@
 			right: var(--thumbnail__button__right);
 			bottom: 1rem;
 			//
-			color: var(--thumbnail__icon__color) !important;
-			border-color: var(--thumbnail__buton__color) !important;
-			background-color: var(--thumbnail__buton__color) !important;
+			color: var(--thumbnail__icon__color);
+			border-color: var(--thumbnail__button__color);
+			background-color: var(--thumbnail__button__color);
 			box-shadow: var(--thumbnail__input_shadow);
 		}
 	}
