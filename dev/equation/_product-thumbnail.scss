@@ -1,6 +1,6 @@
-@use "./../abstract/Product";
-@use "./../abstract/Promotion";
-@use "./product-thumbnail--cart";
+@use './../abstract/Product';
+@use './../abstract/Promotion';
+@use './product-thumbnail--cart';
 
 /**
 	LES MINIATURES ARTICLES ////////////////////////////////////////////////////////
@@ -49,7 +49,7 @@
 		padding-top: 2rem; // Eloigne verticalement de l'image
 		margin: 0 0 2rem 0; // Décale l'ensemble vers la droite
 		&:before {
-			margin-left: -2rem; // Ramène le trait vers la gaucuhe
+			margin-left: -2rem; // Ramène le trait vers la gauche
 		}
 	}
 
@@ -77,10 +77,10 @@
 		grid-template-columns: 1fr;
 		grid-template-rows: auto 10rem 4.5rem 3rem 0;
 		grid-template-areas:
-			"code"
-			"libelle"
-			"prix_tarif"
-			"prix_public";
+			'code'
+			'libelle'
+			'prix_tarif'
+			'prix_public';
 		//
 		align-items: start;
 		background: none;

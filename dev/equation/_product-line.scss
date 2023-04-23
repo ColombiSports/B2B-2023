@@ -1,6 +1,6 @@
-@use "./../abstract/Product";
-@use "./../abstract/Promotion";
-@use "./../utils/breakpoints" as *;
+@use './../abstract/Product';
+@use './../abstract/Promotion';
+@use './../utils/breakpoints' as *;
 
 /**
 	Affichage des miniatures en ligne
@@ -15,7 +15,7 @@
 	display: grid;
 	grid-template-columns: 9rem 1fr 9rem;
 	grid-template-rows: 1fr;
-	grid-template-areas: "left center right";
+	grid-template-areas: 'left center right';
 	overflow: hidden;
 	gap: 0;
 
@@ -41,24 +41,6 @@
 			right: 0 ;
 		}
 	} }
-	// prettier-ignore
-	// @include for-phone {& {
-	// 	max-height: unset;
-	// 	border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
-	// 	//
-	// 	grid-template-columns: 9rem 1fr;
-	// 	grid-template-rows: 7rem 1fr;
-	// 	grid-template-areas:
-	// 		"left		center"
-	// 		"right	center";
-
-	// 	// Déplace le bandeau "status" à droite
-	// 	&::before,
-	// 	&::after {
-	// 		left: unset !important ;
-	// 		right: 0;
-	// 	}}
-	// }
 
 	// LE BLOC DE L'IMAGE /////////////////////////////////////////////////////////
 	.left {
@@ -94,12 +76,12 @@
 		grid-template-columns: 7rem 1fr 12rem 12rem;
 		grid-template-rows: 2rem 1fr;
 		grid-template-areas:
-			"code		rga		prix_tarif	prix_public"
-			"libelle	libelle	prix_tarif	prix_public";
+			'code		rga		prix_tarif	prix_public'
+			'libelle	libelle	prix_tarif	prix_public';
 		align-items: center;
 		gap: 0.25rem;
 		//
-		// Layout tablette ---------------------------------------------------
+		// Layout PC portable ---------------------------------------------------
 		// prettier-ignore
 		@include for-laptop { & {
 			grid-template-columns: 1fr 12rem;
@@ -110,6 +92,7 @@
 				"libelle	prix_public";
 			align-items: start;
 		}}
+		// Tablette -----------------------------------------------------------
 		// prettier-ignore
 		@include for-tablet { & {
 			grid-template-columns: 12rem 1fr ;
@@ -129,7 +112,7 @@
 		//
 		// prettier-ignore
 		& p:first-of-type{ display: contents; }
-		// Libère le block "code"
+		// Libère le block "code" pris dans un paragraphe inutile
 
 		// Les éléments ---------------------------------------------------
 		.product-code {
@@ -139,8 +122,9 @@
 		.product-libelle {
 			font-size: var(--global__font-size__sm);
 		}
+		// Aussi ".ribbon-top-right"
 		.product-promotion {
-			transform: scale(0.7);
+			transform: scale(0.6) translate(5px, -5px);
 			transform-origin: top right;
 			@extend .abstract-Promotion;
 		}
@@ -148,10 +132,7 @@
 		p.product-prix {
 			transform: scale(0.8) !important ;
 
-			.show-prix-public &[data-toggle="prix-tarif"] {
-				transform-origin: right center;
-			}
-			.show-prix-public &[data-toggle="prix-public"] {
+			.show-prix-public &[data-toggle='prix-public'] {
 				transform: scale(1) !important ;
 				transform-origin: left center;
 			}

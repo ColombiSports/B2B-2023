@@ -1,4 +1,4 @@
-@use "./Typo";
+@use './Typo';
 
 /**
     CLASSE COMMUNE AU MINIATURE EN FORME DE "CARTE" OU DE "LIGNE" //////////////
@@ -15,7 +15,7 @@
 	--product__rga__color: var(--label__color);
 	--product__libelle__color: var(--global__foreground-color);
 	--product__price__color: var(--global__foreground-color);
-	--product__border-color: var(--colormap__product-color); // Voir fichier "utils/colormap.scss"
+	--product__border__color: var(--colormap__product-color); // Voir fichier "utils/colormap.scss"
 	--product__cat-color: var(--global__foreground-color);
 	--product__marque__width: 12rem;
 	--product__marque__height: 5rem;
@@ -24,21 +24,19 @@
 	/** 
 		SELON LE THEME ////////////////////////////////////////////////////////////////////////
 	**/
-	@media (prefers-color-scheme: light) {
-		& {
-			--desc-label__color: var(--global__color__grey66); // Le texte soous le prix
-			--product__marque__logo: var(--marque__logo-color__url); // Le logo de la marque
-		}
-	}
-	@media (prefers-color-scheme: dark) {
-		& {
-			--desc-label__color: var(--global__color__grey33); // Le texte soous le prix
-			--product__marque__logo: var(--marque__logo-white__url); // Le logo de la marque
-		}
-	}
+	// prettier-ignore
+	@media (prefers-color-scheme: light) {&{
+		--desc-label__color: var(--global__color__grey66); // Le texte soous le prix
+		--product__marque__logo: var(--marque__logo-color__url); // Le logo de la marque
+	}}
+	// prettier-ignore
+	@media (prefers-color-scheme: dark) {&{
+		--desc-label__color: var(--global__color__grey33); // Le texte soous le prix
+		--product__marque__logo: var(--marque__logo-white__url); // Le logo de la marque
+	}}
 
 	// Le sélecteur "all"'(astérix) pour être compatible avec les miniatures et les fiches produits
-	*[class*="product-marque"] {
+	*[class*='product-marque'] {
 		position: relative;
 		text-align: unset;
 		margin-bottom: 2rem;
@@ -48,7 +46,7 @@
 		border: none; // Pour les liens !
 		//
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -96,11 +94,11 @@
 
 		// Le soulignement
 		&::before {
-			content: "";
+			content: '';
 			position: absolute;
 			width: 3em;
 			height: 0.15em;
-			background-color: var(--product__border-color, #666);
+			background-color: var(--product__border__color);
 			bottom: -0.5rem;
 		}
 	}
@@ -172,7 +170,7 @@
 		padding: 2rem 0.3em 2rem 2rem;
 
 		&:before {
-			content: "Catégorie ";
+			content: 'Catégorie ';
 			font-family: var(--global__font-family__text);
 			font-weight: var(--global__font-weight__bold);
 			font-size: 0.6rem;
@@ -191,13 +189,13 @@
 		display: none;
 	}
 	&.stock-danger {
-		--product__stock__opacity: 0.4; // L'opacité de stock
-		--product__stock__content: "\f00d"; //  ❌  l'icone accompagnant le label
+		--product__stock__opacity: 0.5; // L'opacité de stock
+		--product__stock__content: '\f00d'; //  ❌  l'icone accompagnant le label
 		--product__stock__color: var(--global__color__danger); // La couleur de l'icone
 	}
 	&.stock-success {
-		--product__stock__opacity: 0.8;
-		--product__stock__content: "\f00c"; //  ✔
+		--product__stock__opacity: 1;
+		--product__stock__content: '\f00c'; //  ✔
 		--product__stock__color: var(--global__color__success);
 	}
 
@@ -236,18 +234,18 @@
 
 			&:after {
 				// Définition du texte de remplacement
-				content: "PRIX";
+				content: 'PRIX';
 				font-size: var(--global__font-size__xs);
 				color: var(--desc-label__color);
 				line-height: 1rem;
 			}
 		}
 		// Définition du label de remplacement pour le prix pro
-		&[data-toggle="prix-tarif"] .desc-label:after {
-			content: "Tarif HT";
+		&[data-toggle='prix-tarif'] .desc-label:after {
+			content: 'Tarif HT';
 		}
 		// Définition de l'icone de stock et sa couleur, juste  avant le label de remplacement
-		&[data-toggle="prix-public"] .desc-label:before {
+		&[data-toggle='prix-public'] .desc-label:before {
 			content: var(--product__stock__content);
 			color: var(--product__stock__color);
 			font-size: var(--global__font-size__sm);
@@ -256,8 +254,8 @@
 			position: absolute;
 		}
 		// Définition du label de remplacement pour le prix public
-		&[data-toggle="prix-public"] .desc-label:after {
-			content: "Prix vente conseillé";
+		&[data-toggle='prix-public'] .desc-label:after {
+			content: 'Prix vente conseillé';
 			margin-left: 1.5rem;
 		}
 		// Le prix par lui-même ------------------------------------------
@@ -277,10 +275,10 @@
 
 	// Change le label de la remise, doit rester après la déclaration principale ci-avant.
 	.product-remise .desc-label:after {
-		content: "Votre remise" !important ;
+		content: 'Votre remise' !important ;
 	}
 	.product-prix.prix-client .desc-label:after {
-		content: "Votre prix HT" !important ;
+		content: 'Votre prix HT' !important ;
 	}
 }
 
@@ -318,6 +316,7 @@
 		--product__price__color: white;
 		--product__marque__logo: var(--marque__logo-white__url);
 		--product__stock__color: white;
+		--product__stock__opacity: 1;
 		//
 		--global__color__promo: white;
 		--global__color__promo--text: var(--colormap__product-color);
@@ -325,6 +324,8 @@
 		--thumbnail__button__color: white !important ; // var(--global__foreground-color);
 		--thumbnail__icon__color: var(--colormap__product-color) !important ; // var(--global__background-color);
 		--thumbnail__ribbon__color: black;
+
+		--desc-label__color: white;
 		//
 		background-color: var(--colormap__product-color);
 		box-shadow: none;
@@ -348,7 +349,7 @@
 	&.statut-PRECO::before,
 	&.statut-NOUVEAU::after,
 	&.statut-NOUVEAU::before {
-		content: "";
+		content: '';
 		color: transparent;
 		position: absolute;
 		inset: var(--product__status__inset);
@@ -377,7 +378,7 @@
 	// Pour le status NOUVEAU ---------------------------------------
 	&.statut-NOUVEAU::before,
 	&.statut-NOUVEAU::after {
-		content: "NOUVEAU";
+		content: 'NOUVEAU';
 		// Taille dynnamique, permet que les deux soient identiques
 		// Celui du dessous, l'ombre, la couleur est transparente
 	}
@@ -388,7 +389,7 @@
 	// Pour le status PRECO -----------------------------------------
 	&.statut-PRECO::before,
 	&.statut-PRECO::after {
-		content: "PRECOMMANDE";
+		content: 'PRECOMMANDE';
 		// Taille dynnamique, permet que les deux soient identiques
 		// Celui du dessous, l'ombre, la couleur est transparente
 	}

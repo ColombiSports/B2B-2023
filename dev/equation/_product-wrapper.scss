@@ -1,4 +1,4 @@
-@use "./../utils/breakpoints" as *;
+@use './../utils/breakpoints' as *;
 
 @mixin setGrid($min, $max, $gap) {
 	position: relative;
@@ -46,9 +46,11 @@
 	@include for-tablet{ @include setGrid(250px, 1fr, 2rem) ;}
 }
 
+// --------------------------------------------------------------------------------
+
 .product-thumbnail-wrapper {
 	// prettier-ignore
 	.col-thumbnail{ display: contents ;}
 
-	@include setGrid(270px, 310px, 6rem);
+	@include setGrid(270px, 1fr, 6rem);
 }

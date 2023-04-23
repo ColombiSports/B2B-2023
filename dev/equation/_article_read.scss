@@ -1,5 +1,5 @@
-@use "./../utils/breakpoints" as *;
-@use "./../abstract/Product";
+@use './../utils/breakpoints' as *;
+@use './../abstract/Product';
 
 #article_read {
 	// Disposition DE LA PAGE /////////////////////////////////////////////////////////////////////
@@ -43,12 +43,13 @@
 		// Layout des infos  -----------------------------------------------------------------
 
 		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
+		flex-direction: column;
+		flex-wrap: nowrap;
 		justify-content: flex-start;
 		align-items: stretch;
 		column-gap: 3rem;
 		align-items: center;
+		position: relative;
 
 		// prettier-ignore
 		hr{display: none ; } // Masquage des séparateurs
@@ -103,7 +104,7 @@
 
 		.product-description {
 			width: 100%;
-			margin-bottom: 2em;
+			margin-bottom: 6rem;
 		}
 
 		// La catégorie ----------------------------------------------------------------
@@ -115,14 +116,7 @@
 			transform: translateY(-170%);
 		}
 
-		.product-info-footer {
-			margin-top: 5rem;
-			width: 100%;
-
-			// prettier-ignore
-			.product-col-back{ display: none ; }
-			// Masque le bouton retour
-		}
+		// La remise de PROMOTION -------------------------------------------------------
 
 		.product-promotion span {
 			color: var(--global__foreground-color) !important ;
@@ -132,22 +126,58 @@
 			display: block;
 
 			&::after {
-				content: "Promotion";
+				content: 'Promotion';
 				font-size: var(--global__font-size__xs);
 				font-weight: var(--global__font-weight__regular);
+				color: var(--desc-label__color);
 				line-height: 1rem;
 				margin-top: 0.5em;
 				display: block;
 			}
 		}
 
+		// Les différents type de prix, remise incluses -----------------------------------
+
 		.product-prix,
 		.product-remise,
 		.product-promotion {
 			border-left: 1px solid var(--global__color__accent);
 			padding: 0.8rem 0 0.5rem 0.5rem !important;
-			width: 12rem;
-			margin-top: 2rem !important;
+			width: 12rem; // Per met un empilement plus joli
+		}
+
+		.product-info-footer {
+			margin: 4rem 0;
+			width: 100%;
+
+			// prettier-ignore
+			form, .product-col-form, .product-panier-col-input, .product-read-action, .input-group-btn, .product-panier-col-button { display: contents ; }
+
+			// prettier-ignore
+			.product-col-back{ display: none ; }
+			// Masque le bouton retour
+
+			// Le container des QUANTITES et du boutton PANIER
+			.product-panier-wrapper {
+				position: relative;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				align-items: center;
+				height: 7rem;
+
+				.btn-add-cart {
+					width: auto;
+					aspect-ratio: 1 / 1;
+					position: relative;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: nowrap;
+					align-items: center;
+				}
+			}
 		}
 	}
 
