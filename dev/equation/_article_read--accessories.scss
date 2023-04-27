@@ -1,0 +1,104 @@
+@use "./../abstract/Product";
+
+.article_read--accessories {
+	//
+	h3 {
+		// margin-bottom: 0 !important ;
+	}
+
+	.table-accessoires {
+		tbody {
+			margin-bottom: 1.5rem;
+			display: table;
+			width: 99%;
+
+			// prettier-ignore
+			img { border-radius: 5px; }
+			// Arrondi les iamges
+
+			// les lignes de tableau -------------------------------------------
+			tr {
+				// Transforme chaque ligne en tableau
+				display: grid;
+				grid-template-columns: 6rem 10rem 1fr 15rem 6rem;
+				column-gap: 1rem;
+				align-items: center;
+				justify-items: stretch;
+				margin: 0;
+
+				// prettier-ignore
+				&:hover {background-color: #66666611; }
+				// Au survol de la ligne, fond gris neutre pratiquement transparent
+
+				// prettier-ignore
+				&:not(:last-of-type) { border-bottom: 1px solid #66666633; }
+				// Pour toutes les lignes sauf la dernière
+
+				// Les cellules de ligne -------------------------------------
+				td {
+					// Equation a mis la bordure ici !
+					border: none;
+					font-size: var(--global__font-size__sm);
+					font-weight: var(--global__font-weight__regular) !important;
+					color: var(--global__foreground-color) !important;
+
+					&:not(:first-child) {
+						padding-left: 2rem;
+						border-left: 1px solid #66666633;
+					}
+
+					// L'image
+					&:nth-child(1) {
+					}
+					// Le code article
+					&:nth-child(2) {
+					}
+					// La désignation
+					&:nth-child(3) {
+					}
+					// Les prix
+					&:nth-child(4) {
+						// Légèrement plus petit au dessus
+						[data-toggle="prix-public"] {
+							transform-origin: top right;
+							transform: scale(0.85);
+							margin: -0.5rem 0;
+						}
+						// Rapproche les 2 prix
+						[data-toggle="prix-tarif"] {
+							margin-bottom: -2rem;
+						}
+						// Ajoute un espace entree le label et le prix
+						[data-toggle="prix-tarif"]::before,
+						[data-toggle="prix-public"]::before {
+							margin-right: 1rem;
+						}
+						// Ajout du label
+						[data-toggle="prix-tarif"]::before {
+							content: "PUHT";
+						}
+						[data-toggle="prix-public"]::before {
+							content: "PVC ";
+						}
+					}
+					// Les stocks
+					&:last-child {
+						// En ligne
+						span {
+							display: flex;
+							flex-direction: row;
+							align-items: baseline;
+
+							// prettier-ignore
+							&::before { margin-right: 0.5rem; }
+							// Espace l'icone et le texte
+						}
+						// Uniformise les icones et les couleurs
+						@extend .abstract-Product--Stock;
+						--icon__size: var(--global__font-size__sm);
+					}
+				}
+			}
+		}
+	}
+}

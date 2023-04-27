@@ -75,6 +75,12 @@
 
 	--global__container__padding: 7rem 6rem;
 	--global__container__width: 100vw; // clamp(30rem, 95vw, 100vw);
+
+	// prettier-ignore
+	*[data-toggle="prix-public"] { 
+		color: inherit ;
+		display: inherit  ;}
+	// Sans cette ligne les prix public apparaissent masqués dans le tableau des accessoires
 }
 
 :root .show-prix-public {
@@ -86,12 +92,11 @@
 
 	// prettier-ignore
 	*[data-toggle="prix-tarif"] { display: none !important ; }
-	// MAsque tous les prix en relation avec le tarif pro
+	// Masque tous les prix en relation avec le tarif pro
 }
 
 // Les variables globales en mode téléphone //////////////////////////////////////////////////////////////////////////////
 @include for-phone {
-	// Ré
 	:root {
 		--global__container__padding: 6rem 4rem;
 	}

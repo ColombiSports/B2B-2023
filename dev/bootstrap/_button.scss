@@ -1,4 +1,4 @@
-@use '../abstract/Button' as *;
+@use "../abstract/Button" as *;
 
 /**
 	Gestion des différents boutons Boostrap.
@@ -22,16 +22,18 @@
 }
 
 // Le bouton panier des miniature en carte et en ligne
-.btn-add-cart {
+.btn-add-cart,
+.btn-link {
 	@extend .abstract-Button;
 	//
 	display: grid;
 	place-content: center;
 	position: absolute;
 	//
-	--btn-add-cart__size: 100%;
-	width: var(--btn-add-cart__size);
-	height: var(--btn-add-cart__size);
+	--btn__size: 100%;
+	width: var(--btn__size);
+	height: var(--btn__size);
+	aspect-ratio: 1 / 1;
 	font-size: 0;
 	//
 	// prettier-ignore

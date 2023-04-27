@@ -22,3 +22,33 @@
 		background-color: var(--global__color__success);
 	}
 }
+
+/** 
+	Message d'alerte pour les recherches
+**/
+#article_result {
+	.alert {
+		&-warning {
+			font-family: var(--global__font-family__title);
+			color: var(--global__color__warning);
+			font-size: var(--global__font-size__md);
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+			text-align: left;
+			width: 20rem;
+			line-height: 1em;
+			background: none;
+			border: solid 1px;
+
+			&::before {
+				content: "\f12a";
+				font-family: FontAwesome;
+				font-size: calc(var(--global__font-size__xl) * 2.2);
+				transform: translateY(0.05em);
+				margin-right: 1rem;
+			}
+		}
+	}
+}

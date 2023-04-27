@@ -1,0 +1,85 @@
+/** 
+      Container de la gallerie des images de la fiche produit
+**/
+.article_read--gallery {
+	grid-area: gallery;
+	width: clamp(400px, 45vw, 800px);
+	//
+	position: sticky;
+	align-self: flex-start; // La ligne qui fait fonctionner la position "sticky"
+	top: calc(var(--header__height) + var(--navbar__height)); // Change en fonction du mode
+	//
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	gap: 2rem;
+
+	// La vue de l'image ----------------------------------------------------------------------
+
+	.product-image-container {
+		background: radial-gradient(farthest-corner, white 50%, #cccccc 100%);
+		box-shadow: 0 0 4rem #00000044;
+		border-radius: var(--global__UI__border-radius--card);
+		aspect-ratio: 1.33;
+		height: auto;
+		margin: 0;
+
+		// prettier-ignore
+		.product-image{ mix-blend-mode: multiply ; }
+
+		// prettier-ignore
+		&:hover .product-image{ display: none ; }
+
+		&:hover .zoomImg {
+			mix-blend-mode: multiply;
+		} // Ne fonctionne pas en mode téléphone !!!
+	}
+
+	// La liste des miniatures -----------------------------------------------------------------
+
+	.product-gallery {
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem;
+
+		// La miniature
+		& > a {
+			overflow: hidden;
+			border-radius: 0.8rem;
+			border: none;
+			margin: 0;
+			transition: var(--global__transition--all);
+			border: solid 3px transparent;
+			opacity: 0.75;
+
+			// Active
+			&.active {
+				opacity: 1;
+				border-color: var(--global__color__accent);
+			}
+			// prettier-ignore
+			img { border-radius: 0 !important ; }
+		}
+	}
+	// Le bouton de téléchargement
+	.btn-link {
+		position: relative;
+		aspect-ratio: auto;
+		padding: 1rem 2rem;
+		margin: 0 0 6rem 0;
+
+		// prettier-ignore
+		i::before { font-size: var(--global__font-size__md); }
+		// L'icone
+
+		// prettier-ignore
+		&::after { content: "télécharger"; font-size: var(--global__font-size__xs); }
+		// Le texte
+	}
+}

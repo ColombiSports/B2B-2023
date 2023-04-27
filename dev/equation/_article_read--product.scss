@@ -1,0 +1,222 @@
+@use "./../utils/breakpoints" as *;
+@use "./../abstract/Product";
+
+/** 
+      Container des infos texte de la fiche produit
+**/
+.article_read--product {
+	@extend .abstract-Product;
+
+	// prettier-ignore
+	.pull-right{ display:  none ;}
+	// Masque la visionneuse
+
+	// Réafffiche en couleur principale, sans tenir compte du stock
+	// --product__stock__opacity: 1 !important ;
+
+	// Ajuste les videos YouTube
+	iframe {
+		width: 100% !important;
+		aspect-ratio: 16/9;
+		height: auto !important ;
+	}
+
+	// Layout des infos  -----------------------------------------------------------------
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	column-gap: 3rem;
+	position: relative;
+
+	// prettier-ignore
+	hr{display: none ; } // Masquage des séparateurs
+
+	// Le fil d'ariane en premier -------------------------------------------------------
+
+	.breadcrumb {
+		width: 100%;
+		order: -1;
+	}
+
+	// Redéfinit la marque---------------------------------------------------------------
+
+	.product-marque {
+		--product__marque__width: 12rem !important;
+		--product__marque__height: 6rem !important ;
+		margin: 2rem 0 3rem -1rem;
+	}
+
+	// Rédéfinit le status ------------------------------------------------------------
+
+	@extend .abstract-Product--Status;
+	--product__status__inset: 7rem 0 auto auto;
+	--product__status__font-size: var(--global__font-size__md);
+
+	// Sépare la RÉFÉRENCE du code RGA : un à gauche, l'autre à droite ---------------
+
+	.product-code {
+		width: 100%;
+
+		display: flex;
+		justify-content: space-between;
+		margin-top: 1rem;
+		border: none !important ;
+	}
+
+	.product-rga {
+		background-color: var(--global__color__grey50);
+		border-radius: var(--global__UI__border-radius--input);
+		padding: 0.25rem 1.5rem;
+		// prettier-ignore
+		span { color: var(--global__background-color); }
+	}
+
+	// Le nom du produit ------------------------------------------------------------
+
+	.product-libelle {
+		width: 100%;
+		font-size: var(--global__font-size__xl);
+		margin-bottom: 1em;
+	}
+
+	// La catégorie ----------------------------------------------------------------
+
+	.product-description {
+		width: 100%;
+		margin-bottom: 6rem;
+	}
+
+	// La catégorie ----------------------------------------------------------------
+
+	.product-cat {
+		margin-bottom: 0rem;
+		// La séparation étant faite par la ligne HR ci-dessous
+
+		// Prend la largeur afin de pouvoir laisser les prix en ligne sans inclure la catégorie
+		& + hr {
+			display: block;
+			height: 0;
+			width: 100%;
+			border-top: none; //var(--global__UI__border-style);
+		}
+	}
+
+	// La remise de PROMOTION -------------------------------------------------------
+
+	.product-promotion span {
+		font-size: var(--global__font-size__md);
+		font-weight: var(--global__font-weight__bold);
+		margin-bottom: 0.33em;
+		display: block;
+
+		&::after {
+			content: "Promotion";
+			font-size: var(--global__font-size__xs);
+			font-weight: var(--global__font-weight__regular);
+			color: var(--desc-label__color);
+			line-height: 1rem;
+			margin-top: 0.5em;
+			display: block;
+		}
+	}
+
+	// La disponibilté du stock ----------------------------------------------------
+
+	.product-stock {
+		display: block;
+	}
+
+	// Les prix et remises ------------------------------------------------------------
+
+	.product-prix,
+	.product-remise,
+	.product-promotion,
+	.product-stock {
+		border: 1px dotted var(--global__color__accent);
+		border-bottom: none;
+		border-right: none;
+
+		padding: 1rem 2rem 0 1rem !important;
+		margin-top: 2rem !important;
+		color: var(--desc-label__color);
+	}
+
+	// Supprime le label ajouté
+	.product-prix[data-toggle="prix-public"] .desc-label:before {
+		content: none;
+	}
+
+	// Replace le label maintenant sans icone
+	.product-prix[data-toggle="prix-public"] .desc-label:after {
+		margin-left: 0;
+	}
+
+	// Fait ressortir le PRIX DE VENTE HT seul ou avec remise
+	.product-prix[data-toggle="prix-tarif"]:nth-last-of-type(2) {
+		color: var(--global__foreground-color);
+	}
+
+	// Le container des éléments de commande ---------------------------------------------------
+
+	// Le derniere élément des infos
+	.product-info-footer {
+		margin: 6rem 0 0 0;
+		width: 100%;
+		display: flex;
+		flex-direction: row-reverse;
+
+		// prettier-ignore
+		form, .product-col-form, .product-panier-col-input, .input-group-btn,
+            .product-read-action, .product-panier-col-button { display: contents ; }
+		// Tous les conteneurs inutiles
+
+		// prettier-ignore
+		.product-col-back{ display: none ; }
+		// MASQUE LE BOUTON RETOUR
+
+		// Le container des QUANTITES et du boutton PANIER
+		.product-panier-wrapper {
+			position: relative;
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: center;
+			height: 8rem;
+			gap: 2rem;
+
+			// En colonne, pleine largeur
+			@include for-tablet {
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+
+			// Le bloc des quantités
+			.input-group {
+				display: flex;
+
+				// Les boutons - et +
+				button {
+					width: 5rem;
+				}
+				// Le champ des quantités
+				input {
+					width: 8rem;
+					border-radius: 0 !important;
+					margin: 0 -1px;
+					border-width: 2px !important;
+					border-color: var(--global__foreground-color) !important;
+					z-index: -2;
+				}
+			}
+			// Le bouton du panier
+			.btn-add-cart {
+				--btn__size: 9rem;
+				position: relative;
+			}
+		}
+	}
+}

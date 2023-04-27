@@ -1,4 +1,4 @@
-@use './Typo';
+@use "./Typo";
 
 /**
     CLASSE COMMUNE AU MINIATURE EN FORME DE "CARTE" OU DE "LIGNE" //////////////
@@ -20,6 +20,16 @@
 	--product__marque__width: 12rem;
 	--product__marque__height: 5rem;
 	--product__price__transform-origin: center center;
+	//
+	--product__stock__icon-content: "\f00c"; //  ✔
+	--product__stock__color: var(--global__color__success);
+	--product__stock__opacity: 1;
+
+	&.stock-danger {
+		--product__stock__opacity: 0.5;
+		--product__stock__icon-content: "\f00d";
+		--product__stock__color: var(--global__color__danger);
+	}
 
 	/** 
 		SELON LE THEME ////////////////////////////////////////////////////////////////////////
@@ -36,7 +46,7 @@
 	}}
 
 	// Le sélecteur "all"'(astérix) pour être compatible avec les miniatures et les fiches produits
-	*[class*='product-marque'] {
+	*[class*="product-marque"] {
 		position: relative;
 		text-align: unset;
 		margin-bottom: 2rem;
@@ -46,7 +56,7 @@
 		border: none; // Pour les liens !
 		//
 		&::before {
-			content: '';
+			content: "";
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -94,7 +104,7 @@
 
 		// Le soulignement
 		&::before {
-			content: '';
+			content: "";
 			position: absolute;
 			width: 3em;
 			height: 0.15em;
@@ -170,7 +180,7 @@
 		padding: 2rem 0.3em 2rem 2rem;
 
 		&:before {
-			content: 'Catégorie ';
+			content: "Catégorie ";
 			font-family: var(--global__font-family__text);
 			font-weight: var(--global__font-weight__bold);
 			font-size: 0.6rem;
@@ -187,16 +197,7 @@
 	.product-stock {
 		grid-area: stock;
 		display: none;
-	}
-	&.stock-danger {
-		--product__stock__opacity: 0.5; // L'opacité de stock
-		--product__stock__content: '\f00d'; //  ❌  l'icone accompagnant le label
-		--product__stock__color: var(--global__color__danger); // La couleur de l'icone
-	}
-	&.stock-success {
-		--product__stock__opacity: 1;
-		--product__stock__content: '\f00c'; //  ✔
-		--product__stock__color: var(--global__color__success);
+		@extend .abstract-Product--Stock;
 	}
 
 	/**
@@ -234,19 +235,19 @@
 
 			&:after {
 				// Définition du texte de remplacement
-				content: 'PRIX';
+				content: "PRIX";
 				font-size: var(--global__font-size__xs);
 				color: var(--desc-label__color);
 				line-height: 1rem;
 			}
 		}
 		// Définition du label de remplacement pour le prix pro
-		&[data-toggle='prix-tarif'] .desc-label:after {
-			content: 'Tarif HT';
+		&[data-toggle="prix-tarif"] .desc-label:after {
+			content: "Tarif HT";
 		}
 		// Définition de l'icone de stock et sa couleur, juste  avant le label de remplacement
-		&[data-toggle='prix-public'] .desc-label:before {
-			content: var(--product__stock__content);
+		&[data-toggle="prix-public"] .desc-label:before {
+			content: var(--product__stock__icon-content);
 			color: var(--product__stock__color);
 			font-size: var(--global__font-size__sm);
 			font-family: FontAwesome;
@@ -254,8 +255,8 @@
 			position: absolute;
 		}
 		// Définition du label de remplacement pour le prix public
-		&[data-toggle='prix-public'] .desc-label:after {
-			content: 'Prix vente conseillé';
+		&[data-toggle="prix-public"] .desc-label:after {
+			content: "Prix vente conseillé";
 			margin-left: 1.5rem;
 		}
 		// Le prix par lui-même ------------------------------------------
@@ -275,10 +276,10 @@
 
 	// Change le label de la remise, doit rester après la déclaration principale ci-avant.
 	.product-remise .desc-label:after {
-		content: 'Votre remise' !important ;
+		content: "Votre remise" !important ;
 	}
 	.product-prix.prix-client .desc-label:after {
-		content: 'Votre prix HT' !important ;
+		content: "Votre prix HT" !important ;
 	}
 }
 
@@ -329,10 +330,58 @@
 		//
 		background-color: var(--colormap__product-color);
 		box-shadow: none;
+		cursor: not-allowed;
 	}
 	&.stock-danger:hover,
 	&.stock-success:hover {
 		--product__stock__opacity: 1;
+	}
+}
+
+/**
+	Utilisé les classes Bootstrap plutôt que le status produit.
+**/
+.abstract-Product--Stock {
+	--stock__opacity: 1;
+	--icon__size: var(--global__font-size__md);
+	--product__stock__icon-content: "\f00c"; //  ✔
+	--icon__color: var(--global__color__success);
+
+	.label-stock.label-danger {
+		--stock__opacity: 0.5;
+		--product__stock__icon-content: "\f00d"; //  ❌  l'icone accompagnant le label
+		--icon__color: var(--global__color__danger); // La couleur de l'icone
+	}
+	// .label-stock.label-success {
+	// 	--stock__opacity: 1;
+	// 	--icon__content: "\f00c"; //  ✔
+	// 	--icon__color: var(--global__color__success);
+	// }
+
+	span {
+		background: none;
+		color: var(--product__stock__color);
+		font-size: 0;
+
+		// L'icone
+		&::before {
+			content: var(--product__stock__icon-content);
+			color: var(--icon__color);
+			font-size: var(--icon__size);
+			font-family: FontAwesome;
+		}
+		// Le label
+		&::after {
+			content: "Stock";
+			display: block;
+			color: var(--desc-label__color);
+			font-size: var(--global__font-size__xs);
+			font-weight: var(--global__font-weight__regular);
+			line-height: 0;
+			margin: 0.5rem 0 0 0;
+			padding-bottom: 1.5rem;
+			text-align: left;
+		}
 	}
 }
 
@@ -349,7 +398,7 @@
 	&.statut-PRECO::before,
 	&.statut-NOUVEAU::after,
 	&.statut-NOUVEAU::before {
-		content: '';
+		content: "";
 		color: transparent;
 		position: absolute;
 		inset: var(--product__status__inset);
@@ -378,7 +427,7 @@
 	// Pour le status NOUVEAU ---------------------------------------
 	&.statut-NOUVEAU::before,
 	&.statut-NOUVEAU::after {
-		content: 'NOUVEAU';
+		content: "NOUVEAU";
 		// Taille dynnamique, permet que les deux soient identiques
 		// Celui du dessous, l'ombre, la couleur est transparente
 	}
@@ -389,7 +438,7 @@
 	// Pour le status PRECO -----------------------------------------
 	&.statut-PRECO::before,
 	&.statut-PRECO::after {
-		content: 'PRECOMMANDE';
+		content: "PRECOMMANDE";
 		// Taille dynnamique, permet que les deux soient identiques
 		// Celui du dessous, l'ombre, la couleur est transparente
 	}
