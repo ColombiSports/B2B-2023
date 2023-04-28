@@ -1,0 +1,75 @@
+/**
+      La page du panier
+**/
+div[data-controller="panier--main"] {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+
+	table {
+		--grid-template-columns: 6rem 10rem 1fr 15rem 6rem 7rem;
+
+		tbody {
+			// Met lee tbody en 100% de lareur
+			// width: 100%;
+			// display: table-caption;
+
+			tr {
+				// display: grid;
+				// grid-template-columns: 1fr 10rem 10rem 10rem 10rem 10rem;
+				// position: relative;
+				// padding: 2rem 0;
+				// width: auto;
+
+				td {
+					// padding: 1.5rem 0.5rem;
+					// position: relative;
+					// border: none;
+					.input-group {
+						display: flex;
+						gap: 1rem;
+						//
+						button.btn {
+							border-radius: var(--global__UI__border-radius--input) !important ;
+							margin: 0 1rem;
+						}
+					}
+
+					&:nth-of-type(1) {
+					}
+					&:nth-of-type(2) {
+					}
+					&:nth-of-type(3) {
+					}
+					&:nth-of-type(4) {
+						width: auto;
+					}
+					&:nth-of-type(5) {
+						width: auto;
+					}
+					&:nth-of-type(6) {
+						display: grid;
+						place-content: center;
+
+						.btn-link {
+							position: relative;
+							transform: scale(0.75);
+							margin-right: 0;
+						}
+					}
+				}
+			}
+		}
+	}
+	// Le bouton "supprimer" de la ligne
+	.cart-remove {
+		display: block;
+		.btn-link {
+			color: white !important;
+			font-size: var(--global__font-size__sm);
+			--btn__size: 4rem;
+		}
+	}
+}

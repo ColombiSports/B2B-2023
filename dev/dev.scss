@@ -19,6 +19,7 @@
 @use "./equation/product-result"; // Résultat de recherche
 @use "./equation/product-image"; // Résltat de recherche
 @use "./equation/article_read"; // Page article
+@use "./equation/panier_index"; // Le pannier
 @use "./equation/article-search-loading"; // Le spinner personnalisé
 
 //@use './html/html';
@@ -28,6 +29,7 @@
 @use "./html/a";
 @use "./html/heading";
 @use "./html/button";
+@use "./html/table";
 @use "./html/input";
 @use "./html/scrollbar";
 

@@ -1,9 +1,48 @@
+/**
+	Liste des articles similaires (de subtitution sur Equation)
+**/
 .article_read--similars {
-	.owl-item > div {
-		width: 300px;
-	}
+	// Réorganise les éléments
+	.owl-carousel {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		gap: 1rem;
 
-	.owl-carousel .owl-stage-outer {
-		max-height: 400px;
+		// La liste des éléments
+		// prettier-ignore
+		.owl-stage-outer { order: 1; }
+
+		// La liste des indications de pages
+		// prettier-ignore
+		.owl-dots { order: 2;
+			// Normal
+			span {
+				border: solid 1px var(--global__color__grey50);
+				background: none;
+				width: 32px;
+				height: 8px;
+			}
+			// Sélectionné
+			 .active span {
+				border-color: var(--global__color__accent);
+				background-color: var(--global__color__accent);
+			}
+		}
+
+		// Les boutons de navigation
+		.owl-nav {
+			order: 3;
+			display: flex;
+			justify-content: space-between;
+
+			// prettier-ignore
+			& > .btn { width: 70px; }
+
+			.disabled {
+				opacity: 0.25;
+				pointer-events: none;
+			}
+		}
 	}
 }
