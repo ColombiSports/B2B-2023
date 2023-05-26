@@ -1,0 +1,32 @@
+@use "./../utils/breakpoints" as *;
+//
+#panier_index,
+#panier_shipping,
+#panier_checkout {
+	.pull-left,
+	.pull-right {
+		float: unset !important ;
+		width: fit-content;
+	}
+
+	.pull-left {
+		align-self: start;
+	}
+
+	.pull-right {
+		align-self: end;
+		transform: translateY(-100%);
+	}
+
+	@include for-phone {
+		.pull-left,
+		.pull-right {
+			align-self: center;
+			margin-top: 4rem;
+		}
+
+		.pull-right {
+			transform: unset;
+		}
+	}
+}

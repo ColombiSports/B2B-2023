@@ -1,0 +1,100 @@
+//
+// Avec l'ID le sélecteur devient plus précis que ceux de Equation
+#panier_shipping {
+	//
+	// supprime la marge
+	div[data-controller="panier--main"] .row > div {
+		padding: 0;
+		margin: 0;
+	}
+	//  Menu déroulants
+	.select2 {
+		margin-bottom: 8rem;
+
+		// Avertit qu'un choix est possible
+		&:before {
+			content: "Merci de choisir votre adresse de livraison dans la liste ci-dessous :";
+			display: block;
+			margin: 0 0 3rem 0;
+			position: relative;
+		}
+
+		// L'adresse choisie et visible
+		&-selection {
+			position: relative;
+			border: none;
+			border-radius: var(--global__UI__border-radius--alert);
+			background-color: var(--global__background-color) !important ;
+			padding: 2rem;
+
+			// Les blocs composants les lignes d'adresses
+			&__rendered div {
+				color: var(--global__foreground-color);
+				// prettier-ignore
+				&:not(:last-of-type) { margin-bottom: 1rem; } // Tous sauf le dernier
+			}
+			// La petite pointe à droite
+			&__arrow {
+				height: 20px;
+				position: absolute;
+				right: 2rem;
+				top: 2px;
+				width: auto;
+
+				b {
+					border-color: var(--global__color__accent) transparent transparent transparent;
+					border-width: 10px 10px;
+				}
+			}
+		}
+		&-dropdown {
+			border-radius: var(--global__UI__border-radius--card);
+			background-color: var(--global__background-color) !important ;
+			box-shadow: 0 0 4rem 2rem var(--global__dropshadow-color);
+			border: none !important ;
+			padding: 2rem;
+
+			// le SPAN container des adresses
+			.select2-results {
+				padding: 2rem;
+
+				// La liste des adresses
+				ul {
+					display: flex;
+					flex-direction: column;
+					flex-wrap: nowrap;
+					padding-right: 3rem;
+					gap: 2rem;
+
+					// Met la scrollbar à gauche ------------------------------
+					&::-webkit-scrollbar {
+						width: 2px;
+						height: 2px;
+					}
+
+					// Une adresse par défautt
+					li {
+						padding: 2rem;
+						border-radius: var(--global__UI__border-radius--alert);
+						background-color: #66666622;
+						opacity: 0.5;
+
+						&:hover {
+							opacity: 1;
+						}
+						//
+						&[aria-selected="true"] {
+							opacity: 1;
+							background-color: var(--global__color__accent);
+						}
+
+						// prettier-ignore
+						div > div :not(:last-of-type) { margin-bottom: 1rem; } // Tous sauf le dernier
+					}
+				}
+
+				//
+			}
+		}
+	}
+}

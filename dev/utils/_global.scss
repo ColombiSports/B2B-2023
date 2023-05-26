@@ -54,12 +54,12 @@
 	--global__color__nouveau--text: white;
 	--global__color__promo: #c00;
 	--global__color__promo--text: white;
-	--global__color__step-todo: #666;
-	--global__color__step-current: var(--global__color__vert);
-	--global__color__step-validate: var(--global__color__bleu);
+	// --global__color__step-todo: #666666;
+	// --global__color__step-current: var(--global__color__orange); // var(--global__color__vert);
+	// --global__color__step-validate: var(--global__color__vert);
 	// Couleur d'accent
 	--global__color__accent: #f50;
-	--global__color__accent--gradient: #ed7;
+	accent-color: var(--global__color__accent);
 
 	// Les transition
 	--global__transition: 333ms ease-in-out;
@@ -73,7 +73,7 @@
 	--global__UI__border-style--unset: solid 1px transparent;
 	--global__UI__selected-item: var(--global__color__accent);
 
-	--global__container__padding: 7rem 6rem;
+	--global__container__padding: 7rem 5vw;
 	--global__container__width: 100vw; // clamp(30rem, 95vw, 100vw);
 
 	// prettier-ignore
@@ -85,7 +85,8 @@
 
 :root .show-prix-public {
 	--global__color__accent: hsl(200, 10%, 50%);
-	--global__color__accent--hover: hsl(200, 10%, 40%);
+	// --global__color__accent--hover: hsl(200, 10%, 40%);
+	accent-color: var(--global__color__accent);
 
 	--global__UI__border-style: dotted 1px var(--global__color__accent);
 	// A definir car sinon la couleur ne s'actualise pas.
@@ -98,7 +99,7 @@
 // Les variables globales en mode téléphone //////////////////////////////////////////////////////////////////////////////
 @include for-phone {
 	:root {
-		--global__container__padding: 6rem 4rem;
+		--global__container__padding: 6rem 8vw;
 	}
 }
 
@@ -108,6 +109,7 @@
 		--global__background-color: #fff;
 		--global__foreground-color: #000011;
 		--global__background-image: radial-gradient(ellipse at top, white 0%, #ddd 75%);
+		--global__dropshadow-color: #00000044;
 
 		--global__color__accent--hover: #f72;
 		--global__filter__unavailable: grayscale(1) contrast(0.1) brightness(1.7);
@@ -122,6 +124,7 @@
 		--global__background-color: #000011;
 		--global__foreground-color: #fff;
 		--global__background-image: radial-gradient(ellipse at top, #333333 25%, var(--global__background-color) 100%);
+		--global__dropshadow-color: #00000099;
 
 		--global__color__accent--hover: #c30;
 		--global__filter__unavailable: grayscale(1) contrast(0.3) brightness(0.3);

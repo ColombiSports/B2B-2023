@@ -1,3 +1,4 @@
+// Pour tous les éléments... Sauf le BODY définit ci-dessous
 * {
 	// FIREFOX
 	scrollbar-color: var(--global__color__accent) transparent;
@@ -5,12 +6,12 @@
 
 	// CHROME
 	&::-webkit-scrollbar {
-		width: 8px;
-		height: 8px;
+		width: 2px;
+		height: 2px;
 
 		/*Appliquer des modifications sur le fond de la zone de l'ascenseur.*/
 		&-track {
-			background-color: transparent; // var(--global__background-color);
+			background-color: #66666633; // var(--global__background-color);
 		}
 		/*Cible l'ascenseur lui-même.*/
 		&-thumb {
@@ -31,7 +32,7 @@
 					}
 				}
 				/* bouton pour descendre.*/
-				&increment {
+				&:increment {
 					&:hover {
 					}
 				}
@@ -39,7 +40,7 @@
 			/*Barre horizontale*/
 			&:horizontal {
 				/* bouton pour aller à droite.*/
-				&decrement {
+				&:decrement {
 					&:hover {
 					}
 				}
@@ -49,6 +50,20 @@
 					}
 				}
 			}
+		}
+	}
+}
+
+// La scrollbar de la page
+body {
+	scrollbar-width: auto;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+
+		&-track {
+			background-color: transparent;
 		}
 	}
 }

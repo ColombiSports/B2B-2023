@@ -1,0 +1,20 @@
+@use "./../html/input";
+
+select {
+	// color: var(--global__foreground-color) !important;
+	// background-color: var(--global__background-color) !important;
+	// border-radius: var(--global__UI__border-radius--input) !important ;
+	// border: none !important ;
+	@extend .input;
+
+	//
+
+	&:focus,
+	&:focus-within,
+	&:focus-visible {
+		box-shadow: unset !important;
+	}
+	&:focus-visible {
+		outline-color: var(--global__color__accent);
+	}
+}

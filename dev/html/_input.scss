@@ -58,7 +58,7 @@
 		font-weight: var(--global__font-weight__bold) !important;
 		background: var(--input__background-color) !important ;
 		border-color: var(--global__color__accent) !important;
-		border-radius: 100vmax !important; // Car carré sur IOS
+		// border-radius: 100vmax !important; // Car carré sur IOS
 
 		&::placeholder {
 			color: red;
@@ -78,6 +78,17 @@ input[type="password"] {
 
 input[type="file"] {
 	//
+}
+
+input[type="checkbox"] {
+	width: auto;
+	display: inline-block;
+	position: relative;
+	line-height: 1em;
+	min-height: auto;
+	margin: 0;
+	border-radius: 2px;
+	border: none;
 }
 
 label {

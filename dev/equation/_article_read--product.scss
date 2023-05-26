@@ -1,4 +1,5 @@
 @use "./../utils/breakpoints" as *;
+@use "./../abstract/Button";
 @use "./../abstract/Product";
 
 /** 
@@ -197,24 +198,24 @@
 			// Le bloc des quantités
 			.input-group {
 				display: flex;
+				align-items: center;
+				gap: 1rem;
 
 				// Les boutons - et +
-				button {
-					width: 5rem;
+				.btn {
+					--btn__size: 4rem;
+					border-radius: var(--global__UI__border-radius--input); // Car sinon n'est pas rond à cause de Bootstrap
 				}
 				// Le champ des quantités
 				input {
 					width: 8rem;
-					border-radius: 0 !important;
 					margin: 0 -1px;
-					border-width: 2px !important;
-					border-color: var(--global__foreground-color) !important;
-					z-index: -2;
+					text-align: center;
 				}
 			}
 			// Le bouton du panier
 			.btn-add-cart {
-				--btn__size: 9rem;
+				--btn__size: 8rem;
 				position: relative;
 			}
 		}

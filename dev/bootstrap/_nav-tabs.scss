@@ -1,0 +1,68 @@
+@use "./../abstract/Button";
+@use "./../utils/breakpoints" as *;
+
+/**
+	Transforme les onglets (Tabs) en bouton séléctioonnable 
+**/
+ul.nav-tabs {
+
+	// Marge et position
+	border: none !important ;
+	padding-top: 1rem;
+	margin-bottom: 3rem;
+
+	// En ligne
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 0px;
+
+	li {
+		& > a {
+			border: solid 1px var(--global__color__accent) !important ;
+			background-color: transparent !important; //#666666;
+			padding: 0.5em 1em;
+			color: var(--label__color);
+
+			&:hover {
+				color: var(--global__foreground-color);
+			}
+		}
+		&.active {
+			a,
+			a:active,
+			a:focus,
+			a:focus-within,
+			a:focus-visible {
+				color: white;
+				opacity: 1;
+				background-color: var(--global__color__accent) !important;
+				border-color: var(--global__color__accent);
+				pointer-events: none;
+			}
+		}
+	}
+	li:first-child a {
+		border-radius: var(--global__UI__border-radius--input) 0 0 var(--global__UI__border-radius--input) !important ;
+	}
+	li:last-child a {
+		border-radius: 0 var(--global__UI__border-radius--input) var(--global__UI__border-radius--input) 0 !important ;
+	}
+	li:not(:last-child) {
+		margin-right: -1px;
+	}
+
+	// En colonne
+	@include for-tablet {
+		flex-direction: column;
+		gap: 2rem;
+
+		li {
+			a,
+			&:first-child a,
+			&:last-child a {
+				border-radius: var(--global__UI__border-radius--input) !important ;
+			}
+		}
+	}
+}

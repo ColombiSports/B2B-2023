@@ -1,3 +1,4 @@
+@use "./../utils/breakpoints" as *;
 //
 .article_read--documents {
 	width: 100%; // Est une sectionne placée dans un .row parent, à l'instar des autres
@@ -8,39 +9,42 @@
 	// Le UL parent des éléments
 	.list-product-documents {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(280px, auto));
+		grid-template-columns: repeat(auto-fill, minmax(200px, auto));
 		gap: 3rem;
 
 		// L'élément par lui même
-		li p {
-			display: flex;
-			flex-direction: column;
-			border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
-			background-color: var(--global__background-color);
-			padding: 4rem 4rem;
+		li {
+			white-space: unset; // Sans ceci la césure des liens n'a pas lieux.
 
-			// Légèrement réduit pour l'effet de survol
-			transform-origin: top left;
-			transition: var(--global__transition--all);
+			p {
+				display: flex;
+				flex-direction: column;
+				border-radius: calc(var(--global__UI__border-radius--card) * 0.5);
+				background-color: var(--global__background-color);
+				padding: 3vmin;
 
-			// prettier-ignore
-			i { 	font-size: var(--global__font-size__xl);
+				transform-origin: top left;
+				transition: var(--global__transition--all);
+
+				// prettier-ignore
+				i { 	font-size: var(--global__font-size__xl);
 				color: var(--global__foreground-color);
 				opacity: 0.4;
 			} // L'icone fichier
 
-			// prettier-ignore
-			a { 	border: none; }
-			// Retire le trait du lien
-
-			// Au survol
-			&:hover {
-				cursor: pointer;
-				background-color: var(--global__color__accent);
-
 				// prettier-ignore
-				i, a { opacity: 1; color: white; }
-				// On met plus lisible
+				a { 	border: none; }
+				// Retire le trait du lien
+
+				// Au survol
+				&:hover {
+					cursor: pointer;
+					background-color: var(--global__color__accent);
+
+					// prettier-ignore
+					i, a { opacity: 1; color: white; }
+					// On met plus lisible
+				}
 			}
 		}
 	}

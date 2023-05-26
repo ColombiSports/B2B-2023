@@ -1,0 +1,257 @@
+@use "./../utils/breakpoints" as *;
+@use "./../bootstrap/page-header" as *;
+
+/**
+	La page "COMPTE CLIENT" et la page d"AIDE API" (tout en bas)
+**/
+#client_index {
+	//
+	// // Permet de situer le visiteur avec un pseudo breadcrumb
+	.client-nav {
+		margin-top: 2rem;
+		//
+		&:before {
+			content: "Votre compte";
+			font-size: var(--global__font-size__sm);
+			color: var(--label__color);
+			display: block;
+			position: absolute;
+			transform: translateY(-200%);
+		}
+	}
+
+	// Pour tous les contenus des tabulations //////////////////////////////////
+	.tab-content {
+		display: flow-root; // Colle le footer en bas de page
+		//
+		// prettier-ignore
+		.row > div { margin-bottom: 8rem; }
+		// Sépare les sections
+	}
+
+	// EN COURS //////////////////////////////////////////////////////////////
+	#tracking {
+		// Les entêtes des tableaux
+		table thead tr th {
+			font-size: var(--global__font-size__sm);
+			color: var(--global__color__grey50);
+			border: inherit;
+		}
+		// Rétrécit l'espace sous le tableau
+		.table-responsive {
+			margin-bottom: 1rem;
+		}
+	}
+
+	// DONNÉES & SÉCURITÉ  ///////////////////////////////////////////////////
+	#security .row > div {
+		// VOS INFORMATIONS -----------------------------------------------
+		&:nth-child(1) {
+			.dl-horizontal.client-info {
+				display: grid;
+				grid-template-columns: 4rem 1fr;
+				gap: 0.75rem;
+
+				// Zone des icones
+				dt {
+					width: auto;
+					text-align: center;
+					display: grid;
+					place-content: center;
+					margin: 0;
+					padding: 0;
+					line-height: 1.5em;
+					color: var(--global__color__grey50);
+				}
+				// Supprime le mot "référence"
+				dt:first-child {
+					font-size: 0;
+					// Ajoute l'icone "user"
+					&:before {
+						content: "\f007";
+						font-size: var(--global__font-size__md);
+						font-family: FontAwesome;
+						display: inline-block;
+					}
+				}
+
+				// Suprimme toutes les marges
+				dd {
+					margin: 0 0 0 0;
+					line-height: 1.5em;
+				}
+				// Met la première ligne gros
+				dd:first-of-type {
+					font-size: var(--global__font-size__md);
+					font-weight: var(--global__font-weight__bold);
+				}
+			}
+		}
+		// CHANGEMENT DE MOT DE PASSE  ----------------------------------
+		&:nth-child(2) {
+			form[name="change_password"] {
+				display: flex;
+				flex-direction: column;
+				align-items: stretch;
+				gap: 3rem;
+			}
+			// Alignement à droite et changement du label en mode tablette
+			#form_change_password_submit {
+				align-self: end;
+				//
+				@include for-tablet {
+					font-size: 0;
+					//
+					&:after {
+						content: "CHANGER";
+						font-size: var(--global__font-size__sm);
+					}
+				}
+			}
+		}
+		// CLEF API -------------------------------------------------------
+		&:nth-child(3) {
+			> div {
+				display: flex;
+				flex-wrap: nowrap;
+				flex-direction: column;
+				//
+				// La ligne de la clef Api et son boputon CREER
+				> .form-group {
+					position: relative;
+					display: grid;
+					grid-template-columns: 1fr max-content;
+					align-items: center;
+					gap: 2rem;
+
+					div:first-child {
+						width: unset;
+						//
+						.input-group {
+							background-color: #66666633;
+							border: solid 1px var(--global__color__grey50);
+							border-radius: var(--global__UI__border-radius--input);
+							padding: 1rem;
+							//
+							.btn-clipboard {
+								border-radius: var(--global__UI__border-radius--input);
+							}
+							#api_key {
+								border: none;
+								height: auto;
+								background: none;
+								color: var(--global__foreground-color);
+							}
+						}
+					}
+					div:last-child {
+						width: fit-content;
+					}
+
+					@include for-tablet {
+						div:first-child {
+							width: 100%;
+						}
+						grid-template-columns: 1fr;
+						justify-items: center;
+					}
+				}
+				// prettier-ignore
+				> p { margin-top: 2rem; }
+				// Le lien "DOCUMENTATIONé
+			}
+		}
+	}
+
+	// CONTACT //////////////////////////////////////////////////////////////
+	#contact {
+		// Coordonnées
+		.row div:first-child {
+			address {
+				.address-title {
+					font-size: var(--global__font-size__md);
+					line-height: 3em;
+				}
+				margin-bottom: 6rem;
+				line-height: 2em;
+			}
+			dl {
+				margin-top: 1rem;
+				dt,
+				dd {
+					font-style: italic;
+					font-size: var(--global__font-size__xs);
+				}
+			}
+		}
+		// Formulaire de contact
+		.row div:last-child {
+			// prettier-ignore
+			.page-header::before { content: "Nous écrire"; }
+			// Ajoute une entête
+
+			#message div {
+				&:not(:last-child) {
+				}
+				margin-bottom: 2rem;
+
+				label {
+					padding-right: 1rem;
+					.col-sm-3 {
+						width: 10%;
+						padding: 0;
+					}
+					.col-sm-9 {
+						width: 90%;
+						padding: 0;
+						//
+						@include for-tablet {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+		// prettier-ignore
+		#form_contact_send { float: right; } // Bouton "ENVOYER"
+	}
+	// TÉLÉCHARGEMENT ////////////////////////////////////////////////////
+	#download {
+		.well {
+			background-color: #66666633;
+			margin: 8rem 0 0 0 !important;
+			padding: 3rem;
+			line-height: 2em;
+		}
+
+		// Menu déroulant du choix du CSV
+		.dropdown-menu {
+			background-color: var(--global__background-color);
+			border-radius: var(--global__UI__border-radius--alert);
+			border: none;
+
+			// prettier-ignore
+			@media (prefers-color-scheme: light) { & { box-shadow: 0 0 5rem #00000033; } }
+			box-shadow: 0 0 10rem black;
+
+			// les éléments du UL
+			li a {
+				padding: 1rem 2rem;
+				border: none;
+				color: var(--global__color__grey50);
+
+				&:hover {
+					background-color: #66666622;
+					color: var(--global_foreground-color);
+				}
+			}
+		}
+	}
+}
+
+#client_api_help {
+	// AUthentification -------------------------------------------
+	h3 {
+		@extend .page-header;
+	}
+}

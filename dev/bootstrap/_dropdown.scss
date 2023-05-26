@@ -1,7 +1,7 @@
 //@use './../utils/breakpoints' as *;
-@use './../utils/breakpoints' as *;
-@use './../abstract/Typo';
-@use './../abstract/Button';
+@use "./../utils/breakpoints" as *;
+@use "./../abstract/Typo";
+@use "./../abstract/Button";
 
 /**
 	LES ÉLEMENTS DROPDOW DU SITE	
@@ -65,12 +65,12 @@
 	}
 	// Flêche indiquant la fermeture du menu
 	span.caret::after {
-		content: '\f054';
+		content: "\f054";
 		font-family: FontAwesome;
 	}
 	// Flêche indiquant l'ouverture  du menu
 	&.open span.caret::after {
-		content: '\f078';
+		content: "\f078";
 		color: var(--global__foreground-color);
 	}
 	// Le menu dépliable //////////////////////////////////////////

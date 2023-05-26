@@ -1,48 +1,94 @@
+// Remise en forme des valeurs Equation ---------------------------------------
+.table {
+	& > tbody > tr,
+	& > thead > tr,
+	& > tfoot > tr {
+		// prettier-ignore
+		& td, & td {
+			border-top: none;
+			line-height: 3rem;
+			padding: 1rem 0px;
+			vertical-align: middle;
+		}
+	}
+	&-responsive {
+		margin-bottom: 6rem;
+	}
+}
+
 table {
-	border-collapse: collapse;
-	max-width: 99%;
-	width: 99%;
+	margin-bottom: 2rem !important ; // Eloigne ver le bas les boutons de navigation
 
 	thead {
 		tr {
+			// prettier-ignore
+			.text-right { text-align: center !important; }
 			th {
+				border-bottom: var(--global__UI__border-style);
 				font-family: var(--global__font-family__title);
+				font-weight: var(--global__font-weight__light);
 				font-size: var(--global__font-size__md);
 				color: var(--global__color__accent);
 			}
 		}
 	}
 	tbody {
-		margin-bottom: 1.5rem;
-		display: table-row-group;
-		width: 99%;
-
-		// les lignes de tableau -------------------------------------------
+		// Les lignes
 		tr {
-			// Au survol de la ligne, fond gris neutre pratiquement transparent
-			&:hover {
-				background-color: #66666611 !important;
-				cursor: pointer !important ;
+			// prettier-ignore
+			&:hover { background-color: #66666666 !important;}
+
+			// Alternance
+			&:nth-child(odd) {
+				background-color: #66666622;
+				// prettier-ignore
+				&:hover { background-color: #66666655 !important; }
 			}
 
-			// prettier-ignore
-			&:not(:last-of-type) { border-bottom: 1px solid #66666633; }
-			// Pour toutes les lignes sauf la dernière
-
-			// Les cellules de ligne -------------------------------------
+			// Les cellules
 			td {
-				// Equation a mis la bordure ici !
-				border: none !important ;
-				font-size: var(--global__font-size__sm) !important ;
-				font-weight: var(--global__font-weight__regular) !important;
-				color: var(--global__foreground-color) !important;
+				border: none !important; // Sans bord
+				vertical-align: middle !important ;
+				padding: 2rem 0;
+				position: relative;
 
-				// Sans bordure de séparation verticale
-				&:not(:first-child) {
-					// padding-left: 2rem !important;
-					// border-left: 1px solid #66666633 !important;
+				// Le formulaire des quantités
+				.input-group {
+					display: flex;
+					align-items: center;
+					gap: 1rem;
+					//
+					// prettier-ignore
+					input { width: 5vmax !important;} // Le champ des quantités
+
+					// Le wrapper parent du bouton
+					span.input-group-btn {
+						width: auto;
+						// Les boutons ronds - et +
+						button.btn {
+							border-radius: var(--global__UI__border-radius--input) !important;
+							line-height: 1;
+							margin: 0;
+							aspect-ratio: 1 / 1;
+							height: auto;
+						}
+					}
+				}
+				// la première colonne
+				&:first-of-type {
+					padding-left: 2rem !important;
+				}
+
+				&:last-of-type {
+					padding-right: 2rem !important;
 				}
 			}
 		}
+	}
+	// Le footer
+	tfoot tr th {
+		padding-top: 2rem;
+		border-top: var(--global__UI__border-style) !important ;
+		font-size: 1.8rem;
 	}
 }

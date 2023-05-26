@@ -1,0 +1,141 @@
+@use "./../utils/breakpoints" as *;
+@use "./../html/heading";
+
+#panier_checkout {
+	table {
+		margin-bottom: 1rem !important;
+
+		// La colonne des quantités
+		tr td:nth-child(2) {
+			text-align: center;
+			//
+			// Le texte de la cellule jaune si DANGER
+			&:has(.label-warning) {
+				color: var(--global__color__warning);
+			}
+		}
+
+		// Centre visuellement la colonne REMISE
+		td:nth-child(4) {
+			text-align: right;
+		}
+
+		// La cellule du prix HT
+		tfoot tr th:last-child {
+			width: 15rem;
+
+			// Ajoute l'astérix verte de l'ASSURANCE ET DU PORT
+			&:after {
+				content: "*";
+				color: var(--global__color__success);
+			}
+		}
+	}
+	// l'icone des quantités DISPONIBLES restantes -----------------------
+	.label-warning {
+		// display: none;
+		line-height: 0;
+		font-size: 0;
+		display: inline;
+		background: none;
+		position: absolute;
+
+		&::after {
+			content: "\f071"; // ⚠     "\f12a"❗;
+			font-family: FontAwesome;
+			font-size: var(--global__font-size__sm);
+			margin-right: 1rem;
+			color: var(--global__color__warning);
+			display: inline;
+			margin-left: 0.5rem;
+			position: absolute;
+			transform: translate(0.7em, -1em);
+		}
+	}
+
+	// Les alertes ---------------------------------------------------
+	.alert-warning {
+		--alert__font-size: var(--global__font-size__sm);
+		margin-bottom: 3rem;
+	}
+	#alert_port {
+		--alert__color: var(--global__color__success);
+		--alert__icon: "\f0a3";
+	}
+
+	// met de la marge sous l'adresse ----------------------------
+	address {
+		margin-bottom: 8rem;
+	}
+
+	form[name="confirm_order"] {
+		margin: 0 0 8rem 0;
+		padding: 0;
+		//
+
+		//
+		.form-group {
+			margin: 0;
+
+			// Ajoute le mot IMPORTANT en clignotant rouge
+			&.has-error {
+				margin: 5rem 0;
+				//
+				&:before {
+					content: "IMPORTANT";
+					margin-bottom: 1rem;
+					display: inline-block;
+					color: var(--global__color__danger);
+					font-weight: var(--global__font-weight__bold);
+					font-family: var(--global__font-family__title);
+					font-size: var(--global__font-size__md);
+					animation: flash 500ms infinite;
+				}
+				label {
+					color: var(--label__color) !important ;
+				}
+			}
+			//
+			// prettier-ignore
+			.col-sm-2, .col-sm-10 { display: contents; }
+			// Disparition des conteneur parent
+
+			label {
+				text-align: justify;
+				font-size: var(--global__font-size__sm);
+				line-height: 2em;
+				padding: 0;
+			}
+		}
+
+		// prettier-ignore
+		#confirm_order_comment { min-height: 5em; }
+	}
+	// Réaligne comme d'origine ------------------------------------
+	.pull-left {
+		float: left !important ;
+	}
+	.pull-right {
+		float: right !important ;
+		transform: unset !important ;
+	}
+	// Saut en mode téléphone
+	@include for-phone {
+		.pull-left,
+		.pull-right {
+			float: unset !important ;
+			transform: unset !important ;
+			margin: auto;
+			margin-top: 4rem;
+		}
+	}
+}
+
+@keyframes flash {
+	0% {
+		color: red;
+	}
+	100% {
+		color: rgb(255, 122, 122);
+	}
+}

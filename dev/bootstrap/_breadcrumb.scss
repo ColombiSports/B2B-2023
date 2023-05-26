@@ -1,12 +1,17 @@
+@use "./../utils/breakpoints" as *;
 /**
     Utilisé dans la fiche article
 **/
 .container .breadcrumb {
 	padding: 0;
 	background: none;
+	margin-bottom: 3rem;
+	--font-size: var(--global__font-size__sm);
 
-	a {
-		font-size: var(--global__font-size__xs);
+	a,
+	li {
+		font-size: var(--font-size);
+		margin-bottom: 0.5rem;
 	}
 
 	& > li + li:before {
@@ -14,6 +19,15 @@
 		font-family: FontAwesome;
 		color: var(--global__color__grey50);
 		font-weight: var(--global_font-weight__bold);
-		font-size: var(--global__font-size__xs);
+		font-size: var(--font-size);
+	}
+
+	@include for-phone {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		gap: 0.25rem;
+
+		--font-size: var(--global__font-size__xs);
 	}
 }

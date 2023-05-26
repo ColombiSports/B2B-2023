@@ -1,0 +1,86 @@
+@use "./../utils/breakpoints" as *;
+/**
+      Affichage des étapes de la commande
+**/
+.step-container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	padding: 0rem;
+	margin: 2rem auto 5rem auto;
+	border: solid 1px var(--global__color__grey50);
+	border-radius: var(--global__UI__border-radius--input);
+
+	gap: 4vw;
+	// prettier-ignore
+	@include for-tablet { gap: 2vw; }
+	// prettier-ignore
+	@include for-phone { gap: 0; }
+
+	// Une étape par défaut
+	.step {
+		// Les valeurs qui changeropnt selon l'étape
+		--step-opacity: 0.33;
+		--step-scale: 0.75;
+		--step-color: var(--global__foreground-color);
+		--step-background: none;
+		//
+		background: var(--step-background);
+		border-radius: var(--global__UI__border-radius--input);
+		aspect-ratio: 1 / 1;
+		width: 7rem;
+		display: grid;
+		place-content: center;
+		min-height: initial;
+		justify-items: center;
+		justify-content: center;
+		transform: scale(var(--step-scale));
+
+		// prettier-ignore
+		&:before, &:after{ content: none; } // Supprime les styles en cours
+
+		// Les styles des différents types d'étape
+		&.validate {
+			--step-opacity: 1;
+			--step-scale: 0.9;
+			--step-color: white; //var(--global__foreground-color);
+			--step-background: var(--global__color__grey50);
+		}
+		&.current {
+			--step-opacity: 1;
+			--step-scale: 1.2;
+			--step-color: white;
+			--step-background: var(--global__color__accent);
+		}
+
+		// prettier-ignore
+		.step-header, .step-content {
+                  border: none !important;
+                  background: none !important ;
+                  height: auto !important ;
+             } // on reset les existant
+
+		// l'icone
+		.step-header i {
+			color: var(--step-color) !important;
+			margin: 0 0 1rem 0 !important ;
+			opacity: var(--step-opacity);
+		}
+
+		// Le texte sous l'icone
+		.step-content {
+			max-height: initial;
+			//
+			& > h5 {
+				line-height: 1rem;
+				text-transform: uppercase;
+				margin: 0.25rem 0 0 0;
+				color: var(--step-color) !important ;
+				opacity: var(--step-opacity);
+				font-family: var(--global__font-family__text);
+				font-size: var(--global__font-size__xs);
+				font-weight: var(--global__font-weight__bold);
+			}
+		}
+	}
+}

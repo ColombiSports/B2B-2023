@@ -9,8 +9,11 @@
 @use "./bootstrap/navbar-menu";
 @use "./bootstrap/alert";
 @use "./bootstrap/error";
+@use "./bootstrap/page-header";
 @use "./bootstrap/breadcrumb";
 @use "./bootstrap/form";
+@use "./bootstrap/nav-tabs";
+@use "./bootstrap/pagination";
 
 @use "./equation/security"; // Authentification, Mot de passe oublié, Inscription
 @use "./equation/product-line"; // Article en mode "ligne"
@@ -19,18 +22,29 @@
 @use "./equation/product-result"; // Résultat de recherche
 @use "./equation/product-image"; // Résltat de recherche
 @use "./equation/article_read"; // Page article
-@use "./equation/panier_index"; // Le pannier
+@use "./equation/customer"; // Page article
+@use "./equation/checkout"; // Le container commun aux 4 étapes
+@use "./equation/checkout--cart"; // Le panier
+@use "./equation/checkout--stepper"; // Les étapes de la commande
+@use "./equation/checkout--shipping"; // Le choix de l'adresse
+@use "./equation/checkout--navigation"; // Les boutons en bas dans le tunnel de commande
+@use "./equation/checkout--validation"; // la dernière phase de la commande
 @use "./equation/article-search-loading"; // Le spinner personnalisé
 
-//@use './html/html';
 @use "./html/body";
 @use "./html/header";
 @use "./html/footer";
 @use "./html/a";
 @use "./html/heading";
 @use "./html/button";
-@use "./html/table";
 @use "./html/input";
+@use "./html/textarea";
+@use "./html/select";
 @use "./html/scrollbar";
+@use "./html/table";
+@use "./html/hr";
+@use "./html/abbr";
+@use "./html/p";
+@use "./html/pre";
 
 @use "./colombi/marques";

@@ -272,46 +272,5 @@
 				font-size: var(--global__font-size__xs);
 			}
 		}
-		// La pagination Bootstrap
-		.pagination {
-			width: auto;
-			flex-grow: 1;
-			display: flex;
-			flex-flow: row wrap;
-			gap: 0.75rem;
-
-			// INACTIF : pas besoin d'évènement souris
-			& > li.disabled > a {
-				border-color: transparent;
-				color: var(--global__UI__unselected-item);
-				pointer-events: none;
-			}
-			// ACTIF : pas besoin d'évènement souris
-			& > li.active > a {
-				background-color: var(--global__foreground-color);
-				border-color: var(--global__foreground-color);
-				color: var(--global__background-color);
-				pointer-events: none;
-			}
-			// PAR DEFAULT : Paramétrer le survol
-			& > li > a,
-			& > li > span {
-				border-color: transparent; //var(--global__UI__border-style);
-				border-radius: var(--global__UI__border-radius--input);
-				color: var(--global__color__accent);
-				background: none;
-				padding: 0;
-				margin: 0;
-				width: 3rem;
-				height: 3rem;
-				display: grid;
-				place-content: center;
-
-				&:hover {
-					color: white;
-					background-color: var(--global__color__accent);
-				}
-			}
-		}
 	}
 }

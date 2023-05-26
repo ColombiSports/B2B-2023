@@ -1,0 +1,8 @@
+/**
+      S'applique aux 4 pages du processus de commande
+*/
+div[data-controller="panier--main"] {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}

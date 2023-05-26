@@ -1,0 +1,7 @@
+@use "./../html/input";
+
+textarea {
+	background-color: transparent !important;
+	border-radius: var(--global__UI__border-radius--card) !important ;
+	@extend .input;
+}

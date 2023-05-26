@@ -1,0 +1,68 @@
+@use "./../html/table";
+/**
+      La page du panier
+**/
+#panier_index {
+	// prettier-ignore
+	#cart_alert{  margin: 3rem 0 8rem 0; ;}
+
+	// prettier-ignore
+	#cart_navigation { display: contents; }
+	// Pour l'alignement des boutons de navigation
+
+	table {
+		@extend table;
+
+		margin-bottom: 8rem; // Eloigne ver le bas les boutons de navigation
+
+		tbody {
+			// Les lignes
+			tr {
+				// Les cellules
+				td {
+					// Le formulaire des quantités
+
+					// la colonne des "ARTICLES"
+					&:nth-of-type(1) {
+						padding-left: 2rem;
+						// prettier-ignore
+						a { font-size: var(--global__font-size__xs); }
+						// la référence article
+					}
+
+					// la colonne "QUANTITÉ" (2)
+					// la colonne "PRIX" (3)
+					// la colonne "REMISES" (4)
+					&:nth-of-type(4) {
+						width: auto;
+						font-weight: var(--global__font-weight__bold) !important ;
+						font-size: var(--global__font-size__md) !important;
+						color: var(--global__color__accent) !important;
+						text-align: right;
+					}
+					// la colonne "MONTANT"
+					&:nth-of-type(5) {
+						width: auto;
+					}
+					// la colonne "SUPPRIMER"
+					&:nth-of-type(6) {
+						// Le bouton "supprimer" de la ligne
+						.btn-link {
+							position: relative;
+							transform: scale(0.75);
+							transform-origin: right;
+							color: var(--global__color__grey50) !important;
+							font-size: var(--global__font-size__sm);
+							background: transparent;
+							--btn__size: 4rem;
+						}
+					}
+				}
+			}
+		}
+		// le montant en orange
+		// tfoot tr th:nth-child(2) {
+		// 	color: var(--global__color__accent);
+		// }
+	}
+}

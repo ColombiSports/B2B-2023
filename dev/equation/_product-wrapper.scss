@@ -1,4 +1,4 @@
-@use './../utils/breakpoints' as *;
+@use "./../utils/breakpoints" as *;
 
 @mixin setGrid($min, $max, $gap) {
 	position: relative;

@@ -1,54 +1,56 @@
-/**
+/**--alert__font-weight
 	Gestion des alertes Bootstrap
 **/
 .alert {
-	color: white;
-	font-size: var(--global__font-size__sm);
-	font-weight: var(--global__font-weight__light);
+	--alert__font-size: var(--global__font-size__sm);
+	--alert__font-weight: var(--global__font-weight__light);
+	--alert__color: var(--global__color__accent )
+	--alert__icon: unset;
+
+	color: var(--alert__color);
+	font-weight: var(--alert__font-weight);
 	border-radius: var(--global__UI__border-radius--alert);
+	padding: calc(var(--alert__font-size) * 1.5);
 	border: none;
-	padding: 2rem;
+
+	// prettier-ignore
+	font-family: var(--global__font-family__title);
+	color: var(--alert__color);
+	font-size: var(--alert__font-size);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	text-align: left;
+	width: clamp( 20rem, 100%, 60rem );
+	line-height: 1em;
+	background: none;
+	border: solid 1px;
+
+	&::before {
+		content: var(--alert__icon);
+		font-family: FontAwesome;
+		font-size: calc(var(--alert__font-size) * 2.2);
+		transform: translateY(0.05em);
+		margin-right: 0.8em;
+	}
 	//
 	&-danger {
-		background-color: var(--global__color__danger);
+		--alert__icon: "\f05e"; // 
+		--alert__icon: "\f05e"; // 
+		--alert__color: var(--global__color__danger);
 	}
 	&-info {
-		background-color: var(--global__color__info);
+		--alert__icon: "\f05a"; // i
+		--alert__color: var(--global__color__info);
 	}
 	&-warning {
-		background-color: var(--global__color__warning);
+		--alert__icon: "\f071"; // !
+		--alert__icon: "\f06a"; // !
+		--alert__color: var(--global__color__warning);
 	}
 	&-success {
-		background-color: var(--global__color__success);
-	}
-}
-
-/** 
-	Message d'alerte pour les recherches
-**/
-#article_result {
-	.alert {
-		&-warning {
-			font-family: var(--global__font-family__title);
-			color: var(--global__color__warning);
-			font-size: var(--global__font-size__md);
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			justify-content: flex-start;
-			text-align: left;
-			width: 20rem;
-			line-height: 1em;
-			background: none;
-			border: solid 1px;
-
-			&::before {
-				content: "\f12a";
-				font-family: FontAwesome;
-				font-size: calc(var(--global__font-size__xl) * 2.2);
-				transform: translateY(0.05em);
-				margin-right: 1rem;
-			}
-		}
+		--alert__icon: "\f00c"; // ✔
+		--alert__color: var(--global__color__success);
 	}
 }
