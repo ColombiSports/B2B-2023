@@ -38,11 +38,15 @@
 
 				// Au survol
 				&:hover {
-					cursor: pointer;
+					// cursor: pointer;
 					background-color: var(--global__color__accent);
 
 					// prettier-ignore
-					i, a { opacity: 1; color: white; }
+					a {
+						color: white;
+						opacity: 0.5;
+						&:hover { opacity: 1; }
+					}
 					// On met plus lisible
 				}
 			}

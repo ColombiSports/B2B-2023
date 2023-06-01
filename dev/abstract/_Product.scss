@@ -132,10 +132,10 @@
 		//
 		color: var(--product__libelle__color);
 		font-family: var(--global__font-family__title);
-		font-size: var(--global__font-size__md);
+		font-size: var(--global__font-size__lg);
 		font-weight: var(--global__font-weight__bold);
 		text-transform: uppercase;
-		line-height: 1.15em;
+		line-height: 1.2em;
 	}
 
 	/**
@@ -146,7 +146,7 @@
 		grid-area: description;
 		//
 		font-family: var(--global__font-family__text);
-		font-size: var(--global__font-size__sm);
+		font-size: var(--global__font-size__md);
 		font-weight: var(--global__font-weight__light);
 		line-height: 2em;
 
@@ -177,7 +177,8 @@
 		font-family: var(--global__font-family__title);
 		font-weight: var(--global__font-weight__bold);
 		font-size: 4rem;
-		padding: 2rem 0.3em 2rem 2rem;
+		padding: 3rem 0.3em 3.5rem 2rem;
+		line-height: 0;
 
 		&:before {
 			content: "Catégorie ";
@@ -251,18 +252,19 @@
 			color: var(--product__stock__color);
 			font-size: var(--global__font-size__sm);
 			font-family: FontAwesome;
-			line-height: 0.7rem;
+			line-height: 1.7em;
 			position: absolute;
 		}
 		// Définition du label de remplacement pour le prix public
 		&[data-toggle="prix-public"] .desc-label:after {
 			content: "Prix vente conseillé";
-			margin-left: 1.5rem;
+			margin-left: 1.25rem;
+			line-height: 2em;
 		}
 		// Le prix par lui-même ------------------------------------------
 		.desc-value {
 			color: var(--product-price__color) !important ;
-			font-size: var(--global__font-size__md);
+			font-size: var(--global__font-size__lg);
 			font-weight: var(--global__font-weight__bold);
 			margin-bottom: 0.15em;
 
@@ -390,7 +392,7 @@
 	Correspond au "statut-XXXX" (avec faute) envoyé par Equapro depuis Equation.
 **/
 .abstract-Product--Status {
-	--product__status__font-size: var(--global__font-size__sm);
+	--product__status__font-size: var(--global__font-size__md);
 	--product__status__inset: 0 auto auto 0;
 	//
 	// Taille et position en commun

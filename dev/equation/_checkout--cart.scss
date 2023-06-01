@@ -13,6 +13,17 @@
 	table {
 		@extend table;
 
+		// Arrondi les boutons +, - et poubelle
+		button {
+			border-radius: 100vmax !important;
+			margin: 0 0.5rem;
+		}
+
+		input {
+			margin: 0;
+			width: 100px;
+		}
+
 		margin-bottom: 8rem; // Eloigne ver le bas les boutons de navigation
 
 		tbody {
@@ -31,6 +42,9 @@
 					}
 
 					// la colonne "QUANTITÉ" (2)
+					// &:nth-of-type(2) {
+					// 	width: fit-content !important ;
+					// }
 					// la colonne "PRIX" (3)
 					// la colonne "REMISES" (4)
 					&:nth-of-type(4) {

@@ -24,7 +24,7 @@
 .abstract-Link {
 	color: var(--link__color);
 	font-family: var(--font-family__body);
-	font-size: var(--global__font-size__sm);
+	font-size: var(--global__font-size__md);
 	font-weight: var(--global__font-weight__regular);
 	text-decoration: none;
 	border-bottom: dotted 1px var(--link__color);
@@ -45,6 +45,6 @@
 		display: inline-block;
 		margin-right: 0.5em;
 		font-size: 0.8em;
-		content: '\e144';
+		content: "\e144";
 	}
 }

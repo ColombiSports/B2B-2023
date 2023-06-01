@@ -3,7 +3,7 @@
 @use "./utils/colormap"; // Mappage Article/Couleur
 
 @use "./bootstrap/reset" as *; // Reset Bootstrap
-@use "./bootstrap/container";
+@use "./bootstrap/container"; // Définit aussio les containers avec ID
 @use "./bootstrap/dropdown";
 @use "./bootstrap/navbar";
 @use "./bootstrap/navbar-menu";
@@ -35,14 +35,15 @@
 @use "./html/header";
 @use "./html/footer";
 @use "./html/a";
-@use "./html/heading";
+// @use "./html/heading"; // Déplacer dans "Typo"
 @use "./html/button";
 @use "./html/input";
 @use "./html/textarea";
 @use "./html/select";
 @use "./html/scrollbar";
 @use "./html/table";
-@use "./html/hr";
+@use "./html/dl"; // Description
+@use "./html/hr"; // Separateur
 @use "./html/abbr";
 @use "./html/p";
 @use "./html/pre";

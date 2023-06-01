@@ -214,12 +214,12 @@
 			// Le tag des mots recherche ----------------------------------
 			.form-control.keyword {
 				width: auto;
-				background: var(--global__UI__unselected-item);
+				background: none; // var(--global__UI__unselected-item);
 				border-radius: var(--global__UI__border-radius--input);
-				border: none;
-				color: var(--global__background-color);
+				border: solid 1px var(--global__color__accent);
+				color: var(--global__foreground-color);
 				font-size: var(--global__font-size__md);
-				padding: 0 2rem;
+				padding: 0.7rem 2.1rem;
 				margin: 0 0.5rem 0 0;
 				height: auto;
 			}

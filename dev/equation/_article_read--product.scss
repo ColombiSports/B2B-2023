@@ -82,7 +82,7 @@
 		margin-bottom: 1em;
 	}
 
-	// La catégorie ----------------------------------------------------------------
+	// La description ----------------------------------------------------------------
 
 	.product-description {
 		width: 100%;
@@ -127,6 +127,11 @@
 
 	.product-stock {
 		display: block;
+
+		// Agrandit l'icone et sépare le mot "stock"
+		--icon__size: var(--global__font-size__lg);
+		// prettier-ignore
+		span:before { line-height: 1.5em; }
 	}
 
 	// Les prix et remises ------------------------------------------------------------

@@ -35,11 +35,11 @@ div {
 :root {
   --global__font-family__title: "Barlow Semi Condensed", sans-serif;
   --global__font-family__text: "Montserrat", sans-serif;
-  --global__font-size__xs: 0.9rem;
-  --global__font-size__sm: 1.5rem;
-  --global__font-size__md: 2.1rem;
-  --global__font-size__lg: 2.7rem;
-  --global__font-size__xl: 3.3rem;
+  --global__font-size__xs: 0.8rem;
+  --global__font-size__sm: 1.1rem;
+  --global__font-size__md: 1.4rem;
+  --global__font-size__lg: 1.9rem;
+  --global__font-size__xl: 2.4rem;
   --global__font-weight__light: 300;
   --global__font-weight__regular: 500;
   --global__font-weight__bold: 700;
@@ -210,7 +210,6 @@ Surcharge des éléments bootstrap
   margin: auto;
   padding: var(--global__container__padding);
   width: var(--global__container__width);
-  min-height: calc(100vh - (var(--header__height) + var(--navbar__height)));
   background: none;
   position: relative;
 }
@@ -221,23 +220,28 @@ Surcharge des éléments bootstrap
   padding-right: 0rem;
 }
 
-#container_menu {
-  /* margin-top: 16rem; */
-  /* margin-bottom: 10rem; */
+#container_main {
+  min-height: calc(100vh - (var(--header__height) + var(--navbar__height)));
 }
 
 .abstract-P, .navbar-default.navbar-main .navbar-collapse .fa-globe::after, .abstract-ButtonText, .navbar-default.navbar-main .navbar-collapse .navbar-right a, .dropdown a, .navbar-default.navbar-main .navbar-collapse .navbar-right .dropdown a {
   font-family: var(--global__font-family__text);
-  font-size: var(--global__font-size__sm);
+  font-size: var(--global__font-size__md);
   font-weight: var(--global__font-weight__regular);
 }
 
-.abstract-H, .abstract-H5,
-h5, .abstract-H4,
-h4, .abstract-H3,
-h3, .abstract-H2, #product_result_main_header #page_title,
-h2, .abstract-H1,
-h1 {
+.abstract-H, h5,
+.h5,
+.abstract-H5, h4,
+.h4,
+.abstract-H4, h3,
+.h3,
+.abstract-H3, h2,
+.h2,
+.abstract-H2,
+#product_result_main_header #page_title, h1,
+.h1,
+.abstract-H1 {
   font-family: var(--global__font-family__title);
   color: var(--global__color__accent);
   font-weight: var(--global__font-weight__bold);
@@ -245,34 +249,56 @@ h1 {
   margin-bottom: 1em;
 }
 
-.abstract-H1,
-h1 {
+h1,
+.h1,
+.abstract-H1 {
+  font-size: calc(var(--global__font-size__xl) * 1.1);
+}
+
+h2,
+.h2,
+.abstract-H2,
+#product_result_main_header #page_title {
   font-size: var(--global__font-size__xl);
 }
 
-.abstract-H2, #product_result_main_header #page_title,
-h2 {
+h3,
+.h3,
+.abstract-H3 {
   font-size: var(--global__font-size__lg);
 }
 
-.abstract-H3,
-h3 {
-  font-size: var(--global__font-size__md);
-}
-
-.abstract-H4,
-h4 {
+h4,
+.h4,
+.abstract-H4 {
   font-size: var(--global__font-size__sm);
 }
 
-.abstract-H5,
-h5 {
+h5,
+.h5,
+.abstract-H5 {
   font-size: var(--global__font-size__xm);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5, .h6,
+.abstract-H,
+.abstract-H1,
+.abstract-H2,
+#product_result_main_header #page_title,
+.abstract-H3,
+.abstract-H4,
+.abstract-H5 {
   color: var(--global__color__accent);
   font-family: var(--global__font-family__title);
+  font-weight: var(--global__font-weight__bold);
+  letter-spacing: -0.025em;
+  line-height: 1.2em;
+  margin-bottom: 1em;
 }
 
 /**
@@ -303,7 +329,7 @@ h1, h2, h3, h4, h5, h6 {
   --border-color--hover: var(--global__color__accent--hover);
   color: var(--color);
   font-family: var(--global__font-family__text);
-  font-size: var(--global__font-size__sm);
+  font-size: var(--global__font-size__md);
   font-weight: var(--global__font-weight__regular);
   text-transform: uppercase;
   border-radius: var(--global__UI__border-radius--input);
@@ -699,7 +725,7 @@ au dessous de tout et surtout la barre des familles.
 .navbar-menu {
   --background-color: var(--global__foreground-color);
   --categorie__font-size: 2.2rem;
-  --subcategorie__font-size: var(--global__font-size__sm);
+  --subcategorie__font-size: var(--global__font-size__md);
   --categorie__color: unset;
   --top__scroll-up: var(--header__height);
   --top__scroll-down: 0;
@@ -945,18 +971,16 @@ au dessous de tout et surtout la barre des familles.
 	Gestion des alertes Bootstrap
 **/
 .alert {
-  --alert__font-size: var(--global__font-size__sm);
+  --alert__font-size: var(--global__font-size__md);
   --alert__font-weight: var(--global__font-weight__light);
-  --alert__color: var(--global__color__accent )
+  --alert__color: white;
   --alert__icon: unset;
   color: var(--alert__color);
   font-weight: var(--alert__font-weight);
-  border-radius: var(--global__UI__border-radius--alert);
-  padding: calc(var(--alert__font-size) * 1.5);
-  border: none;
-  font-family: var(--global__font-family__title);
-  color: var(--alert__color);
   font-size: var(--alert__font-size);
+  font-family: var(--global__font-family__title);
+  border-radius: var(--global__UI__border-radius--alert);
+  padding: calc(var(--alert__font-size) * 2);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -965,7 +989,7 @@ au dessous de tout et surtout la barre des familles.
   width: clamp(20rem, 100%, 60rem);
   line-height: 1em;
   background: none;
-  border: solid 1px;
+  border: solid 1px var(--alert__color);
 }
 .alert::before {
   content: var(--alert__icon);
@@ -1021,6 +1045,7 @@ au dessous de tout et surtout la barre des familles.
 
 .page-header, #client_api_help h3 {
   border-bottom: var(--global__UI__border-style);
+  font-size: var(--global__font-size__lg);
   margin: 4rem 0 2rem 0;
   padding-bottom: 2rem;
   width: 100%;
@@ -1475,15 +1500,15 @@ h6,
   grid-area: libelle;
   color: var(--product__libelle__color);
   font-family: var(--global__font-family__title);
-  font-size: var(--global__font-size__md);
+  font-size: var(--global__font-size__lg);
   font-weight: var(--global__font-weight__bold);
   text-transform: uppercase;
-  line-height: 1.15em;
+  line-height: 1.2em;
 }
 .abstract-Product .product-description, .article_read--product .product-description, #article_read .product-info .product-description, .abstract-Product--card .product-description, .product-thumbnail .product-description, .container .product-line .product-description {
   grid-area: description;
   font-family: var(--global__font-family__text);
-  font-size: var(--global__font-size__sm);
+  font-size: var(--global__font-size__md);
   font-weight: var(--global__font-weight__light);
   line-height: 2em;
 }
@@ -1505,7 +1530,8 @@ h6,
   font-family: var(--global__font-family__title);
   font-weight: var(--global__font-weight__bold);
   font-size: 4rem;
-  padding: 2rem 0.3em 2rem 2rem;
+  padding: 3rem 0.3em 3.5rem 2rem;
+  line-height: 0;
 }
 .abstract-Product .product-cat.cat-B, .article_read--product .product-cat.cat-B, #article_read .product-info .product-cat.cat-B, .abstract-Product--card .product-cat.cat-B, .product-thumbnail .product-cat.cat-B, .container .product-line .product-cat.cat-B {
   --product__cat-color: var(--global__color__cat-B );
@@ -1606,7 +1632,7 @@ h6,
   color: var(--product__stock__color);
   font-size: var(--global__font-size__sm);
   font-family: FontAwesome;
-  line-height: 0.7rem;
+  line-height: 1.7em;
   position: absolute;
 }
 .abstract-Product .product-prix[data-toggle=prix-public] .desc-label:after, .article_read--product .product-prix[data-toggle=prix-public] .desc-label:after, #article_read .product-info .product-prix[data-toggle=prix-public] .desc-label:after, .abstract-Product--card .product-prix[data-toggle=prix-public] .desc-label:after, .product-thumbnail .product-prix[data-toggle=prix-public] .desc-label:after, .container .product-line .product-prix[data-toggle=prix-public] .desc-label:after,
@@ -1617,7 +1643,8 @@ h6,
 .product-thumbnail .product-remise[data-toggle=prix-public] .desc-label:after,
 .container .product-line .product-remise[data-toggle=prix-public] .desc-label:after {
   content: "Prix vente conseillé";
-  margin-left: 1.5rem;
+  margin-left: 1.25rem;
+  line-height: 2em;
 }
 .abstract-Product .product-prix .desc-value, .article_read--product .product-prix .desc-value, #article_read .product-info .product-prix .desc-value, .abstract-Product--card .product-prix .desc-value, .product-thumbnail .product-prix .desc-value, .container .product-line .product-prix .desc-value,
 .abstract-Product .product-remise .desc-value,
@@ -1627,7 +1654,7 @@ h6,
 .product-thumbnail .product-remise .desc-value,
 .container .product-line .product-remise .desc-value {
   color: var(--product-price__color) !important;
-  font-size: var(--global__font-size__md);
+  font-size: var(--global__font-size__lg);
   font-weight: var(--global__font-weight__bold);
   margin-bottom: 0.15em;
 }
@@ -1734,7 +1761,7 @@ h6,
 	Correspond au "statut-XXXX" (avec faute) envoyé par Equapro depuis Equation.
 **/
 .abstract-Product--Status, .article_read--product, #article_read .product-info, .product-thumbnail, .container .product-line {
-  --product__status__font-size: var(--global__font-size__sm);
+  --product__status__font-size: var(--global__font-size__md);
   --product__status__inset: 0 auto auto 0;
 }
 .abstract-Product--Status.statut-PRECO::after, .statut-PRECO.article_read--product::after, #article_read .statut-PRECO.product-info::after, .statut-PRECO.product-thumbnail::after, .container .statut-PRECO.product-line::after, .abstract-Product--Status.statut-PRECO::before, .statut-PRECO.article_read--product::before, #article_read .statut-PRECO.product-info::before, .statut-PRECO.product-thumbnail::before, .container .statut-PRECO.product-line::before, .abstract-Product--Status.statut-NOUVEAU::after, .statut-NOUVEAU.article_read--product::after, #article_read .statut-NOUVEAU.product-info::after, .statut-NOUVEAU.product-thumbnail::after, .container .statut-NOUVEAU.product-line::after, .abstract-Product--Status.statut-NOUVEAU::before, .statut-NOUVEAU.article_read--product::before, #article_read .statut-NOUVEAU.product-info::before, .statut-NOUVEAU.product-thumbnail::before, .container .statut-NOUVEAU.product-line::before {
@@ -2094,6 +2121,11 @@ h6,
 }
 .product-thumbnail .product-libelle {
   height: 7rem !important;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .product-thumbnail .product-caption {
   display: grid;
@@ -2164,7 +2196,7 @@ h6,
 .product-thumbnail-wrapper {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 6rem;
 }
 .product-thumbnail-wrapper .col-thumbnail {
@@ -2343,12 +2375,12 @@ h6,
 }
 #product_result_main_header .result-keyword .form-control.keyword {
   width: auto;
-  background: var(--global__UI__unselected-item);
+  background: none;
   border-radius: var(--global__UI__border-radius--input);
-  border: none;
-  color: var(--global__background-color);
+  border: solid 1px var(--global__color__accent);
+  color: var(--global__foreground-color);
   font-size: var(--global__font-size__md);
-  padding: 0 2rem;
+  padding: 0.7rem 2.1rem;
   margin: 0 0.5rem 0 0;
   height: auto;
 }
@@ -2634,6 +2666,10 @@ h6,
 }
 .article_read--product .product-stock, #article_read .product-info .product-stock {
   display: block;
+  --icon__size: var(--global__font-size__lg);
+}
+.article_read--product .product-stock span:before, #article_read .product-info .product-stock span:before {
+  line-height: 1.5em;
 }
 .article_read--product .product-prix, #article_read .product-info .product-prix,
 .article_read--product .product-remise,
@@ -2812,12 +2848,14 @@ h6,
   border: none;
 }
 .article_read--documents .list-product-documents li p:hover, #article_read .product-documents .list-product-documents li p:hover {
-  cursor: pointer;
   background-color: var(--global__color__accent);
 }
-.article_read--documents .list-product-documents li p:hover i, #article_read .product-documents .list-product-documents li p:hover i, .article_read--documents .list-product-documents li p:hover a, #article_read .product-documents .list-product-documents li p:hover a {
-  opacity: 1;
+.article_read--documents .list-product-documents li p:hover a, #article_read .product-documents .list-product-documents li p:hover a {
   color: white;
+  opacity: 0.5;
+}
+.article_read--documents .list-product-documents li p:hover a:hover, #article_read .product-documents .list-product-documents li p:hover a:hover {
+  opacity: 1;
 }
 
 .article_read--accessories .table-accessoires tbody img, #article_read .product-accessoires .table-accessoires tbody img {
@@ -3120,6 +3158,28 @@ h6,
   color: var(--global_foreground-color);
 }
 
+#client_api_help .table {
+  margin-bottom: 8rem !important;
+}
+#client_api_help .table-api {
+  margin-bottom: 1rem !important;
+  border-radius: var(--global__UI__border-radius--alert);
+  overflow: hidden;
+}
+#client_api_help .table-api td {
+  padding: 2rem;
+  background-color: rgba(102, 102, 102, 0.1333333333);
+}
+#client_api_help .table-api td:first-child {
+  background-color: var(--global__color__accent);
+}
+#client_api_help .table-api td:last-child {
+  color: var(--global_foreground-color);
+}
+#client_api_help h4 {
+  display: none;
+}
+
 /**
       S'applique aux 4 pages du processus de commande
 */
@@ -3161,37 +3221,40 @@ table tbody tr:nth-child(odd), #panier_index table tbody tr:nth-child(odd) {
 table tbody tr:nth-child(odd):hover, #panier_index table tbody tr:nth-child(odd):hover {
   background-color: rgba(102, 102, 102, 0.3333333333) !important;
 }
-table tbody tr td, #panier_index table tbody tr td {
+table tbody tr th, #panier_index table tbody tr th {
+  border: none !important;
+}
+table tbody tr th td, #panier_index table tbody tr th td {
   border: none !important;
   vertical-align: middle !important;
   padding: 2rem 0;
   position: relative;
 }
-table tbody tr td .input-group, #panier_index table tbody tr td .input-group {
+table tbody tr th td .input-group, #panier_index table tbody tr th td .input-group {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
-table tbody tr td .input-group input, #panier_index table tbody tr td .input-group input {
+table tbody tr th td .input-group input, #panier_index table tbody tr th td .input-group input {
   width: 5vmax !important;
 }
-table tbody tr td .input-group span.input-group-btn, #panier_index table tbody tr td .input-group span.input-group-btn {
+table tbody tr th td .input-group span.input-group-btn, #panier_index table tbody tr th td .input-group span.input-group-btn {
   width: auto;
 }
-table tbody tr td .input-group span.input-group-btn button.btn, #panier_index table tbody tr td .input-group span.input-group-btn button.btn {
+table tbody tr th td .input-group span.input-group-btn button.btn, #panier_index table tbody tr th td .input-group span.input-group-btn button.btn {
   border-radius: var(--global__UI__border-radius--input) !important;
   line-height: 1;
   margin: 0;
   aspect-ratio: 1/1;
   height: auto;
 }
-table tbody tr td:first-of-type, #panier_index table tbody tr td:first-of-type {
+table tbody tr th td:first-of-type, #panier_index table tbody tr th td:first-of-type {
   padding-left: 2rem !important;
 }
-table tbody tr td:last-of-type, #panier_index table tbody tr td:last-of-type {
+table tbody tr th td:last-of-type, #panier_index table tbody tr th td:last-of-type {
   padding-right: 2rem !important;
 }
-table tfoot tr th, #panier_index table tfoot tr th {
+table tbody tfoot tr th, #panier_index table tbody tfoot tr th {
   padding-top: 2rem;
   border-top: var(--global__UI__border-style) !important;
   font-size: 1.8rem;
@@ -3208,6 +3271,14 @@ table tfoot tr th, #panier_index table tfoot tr th {
 }
 #panier_index table {
   margin-bottom: 8rem;
+}
+#panier_index table button {
+  border-radius: 100vmax !important;
+  margin: 0 0.5rem;
+}
+#panier_index table input {
+  margin: 0;
+  width: 100px;
 }
 #panier_index table tbody tr td:nth-of-type(1) {
   padding-left: 2rem;
@@ -3240,6 +3311,7 @@ table tfoot tr th, #panier_index table tfoot tr th {
 **/
 .step-container {
   display: flex;
+  justify-content: space-between;
   flex-direction: row;
   flex-wrap: nowrap;
   padding: 0rem;
@@ -3251,11 +3323,13 @@ table tfoot tr th, #panier_index table tfoot tr th {
 @media only screen and (max-width: 768px) {
   .step-container {
     gap: 2vw;
+    margin-inline: 0;
   }
 }
 @media only screen and (max-width: 576px) {
   .step-container {
     gap: 0;
+    margin-inline: 0;
   }
 }
 .step-container .step {
@@ -3455,7 +3529,7 @@ table tfoot tr th, #panier_index table tfoot tr th {
 #panier_checkout .label-warning::after {
   content: "\f071";
   font-family: FontAwesome;
-  font-size: var(--global__font-size__sm);
+  font-size: var(--global__font-size__md);
   margin-right: 1rem;
   color: var(--global__color__warning);
   display: inline;
@@ -3504,7 +3578,11 @@ table tfoot tr th, #panier_index table tfoot tr th {
   text-align: justify;
   font-size: var(--global__font-size__sm);
   line-height: 2em;
+  margin: 2rem;
   padding: 0;
+}
+#panier_checkout form[name=confirm_order] .form-group label a {
+  font-size: var(--global__font-size__sm);
 }
 #panier_checkout form[name=confirm_order] #confirm_order_comment {
   min-height: 5em;
@@ -3592,7 +3670,7 @@ body {
   background-attachment: fixed;
   font-family: var(--global__font-family__text);
   font-weight: var(--global__font-weight__regular);
-  font-size: var(--global__font-size__sm);
+  font-size: var(--global__font-size__md);
   color: var(--global__foreground-color);
 }
 
@@ -3660,7 +3738,7 @@ footer:after {
 .abstract-Link, a, .fa--link {
   color: var(--link__color);
   font-family: var(--font-family__body);
-  font-size: var(--global__font-size__sm);
+  font-size: var(--global__font-size__md);
   font-weight: var(--global__font-weight__regular);
   text-decoration: none;
   border-bottom: dotted 1px var(--link__color);
@@ -3749,7 +3827,7 @@ input[type=password] {
   width: 100%;
   min-height: 5rem;
   font-weight: var(--global__font-weight__regular);
-  font-size: var(--global__font-size__sm);
+  font-size: var(--global__font-size__md);
   color: var(--input__color);
   padding: 0.25rem 2rem;
   border-radius: var(--global__UI__border-radius--input) !important;
@@ -3859,6 +3937,15 @@ body::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
+dl {
+  margin: 3rem 0 5rem 0;
+}
+dl dd {
+  margin: 0.5em 0;
+}
+dl dt {
+  font-weight: var(--global__font-weight__light);
+}
 hr {
   display: none;
 }
@@ -3875,11 +3962,14 @@ p {
 }
 
 pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--global__font-size__md);
   color: var(--global__foreground-color);
   background-color: rgba(102, 102, 102, 0.2);
   margin: 8rem 0 0 0 !important;
   padding: 3rem;
   line-height: 2em;
+  border: solid 1px rgba(102, 102, 102, 0.4);
 }
 
 /* --------------------------------

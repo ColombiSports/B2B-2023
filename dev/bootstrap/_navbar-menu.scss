@@ -1,4 +1,4 @@
-@use './../utils/breakpoints' as *;
+@use "./../utils/breakpoints" as *;
 
 /**
 	MENU DE NAVIGATION AU SEIN DES FAMILLES
@@ -37,7 +37,7 @@
 
 	--background-color: var(--global__foreground-color);
 	--categorie__font-size: 2.2rem;
-	--subcategorie__font-size: var(--global__font-size__sm);
+	--subcategorie__font-size: var(--global__font-size__md);
 	--categorie__color: unset;
 	--top__scroll-up: var(--header__height);
 	--top__scroll-down: 0;
@@ -117,7 +117,7 @@
 		button.navbar-toggle {
 			// Ajout du mot "catégories" au bouton
 			&::before {
-				content: 'Catégories ';
+				content: "Catégories ";
 				display: block;
 				font-family: var(--global__font-family__title);
 				font-size: var(--global__font-size__sm);
@@ -302,7 +302,7 @@
 
 					// Ajout du trait de couleur sous la catégorie
 					&::before {
-						content: '';
+						content: "";
 						width: 1.4em;
 						height: 0.15em;
 						position: absolute;

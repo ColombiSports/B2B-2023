@@ -249,9 +249,33 @@
 	}
 }
 
+// La partie API du compte clien //////////////////////////////////////////////
+
 #client_api_help {
-	// AUthentification -------------------------------------------
-	h3 {
-		@extend .page-header;
+	// prettier-ignore
+	h3 { @extend .page-header;} // Taille et soulignement
+
+	// prettier-ignore
+	.table { margin-bottom: 8rem !important; } // Sépare les tables
+
+	// Les tables des URL à appeler
+	.table-api {
+		margin-bottom: 1rem !important;
+		border-radius: var(--global__UI__border-radius--alert);
+		overflow: hidden;
+
+		// Les explications du résultat
+		td {
+			padding: 2rem;
+			background-color: #66666622;
+		}
+		td:first-child {
+			background-color: var(--global__color__accent);
+		}
+		td:last-child {
+			color: var(--global_foreground-color);
+		}
 	}
+	// prettier-ignore
+	h4 {  display: none; } // Fait disparaitre un mot "retour" qui n'a pas lieu d'être
 }

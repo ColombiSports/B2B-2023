@@ -4,6 +4,7 @@
 **/
 .step-container {
 	display: flex;
+	justify-content: space-between;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	padding: 0rem;
@@ -13,9 +14,9 @@
 
 	gap: 4vw;
 	// prettier-ignore
-	@include for-tablet { gap: 2vw; }
+	@include for-tablet { gap: 2vw; margin-inline: 0 ; }
 	// prettier-ignore
-	@include for-phone { gap: 0; }
+	@include for-phone { gap: 0; margin-inline: 0 ;}
 
 	// Une étape par défaut
 	.step {

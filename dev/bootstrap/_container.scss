@@ -2,7 +2,6 @@
 	margin: auto;
 	padding: var(--global__container__padding);
 	width: var(--global__container__width);
-	min-height: calc(100vh - (var(--header__height) + var(--navbar__height))); // Change en fonction du mode);
 	background: none;
 	position: relative;
 
@@ -16,6 +15,10 @@
 
 // Décalage du header et du menu de navigation
 #container_menu {
-	margin-top: 16rem;
-	margin-bottom: 10rem;
+	// margin-top: 16rem;
+	// margin-bottom: 10rem;
+}
+
+#container_main {
+	min-height: calc(100vh - (var(--header__height) + var(--navbar__height)));
 }

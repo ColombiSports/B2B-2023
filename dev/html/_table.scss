@@ -45,6 +45,9 @@ table {
 				&:hover { background-color: #66666655 !important; }
 			}
 
+			// prettier-ignore
+			th { border: none !important ; // Les colonnes entêtes }
+
 			// Les cellules
 			td {
 				border: none !important; // Sans bord
@@ -84,11 +87,12 @@ table {
 				}
 			}
 		}
-	}
-	// Le footer
-	tfoot tr th {
-		padding-top: 2rem;
-		border-top: var(--global__UI__border-style) !important ;
-		font-size: 1.8rem;
+		}
+		// Le footer
+		tfoot tr th {
+			padding-top: 2rem;
+			border-top: var(--global__UI__border-style) !important ;
+			font-size: 1.8rem;
+		}
 	}
 }

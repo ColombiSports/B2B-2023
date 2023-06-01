@@ -2,30 +2,27 @@
 	Gestion des alertes Bootstrap
 **/
 .alert {
-	--alert__font-size: var(--global__font-size__sm);
+	--alert__font-size: var(--global__font-size__md);
 	--alert__font-weight: var(--global__font-weight__light);
-	--alert__color: var(--global__color__accent )
+	--alert__color: white; // var(--global__color__accent )
 	--alert__icon: unset;
 
+	// prettier-ignore
 	color: var(--alert__color);
 	font-weight: var(--alert__font-weight);
-	border-radius: var(--global__UI__border-radius--alert);
-	padding: calc(var(--alert__font-size) * 1.5);
-	border: none;
-
-	// prettier-ignore
-	font-family: var(--global__font-family__title);
-	color: var(--alert__color);
 	font-size: var(--alert__font-size);
+	font-family: var(--global__font-family__title);
+	border-radius: var(--global__UI__border-radius--alert);
+	padding: calc(var(--alert__font-size) * 2);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-start;
 	text-align: left;
-	width: clamp( 20rem, 100%, 60rem );
+	width: clamp(20rem, 100%, 60rem);
 	line-height: 1em;
-	background: none;
-	border: solid 1px;
+	background: none; // var(--alert__color);
+	border: solid 1px var(--alert__color);
 
 	&::before {
 		content: var(--alert__icon);
@@ -36,8 +33,8 @@
 	}
 	//
 	&-danger {
-		--alert__icon: "\f05e"; // 
-		--alert__icon: "\f05e"; // 
+		--alert__icon: "\f05e"; //
+		--alert__icon: "\f05e"; //
 		--alert__color: var(--global__color__danger);
 	}
 	&-info {

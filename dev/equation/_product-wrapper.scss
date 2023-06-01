@@ -52,5 +52,5 @@
 	// prettier-ignore
 	.col-thumbnail{ display: contents ;}
 
-	@include setGrid(270px, 1fr, 6rem);
+	@include setGrid(250px, 1fr, 6rem);
 }
