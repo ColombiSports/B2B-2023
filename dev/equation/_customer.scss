@@ -110,6 +110,7 @@
 			}
 		}
 		// CLEF API -------------------------------------------------------
+
 		&:nth-child(3) {
 			> div {
 				display: flex;
@@ -141,6 +142,7 @@
 								height: auto;
 								background: none;
 								color: var(--global__foreground-color);
+								word-break: break-all;
 							}
 						}
 					}

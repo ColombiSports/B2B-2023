@@ -14,6 +14,7 @@
 @use "./bootstrap/form";
 @use "./bootstrap/nav-tabs";
 @use "./bootstrap/pagination";
+@use "./bootstrap/notifications"; // Gestion des notications en angle (panier, autorisation...)
 
 @use "./equation/security"; // Authentification, Mot de passe oublié, Inscription
 @use "./equation/product-line"; // Article en mode "ligne"

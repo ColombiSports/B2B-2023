@@ -1,5 +1,6 @@
 body {
 	position: relative;
+	overscroll-behavior-y: none;
 
 	// SIZING / TAILLE
 	min-width: calc(100vw - 10px);

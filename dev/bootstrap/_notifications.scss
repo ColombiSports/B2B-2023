@@ -1,0 +1,53 @@
+/**
+	Les messages lors du click sur l'ajout au panier
+**/
+
+// Est un UL dont les éléments s'autosupprime de la liste.
+#noty_topRight_layout_container {
+	// On délègue le fond à l'élément ".noty_bar", car ne ne celui-ci ne connait pas le type de message
+	li {
+		border: none !important ; // On masque le fond définit dans cet élément
+
+		// Surécriture des styles définis dans l'élément lui-même par JS
+		border-radius: var(--global__UI__border-radius--alert) !important;
+		box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 20px !important;
+		background: none !important ;
+
+		// Le premier élément distinct selon le type de message
+		.noty_bar {
+			--noty__color: transparent;
+			--noty__icon: "";
+
+			// SUCCES
+			&.noty_type_success {
+				--noty__color: var(--global__color__success);
+				--noty__icon: "\f00c"; // ✔
+			}
+			// ERROR
+			&.noty_type_error {
+				--noty__color: var(--global__color__danger);
+				--noty__icon: "\f05e";
+			}
+		}
+		// Le message enfant...
+		.noty_message {
+			background-color: var(--noty__color) !important;
+			// Le DIV du texte
+			.noty_text {
+				// Le message à proprement parlé
+				padding: 2rem !important;
+				font-weight: var(--global__font-weight__light) !important;
+				color: white !important;
+				line-height: 1.5em !important;
+				display: block !important;
+
+				&:before {
+					content: var(--noty__icon) !important;
+					font-family: FontAwesome !important;
+					margin-right: 2rem !important;
+					font-size: 1.5em !important;
+				}
+			}
+		}
+	}
+}

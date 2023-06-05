@@ -1,4 +1,4 @@
-@use './../utils/breakpoints' as *;
+@use "./../utils/breakpoints" as *;
 //
 /**
 	Container parent de la navbar utilisateur.
@@ -13,6 +13,15 @@
 }
 ////////////////////////////////////////////////////////////////////////////////////////
 
+// @include for-tablet {
+// 	header,
+// 	.scroll-down header,
+// 	.scroll-up header {
+// 		position: relative !important ;
+// 		transition: none !important ;
+// 		top: 0 !important ;
+// 	}
+// }
 header {
 	// Ne possède qu'un enfant, permet l'étirement de ce dernier
 	display: flex;

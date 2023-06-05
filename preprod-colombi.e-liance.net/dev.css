@@ -33,6 +33,7 @@ div {
 }
 
 :root {
+  overscroll-behavior: none;
   --global__font-family__title: "Barlow Semi Condensed", sans-serif;
   --global__font-family__text: "Montserrat", sans-serif;
   --global__font-size__xs: 0.8rem;
@@ -737,10 +738,6 @@ au dessous de tout et surtout la barre des familles.
   z-index: 1000;
   margin: 0;
   /**
-  	Résout le problème de scroll du menu catégorie quand ce dernier est "fixed"
-  	en haut de l'éc
-  **/
-  /**
   	En mode étendu, la partie de droite "navbar-header" n'étant plus visible
   	il ne reste plus qu'un enfant : le "navbar-menu". A n'avoir qu'un enfant
   	on affiche directement les éléments en mode "column". La dispostion des
@@ -761,13 +758,6 @@ au dessous de tout et surtout la barre des familles.
 }
 .navbar-menu a .caret {
   display: none;
-}
-@media only screen and (max-width: 768px) {
-  .navbar-menu {
-    position: absolute;
-    top: 0px !important;
-    margin-top: -6rem;
-  }
 }
 .scroll-up .navbar-menu {
   top: var(--top__scroll-up);
@@ -1173,6 +1163,44 @@ ul.nav-tabs li:not(:last-child) {
   pointer-events: none;
   background: none;
   color: var(--global__color__grey50) !important;
+}
+
+/**
+	Les messages lors du click sur l'ajout au panier
+**/
+#noty_topRight_layout_container li {
+  border: none !important;
+  border-radius: var(--global__UI__border-radius--alert) !important;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 20px !important;
+  background: none !important;
+}
+#noty_topRight_layout_container li .noty_bar {
+  --noty__color: transparent;
+  --noty__icon: "";
+}
+#noty_topRight_layout_container li .noty_bar.noty_type_success {
+  --noty__color: var(--global__color__success);
+  --noty__icon: "";
+}
+#noty_topRight_layout_container li .noty_bar.noty_type_error {
+  --noty__color: var(--global__color__danger);
+  --noty__icon: "";
+}
+#noty_topRight_layout_container li .noty_message {
+  background-color: var(--noty__color) !important;
+}
+#noty_topRight_layout_container li .noty_message .noty_text {
+  padding: 2rem !important;
+  font-weight: var(--global__font-weight__light) !important;
+  color: white !important;
+  line-height: 1.5em !important;
+  display: block !important;
+}
+#noty_topRight_layout_container li .noty_message .noty_text:before {
+  content: var(--noty__icon) !important;
+  font-family: FontAwesome !important;
+  margin-right: 2rem !important;
+  font-size: 1.5em !important;
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -3073,6 +3101,7 @@ h6,
   height: auto;
   background: none;
   color: var(--global__foreground-color);
+  word-break: break-all;
 }
 #client_index #security .row > div:nth-child(3) > div > .form-group div:last-child {
   width: -moz-fit-content;
@@ -3323,13 +3352,11 @@ table tbody tfoot tr th, #panier_index table tbody tfoot tr th {
 @media only screen and (max-width: 768px) {
   .step-container {
     gap: 2vw;
-    margin-inline: 0;
   }
 }
 @media only screen and (max-width: 576px) {
   .step-container {
     gap: 0;
-    margin-inline: 0;
   }
 }
 .step-container .step {
@@ -3659,6 +3686,7 @@ table tbody tfoot tr th, #panier_index table tbody tfoot tr th {
 }
 body {
   position: relative;
+  overscroll-behavior-y: none;
   min-width: calc(100vw - 10px);
   min-height: 100vh;
   overflow-x: hidden;

@@ -53,19 +53,8 @@
 	height: auto; // var(--navbar__height);
 	top: var(--top__scroll-up);
 	left: -2px;
-
 	z-index: 1000;
 	margin: 0;
-
-	/**
-		Résout le problème de scroll du menu catégorie quand ce dernier est "fixed"
-		en haut de l'éc
-	**/
-	@include for-tablet {
-		position: absolute;
-		top: 0px !important;
-		margin-top: -6rem;
-	}
 
 	// Disposition du contenu interne ----------------------------------
 	/**

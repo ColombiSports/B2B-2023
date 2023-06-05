@@ -14,9 +14,9 @@
 
 	gap: 4vw;
 	// prettier-ignore
-	@include for-tablet { gap: 2vw; margin-inline: 0 ; }
+	@include for-tablet { gap: 2vw; }
 	// prettier-ignore
-	@include for-phone { gap: 0; margin-inline: 0 ;}
+	@include for-phone { gap: 0; }
 
 	// Une étape par défaut
 	.step {
