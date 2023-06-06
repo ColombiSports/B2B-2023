@@ -1,0 +1,11 @@
+#commande_read {
+	// Uniformise le pied de page de la table des commandes ////////
+
+	// Le total
+	#commande_montant,
+    // Le mot "Montant HT"
+	#container_main > div > div.col-xs-10 > span > h4 {
+		font-family: var(--global__font-family__text);
+		font-size: var(--global__font-size__lg);
+	}
+}
