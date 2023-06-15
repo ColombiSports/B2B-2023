@@ -1,0 +1,103 @@
+<mjml background-size="undefined" owa="desktop" version="4.14.1">
+	<mj-head background-size="undefined">
+		<mj-preview background-size="undefined">
+			Confirmation de commande
+		</mj-preview>
+		<mj-font background-size="undefined" href="https://fonts.googleapis.com/css?family=Open sans" name="Open sans"></mj-font>
+	</mj-head>
+	<mj-body background-color="#2f2f2f" background-size="undefined" color="#5e6977" font-family="Open Sans" font-size="13px">
+		<mj-section background-color="#000000" background-repeat="no-repeat" background-size="auto" padding-bottom="0px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px" text-align="center" vertical-align="top">
+			<mj-column background-size="undefined" vertical-align="top">
+				<mj-image align="center" alt="Colombi Sports" background-size="undefined" border="none" height="auto" href="" padding-bottom="0px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px" src="https://x1i1n.mjt.lu/tplimg/x1i1n/b/xk9z4/v92xt.jpeg" target="_blank" title="" width="600px"></mj-image>
+			</mj-column>
+		</mj-section>
+		<mj-section background-color="#ffffff" background-repeat="repeat" background-size="auto" padding-bottom="0px" padding-left="10px" padding-right="10px" padding-top="20px" padding="20px 10px 0px 10px" text-align="center" vertical-align="top">
+			<mj-column background-size="undefined" vertical-align="top">
+				<mj-text align="left" background-size="undefined" color="#000000" font-family="Arial, sans-serif" font-size="14px" letter-spacing="normal" padding-bottom="0px" padding-top="0px" padding="10px 25px" vertical-align="top" word-wrap="break-word">
+					<p class="text-build-content" data-testid="R5RC1lnVJJ" style="margin: 10px 0; margin-top: 10px; margin-bottom: 10px;"><span style="color:#333333;font-family:Open Sans, Helvetica, Arial, sans-serif;font-size:14px;line-height:32px;">Nous avons bien pris en compte votre commande, et nous nous occuperons de son expédition dans les plus bref délais :</span></p>
+				</mj-text>
+				<mj-divider background-size="undefined" border-color="#E6E6E6" border-style="solid" border-width="2px" padding="10px 25px" width="100%"></mj-divider>
+			</mj-column>
+		</mj-section>
+		<mj-section background-color="#ffffff" background-repeat="repeat" background-size="auto" padding-bottom="25px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 25px 0px" text-align="center" vertical-align="middle">
+			<mj-group background-size="undefined" vertical-align="middle">
+				<mj-column background-size="undefined" vertical-align="middle" width="33%">
+					<mj-text align="left" background-size="undefined" color="#000000" font-family="Arial, sans-serif" font-size="12px" letter-spacing="normal" padding-bottom="0px" padding-top="0px" padding="10px 25px">
+						<p class="text-build-content" style="text-align: center; margin: 10px 0; margin-top: 10px;" data-testid="uElVmaDwS"><span style="color:#333333;font-family:Open Sans;font-size:12px;">Numéro :</span></p>
+						<p class="text-build-content" style="text-align: center; margin: 10px 0; margin-bottom: 10px;" data-testid="uElVmaDwS"><span style="color:#333333;font-family:Open Sans;font-size:14px;"><b>{{var:code:" "}}</b></span></p>
+					</mj-text>
+				</mj-column>
+				<mj-column background-size="undefined" vertical-align="middle" width="34%">
+					<mj-text align="left" background-size="undefined" color="#000000" font-family="Arial, sans-serif" font-size="12px" letter-spacing="normal" padding-bottom="0px" padding-top="0px" padding="10px 25px">
+						<p class="text-build-content" style="text-align: center; margin: 10px 0; margin-top: 10px;" data-testid="SaxzSzYk3"><span style="color:#333333;font-family:Open Sans;font-size:12px;">Montant :</span></p>
+						<p class="text-build-content" style="text-align: center; margin: 10px 0; margin-bottom: 10px;" data-testid="SaxzSzYk3"><span style="color:#333333;font-family:Open Sans;font-size:14px;"><b>{{var:montant:" "}}€</b></span></p>
+					</mj-text>
+				</mj-column>
+				<mj-column background-size="undefined" vertical-align="middle" width="33%">
+					<mj-text align="left" background-size="undefined" color="#000000" font-family="Arial, sans-serif" font-size="12px" letter-spacing="normal" padding-bottom="0px" padding-top="0px" padding="10px 25px">
+						<p class="text-build-content" style="text-align: center; margin: 10px 0; margin-top: 10px;" data-testid="lcbvNpq6r"><span style="color:#333333;font-family:Open Sans;font-size:12px;">Date :</span></p>
+						<p class="text-build-content" style="text-align: center; margin: 10px 0; margin-bottom: 10px;" data-testid="lcbvNpq6r"><span style="color:#333333;font-family:Open Sans;font-size:14px;"><b>{{var:date:" "}}</b></span></p>
+					</mj-text>
+				</mj-column>
+			</mj-group>
+		</mj-section>
+		<mj-section background-color="#ffffff" background-repeat="repeat" background-size="auto" padding-bottom="0px" padding-left="25px" padding-right="25px" padding-top="0px" padding="0px 25px 0px 25px" text-align="center" vertical-align="top">
+			<mj-column background-size="undefined">
+				<mj-raw background-size="undefined" padding="0">
+					<mj-section>
+						<mj-column>
+							<mj-table font-family="Open sans" font-size="14px" color="#333333">
+								<tr style="border-bottom: 1px solid #ecedee; text-align: center; padding: 15px 0">
+									<th style="padding: 5px">Qté</th>
+									<th style="padding: 5px">Article</th>
+									<th style="padding: 5px">Montant</th>
+								</tr> {% for ligne in var:lignes %} <tr style="border-bottom: 1px solid #ecedee">
+									<td style="padding: 5px; text-align: center">
+										{{ ligne.qte }}
+									</td>
+									<td style="padding: 5px">
+										{{ ligne.article.code }}<br />
+										{{ ligne.article.libelle }}
+									</td>
+									<td style="padding: 0 15px 0 0; text-align: right">
+										{{ ligne.montant }}€ </td> {% endfor%}
+								</tr>
+							</mj-table>
+						</mj-column>
+					</mj-section>
+				</mj-raw>
+			</mj-column>
+		</mj-section>
+		<mj-section background-color="#ffffff" background-repeat="repeat" background-size="auto" padding-bottom="20px" padding-left="10px" padding-right="10px" padding-top="25px" padding="25px 10px 20px 10px" text-align="center" vertical-align="top">
+			<mj-column background-size="undefined" vertical-align="top">
+				<mj-divider background-size="undefined" border-color="#E6E6E6" border-style="solid" border-width="2px" padding="10px 25px" width="100%"></mj-divider>
+				<mj-text align="left" background-size="undefined" color="#000000" font-family="Arial, sans-serif" font-size="14px" letter-spacing="normal" padding-bottom="0px" padding-top="0px" padding="10px 25px" vertical-align="top" word-wrap="break-word">
+					<p class="text-build-content" data-testid="7zPivaOqLA" style="margin: 10px 0; margin-top: 10px; margin-bottom: 10px;"><span style="color:#333333;font-family:Open Sans, Helvetica, Arial, sans-serif;font-size:14px;line-height:32px;">Nous vous remercions de votre confiance, et à très bientôt.&nbsp;</span></p>
+				</mj-text>
+			</mj-column>
+		</mj-section>
+		<mj-section background-color="#000000" background-repeat="repeat" background-size="auto" padding-bottom="50px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 50px 0px" text-align="center" vertical-align="top">
+			<mj-column background-size="undefined" vertical-align="top">
+				<mj-button align="center" background-color="transparent" background-size="undefined" border-radius="150px" border="3px solid #ffffff" color="#ffffff" font-family="Arial, sans-serif" font-size="16px" font-weight="normal" href="https://b2b.colombisports.com/fr/login" inner-padding="10px 25px 10px 25px" padding-bottom="0px" padding-left="10px" padding-right="10px" padding-top="50px" padding="50px 10px 0px 10px" text-decoration="none" text-transform="none" vertical-align="middle">
+					<span style="font-size:16px;"><b>Accès PRO</b></span>
+				</mj-button>
+				<mj-image align="center" alt="" background-size="undefined" border="none" fluid-on-mobile="true" height="auto" href="https://www.colombisports.com/" padding-bottom="0px" padding-left="50px" padding-right="50px" padding-top="0px" padding="0px 50px 0px 50px" src="https://x1i1n.mjt.lu/tplimg/x1i1n/b/x6n95/vykjs.png" target="_blank" title="" width="600px"></mj-image>
+				<mj-text align="left" background-size="undefined" color="#000000" font-family="Arial, sans-serif" font-size="24px" letter-spacing="normal" padding-bottom="0px" padding-left="0px" padding-right="0px" padding-top="0px" padding="0px 0px 0px 0px">
+					<p class="text-build-content" style="line-height: 36px; text-align: center; margin: 10px 0; margin-top: 10px; margin-bottom: 10px;" data-testid="pFfpH4iIl"><span style="color:#ffffff;font-family:Impact;font-size:24px;line-height:36px;">Tél. : 04 66 81 00 18</span></p>
+				</mj-text>
+				<mj-text align="left" background-size="undefined" color="#000000" font-family="Arial, sans-serif" font-size="12px" letter-spacing="normal" padding-bottom="0px" padding-left="10px" padding-right="10px" padding-top="0px" padding="0px 10px 0px 10px">
+					<p class="text-build-content" style="text-align: center; margin: 10px 0; margin-top: 10px; margin-bottom: 10px;" data-testid="uuIadCGMR"><a class="link-build-content" style="color:inherit;" target="_blank" href="https://b2b.colombisports.com/pdf/cgv_20210408.pdf"><span style="color:#c9c8c8;font-family:Arial;font-size:12px;line-height:10px;">CGV | </span></a><a class="link-build-content" style="color:inherit;" target="_blank" href="[[UNSUB_LINK_FR]]"><span style="color:#c9c8c8;font-family:Arial;font-size:12px;line-height:10px;">DÉSABONNEMENT</span></a><span style="color:#c9c8c8;font-family:Arial;font-size:12px;line-height:10px;"> | </span><a class="link-build-content" style="color:inherit;" target="_blank" href="[[PERMALINK]]"><span style="color:#c9c8c8;font-family:Arial;font-size:12px;line-height:10px;">VERSION HTML</span></a></p>
+				</mj-text>
+				<mj-social align="center" background-size="undefined" border-radius="50%" font-family="Ubuntu, Helvetica, Arial, sans-serif" font-size="13px" icon-padding="0px 0px 0px 0px" icon-size="32" line-height="22px" mode="horizontal" padding-left="25px" padding-right="25px" padding="10px 25px 10px 25px" text-decoration="none" text-mode="false">
+					<mj-social-element background-color="#3B5998" background-size="undefined" href="https://www.facebook.com/ColombiSportsOfficiel" name="facebook-noshare" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png"></mj-social-element>
+					<mj-social-element background-size="undefined" href="https://www.instagram.com/colombisports/?hl=fr" name="Insta-noshare" src="https://x1i1n.mjt.lu/tplimg/x1i1n/b/l5lvx/g2n3z.png"></mj-social-element>
+					<mj-social-element background-color="#FF0000" background-size="undefined" href="https://www.youtube.com/channel/UCiXsrvSl4V7u4U5YSdgZvaQ" name="youtube-noshare" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/youtube.png"></mj-social-element>
+					<mj-social-element background-color="#1DA1F2" background-size="undefined" href="https://twitter.com/Colombi_Sports" name="twitter-noshare" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/twitter.png"></mj-social-element>
+					<mj-social-element background-color="#BD081C" background-size="undefined" href="https://www.pinterest.fr/Colombi_Sports/" name="pinterest-noshare" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/pinterest.png"></mj-social-element>
+					<mj-social-element background-size="undefined" href="https://www.tiktok.com/@colombi_sports" name="Tiktok-noshare" src="https://x1i1n.mjt.lu/tplimg/x1i1n/b/l5lvx/g2n3u.png"></mj-social-element>
+					<mj-social-element background-color="#0077B5" background-size="undefined" href="https://www.linkedin.com/company/25608622/admin/" name="linkedin-noshare" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png"></mj-social-element>
+				</mj-social>
+			</mj-column>
+		</mj-section>
+	</mj-body>
+</mjml>

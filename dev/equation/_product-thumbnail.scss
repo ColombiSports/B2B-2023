@@ -34,6 +34,7 @@
 		grid-area: image;
 		border: none;
 		position: relative;
+		cursor: zoom-in;
 	}
 
 	/**
@@ -94,9 +95,9 @@
 		margin-top: 1.5rem;
 		//
 		// prettier-ignore
-		& [data-toggle="prix-tarif"] { transform: scale(1.25) ;}
+		& [data-toggle="prix-tarif"] { transform: scale(1.33) ;}
 		// prettier-ignore
-		.show-prix-public & [data-toggle="prix-public"] { transform: scale(1.25); }
+		.show-prix-public & [data-toggle="prix-public"] { transform: scale(1.33); }
 
 		// prettier-ignore
 		& > div { padding: 0; } // Surécrit Bootstrap pour réaligner les paddings
