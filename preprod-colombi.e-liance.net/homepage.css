@@ -1,126 +1,186 @@
+@charset "UTF-8";
 @import url("./../preprod-colombi.e-liance.net/devmin.css");
 body {
   font-size: 12px;
   padding: 5rem;
 }
 
+#PACKS_AIRFUN {
+  --card-background: linear-gradient(0deg, #528bbe, #242957);
+  --title-color: #fc0;
+  --button-color: red;
+  --button-text: white;
+}
+
 #AIRSOFT {
   --background-image: url("./../../assets/Airgun.jpg");
-  --category-color: red;
+  --title-color: green;
+  --card-color: red;
 }
 
 #BUTIN_AIRSOFT {
   --background-image: none;
-  --category-color: #4f6930;
+  --card-color: #4f6930;
 }
 
 #LTL {
-  --category-color: rgb(32, 34, 83);
+  --p__font-size: 16px;
+  --card-color: rgb(32, 34, 83);
 }
 
 #VENTES-FLASH {
   --background-image: url(https://colombisports.com/b2b/img/illustrations/3joursDeFolie.jpg);
-  --category-color: rgb(29, 102, 158);
-}
-
-#PACKS_AIRFUN {
-  --background-image: url(https://colombisports.com/b2b/img/illustrations/PackAirfun_BlocHome.jpg);
-  --category-color: #435b6d;
+  --main-color: #185996;
+  --button-color: var(--main-color);
+  --title-color: purple;
 }
 
 #LAHOUX {
   --background-image: url(https://colombisports.com/b2b/img/illustrations/Lahoux.jpg);
-  --category-color: #fc7b0a;
+  --card-color: #fc7b0a;
 }
 
 #ACC_CANIK {
-  --background-image: #900;
-  --border-color: white;
-  --category-color: transparent;
+  --card-background: #900;
+  --card-color: red;
 }
 
 /**
 	La grille des infos
 **/
 .grid_infos {
-  --cell-width: 150px;
-  --cell-height: 200px;
-  --transition: all 250ms ease-in-out;
-  --padding: 1rem;
+  --cell-width: 250px;
+  --cell-height: 225px;
+  --transition: all 150ms ease-in-out;
+  --padding: 0rem;
   --border-radius: 0.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(var(--cell-width), 1fr));
-  grid-auto-rows: var(--cell-height);
+  grid-template-columns: repeat(auto-fill, minmax(var(--cell-width), 1fr));
   grid-auto-flow: dense;
   gap: 5rem;
 }
+@media only screen and (max-width: 576px) {
+  .grid_infos {
+    --cell-width: 100px;
+  }
+}
 
+/**
+	Les cartes par défaut
+**/
 [class*=card] {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  justify-content: flex-start;
-  justify-content: space-between;
-  position: relative;
-  padding: var(--padding);
-  border-radius: var(--border-radius);
-  background-color: rgba(102, 102, 102, 0.1333333333);
-  overflow: hidden;
+  --padding: 2em;
+  display: grid;
   min-height: var(--cell-height);
+  border-radius: var(--global__UI__border-radius--alert);
+  overflow: hidden;
+  background: var(--card-background, var(--global__background-color));
+  background-size: cover;
+  background-position: center;
 }
-[class*=card]:hover {
-  cursor: pointer;
+[class*=card].landscape {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
 }
-[class*=card]:hover p {
-  opacity: 1;
-  transform: translateY(-20%);
+@media only screen and (max-width: 576px) {
+  [class*=card].landscape {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
 }
-[class*=card]:hover h1 {
-  transform: translateY(150%);
+[class*=card].portrait {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
 }
-[class*=card]:hover::before {
-  transform: scale(115%);
+[class*=card]:hover .illustration img,
+[class*=card]:hover .illustration video, [class*=card]:active .illustration img,
+[class*=card]:active .illustration video {
+  transform: scale(1.1);
 }
-[class*=card]:hover .background, [class*=card]:hover::after {
-  transform: translateY(0%);
-}
-[class*=card] h3 {
-  display: block;
+[class*=card] .category {
+  display: inline-block;
   font-family: var(--global__font-family__text);
-  font-size: calc(var(--global__font-size__xs) * 0.75);
+  font-size: var(--h3__font-size, var(--global__font-size__xs));
   color: white;
-  text-shadow: 0 0 1em black;
-  padding: 0.25em 0.5em;
-  margin: 0;
-  display: block;
+  text-shadow: 0 0 5px black;
+  padding: 0;
+  margin: 0 0 2em 0;
   position: relative;
 }
-[class*=card] h3:after {
+[class*=card] .category:after {
   content: "";
   width: 3rem;
   height: 3px;
   display: block;
-  background-color: var(--category-color);
+  background-color: var(--card-color, var(--title-color, var(--global__color__accent)));
+  margin-left: calc(var(--padding) * -1);
   position: absolute;
-  margin: 0.5rem 0 0 calc(var(--padding) * -1.5);
+  top: 2em;
 }
-[class*=card] h1 {
+[class*=card].inverted .illustration {
+  order: 1;
+}
+[class*=card] .illustration {
+  padding: var(--padding);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+[class*=card] .illustration img,
+[class*=card] .illustration video {
+  position: absolute;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  padding: 0;
+  transition: var(--transition);
+}
+[class*=card] .descriptif {
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+[class*=card] .descriptif h1 {
+  padding: 0;
   margin: 0;
-  padding: 0.125em 0.5em;
+  transition: var(--transition);
+  color: var(--title-color, var(--main-color, var(--global__color__accent)));
+  border-radius: var(--global__UI__border-radius--input);
+  font-family: var(--global__font-family__title);
+  font-size: var(--h1__font-size, var(--global__font-size__lg));
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+[class*=card] .descriptif a {
+  padding: 0.5em 0.75em;
   bottom: var(--padding);
   transition: var(--transition);
-  color: var(--title-color, white);
-  background-color: var(--category-color);
-  border-radius: var(--border-radius);
-  font-size: var(--title-size, var(--global__font-size__md));
+  color: var(--button-text, white);
+  background-color: var(--button-color, var(--global__color__accent));
+  border-radius: var(--global__UI__border-radius--input);
+  font-family: var(--global__font-family__title);
+  font-size: var(--h1__font-size, var(--global__font-size__sm));
+  align-self: flex-end;
+  border: none;
+  margin-top: auto;
+  border: solid 3px transparent;
 }
-[class*=card] p {
-  bottom: 1rem;
-  font-size: var(--global__font-size__xs);
+[class*=card] .descriptif a:hover {
+  border: 3px solid var(--title-color);
+}
+[class*=card] .descriptif p {
   margin: 0;
-  opacity: 0;
+  bottom: 1rem;
+  font-size: var(--p__font-size, var(--global__font-size__xs));
   transition: var(--transition);
+  line-height: 1.61;
 }
 [class*=card] [class*=background-] {
   position: absolute;
@@ -134,7 +194,7 @@ body {
   transition: var(--transition);
   transform-origin: center center;
 }
-[class*=card]:hover .background-image:before {
+[class*=card]:hover .background-image:before, [class*=card]:active .background-image:before {
   transform: translateY(0%);
 }
 [class*=card] .background-image {
@@ -150,34 +210,35 @@ body {
   width: 100%;
   height: 100%;
   mix-blend-mode: multiply;
-  background: linear-gradient(rgba(102, 102, 102, 0) 25%, var(--category-color) 75%);
+  background: linear-gradient(rgba(102, 102, 102, 0) 25%, var(--card-color) 75%);
   transform: translateY(100%);
   transition: var(--transition);
-}
-[class*=card] video {
-  -o-object-fit: cover;
-     object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: -3;
 }
 
 [class*=_1] {
   grid-column: span 1;
-  --title-size: var(--global__font-size__md);
 }
 
 [class*=_2] {
   grid-column: span 2;
-  --title-size: var(--global__font-size__lg);
 }
 
 [class*=_3] {
   grid-column: span 3;
-  --title-size: var(--global__font-size__xl);
+}
+@media only screen and (max-width: 576px) {
+  [class*=_3] {
+    grid-column: span 2;
+  }
+}
+
+[class*=_4] {
+  grid-column: span 4;
+}
+@media only screen and (max-width: 576px) {
+  [class*=_4] {
+    grid-column: span 2;
+  }
 }
 
 [class*=x1] {
@@ -190,4 +251,8 @@ body {
 
 [class*=x3] {
   grid-row: span 3;
+}
+
+[class*=x4] {
+  grid-row: span 4;
 }

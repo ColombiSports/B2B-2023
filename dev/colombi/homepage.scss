@@ -1,3 +1,4 @@
+@use "./../utils/breakpoints" as *;
 @import url("./../preprod-colombi.e-liance.net/devmin.css");
 
 body {
@@ -5,39 +6,45 @@ body {
 	padding: 5rem;
 }
 
+#PACKS_AIRFUN {
+	--card-background: linear-gradient(0deg, #528bbe, #242957); //  url(https://colombisports.com/b2b/img/illustrations/PackAirfun_BlocHome.jpg);
+	--title-color: #fc0;
+	// --card-color: purple;
+	--button-color: red;
+	--button-text: white;
+}
+
 #AIRSOFT {
 	--background-image: url("./../../assets/Airgun.jpg");
-	--category-color: red;
+	--title-color: green;
+	--card-color: red;
 }
 
 #BUTIN_AIRSOFT {
 	--background-image: none;
-	--category-color: #4f6930;
+	--card-color: #4f6930;
 }
 
 #LTL {
-	--category-color: rgb(32, 34, 83);
+	--p__font-size: 16px;
+	--card-color: rgb(32, 34, 83);
 }
 
 #VENTES-FLASH {
 	--background-image: url(https://colombisports.com/b2b/img/illustrations/3joursDeFolie.jpg);
-	--category-color: rgb(29, 102, 158);
-}
-
-#PACKS_AIRFUN {
-	--background-image: url(https://colombisports.com/b2b/img/illustrations/PackAirfun_BlocHome.jpg);
-	--category-color: #435b6d;
+	--main-color: #185996;
+	--button-color: var(--main-color);
+	--title-color: purple;
 }
 
 #LAHOUX {
 	--background-image: url(https://colombisports.com/b2b/img/illustrations/Lahoux.jpg);
-	--category-color: #fc7b0a;
+	--card-color: #fc7b0a;
 }
 
 #ACC_CANIK {
-	--background-image: #900;
-	--border-color: white;
-	--category-color: transparent;
+	--card-background: #900;
+	--card-color: red;
 }
 
 /**
@@ -45,67 +52,75 @@ body {
 **/
 .grid_infos {
 	// La taille de la cellule
-	--cell-width: 150px;
-	--cell-height: 200px;
+	--cell-width: 250px;
+	--cell-height: 225px;
 	// La transition pour tous
-	--transition: all 250ms ease-in-out;
+	--transition: all 150ms ease-in-out;
 
-	--padding: 1rem;
+	--padding: 0rem;
 	--border-radius: 0.5rem;
+
+	@include for-phone {
+		--cell-width: 100px;
+	}
 
 	// La grille en mode DENSE
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(var(--cell-width), 1fr));
-	grid-auto-rows: var(--cell-height);
+	grid-template-columns: repeat(auto-fill, minmax(var(--cell-width), 1fr));
+	// grid-auto-rows: var(--cell-height);
 	grid-auto-flow: dense;
 	gap: 5rem;
 }
 
-// Les cartes par défaut
+/**
+	Les cartes par défaut
+**/
 [class*="card"] {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	align-items: flex-start;
-	justify-content: flex-start;
-	justify-content: space-between;
+	--padding: 2em; // Padding à répercuter
 
-	position: relative;
-	padding: var(--padding);
-	border-radius: var(--border-radius);
-	background-color: #66666622;
+	// Dispo en grille
+	display: grid;
+	min-height: var(--cell-height);
+	border-radius: var(--global__UI__border-radius--alert);
 	overflow: hidden;
 
-	min-height: var(--cell-height);
+	background: var(--card-background, var(--global__background-color));
+	background-size: cover;
+	background-position: center;
 
-	&:hover {
-		cursor: pointer;
+	// Indique que le bloc est à l'horizontal
+	&.landscape {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
 
-		p {
-			opacity: 1;
-			transform: translateY(-20%);
+		@include for-phone {
+			grid-template-columns: 1fr;
+			grid-template-rows: 1fr 1fr;
 		}
-		h1 {
-			transform: translateY(150%);
-		}
-		&::before {
-			transform: scale(115%);
-		}
-		.background,
-		&::after {
-			transform: translateY(0%);
+	}
+	// Indique que le bloc est à la verticale
+	&.portrait {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr auto;
+	}
+
+	&:hover,
+	&:active {
+		.illustration img,
+		.illustration video {
+			transform: scale(1.1);
 		}
 	}
 
-	h3 {
-		display: block;
+	// La catégorie de la carte
+	.category {
+		display: inline-block;
 		font-family: var(--global__font-family__text);
-		font-size: calc(var(--global__font-size__xs) * 0.75);
-		color: white; // var(--category-color);
-		text-shadow: 0 0 1em black;
-		padding: 0.25em 0.5em;
-		margin: 0;
-		display: block;
+		font-size: var(--h3__font-size, var(--global__font-size__xs));
+		color: white;
+		text-shadow: 0 0 5px black;
+		padding: 0;
+		margin: 0 0 2em 0;
 		position: relative;
 
 		&:after {
@@ -113,30 +128,89 @@ body {
 			width: 3rem;
 			height: 3px;
 			display: block;
-			background-color: var(--category-color);
+			background-color: var(--card-color, var(--title-color, var(--global__color__accent)));
+			margin-left: calc(var(--padding) * -1);
 			position: absolute;
-			margin: 0.5rem 0 0 calc(var(--padding) * -1.5);
+			top: 2em;
 		}
 	}
-	h1 {
-		margin: 0;
-		padding: 0.125em 0.5em;
-		bottom: var(--padding);
-		transition: var(--transition);
-		color: var(--title-color, white);
-		background-color: var(--category-color);
-		border-radius: var(--border-radius);
-		font-size: var(--title-size, var(--global__font-size__md));
+
+	// Inverse la carte
+	&.inverted .illustration {
+		order: 1;
 	}
-	p {
-		// position: absolute;
-		bottom: 1rem;
-		font-size: var(--global__font-size__xs);
-		// transform: translateY(100%);
-		margin: 0;
-		opacity: 0;
-		transition: var(--transition);
+
+	// La partie contenant l'illustration : image ou video....
+	.illustration {
+		// Est dimensionnné par la carte
+		padding: var(--padding);
+		position: relative;
+		overflow: hidden;
+		isolation: isolate;
+
+		// Recouvre toute la zone d'illustration
+		img,
+		video {
+			position: absolute;
+			object-fit: cover;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -1;
+			padding: 0;
+			transition: var(--transition);
+		}
 	}
+
+	// LA partie contenant le texte
+	.descriptif {
+		padding: var(--padding);
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		align-items: flex-start;
+
+		h1 {
+			padding: 0;
+			margin: 0;
+			transition: var(--transition);
+			color: var(--title-color, var(--main-color, var(--global__color__accent)));
+			border-radius: var(--global__UI__border-radius--input);
+			font-family: var(--global__font-family__title);
+			font-size: var(--h1__font-size, var(--global__font-size__lg));
+			margin-bottom: 0.5em;
+
+			text-transform: uppercase;
+		}
+		a {
+			padding: 0.5em 0.75em;
+			bottom: var(--padding);
+			transition: var(--transition);
+			color: var(--button-text, white);
+			background-color: var(--button-color, var(--global__color__accent));
+			border-radius: var(--global__UI__border-radius--input);
+			font-family: var(--global__font-family__title);
+			font-size: var(--h1__font-size, var(--global__font-size__sm));
+			align-self: flex-end;
+			border: none;
+			margin-top: auto;
+			border: solid 3px transparent;
+
+			&:hover {
+				border: 3px solid var(--title-color);
+			}
+		}
+		p {
+			margin: 0;
+			bottom: 1rem;
+			font-size: var(--p__font-size, var(--global__font-size__xs));
+			transition: var(--transition);
+			line-height: 1.61;
+		}
+	}
+
 	// Tous les objets en plein bloc....
 	[class*="background-"] {
 		position: absolute;
@@ -151,7 +225,8 @@ body {
 		transform-origin: center center;
 	}
 
-	&:hover {
+	&:hover,
+	&:active {
 		.background-image:before {
 			transform: translateY(0%);
 		}
@@ -172,35 +247,32 @@ body {
 			width: 100%;
 			height: 100%;
 			mix-blend-mode: multiply;
-			background: linear-gradient(#66666600 25%, var(--category-color) 75%);
+			background: linear-gradient(#66666600 25%, var(--card-color) 75%);
 			transform: translateY(100%);
 			transition: var(--transition);
 		}
-	}
-	video {
-		object-fit: cover;
-		position: absolute;
-		top: 0;
-		left: 0;
-		height: 100%;
-		width: 100%;
-		z-index: -3;
 	}
 }
 
 [class*="_1"] {
 	grid-column: span 1;
-	--title-size: var(--global__font-size__md);
 }
 
 [class*="_2"] {
 	grid-column: span 2;
-	--title-size: var(--global__font-size__lg);
 }
 
 [class*="_3"] {
 	grid-column: span 3;
-	--title-size: var(--global__font-size__xl);
+	@include for-phone {
+		grid-column: span 2;
+	}
+}
+[class*="_4"] {
+	grid-column: span 4;
+	@include for-phone {
+		grid-column: span 2;
+	}
 }
 
 [class*="x1"] {
@@ -213,4 +285,8 @@ body {
 
 [class*="x3"] {
 	grid-row: span 3;
+}
+
+[class*="x4"] {
+	grid-row: span 4;
 }

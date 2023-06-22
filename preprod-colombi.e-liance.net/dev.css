@@ -229,6 +229,7 @@ Surcharge des éléments bootstrap
   font-family: var(--global__font-family__text);
   font-size: var(--global__font-size__md);
   font-weight: var(--global__font-weight__regular);
+  line-height: 1.6;
 }
 
 .abstract-H, h5,
