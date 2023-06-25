@@ -6,12 +6,12 @@
 
 	// CHROME
 	&::-webkit-scrollbar {
-		width: 2px;
-		height: 2px;
+		width: 3px;
+		height: 3px;
 
 		/*Appliquer des modifications sur le fond de la zone de l'ascenseur.*/
 		&-track {
-			background-color: #66666633; // var(--global__background-color);
+			background-color: #66666622; // var(--global__background-color);
 		}
 		/*Cible l'ascenseur lui-même.*/
 		&-thumb {

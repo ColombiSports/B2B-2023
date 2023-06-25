@@ -148,11 +148,8 @@ $logos :
 	A la classe d'utiliser celle qu'elle souhaite.
 **/
 @each $ID, $file in $logos {
-	.product-info,
-	.product-thumbnail {
-		&[class*='marque-#{$ID}'] {
-			--marque__logo-color__url: url('https://colombisports.com/b2b/img/logos-color/#{$file}.png');
-			--marque__logo-white__url: url('https://colombisports.com/b2b/img/logos-white/#{$file}.png');
-		}
+	[class*='marque-#{$ID}'] {
+		--marque__logo-color__url: url('https://colombisports.com/b2b/img/logos-color/#{$file}.png');
+		--marque__logo-white__url: url('https://colombisports.com/b2b/img/logos-white/#{$file}.png');
 	}
 }

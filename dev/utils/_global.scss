@@ -1,21 +1,21 @@
-﻿@use "./../utils/breakpoints" as *;
-@use "sass:color";
+﻿@use './../utils/breakpoints' as *;
+@use 'sass:color';
 //
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500&family=Montserrat:wght@300;500;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500&family=Montserrat:wght@300;500;700&display=swap');
 
 :root {
 	overscroll-behavior: none;
 
 	// Les polices
-	--global__font-family__title: "Barlow Semi Condensed", sans-serif;
-	--global__font-family__text: "Montserrat", sans-serif;
+	--global__font-family__title: 'Barlow Semi Condensed', sans-serif;
+	--global__font-family__text: 'Montserrat', sans-serif;
 
 	// Uniformisation des tailles
-	--global__font-size__xs: 0.8rem;
-	--global__font-size__sm: 1.1rem;
-	--global__font-size__md: 1.4rem;
-	--global__font-size__lg: 1.9rem;
-	--global__font-size__xl: 2.4rem;
+	--global__font-size__xs: 0.9rem;
+	--global__font-size__sm: 1.2rem;
+	--global__font-size__md: 1.5rem;
+	--global__font-size__lg: 2.1rem;
+	--global__font-size__xl: 2.8rem;
 
 	// Uniformisation des épaisseurs
 	--global__font-weight__light: 300;
