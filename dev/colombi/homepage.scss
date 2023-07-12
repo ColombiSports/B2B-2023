@@ -1,89 +1,445 @@
-@use './../utils/breakpoints' as *;
-@use './../abstract/Typo' as *;
+@use "./../utils/breakpoints" as *;
+@use "./../abstract/Typo" as *;
 //
-@import url('./../preprod-colombi.e-liance.net/devmin.css');
 
-html {
-	font-size: 10px;
+/**
+	LES CUSTOMS PROPS -----------------------------------------------------------------------------------------------
+	
+	--card-background : Le fond de la carte, immage (cover), dégradé ou couleur, par défaut la couleeur de fond du thème.
+	--category-color : La couleur de catégorie de la carte, par défaut blanc.
+	--category-border: La couleur dee la bordure de catégorie, par défaut la couleur du titre ou d'accentuation.
+	--title-color: La couleur du titre, par default la couleur d'accentuation.
+	--title-scale: Le facteur d'aggrandissement du titre basé sur --global__font-size__xl, par défaut 1.
+	--comment-color: La couleur du commentaire, par defaut var(--global__foreground-color).
+	--comment-size: La taille du commentaire, par defaut var(--global__font-size__md).
+	--button-background: La couleur du bouton, par défaut la couleur du titre.
+	--button-color: La couleur du texte, par défaut var(--global__foreground-color)
+
+	----------------------------------------------------------------------------------------------------------------
+**/
+
+#PACKS_AIRFUN {
+	--card-background: linear-gradient(0deg, #528bbe, #242957); //  url(https://colombisports.com/b2b/img/illustrations/PackAirfun_BlocHome.jpg);
+	--title-color: #fc0;
+	--button-background: red;
+	--button-color: white;
 }
 
+#ASG-2023 {
+	--card-background: url("https://colombisports.com/b2b/img/illustrations/Airgun2021.jpg");
+	--title-color: #999;
+	--button-background: #999;
+	--button-color: black;
+
+	--p-color: #fff;
+}
+
+#BUTIN_AIRSOFT {
+	--card-background: #253725;
+	--title-color: #aeb913;
+	--button-background: var(--title-color);
+	--button-color: var(--card-background);
+}
+
+#LTL {
+	--card-background: #181d2f;
+	--title-color: #adc0df;
+	--button-background: var(--title-color);
+	--button-color: var(--card-background);
+	//
+	--p-color: var(--button-background);
+}
+
+#VENTES-FLASH {
+	--card-background: #13528d;
+	--title-color: #fc0;
+	--title-scale: 2;
+	--button-background: rgb(31, 44, 107);
+	--button-color: var(--title-color);
+}
+
+#LAHOUX {
+	--card-background: url(https://colombisports.com/b2b/img/illustrations/Lahoux.jpg);
+	--border-color: #fc7b0a;
+}
+
+#ACC_CANIK {
+	--card-background: #777;
+	--category-border: #ad0000;
+	--button-background: var(--category-border);
+	--title-scale: 2;
+	--title-color: white;
+	--p-color: #ccc;
+}
+
+/********************************************************************************************************
+*********************************************************************************************************
+************************************** MOTEUR DE LA PAGE ************************************************
+*********************************************************************************************************
+*********************************************************************************************************/
+
 #homepage {
-	#page_title {
+	// L'espace entre chaque section, sauf la dernière
+	section:not(:last-child) {
+		margin-bottom: 12rem;
+	}
+
+	#page_title, // Le titre "achats fréquents"
+	.section-title // Les titres de sections version Chris
+	{
 		@extend .abstract-H2;
 		padding-bottom: 2rem;
 		border-bottom: var(--global__UI__border-style);
 	}
-}
 
-#download_link {
-	background-color: var(--global__color__accent);
-	border-radius: 100vmax;
-}
-.homepage-intro {
-	section {
-		padding-bottom: 8rem;
+	// Supprimes le padding des liste et grilles
+	section ul {
+		padding: 0;
 	}
 
-	h4 {
-		margin-bottom: 0;
-		font-size: medium;
-		color: var(--global__foreground-color);
-	}
-}
-#blog {
-	.articles-list {
+	// Définition d'une grille se générant selon des customs props
+	.auto-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(var(--cell-width), 1fr));
-		// grid-auto-rows: var(--cell-height);
+		grid-template-columns: repeat(auto-fill, minmax(var(--column-width, 300px), 1fr));
+		grid-auto-rows: minmax(var(--row-height) auto);
 		grid-auto-flow: dense;
-		gap: 6rem;
-	}
-	article {
-		width: 50%;
-
-		@media (prefers-color-scheme: light) {
-			.title {
-				color: var(--global__color__grey75);
-			}
-		}
-		@media (prefers-color-scheme: dark) {
-			.title {
-				color: var(--global__color__grey25);
-			}
-		}
+		align-items: stretch;
+		gap: clamp(3rem, 5vw, 7rem);
 	}
 
-	//p {
-	//	font-size: var(--global__font-size__sm);
-	//}
-}
-
-#brands {
-	.brands-list {
-		margin: 0;
-		padding: 3rem 0;
-		width: 100%;
+	// Définition d'une liste se générant selon des customs props
+	.flex-list {
 		display: flex;
-		flex-direction: row;
-		flex-wrap: nowrap;
-		align-items: center;
-		gap: 5rem;
+		flex-wrap: var(--flex-wrap, nowrap);
+		flex-direction: var(--flex-direction, row);
+		justify-content: space-evenly;
+		gap: var(--gap, 2rem 5rem);
+	}
 
-		overflow-x: scroll;
-		scroll-snap-type: x mandatory;
-		scroll-snap-align: center;
+	/**
+		SECTION BLOG ////////////////////////////////////////////////////////////////////
+		- Est une flex liste
+	**/
+	#blog {
+		--flex-wrap: wrap;
 
+		#B2B {
+			--flex: 1 1 500px;
+
+			#Pseudo_download_tab {
+				border: solid 1px var(--global__color__accent);
+				background-color: #66666633;
+				border-radius: 0 100vmax 100vmax 0;
+				padding: 0.25em 0.75em;
+				font-weight: var(--global__font-weight__regular);
+				font-size: var(--global__font-size__sm);
+			}
+		}
+		#canik-red {
+			--flex: 1 1 250px;
+		}
+
+		#recruitment {
+			--flex: 1 1 250px;
+		}
+
+		// Pour bien discener la section à la demande d'Alexandre
+		padding: 7rem;
+		background-color: var(--global__background-color);
+		padding-inline: var(--global__container__padding--width);
+		margin-left: calc(var(--global__container__padding--width) * -1);
+		width: 100vw;
+
+		article {
+			flex: var(--flex, 0 0 300px);
+			border: 1px solid var(--global__color__grey50);
+			border-radius: var(--global__UI__border-radius--alert);
+			padding: 2rem;
+
+			h2.news-title {
+				color: #666666cc;
+				font-family: var(--global__font-family__text);
+				font-size: var(--global__font-size__lg);
+			}
+
+			p {
+			}
+
+			a.fake_link {
+				pointer-events: none;
+			}
+
+			dl {
+				padding-left: 3rem;
+
+				dt {
+					font-family: var(--global__font-family__text);
+					font-weight: var(--global__font-weight__regular);
+					margin-bottom: 0;
+					color: inherit; // var(--global__foreground-color);
+				}
+				dd {
+					padding-left: 1rem;
+					margin-bottom: 3rem;
+					font-weight: var(--global__font-weight__light);
+					border: 1px dotted transparent;
+					border-left-color: #666666;
+				}
+			}
+		}
+	}
+
+	/**
+		SECTION EN VEDETTTE ////////////////////////////////////////////////////////////////////
+	**/
+	#features {
+		--column-width: 300px;
+		--row-height: var(--column-width);
+
+		/**
+			Les cartes par défaut
+		**/
+		[class*="card_"] {
+			--transition: all 200ms ease-in-out;
+
+			position: relative;
+
+			// Dispo en grille
+			display: grid;
+			min-height: var(--row-height);
+			border-radius: var(--global__UI__border-radius--alert);
+			overflow: hidden;
+
+			background: var(--card-background, var(--global__background-color));
+			background-size: cover;
+			background-position: center;
+
+			// Indique que le bloc est à l'horizontal
+			&.landscape {
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: 1fr;
+
+				@include for-tablet {
+					grid-template-columns: 1fr;
+					grid-template-rows: 1fr 1fr;
+				}
+			}
+			// Indique que le bloc est à la verticale
+			&.portrait {
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr auto;
+			}
+
+			.inverted {
+			}
+
+			&:hover,
+			&:active {
+				.illustration img,
+				.illustration video {
+					transform: scale(1.1);
+				}
+			}
+
+			// La catégorie de la carte
+			.category {
+				display: block;
+				position: absolute;
+				font-family: var(--global__font-family__text);
+				font-size: var(--global__font-size__xs, 10px);
+				color: white;
+				text-shadow: 0 0 5px black;
+				padding: 0;
+				margin-top: -4rem;
+
+				&:after {
+					content: "";
+					width: 5rem;
+					height: 2px;
+					display: block;
+					background-color: var(--category-border, var(--title-color, var(--global__color__accent)));
+					margin: 1rem 0 0 -2rem;
+					position: absolute;
+				}
+			}
+
+			// Inverse la carte
+			&.inverted .illustration {
+				order: 1;
+			}
+
+			// La partie contenant l'illustration : image ou video....
+			.illustration {
+				// Est dimensionnné par la carte
+				padding: var(--padding);
+				position: relative;
+				overflow: hidden;
+				isolation: isolate;
+
+				// Recouvre toute la zone d'illustration
+				img,
+				video {
+					position: absolute;
+					object-fit: cover;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					z-index: -1;
+					padding: 0;
+					transition: var(--transition);
+				}
+			}
+
+			// LA partie contenant le texte
+			.descriptif {
+				padding: 5rem 2rem 2rem 2rem;
+				display: flex;
+				flex-direction: column;
+				flex-wrap: nowrap;
+				justify-content: flex-start;
+				align-items: flex-start;
+
+				.title {
+					padding: 0;
+					margin: 0;
+					transition: var(--transition);
+					color: var(--title-color, var(--main-color, var(--global__color__accent)));
+					border-radius: var(--global__UI__border-radius--input);
+					font-family: var(--global__font-family__title);
+					font-size: calc(var(--global__font-size__xl) * var(--title-scale, 1));
+					font-weight: var(--global__font-weight__bold);
+					margin-bottom: 0.25em;
+					text-transform: uppercase;
+				}
+				a {
+					padding: 0.5em 0.75em;
+					bottom: var(--padding);
+					transition: var(--transition);
+					color: var(--button-text, white);
+					background-color: var(--button-background, var(--global__color__accent));
+					border-radius: var(--global__UI__border-radius--input);
+					font-family: var(--global__font-family__title);
+					font-size: var(--h1__font-size, var(--global__font-size__md));
+					align-self: flex-end;
+					border: none;
+					margin-top: auto;
+					border: solid 3px transparent;
+					transition: var(--transition);
+
+					&:hover {
+						transform: scale(1.1);
+					}
+				}
+				p {
+					margin: 0 0 2rem 0;
+					bottom: 1rem;
+					color: var(--p-color, var(--global__foreground-color));
+					font-size: var(--p-font-size, var(--global__font-size__md));
+					font-weight: var(--global__font-weight__light);
+					transition: var(--transition);
+					line-height: 1.61;
+				}
+			}
+
+			// Tous les objets en plein bloc....
+			[class*="background-"] {
+				position: absolute;
+				object-fit: cover;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+				transition: var(--transition);
+
+				transform-origin: center center;
+			}
+
+			&:hover,
+			&:active {
+				.background-image:before {
+					transform: translateY(0%);
+				}
+			}
+			// L'élément contenant le fond et le dégradé
+			// Est séparé du fond de la carte pour à cause de l'effet de rotation
+			.background-image {
+				background: var(--background-image, #66666622);
+				background-position: center;
+				background-size: cover;
+
+				// L'overlay du fond
+				&::before {
+					content: "";
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					mix-blend-mode: multiply;
+					background: linear-gradient(#66666600 25%, var(--border-color) 75%);
+					transform: translateY(100%);
+					transition: var(--transition);
+				}
+			}
+		}
+
+		// landscape ou portrait reste en 1 de large
+		[class*="_1"] {
+			grid-column: span 1;
+		}
+		// Doit passer en portrait en mode téléphone
+		[class*="_2"] {
+			grid-column: span 2;
+			@include for-tablet {
+				grid-column: span 1;
+			}
+		}
+
+		[class*="_3"] {
+			grid-column: span 3;
+			@include for-tablet {
+				grid-column: span 2;
+			}
+		}
+		[class*="x1"] {
+			grid-row: span 1;
+		}
+
+		[class*="x2"] {
+			grid-row: span 2;
+		}
+
+		[class*="x3"] {
+			grid-row: span 3;
+
+			@include for-tablet {
+				grid-row: span 2;
+			}
+		}
+	}
+
+	/**
+		SECTION EXCLUSIVITES ////////////////////////////////////////////////////////////////////
+	**/
+	#brands {
+		--flex-wrap: wrap;
+		--flex: 0 0 125px;
+		--gap: 1rem 7rem;
+		//
 		.brand {
+			scroll-snap-align: center;
+
 			@media (prefers-color-scheme: light) {
 				background-image: var(--marque__logo-color__url);
 			}
 			@media (prefers-color-scheme: dark) {
 				background-image: var(--marque__logo-white__url);
 			}
-			width: 150px;
-			height: 75px;
-			flex-grow: 0;
-			flex-shrink: 0;
+			aspect-ratio: 2/1;
+			flex: var(--flex, 0 0 100px);
+			gap: var(--gap, 1rem 5rem);
 
 			background-repeat: no-repeat;
 			background-size: contain;
@@ -99,297 +455,4 @@ html {
 			}
 		}
 	}
-}
-
-#PACKS_AIRFUN {
-	--card-background: linear-gradient(0deg, #528bbe, #242957); //  url(https://colombisports.com/b2b/img/illustrations/PackAirfun_BlocHome.jpg);
-	--title-color: #fc0;
-	// --card-color: purple;
-	--button-color: red;
-	--button-text: white;
-}
-
-#AIRSOFT {
-	--background-image: url('./../../assets/Airgun.jpg');
-	--title-color: green;
-	--card-color: red;
-}
-
-#BUTIN_AIRSOFT {
-	--background-image: none;
-	--card-color: #4f6930;
-}
-
-#LTL {
-	--p__font-size: 16px;
-	--card-color: rgb(32, 34, 83);
-}
-
-#VENTES-FLASH {
-	--background-image: url(https://colombisports.com/b2b/img/illustrations/3joursDeFolie.jpg);
-	--main-color: #185996;
-	--button-color: var(--main-color);
-	--title-color: purple;
-}
-
-#LAHOUX {
-	--background-image: url(https://colombisports.com/b2b/img/illustrations/Lahoux.jpg);
-	--card-color: #fc7b0a;
-}
-
-#ACC_CANIK {
-	--card-background: #900;
-	--card-color: red;
-}
-
-/**
-	La grille des mises en avant
-**/
-#features {
-	.cards-list {
-		margin: 0;
-		padding: 0;
-
-		// La taille de la cellule
-		--cell-width: 250px;
-		--cell-height: 225px;
-		// La transition pour tous
-		--transition: all 150ms ease-in-out;
-
-		--padding: 0rem;
-		--border-radius: 0.5rem;
-
-		@include for-tablet {
-			--cell-width: 150px;
-		}
-
-		// La grille en mode DENSE
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(var(--cell-width), 1fr));
-		grid-auto-rows: var(--cell-height);
-		grid-auto-flow: dense;
-		gap: 5vmax;
-	}
-}
-
-/**
-	Les cartes par défaut
-**/
-[class*='card_'] {
-	--padding: 2em; // Padding à répercuter
-
-	// Dispo en grille
-	display: grid;
-	min-height: var(--cell-height);
-	border-radius: var(--global__UI__border-radius--alert);
-	overflow: hidden;
-
-	background: var(--card-background, var(--global__background-color));
-	background-size: cover;
-	background-position: center;
-
-	// Indique que le bloc est à l'horizontal
-	&.landscape {
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr;
-
-		@include for-phone {
-			grid-template-columns: 1fr;
-			grid-template-rows: 1fr 1fr;
-		}
-	}
-	// Indique que le bloc est à la verticale
-	&.portrait {
-		grid-template-columns: 1fr;
-		grid-template-rows: 1fr auto;
-	}
-
-	&:hover,
-	&:active {
-		.illustration img,
-		.illustration video {
-			transform: scale(1.1);
-		}
-	}
-
-	// La catégorie de la carte
-	.category {
-		display: inline-block;
-		font-family: var(--global__font-family__text);
-		font-size: var(--h3__font-size, var(--global__font-size__xs));
-		color: white;
-		text-shadow: 0 0 5px black;
-		padding: 0;
-		margin: 0 0 2em 0;
-		position: relative;
-
-		&:after {
-			content: '';
-			width: 3rem;
-			height: 3px;
-			display: block;
-			background-color: var(--card-color, var(--title-color, var(--global__color__accent)));
-			margin-left: calc(var(--padding) * -1);
-			position: absolute;
-			top: 2em;
-		}
-	}
-
-	// Inverse la carte
-	&.inverted .illustration {
-		order: 1;
-	}
-
-	// La partie contenant l'illustration : image ou video....
-	.illustration {
-		// Est dimensionnné par la carte
-		padding: var(--padding);
-		position: relative;
-		overflow: hidden;
-		isolation: isolate;
-
-		// Recouvre toute la zone d'illustration
-		img,
-		video {
-			position: absolute;
-			object-fit: cover;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			z-index: -1;
-			padding: 0;
-			transition: var(--transition);
-		}
-	}
-
-	// LA partie contenant le texte
-	.descriptif {
-		padding: var(--padding);
-		display: flex;
-		flex-direction: column;
-		flex-wrap: nowrap;
-		justify-content: flex-start;
-		align-items: flex-start;
-
-		h1 {
-			padding: 0;
-			margin: 0;
-			transition: var(--transition);
-			color: var(--title-color, var(--main-color, var(--global__color__accent)));
-			border-radius: var(--global__UI__border-radius--input);
-			font-family: var(--global__font-family__title);
-			font-size: var(--h1__font-size, var(--global__font-size__lg));
-			margin-bottom: 0.5em;
-
-			text-transform: uppercase;
-		}
-		a {
-			padding: 0.5em 0.75em;
-			bottom: var(--padding);
-			transition: var(--transition);
-			color: var(--button-text, white);
-			background-color: var(--button-color, var(--global__color__accent));
-			border-radius: var(--global__UI__border-radius--input);
-			font-family: var(--global__font-family__title);
-			font-size: var(--h1__font-size, var(--global__font-size__sm));
-			align-self: flex-end;
-			border: none;
-			margin-top: auto;
-			border: solid 3px transparent;
-
-			&:hover {
-				border: 3px solid var(--title-color);
-			}
-		}
-		p {
-			margin: 0;
-			bottom: 1rem;
-			font-size: var(--p__font-size, var(--global__font-size__xs));
-			transition: var(--transition);
-			line-height: 1.61;
-		}
-	}
-
-	// Tous les objets en plein bloc....
-	[class*='background-'] {
-		position: absolute;
-		object-fit: cover;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
-		transition: var(--transition);
-
-		transform-origin: center center;
-	}
-
-	&:hover,
-	&:active {
-		.background-image:before {
-			transform: translateY(0%);
-		}
-	}
-	// L'élément contenant le fond et le dégradé
-	// Est séparé du fond de la carte pour à cause de l'effet de rotation
-	.background-image {
-		background: var(--background-image, #66666622);
-		background-position: center;
-		background-size: cover;
-
-		// L'overlay du fond
-		&::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			mix-blend-mode: multiply;
-			background: linear-gradient(#66666600 25%, var(--card-color) 75%);
-			transform: translateY(100%);
-			transition: var(--transition);
-		}
-	}
-}
-
-[class*='_1'] {
-	grid-column: span 1;
-}
-
-[class*='_2'] {
-	grid-column: span 2;
-}
-
-[class*='_3'] {
-	grid-column: span 3;
-	@include for-phone {
-		grid-column: span 2;
-	}
-}
-[class*='_4'] {
-	grid-column: span 4;
-	@include for-phone {
-		grid-column: span 2;
-	}
-	@include for-tablet {
-		grid-column: span 3;
-	}
-}
-
-[class*='x1'] {
-	grid-row: span 1;
-}
-
-[class*='x2'] {
-	grid-row: span 2;
-}
-
-[class*='x3'] {
-	grid-row: span 3;
-}
-
-[class*='x4'] {
-	grid-row: span 4;
 }
